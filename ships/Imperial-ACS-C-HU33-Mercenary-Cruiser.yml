@@ -1,0 +1,642 @@
+--- 
+header: 
+   brief: 'Small para-military carrier'
+   tons: 800
+   undertons: 23
+   driver: 0
+   tonsFree: 0
+   tl: 12
+   engineer: 2
+   powerFuelPercentage: 0.03
+   freightmaster: 0
+   format: 'ACS1.1'
+   shifts: 1
+   gunner: 4
+   jumpFuelPercentage: 0.1
+   builder: 'Bilstein Yards'
+   lifeSupport: 2
+   crew: 5
+   pf: 1.5
+   config: 'U'
+   mission: 'C'
+   medic: 1
+   owner: Imperial
+   jf: 3
+   pilot: 1
+   disposition: 'In Service'
+   qsp: 'C-UH33'
+   sensop: 1
+   steward: 0
+   missionLabel: 'Cruiser'
+   crewComfort: 0
+   totalMCr: 270.5
+   crewLocked: 'yes'
+   mult: 1
+   low: 0
+   spaciousness: 2
+   overtons: 2
+   comments: |
+      Using an 800-ton hull, the mercenary cruiser is built to carry small troop units for corporate or government operations. It has jump drive-M, maneuver drive-M, and power plant-M, giving jump3 and 3-G acceleration. Fuel tankage supports one jump-3, and three months of operations, some of which may be used for its smallcraft. Adjacent to the bridge is a computer Model/5. There are 25 staterooms and no low berths. Eight triple turrets are installed, four with beam lasers and four with missile launchers. There are five ship's vehicles: two modular cutters (with one open module and one fuel module), two ATVs (in ATV modules), and one air/raft. Cargo capacity is 80 tons. The hull is unstreamlined.
+      The mercenary cruiser requires a crew of eight: com- manding officer, pilot, navigator, four engineers, and medic. Vehicle pilots, clerks, troops, and gunners may be added. The ship can carry 17 passengers (42 if double occupancy) in non-commercial service; its primary intended purpose is transport and support of small military (mercenary) units.
+   totalCargoSpace: 80
+   shipname: 'Broadsword'
+   passengers: 1
+   demand: -5
+   astrogator: 1
+components: 
+   - 
+      s: 0
+      mcr: 42
+      label: 'Unstreamlined Hull'
+      mult: 1
+      eff: 1
+      tl: 12
+      totalTons: 800
+      code: 'U'
+      totalMCr: 42
+      b: 0
+      e: 0
+      target: 12
+      Sq: 1600
+      category: 'Hull'
+      notes: 'U'
+      CP: 1
+      type: 'Hull'
+      r: 0
+      q: 0
+      tons: 800
+      config: 'Unstreamlined'
+      howMany: ''
+      name: 'Hull'
+
+   - 
+      s: 0
+      mcr: 0
+      label: 'Jump Fuel (3  parsecs)'
+      b: 0
+      eff: 1
+      tl: 12
+      totalTons: 240
+      totalMCr: 0
+      howMany: ''
+      e: 0
+      target: 12
+      Sq: 480
+      category: 'Jump Fuel'
+      notes: 'J3, 80t/pc'
+      CP: 0
+      type: 'Drive'
+      q: 0
+      tons: 240
+      r: 0
+
+   - 
+      s: 0
+      mcr: 0
+      label: 'Plant Fuel (1.5 months)'
+      b: 0
+      eff: 1
+      tl: 12
+      totalTons: 36
+      totalMCr: 0
+      howMany: ''
+      e: 0
+      target: 12
+      Sq: 72
+      category: 'Powerplant Fuel'
+      notes: '1.5 months'
+      CP: 0
+      type: 'Drive'
+      q: 0
+      tons: 36
+      r: 0
+
+   - 
+      s: 0
+      mcr: 8
+      label: 'Legs with pads'
+      b: 0
+      eff: 1
+      tl: 12
+      totalTons: 8
+      code: 'K'
+      totalMCr: 8
+      howMany: ''
+      tonsPercent: 1
+      note: 'K'
+      Sq: 16
+      mcrPerTon: 1
+      category: 'landers'
+      CP: 1
+      type: 'Hull'
+      e: 0
+      target: 12
+      q: 0
+      tons: 8
+      r: 0
+      name: 'Legs with pads'
+
+   - 
+      s: 0
+      mcr: 0
+      totalMCr: 0
+      b: 0
+      eff: 1
+      tl: 12
+      totalTons: 80
+      tons: 80
+      howMany: ''
+      e: 0
+      target: 12
+      Sq: 160
+      category: 'Cargo'
+      notes: ''
+      CP: 0
+      type: 'Payload'
+      q: 0
+      label: 'Cargo Hold Basic'
+      r: 0
+
+   - 
+      count: 1
+      mcr: 0.1
+      label: 'Fuel Scoops 100t/hr'
+      b: 0
+      eff: 1
+      tl: 8
+      s: 0
+      totalMCr: 0.1
+      howMany: ''
+      e: 0
+      target: 8
+      Sq: 2
+      totalTons: 1
+      category: 'Fuel Scoops'
+      notes: '100t/hr'
+      CP: 1
+      type: 'Drive'
+      q: 0
+      tons: 1
+      r: 0
+
+   - 
+      mcr: 0
+      label: 'AV=12. 1 Rad Plate'
+      tl: 12
+      mount: 'Rad'
+      howMany: ''
+      target: 12
+      category: 'AV=12. 1 Rad Plate'
+      config: 'Armor'
+      basetl: 8
+      mod: ''
+      q: 0
+      r: 0
+      name: 'Plate'
+      s: 0
+      totalMCr: 0
+      b: 0
+      eff: 1
+      totalTons: 0
+      e: 0
+      type: 'Armor'
+      notes: ''
+      CP: 1
+      range: '1'
+      tons: 0
+
+   - 
+      mcr: 5
+      label: 'Computer Model/5 std'
+      tl: 12
+      mount: 'Model/5'
+      howMany: ''
+      target: 17
+      category: 'Computer Model/5 std'
+      config: 'Ops'
+      basetl: 0
+      mod: 5
+      q: 0
+      r: 0
+      name: 'Computer'
+      s: 0
+      totalMCr: 5
+      b: 0
+      type: 'Ops'
+      totalTons: 5
+      e: 0
+      Sq: 10
+      notes: ''
+      CP: 1
+      eff: 1
+      range: 's'
+      tons: 5
+
+   - 
+      mcr: 2.5
+      label: 'LR Ant EMS'
+      tl: 13
+      mount: 'Ant'
+      howMany: ''
+      target: 14
+      category: 'LR Ant EMS'
+      config: 'Sensor'
+      basetl: 13
+      mod: 1
+      q: 0
+      r: 0
+      name: 'EMS'
+      s: 0
+      totalMCr: 2.5
+      b: 0
+      type: 'Sensor'
+      totalTons: 2
+      e: 0
+      Sq: 4
+      notes: ''
+      CP: 1
+      eff: 1
+      range: 'LR'
+      tons: 2
+
+   - 
+      mcr: 1
+      label: 'AR Surf Scope'
+      tl: 12
+      mount: 'Surf'
+      howMany: ''
+      target: 12
+      category: 'AR Surf Scope'
+      config: 'Sensor'
+      basetl: 9
+      mod: 0
+      q: 0
+      r: 0
+      name: 'Scope'
+      s: 0
+      totalMCr: 1
+      b: 0
+      eff: 1
+      totalTons: 0
+      e: 0
+      type: 'Sensor'
+      notes: ''
+      CP: 1
+      range: 'AR'
+      tons: 0
+
+   - 
+      mcr: 2.5
+      label: 'LR Ant Communicator'
+      tl: 12
+      mount: 'Ant'
+      howMany: ''
+      target: 13
+      category: 'LR Ant Communicator'
+      config: 'Sensor'
+      basetl: 9
+      mod: 1
+      q: 0
+      r: 0
+      name: 'Communicator'
+      s: 0
+      totalMCr: 2.5
+      b: 0
+      type: 'Sensor'
+      totalTons: 2
+      e: 0
+      Sq: 4
+      notes: ''
+      CP: 1
+      eff: 1
+      range: 'LR'
+      tons: 2
+
+   - 
+      s: 0
+      mcr: 0.5
+      totalMCr: 12.5
+      b: 0
+      eff: 1
+      target: 12
+      totalTons: 100
+      label: 'Crew Single Stateroom'
+      howMany: 25
+      e: 0
+      tl: 12
+      Sq: 200
+      totalSleeps: 25
+      notes: '1 crew'
+      CP: 0
+      sleeps: 1
+      r: 0
+      q: 0
+      tons: 4
+      type: 'Crew'
+
+   - 
+      s: 0
+      mcr: 13
+      label: 'Modular Cutter'
+      b: 0
+      eff: 1
+      tl: 13
+      totalTons: 100
+      av: '40,10,10,20,10,10,10'
+      code: 'MQC'
+      load: 36
+      howMany: 2
+      e: 0
+      target: 13
+      Sq: 200
+      CP: 0
+      type: 'Vehicle'
+      speed: '4G'
+      q: 0
+      tons: 50
+      r: 0
+      totalMCr: 26
+
+   - 
+      s: 0
+      mcr: 1.8
+      totalMCr: 3.6
+      b: 0
+      eff: 1
+      tl: 12
+      totalTons: 60
+      label: 'ATV Module'
+      howMany: 2
+      e: 0
+      target: 12
+      Sq: 120
+      notes: 'Cutter Module'
+      CP: 0
+      type: 'Payload'
+      q: 0
+      tons: 30
+      r: 0
+
+   - 
+      s: 0
+      av: '9,0,4,0,4,0,24,0'
+      tons: 4
+      b: 0
+      eff: 1
+      tl: 9
+      totalTons: 4
+      mcr: 0.1
+      code: 'ELPV'
+      load: 2
+      howMany: ''
+      e: 0
+      target: 9
+      Sq: 8
+      CP: 0
+      type: 'Vehicle'
+      speed: 3
+      q: 0
+      label: 'Air/Raft Enclosed'
+      r: 0
+      totalMCr: 0.1
+
+   - 
+      s: 0
+      mcr: 0.5
+      label: 'Crew Lounge'
+      b: 0
+      eff: 1
+      tl: 12
+      totalTons: 4
+      totalMCr: 0.5
+      howMany: ''
+      e: 0
+      target: 12
+      Sq: 8
+      notes: ''
+      CP: 0
+      type: 'Crew'
+      q: 0
+      tons: 4
+      r: 0
+
+   - 
+      mcr: 1.5
+      label: 'Vd T3 Beam Laser'
+      tl: 12
+      mount: 'T3'
+      howMany: 4
+      target: 11
+      category: 'Vd T3 Beam Laser'
+      config: 'Weapon'
+      type: 'Weapon'
+      basetl: 10
+      mod: -1
+      q: 0
+      r: 0
+      name: 'Beam Laser'
+      s: 0
+      totalMCr: 6
+      b: 0
+      eff: 1
+      totalTons: 4
+      e: 0
+      Sq: 8
+      notes: ''
+      CP: 1
+      range: 'Vd'
+      tons: 1
+
+   - 
+      mcr: 1.2
+      label: 'AR T3 Missile'
+      tl: 12
+      mount: 'T3'
+      howMany: ''
+      target: 11
+      category: 'AR T3 Missile'
+      config: 'Weapon'
+      basetl: 7
+      mod: -1
+      q: 0
+      r: 0
+      name: 'Missile'
+      s: 0
+      totalMCr: 1.2
+      b: 0
+      type: 'Weapon'
+      totalTons: 1
+      e: 0
+      Sq: 2
+      notes: ''
+      CP: 1
+      eff: 1
+      range: 'AR'
+      tons: 1
+
+   - 
+      mcr: 3.2
+      tons: 2
+      target: 11
+      mount: 'T3'
+      howMany: 3
+      tl: 12
+      category: 'LR T3 Missile'
+      type: 'Weapon'
+      config: 'Weapon'
+      basetl: 8
+      mod: -1
+      q: 0
+      r: 0
+      name: 'Missile'
+      s: 0
+      totalMCr: 9.6
+      b: 0
+      eff: 1
+      totalTons: 6
+      e: 0
+      Sq: 12
+      notes: ''
+      CP: 1
+      range: 'LR'
+      label: 'LR T3 Missile'
+
+   - 
+      s: 0
+      mcr: 2
+      tons: 2
+      b: 0
+      eff: 1
+      tl: 12
+      totalTons: 2
+      totalMCr: 2
+      howMany: ''
+      e: 0
+      target: 12
+      Sq: 4
+      category: 'Life Support'
+      notes: '80 people/month'
+      CP: 1
+      type: 'Ops'
+      q: 0
+      label: 'Life support (80 people/month)'
+      r: 0
+      name: 'life support'
+
+   - 
+      s: 0
+      mcr: 0
+      label: 'Spacious bridge'
+      b: 0
+      eff: 1
+      tl: 12
+      totalTons: 20
+      totalMCr: 0
+      howMany: ''
+      e: 0
+      target: 14
+      Sq: 40
+      category: 'Bridge'
+      notes: ''
+      CP: 0
+      type: 'Ops'
+      mod: 2
+      q: 0
+      tons: 20
+      r: 0
+      name: 'Bridge'
+
+   - 
+      mcr: 37
+      tons: 37
+      B: 0
+      tl: 12
+      howMany: ''
+      E: 0
+      target: 12
+      category: 'PowerPlant'
+      type: 'Drive'
+      basetl: 10
+      q: 0
+      r: 0
+      name: 'PowerPlant'
+      s: 0
+      autoAdjust: 1
+      b: 0
+      eff: 1
+      Sq: 74
+      code: 'M'
+      totalMCr: 37
+      rating: 3
+      e: 0
+      powerFuelUsage: 0.01
+      totalTons: 37
+      Q: 0
+      notes: 'P 3'
+      CP: 2
+      R: 0
+      S: 0
+      label: 'PowerPlant-3 (M)'
+
+   - 
+      mcr: 65
+      tons: 65
+      B: 0
+      tl: 12
+      howMany: ''
+      E: 0
+      target: 12
+      category: 'Jump Drive'
+      type: 'Drive'
+      basetl: 12
+      q: 0
+      r: 0
+      name: 'Jump Drive'
+      s: 0
+      autoAdjust: 1
+      b: 0
+      eff: 1
+      Sq: 130
+      jumpFuelUsage: 0.1
+      code: 'M'
+      totalMCr: 65
+      rating: 3
+      e: 0
+      totalTons: 65
+      Q: 0
+      notes: 'J 3'
+      CP: 2
+      R: 0
+      S: 0
+      label: 'Jump Drive-3 (M)'
+
+   - 
+      mcr: 46
+      tons: 23
+      B: 0
+      tl: 12
+      howMany: ''
+      E: 0
+      target: 12
+      category: 'Maneuver Drive'
+      type: 'Drive'
+      basetl: 9
+      q: 0
+      r: 0
+      name: 'Maneuver Drive'
+      s: 0
+      autoAdjust: 1
+      b: 0
+      eff: 1
+      Sq: 46
+      code: 'M'
+      totalMCr: 46
+      rating: 3
+      e: 0
+      totalTons: 23
+      Q: 0
+      notes: '3 G'
+      CP: 1
+      R: 0
+      S: 0
+      label: 'Maneuver Drive-3 (M)'

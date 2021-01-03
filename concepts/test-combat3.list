@@ -1,0 +1,78 @@
+
+color 15,0 :? chr$(147)
+? "traveller space combat v3\x11"
+
+hr$ = chr$(28)
+for x=1 to 80 : hr$ = hr$ + chr$(195) :next x
+hr$ = hr$ + chr$(155)
+
+? hr$
+? "   battle a corsair and its crew of remorseless vargr pirates!"
+?
+? "   to win, you must protect your crew, ship, and cargo."
+?
+? "   good luck!\x11"
+? hr$
+
+gosub {:initialize crew}
+gosub {:initialize components}
+
+
+end
+
+{:initialize crew}
+
+longvar \crew.name
+longvar \crew.status
+longvar \crew.count
+
+\crew.count = -1
+{:read crew}
+   \crew.count = \crew.count+1
+   read \crew.name$(\crew.count)
+   \crew.status(\crew.count) = 0
+   if \crew.name$(\crew.count) <> "-1" goto {:read crew}
+
+\crew.count = \crew.count - 1
+
+data jamison, akrind, kodray, arrlanroughl, reynaldi, sharik, -1
+
+return
+
+
+{:initialize components}
+
+longvar \component.label
+longvar \component.subtype
+longvar \component.status
+longvar \component.count
+
+dim \component.label$(40), \component.subtype(40), \component.status(40)
+
+\component.count=-1
+{:read component}
+   \component.count=\component.count+1
+   read \component.label$(\component.count)
+   read \component.subtype(\component.count)
+   \component.status(\component.count) = 0
+   if \component.label$(\component.count) <> "-1" goto {:read component}
+
+\component.count = \component.count - 1
+
+data bridge,       0 
+data engineering,  0 
+data medlab,       0 
+data hold,         0 
+data hangar,       0 
+data fuel,         0
+data turret 1l,   0,   turret 2l,  1,  turret 3l,  2
+data turret 1m,  10,   turret 2m, 11,  turret 3m, 12
+data turret 1s,  20,   turret 2s, 21,  turret 3s, 22
+data barbette l,  3,   bay l,      4
+data barbette m, 13,   bay m,     14
+data barbette s, 23,   bay s,     24
+data barbette a, 33,   bay a,     34
+data -1, -1
+
+return
+

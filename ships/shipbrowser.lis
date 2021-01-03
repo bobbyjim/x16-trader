@@ -1,0 +1,109 @@
+
+
+poke $9f61,1
+load "allships.bin",8,1,$a000
+
+ad=$a003 :rem data starts here
+
+rem ------------------------------------
+rem
+rem   Loop and dump ship data.
+rem
+rem ------------------------------------
+{:show-ship}
+   ln=peek(ad)
+
+   ? chr$(peek(ad+42)) " "; :rem owner
+   rem ------------------------------------
+   rem
+   rem  read ship name
+   rem
+   rem ------------------------------------
+   for x = 1 to 23: ? chr$(peek(ad+x));:next
+;
+;  mission
+;
+   m$ = chr$(peek(ad+25))
+;   m2 = peek(ad+26) :if m2<>32 then m$=m$+" "
+   sz = peek(ad+27) :rem siz
+   cf$ = chr$(peek(ad+28)) :rem cfg
+   mv = peek(ad+29) :rem maneuver
+   jp = peek(ad+30) :rem jump
+   hp = peek(ad+31) :rem hop
+
+   rem ------------------------------------
+   rem
+   rem  Build the "Quick Ship Profile" 
+   rem
+   rem ------------------------------------
+   qs$ = m$ + "-" + chr$(64+sz) + cf$
+   qs$ = qs$ + chr$(48+mv)
+
+   pw=mv :if jp>pv then pw = jp
+   if hp>pw then pw=hp
+   qs$ = qs$ + chr$(48+pw)
+
+   if hp=0 then qs$=qs$ + chr$(48+jp) + chr$(48+pw) + " "
+   if hp>0 then qs$=qs$ + chr$(48+hp) + chr$(48+pw) + "h"
+   if hp>0 then qs$=qs$ + "h"
+   ? qs$ " ";
+
+   rem -----------------------------------------
+   rem
+   rem  Read and decode the rest of the header.
+   rem
+   rem -----------------------------------------
+   ? "M/" chr$(48+peek(ad+32)) " "; :rem computer
+
+   ? chr$(peek(ad+33));  :rem landers
+
+   av = peek(ad+34)
+   ? av; :if av<10 then ? " ";
+   
+   ? peek(ad+35)-5;      :rem comfort
+   ? peek(ad+36)-5;      :rem demand
+
+   rem ------------------------------------------
+   rem
+   rem  Because we lack a printf(), we have to
+   rem  convert numbers to strings and then pad
+   rem  them with spaces as needed.
+   rem
+   rem ------------------------------------------
+   ca$ = str$(sz * peek(ad+37))
+   if len(ca$)=2 then ca$=" " + ca$
+   if len(ca$)=3 then ca$=" " + ca$
+
+   fu$ = str$(sz * peek(ad+38))
+   if len(fu$)=2 then fu$=" " + fu$
+   if len(fu$)=3 then fu$=" " + fu$
+
+   lo$ = str$(peek(ad+39))
+   if len(lo$)=2 then lo$=" " + lo$
+   if len(lo$)=3 then lo$=" " + lo$
+
+   sr$ = str$(peek(ad+40))
+   if len(sr$)=2 then sr$=" " + sr$
+;  if len(sr$)=3 then sr$=" " + sr$
+
+   ? ca$ fu$ lo$ sr$;
+
+   ? " MCR" sz * peek(ad+41);   :rem mcr
+   ?
+
+   rem --------------------------------------
+   rem 
+   rem  Okay we made it through a header.
+   rem  Skip the component list; I think we'd
+   rem  only want to display that if the user
+   rem  specifically chooses a craft to 
+   rem  inspect.
+   rem 
+   rem --------------------------------------
+   ad = ad + ln + 6
+
+   rem  The screen is full at $b900.  No paging yet.
+   if ad > $b900 then end
+
+   goto {:show-ship}
+

@@ -1,0 +1,4 @@
+cat main-trader.list module*list > traveller-trader.tmp
+perl ../module-basic/basic-labelmaster.pl traveller-trader.tmp > traveller-trader.bas
+rm traveller-trader.tmp
+echo "traveller-trader.bas created"

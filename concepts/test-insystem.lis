@@ -1,0 +1,138 @@
+
+longvar \location lo
+longvar \wildernessfuel wf
+longvar \mining   mi
+longvar \canjump  cj
+longvar \canland  cl
+longvar \cantrade ct
+longvar \canequip ce
+longvar \days     dz
+longvar \year     yr
+
+\location$(0) = "asteroid belt"
+\location$(1) = "gas giant"
+\location$(2) = "deep space"
+\location$(3) = "comet"
+\location$(4) = "jump point"
+\location$(5) = "mainworld"
+\location$(6) = "starport"
+\location$(7) = "navy base"
+\location$(8) = "scout base"
+
+\wildernessfuel(0) = 2
+\wildernessfuel(1) = 1
+\wildernessfuel(3) = 3
+\wildernessfuel(5) = 1
+
+\mining(0) = 1
+\mining(3) = 3
+\mining(5) = 7
+
+\canjump(4) = 1
+
+\canland(0) = 1
+\canland(3) = 1
+\canland(5) = 1
+\canland(6) = 1
+\canland(7) = 1
+\canland(8) = 1
+
+\cantrade(6) = 1
+
+\canequip(6) = 1
+\canequip(7) = 1
+\canequip(8) = 1
+
+d  = 2
+ds = 0  :rem surface = no
+
+\year = 1101
+\days = int(rnd(1)*360+1)
+
+{:menu}
+	?:?:?
+	? "in-system travel"
+	? "----------------"
+	?
+	? "All points take two days' travel time."
+	?
+	? " 0 - asteroid belt"
+	? " 1 - gas giant"
+	? " 2 - deep space"
+	? " 3 - comet"
+	? " 4 - jump point"
+	? " 5 - mainworld"
+	? " 6 - starport"
+	? " 7 - navy base"
+	? " 8 - scout base"
+	?
+        ? "The current date     : " \days "-" \year
+	? "Your current location: " \location$(d);
+        if ds = 1 then ? " (surface)"
+        if ds = 0 then ?
+	?:?
+
+	if \wildernessfuel(d) then gosub {:wilderness refuel}
+	if \mining(d) then gosub {:prospecting}
+	rem if \canland(d) then gosub {:surface}
+	if \cantrade(d) then gosub {:trade}
+	if \canequip(d) then gosub {:equip}
+
+	?:input "Where to next"; d$ :d=val(d$)
+        \days = \days + 2
+
+        if \days > 365 then \year = \year + 1 : \days = \days - 365
+
+	goto {:menu}
+
+
+{:wilderness refuel}
+	da = \wildernessfuel(d) 
+	?:? "Wilderness refueling is available, and takes" da;
+	if da = 1 then ? "day."
+	if da > 1 then ? "days."
+	input "Do you wish to refuel"; yn$
+	if yn$ = "n" then return
+	? "You have refueled." 
+        \days = \days + da
+	return
+
+{:prospecting}
+	da = \mining(d)
+	?:? "Prospecting here takes" da;
+	if da = 1 then ? "day."
+	if da > 1 then ? "days."
+	input "Do you wish to do prospecting"; yn$
+	if yn$ = "n" then return
+	? "Prospecting accomplished."
+        \days = \days + da
+	return
+
+{:surface}
+        if ds = 1 goto {:launch}
+	?:? "Do you wish to land"; yn$
+	if yn$ = "n" then return
+	? "You have landed."
+	ds = 1 :rem surface
+	return
+
+{:launch}
+	?:? "Do you wish to launch"; yn$
+	if yn$ = "n" then return
+	? "You have liftoff."
+	ds = 0 :rem launch
+	return
+
+{:trade}
+	?:? "Unloading and loading cargo takes 2 days."
+	? "Do you wish to unload/load cargo"; yn$
+	if yn$ = "n" then return
+	? "(trade not implemented)"
+  	\days = \days + 2
+	return
+
+{:equip}
+	?:? "Do you wish to buy equipment"; yn$
+	if yn$ = "n" then return
+	? "(equipment not implemented)"
+	return

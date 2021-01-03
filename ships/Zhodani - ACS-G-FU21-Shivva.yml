@@ -1,0 +1,862 @@
+--- 
+header: 
+   brief: 'Zhodani patrol frigate'
+   operatingConsoles: 4
+   crew: 7
+   workstations: 0
+   totalMCr: 318.2
+   low: 0
+   comments: ' A Shivva-class ship tasked with picket duty in and around District 268. It sports the Chiata M/4 jump drive, the Biafrchtev mF/2 maneuver drive, and the Tobrjde M4+i power plant, giving performance of Jump-4 and 2G acceleration. Fuel tankage of 224 tons supports 2 weeks of maneuver in addition to one jump-4. It has a fuel purifier, but no fuel scoops, relying on a 50 ton fuel shuttle to scoop fuel for it (requiring eight skimming runs at a gas giant). The ship carries 11 other craft: a 50 ton fuel shuttle, and ten small fighters.  The Jadsva requires 18 crew: an Astrogator, 11 pilots in 8 staterooms, 2 engineers, 3 gunners in 2 staterooms, and 1 medic. There are no passenger staterooms, and no low berths. The astrogator is also a Psionic Adept with Remote Mentation ability, who in addition to normal astrogation duties serves as a Commcaster between the ten fighter pilots.  This class of patrol frigate is an ubiquitous Zhodani Navy design most frequently encountered of the types deployed on and beyond the Consulate frontier districts. The class is often deployed well beyond Zhodani borders.  Sample names (-va = light, thus Shivva = moonlight): Alekrva, Brnava, Doruva, Jadsva, Jirtodva, Loyhva, Mielrva, Shivva, Uturva. '
+   controlConsoles: 7
+   crewLocked: 'yes'
+   spaciousness: 2
+   totalCargoSpace: 3
+   crewComfort: -2
+   troops: 0
+   passengers: 1
+   staff: 0
+   demand: -5
+   undertons: 0.5
+   tl: 13
+   owner: 'Zhodani'
+   jumpFuelPercentage: 0.09
+   powerFuelPercentage: 0.04
+   config: 'U'
+   qsp: 'G-FU21'
+   format: 'T5-ACS-1'
+   tons: 600
+   shifts: 1
+   tonsFree: 0.5
+   jf: 4
+   pf: 1
+   shipname: 'Shivva'
+   mission: 'GP'
+components: 
+   - 
+      s: 0
+      totalTons: 600
+      code: 'U'
+      type: 'Hull'
+      totalMCr: 20
+      b: 0
+      eff: 1
+      config: 'Unstreamlined'
+      CP: 0
+      tl: 12
+      Sq: 1200
+      e: 0
+      howMany: 1
+      tons: 600
+      mult: 1
+      name: 'Hull'
+      r: 0
+      mcr: 20
+      q: 0
+      target: 12
+      category: 'Hull'
+      label: 'Unstreamlined hull'
+
+   - 
+      totalTons: 37
+      code: 'L'
+      type: 'Drive'
+      totalMCr: 37
+      eff: 1
+      basetl: 8
+      label: 'PowerPlant-4 (L)'
+      rating: 4
+      powerFuelUsage: 0.01
+      autoAdjust: 1
+      q: 0
+      r: 0
+      s: 0
+      b: 0
+      CP: 0
+      tl: 12
+      Sq: 74
+      notes: 'P 4'
+      e: 0
+      tons: 37
+      name: 'PowerPlant'
+      mcr: 37
+      target: 12
+      category: 'PowerPlant'
+      howMany: 1
+
+   - 
+      totalTons: 11
+      code: 'F'
+      type: 'Drive'
+      totalMCr: 22
+      eff: 1
+      basetl: 9
+      label: 'Maneuver Drive-2 (F)'
+      rating: 2
+      autoAdjust: 1
+      q: 0
+      r: 0
+      s: 0
+      notes: '2 G'
+      CP: 0
+      tl: 12
+      Sq: 22
+      b: 0
+      e: 0
+      target: 12
+      category: 'Maneuver Drive'
+      name: 'Maneuver Drive'
+      mcr: 22
+      tons: 11
+      howMany: 1
+
+   - 
+      s: 0
+      totalTons: 0.5
+      totalMCr: 0.5
+      b: 0
+      eff: 1
+      CP: 0
+      tl: 12
+      Sq: 1
+      notes: '4 crew'
+      e: 0
+      tons: 0.5
+      target: 12
+      mcr: 0.5
+      label: 'Crew Shared Fresher'
+      q: 0
+      type: 'Crew'
+      r: 0
+      howMany: 1
+
+   - 
+      s: 0
+      totalTons: 8
+      type: 'Crew'
+      totalMCr: 0
+      b: 0
+      eff: 1
+      CP: 0
+      tl: 12
+      Sq: 16
+      notes: ''
+      e: 0
+      target: 12
+      label: 'Crew Lounge'
+      mcr: 0
+      q: 0
+      tons: 4
+      r: 0
+      howMany: 2
+
+   - 
+      s: 0
+      totalTons: 216
+      totalMCr: 0
+      notes: 'J4, 54t/pc'
+      eff: 1
+      CP: 0
+      tl: 12
+      Sq: 432
+      b: 0
+      e: 0
+      target: 12
+      tons: 216
+      mcr: 0
+      r: 0
+      label: 'Jump Fuel (4  parsecs)'
+      q: 0
+      type: 'Drive'
+      category: 'Jump Fuel'
+      howMany: 1
+
+   - 
+      s: 0
+      totalTons: 24
+      type: 'Drive'
+      totalMCr: 0
+      b: 0
+      eff: 1
+      CP: 0
+      tl: 12
+      Sq: 48
+      notes: 'one month'
+      e: 0
+      tons: 24
+      label: 'Plant Fuel (one month)'
+      r: 0
+      mcr: 0
+      q: 0
+      target: 12
+      category: 'Powerplant Fuel'
+      howMany: 1
+
+   - 
+      s: 0
+      count: 5
+      code: 'P5'
+      totalMCr: 5
+      notes: '20t/hr'
+      eff: 1
+      CP: 1
+      tl: 8
+      Sq: 10
+      b: 0
+      e: 0
+      tons: 5
+      totalTons: 5
+      target: 8
+      mcr: 5
+      r: 0
+      label: 'Fuel Purifiers 20t/hr'
+      q: 0
+      type: 'Drive'
+      category: 'Fuel Purifiers'
+      howMany: 1
+
+   - 
+      totalTons: 24
+      mod: ''
+      totalMCr: 0
+      eff: 1
+      basetl: 8
+      mcr: 0
+      target: 13
+      mount: 'Kinetic'
+      q: 0
+      range: '2'
+      r: 0
+      s: 0
+      notes: ''
+      config: 'Armor'
+      CP: 1
+      tl: 13
+      Sq: 48
+      b: 0
+      e: 0
+      tons: 24
+      name: 'Plate'
+      label: 'AV=26. 2 Kinetic Plate'
+      type: 'Armor'
+      category: 'AV=26. 2 Kinetic Plate'
+      howMany: 1
+
+   - 
+      totalTons: 4
+      mod: 4
+      type: 'Ops'
+      totalMCr: 18
+      eff: 1
+      basetl: 0
+      label: 'Computer M4 std'
+      mount: 'M4'
+      q: 0
+      range: 's'
+      r: 0
+      s: 0
+      b: 0
+      config: 'Ops'
+      CP: 1
+      tl: 13
+      Sq: 8
+      notes: ''
+      e: 0
+      tons: 4
+      name: 'Computer'
+      mcr: 18
+      target: 17
+      category: 'Computer M4 std'
+      howMany: 1
+
+   - 
+      totalTons: 0
+      mod: 0
+      totalMCr: 1.5
+      eff: 1
+      basetl: 8
+      mcr: 1.5
+      target: 13
+      mount: 'Surf'
+      q: 0
+      range: 'AR'
+      r: 0
+      s: 0
+      b: 0
+      config: 'Sensor'
+      CP: 1
+      tl: 13
+      notes: ''
+      e: 0
+      tons: 0
+      category: 'AR Surf Communicator'
+      name: 'Communicator'
+      label: 'AR Surf Communicator'
+      type: 'Sensor'
+      howMany: 1
+
+   - 
+      totalTons: 0
+      mod: 0
+      totalMCr: 1.5
+      eff: 1
+      basetl: 8
+      label: 'AR Surf Jammer'
+      tons: 0
+      mount: 'Surf'
+      q: 0
+      range: 'AR'
+      r: 0
+      s: 0
+      notes: ''
+      config: 'Sensor'
+      CP: 1
+      tl: 13
+      b: 0
+      e: 0
+      target: 13
+      category: 'AR Surf Jammer'
+      name: 'Jammer'
+      mcr: 1.5
+      type: 'Sensor'
+      howMany: 1
+
+   - 
+      totalTons: 0
+      mod: 0
+      totalMCr: 1.5
+      eff: 1
+      basetl: 9
+      mcr: 1.5
+      target: 13
+      mount: 'Surf'
+      q: 0
+      range: 'AR'
+      r: 0
+      s: 0
+      b: 0
+      config: 'Sensor'
+      CP: 1
+      tl: 13
+      notes: ''
+      e: 0
+      tons: 0
+      category: 'AR Surf Scope'
+      name: 'Scope'
+      label: 'AR Surf Scope'
+      type: 'Sensor'
+      howMany: 1
+
+   - 
+      totalTons: 0
+      mod: 0
+      totalMCr: 1.5
+      eff: 1
+      basetl: 10
+      mcr: 1.5
+      tons: 0
+      mount: 'Surf'
+      q: 0
+      range: 'AR'
+      r: 0
+      s: 0
+      b: 0
+      config: 'Sensor'
+      CP: 1
+      tl: 13
+      notes: ''
+      e: 0
+      target: 13
+      category: 'AR Surf Neutrino Detector'
+      name: 'Neutrino Detector'
+      label: 'AR Surf Neutrino Detector'
+      type: 'Sensor'
+      howMany: 1
+
+   - 
+      totalTons: 0
+      mod: 0
+      type: 'Sensor'
+      totalMCr: 1.5
+      eff: 1
+      basetl: 12
+      mcr: 1.5
+      mount: 'Surf'
+      q: 0
+      range: 'AR'
+      r: 0
+      s: 0
+      notes: ''
+      config: 'Sensor'
+      CP: 1
+      tl: 13
+      b: 0
+      e: 0
+      tons: 0
+      category: 'AR Surf EMS'
+      name: 'EMS'
+      label: 'AR Surf EMS'
+      target: 13
+      howMany: 1
+
+   - 
+      totalTons: 0
+      mod: 0
+      type: 'Sensor'
+      totalMCr: 1.5
+      eff: 1
+      basetl: 12
+      label: 'AR Surf Stealth Mask'
+      mount: 'Surf'
+      q: 0
+      range: 'AR'
+      r: 0
+      s: 0
+      b: 0
+      config: 'Sensor'
+      CP: 1
+      tl: 13
+      notes: ''
+      e: 0
+      target: 13
+      category: 'AR Surf Stealth Mask'
+      name: 'Stealth Mask'
+      mcr: 1.5
+      tons: 0
+      howMany: 1
+
+   - 
+      totalTons: 3
+      mod: 2
+      type: 'Weapon'
+      totalMCr: 5.5
+      eff: 1
+      basetl: 11
+      label: 'AR B1 Particle Accelerator'
+      mount: 'B1'
+      q: 0
+      range: 'AR'
+      r: 0
+      s: 0
+      notes: ''
+      config: 'Weapon'
+      CP: 1
+      tl: 13
+      Sq: 6
+      b: 0
+      e: 0
+      tons: 3
+      name: 'Particle Accelerator'
+      mcr: 5.5
+      target: 15
+      category: 'AR B1 Particle Accelerator'
+      howMany: 1
+
+   - 
+      totalTons: 3
+      mod: 2
+      type: 'Weapon'
+      totalMCr: 8
+      eff: 1
+      basetl: 8
+      label: 'AR B1 CommCaster'
+      mount: 'B1'
+      q: 0
+      range: 'AR'
+      r: 0
+      s: 0
+      notes: ''
+      config: 'Weapon'
+      CP: 1
+      tl: 13
+      Sq: 6
+      b: 0
+      e: 0
+      target: 15
+      name: 'CommCaster'
+      mcr: 8
+      tons: 3
+      category: 'AR B1 CommCaster'
+      howMany: 1
+
+   - 
+      totalTons: 3
+      mod: 2
+      totalMCr: 3.2
+      eff: 1
+      basetl: 7
+      label: 'AR B1 Missile'
+      tons: 3
+      mount: 'B1'
+      q: 0
+      range: 'AR'
+      r: 0
+      s: 0
+      notes: ''
+      config: 'Weapon'
+      CP: 1
+      tl: 13
+      Sq: 6
+      b: 0
+      e: 0
+      target: 15
+      name: 'Missile'
+      mcr: 3.2
+      type: 'Weapon'
+      category: 'AR B1 Missile'
+      howMany: 1
+
+   - 
+      totalTons: 1
+      mod: 1
+      type: 'Weapon'
+      totalMCr: 2.5
+      eff: 1
+      basetl: 10
+      label: 'Vd T4 DataCaster'
+      mount: 'T4'
+      q: 0
+      range: 'Vd'
+      r: 0
+      s: 0
+      b: 0
+      config: 'Weapon'
+      CP: 1
+      tl: 13
+      Sq: 2
+      notes: ''
+      e: 0
+      tons: 1
+      name: 'DataCaster'
+      mcr: 2.5
+      target: 14
+      category: 'Vd T4 DataCaster'
+      howMany: 1
+
+   - 
+      totalTons: 1
+      mod: 1
+      type: 'Weapon'
+      totalMCr: 2
+      eff: 1
+      basetl: 10
+      mcr: 2
+      mount: 'T4'
+      q: 0
+      range: 'Vd'
+      r: 0
+      s: 0
+      b: 0
+      config: 'Weapon'
+      CP: 1
+      tl: 13
+      Sq: 2
+      notes: ''
+      e: 0
+      tons: 1
+      name: 'Beam Laser'
+      label: 'Vd T4 Beam Laser'
+      target: 14
+      category: 'Vd T4 Beam Laser'
+      howMany: 1
+
+   - 
+      totalTons: 1
+      mod: 1
+      totalMCr: 1.6
+      eff: 1
+      basetl: 9
+      mcr: 1.6
+      tons: 1
+      mount: 'T4'
+      q: 0
+      range: 'Vd'
+      r: 0
+      s: 0
+      notes: ''
+      config: 'Weapon'
+      CP: 1
+      tl: 13
+      Sq: 2
+      b: 0
+      e: 0
+      target: 14
+      name: 'Sandcaster'
+      label: 'Vd T4 Sandcaster'
+      type: 'Weapon'
+      category: 'Vd T4 Sandcaster'
+      howMany: 1
+
+   - 
+      s: 0
+      totalTons: 6
+      totalMCr: 0.4
+      notes: 'fresher + safe'
+      eff: 1
+      CP: 1
+      tl: 13
+      Sq: 12
+      b: 0
+      e: 0
+      target: 13
+      totalSleeps: 1
+      tons: 6
+      label: "Captain's Suite"
+      sleeps: 1
+      mcr: 0.4
+      q: 0
+      type: 'Crew'
+      r: 0
+      howMany: 1
+
+   - 
+      s: 0
+      totalTons: 8
+      totalMCr: 0.8
+      b: 0
+      eff: 1
+      CP: 0
+      tl: 12
+      Sq: 16
+      notes: '1 crew'
+      totalSleeps: 8
+      tons: 1
+      target: 12
+      label: 'Spacer Niche'
+      e: 0
+      sleeps: 1
+      mcr: 0.1
+      q: 0
+      type: 'Crew'
+      r: 0
+      howMany: 8
+
+   - 
+      s: 0
+      totalTons: 18
+      target: 12
+      b: 0
+      eff: 1
+      CP: 0
+      tl: 12
+      Sq: 36
+      notes: '1 crew'
+      e: 0
+      howMany: 9
+      tons: 2
+      totalSleeps: 9
+      label: 'Crew Stateroom'
+      sleeps: 1
+      mcr: 0.1
+      q: 0
+      type: 'Crew'
+      r: 0
+      totalMCr: 0.9
+
+   - 
+      totalTons: 65
+      mod: 1
+      totalMCr: 65
+      eff: 1.1
+      basetl: 9
+      code: 'L'
+      rating: 1
+      target: 12
+      jumpFuelUsage: 0.1
+      autoAdjust: 1
+      q: 7
+      r: 3
+      label: 'Imp Jump Drive-4 (L)'
+      s: -1
+      original: 
+         totalTons: 65
+         code: 'L'
+         type: 'Drive'
+         totalMCr: 65
+         eff: 1
+         basetl: 9
+         jumpFuelUsage: 0.1
+         rating: 1
+         mod: 0
+         autoAdjust: 1
+         q: 0
+         r: 0
+         mcr: 65
+         s: 0
+         notes: 'J 4'
+         CP: 0
+         tl: 12
+         Sq: 130
+         b: 0
+         e: 0
+         target: 12
+         category: 'Jump Drive'
+         name: 'Jump Drive'
+         label: 'Jump Drive-4 (L)'
+         tons: 65
+         howMany: 1
+      notes: 'J 4'
+      stage: 'Imp'
+      CP: 0
+      tl: 11
+      Sq: 130
+      b: -3
+      e: 0
+      tons: 65
+      category: 'Jump Drive'
+      name: 'Jump Drive'
+      mcr: 65
+      type: 'Drive'
+      howMany: 1
+
+   - 
+      s: '0'
+      totalTons: 64
+      mod: ''
+      type: 'Vehicle'
+      totalMCr: 80
+      notes: 'days endurance'
+      eff: '1'
+      code: 'HMAMFQF'
+      CP: 0
+      tl: '13'
+      label: 'Fighter'
+      speed: '8G'
+      b: '0'
+      e: '0'
+      Sq: 128
+      target: '13'
+      load: 2
+      av: '66,12,16,10,38,26.30'
+      mcr: 10
+      q: '0'
+      tons: 8
+      r: '0'
+      howMany: 8
+
+   - 
+      s: 0
+      totalTons: 50
+      code: 'MQC'
+      type: 'Vehicle'
+      totalMCr: 13
+      b: 0
+      eff: 1
+      CP: 0
+      tl: 13
+      speed: '4G'
+      e: 0
+      howMany: 1
+      Sq: 100
+      tons: 50
+      load: 36
+      av: '40,10,10,20,10,10,10'
+      mcr: 13
+      q: 0
+      target: 13
+      r: 0
+      label: 'Modular Cutter'
+
+   - 
+      s: 0
+      totalTons: 16
+      mod: ''
+      type: 'Vehicle'
+      totalMCr: 16
+      b: 0
+      eff: 1
+      CP: 0
+      tl: '13'
+      Sq: 32
+      notes: 'up to 35t'
+      e: 0
+      target: '13'
+      label: 'Fighter Grapples'
+      mcr: 2
+      q: 0
+      tons: 2
+      r: 0
+      howMany: 8
+
+   - 
+      s: '0'
+      totalTons: 4
+      mod: ''
+      type: 'Vehicle'
+      totalMCr: 4
+      notes: 'up to 70t'
+      eff: '1'
+      CP: 0
+      tl: '13'
+      Sq: 8
+      b: '0'
+      e: '0'
+      tons: 4
+      mcr: 4
+      label: 'Cutter Grapples'
+      q: '0'
+      target: '13'
+      r: '0'
+      howMany: 1
+
+   - 
+      s: 0
+      totalTons: 3
+      totalMCr: 0
+      b: 0
+      category: 'Cargo'
+      eff: 1
+      CP: 0
+      tl: 12
+      Sq: 6
+      e: 0
+      target: 12
+      tons: 3
+      mcr: 0
+      label: 'Cargo Hold Basic'
+      q: 0
+      type: 'Payload'
+      r: 0
+      howMany: 1
+
+   - 
+      s: 0
+      totalTons: 2
+      type: 'Ops'
+      totalMCr: 2
+      notes: '40 person-months'
+      eff: 1
+      CP: 0
+      tl: 13
+      Sq: 4
+      b: 0
+      e: 0
+      target: 13
+      label: 'Life Support Long Term'
+      mcr: 2
+      q: 0
+      tons: 2
+      r: 0
+      howMany: 1
+
+   - 
+      s: 0
+      totalTons: 22
+      mod: 2
+      type: 'Ops'
+      totalMCr: 0
+      notes: ''
+      eff: 1
+      CP: 0
+      tl: 13
+      Sq: 44
+      b: 0
+      e: 0
+      target: 15
+      label: 'Spacious Controls'
+      name: 'Bridge'
+      r: 0
+      mcr: 0
+      q: 0
+      tons: 22
+      category: 'Bridge'
+      howMany: 1

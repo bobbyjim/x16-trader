@@ -1,0 +1,52 @@
+;
+;  A test hierarchical text menu system
+;
+	goto {:init}
+	data astrogation,    ast, " . "
+	data lifters,        lft, " . "
+	data powerplant,     pow, " . "
+	data maneuver drive, mnu, " . "
+	data jump drive,     jmp, " . "
+	data missile racks,  msl, " . "
+	data lasers,         las, " . "
+	data sandcasters,    snd, " . "
+
+{:init}
+	longvar /menu$   mu$
+	longvar /system$ sm$
+	longvar /status$ ss$
+	longvar /shortn$ sn$
+
+	/menu$(0) = "main menu"
+	/menu$(1) = "  post <system>"
+	/menu$(2) = "  set  <system> <value>"
+	/menu$(3) = "  bsy  <system>"
+	/menu$(4) = "  offl <system>"
+	/menu$(5) = "  tst  <system>"
+	/menu$(6) = "  rts  <system>"
+
+	for x=0 to 7
+	   read /system$(x), /shortn$(x), /status$(x)
+	next
+
+{:main loop}
+	for x=0 to 7
+	   ? /shortn$(x),
+	next
+
+	for x=0 to 7
+	   ? /status$(x),
+	next
+
+	for x=0 to 6
+	   ?:? /menu$(x)
+	next
+
+{:get}  input "]";a$ 
+
+        gosub {:parse command}
+
+	goto {:main loop}
+
+{:parse command}
+	

@@ -1,0 +1,669 @@
+--- 
+components: 
+   - 
+      s: 0
+      config: 'Unstreamlined'
+      code: 'U'
+      category: 'Hull'
+      b: 0
+      totalTons: 1000
+      target: 12
+      totalMCr: 32
+      mcr: 32
+      eff: 1
+      e: 0
+      CP: 0
+      type: 'Hull'
+      mult: 1
+      tons: 1000
+      howMany: 1
+      Sq: 2000
+      label: 'Unstreamlined hull'
+      q: 0
+      tl: 12
+      r: 0
+      name: 'Hull'
+
+   - 
+      s: 0
+      tl: 12
+      q: 0
+      b: 0
+      CP: 0
+      target: 12
+      totalMCr: 0
+      notes: 'J3, 100t/pc'
+      howMany: 1
+      e: 0
+      totalTons: 300
+      category: 'Jump Fuel'
+      tons: 300
+      eff: 1
+      Sq: 600
+      label: 'Jump Fuel (3  parsecs)'
+      mcr: 0
+      r: 0
+      type: 'Drive'
+
+   - 
+      s: 0
+      tl: 12
+      q: 0
+      b: 0
+      CP: 0
+      target: 12
+      totalMCr: 0
+      notes: 'one month'
+      howMany: 1
+      e: 0
+      totalTons: 30
+      category: 'Powerplant Fuel'
+      tons: 30
+      eff: 1
+      Sq: 60
+      label: 'Plant Fuel (one month)'
+      mcr: 0
+      r: 0
+      type: 'Drive'
+
+   - 
+      s: 0
+      tonsPercent: 1
+      code: 'K'
+      mcrPerTon: 1
+      b: 0
+      CP: 1
+      note: 'K'
+      totalMCr: 10
+      mcr: 10
+      howMany: 1
+      e: 0
+      totalTons: 10
+      type: 'Hull'
+      target: 12
+      category: 'landers'
+      tons: 10
+      eff: 1
+      Sq: 20
+      label: 'Landing legs with pads'
+      q: 0
+      tl: 12
+      r: 0
+      name: 'Landing legs with pads'
+
+   - 
+      tl: 12
+      code: 'Q'
+      B: 0
+      CP: 3
+      target: 12
+      notes: 'J 3'
+      E: 0
+      Sq: 160
+      tons: 80
+      q: 0
+      r: 0
+      type: 'Drive'
+      s: 0
+      mcr: 80
+      b: 0
+      totalTons: 80
+      totalMCr: 80
+      howMany: 1
+      basetl: 12
+      jumpFuelUsage: 0.1
+      Q: 0
+      rating: 3
+      R: 0
+      e: 0
+      name: 'Jump Drive'
+      S: 0
+      label: 'Jump Drive-3 (Q)'
+      category: 'Jump Drive'
+      autoAdjust: 1
+      eff: 1
+
+   - 
+      tl: 12
+      code: 'Q'
+      B: 0
+      CP: 1
+      target: 12
+      notes: '3 G'
+      E: 0
+      Sq: 58
+      tons: 29
+      q: 0
+      r: 0
+      type: 'Drive'
+      s: 0
+      mcr: 58
+      b: 0
+      totalTons: 29
+      totalMCr: 58
+      howMany: 1
+      basetl: 9
+      Q: 0
+      rating: 3
+      R: 0
+      e: 0
+      name: 'Maneuver Drive'
+      S: 0
+      label: 'Maneuver Drive-3 (Q)'
+      category: 'Maneuver Drive'
+      autoAdjust: 1
+      eff: 1
+
+   - 
+      s: 0
+      tl: 8
+      code: 'S1'
+      b: 0
+      CP: 1
+      target: 8
+      totalMCr: 0.1
+      notes: '100t/hr'
+      howMany: 1
+      count: 1
+      totalTons: 1
+      category: 'Fuel Scoops'
+      tons: 1
+      mcr: 0.1
+      e: 0
+      Sq: 2
+      label: 'Fuel Scoops 100t/hr'
+      q: 0
+      r: 0
+      eff: 1
+      type: 'Drive'
+
+   - 
+      s: 0
+      tl: 8
+      code: 'I2'
+      b: 0
+      CP: 1
+      target: 8
+      totalMCr: 0.2
+      notes: '80t/hr'
+      howMany: 1
+      count: 2
+      totalTons: 2
+      category: 'Fuel Intakes'
+      tons: 2
+      mcr: 0.2
+      e: 0
+      Sq: 4
+      label: 'Fuel Intakes 80t/hr'
+      q: 0
+      r: 0
+      eff: 1
+      type: 'Drive'
+
+   - 
+      s: 0
+      tl: 8
+      code: 'B1'
+      b: 0
+      CP: 1
+      target: 8
+      totalMCr: 0.1
+      notes: '20t/hr'
+      howMany: 1
+      count: 1
+      totalTons: 1
+      category: 'Fuel Bins'
+      tons: 1
+      mcr: 0.1
+      e: 0
+      Sq: 2
+      label: 'Fuel Bins 20t/hr'
+      q: 0
+      r: 0
+      eff: 1
+      type: 'Drive'
+
+   - 
+      s: 0
+      tl: 8
+      code: 'P15'
+      b: 0
+      CP: 1
+      target: 8
+      totalMCr: 15
+      notes: '60t/hr'
+      howMany: 1
+      count: 15
+      totalTons: 15
+      category: 'Fuel Purifiers'
+      tons: 15
+      mcr: 15
+      e: 0
+      Sq: 30
+      label: 'Fuel Purifiers 60t/hr'
+      q: 0
+      r: 0
+      eff: 1
+      type: 'Drive'
+
+   - 
+      s: 0
+      tl: 12
+      q: 0
+      b: 0
+      CP: 0
+      target: 12
+      totalMCr: 2
+      notes: '40 person-months'
+      howMany: 1
+      e: 0
+      totalTons: 2
+      tons: 2
+      eff: 1
+      Sq: 4
+      label: 'Life Support Long Term'
+      mcr: 2
+      r: 0
+      type: 'Ops'
+
+   - 
+      s: 0
+      tl: 12
+      q: 0
+      b: 0
+      CP: 0
+      target: 12
+      totalMCr: 1
+      notes: '10 high passengers'
+      howMany: 1
+      e: 0
+      totalTons: 1
+      tons: 1
+      eff: 1
+      Sq: 2
+      label: 'Life Support Luxury'
+      mcr: 1
+      r: 0
+      type: 'Ops'
+
+   - 
+      s: 0
+      tl: 12
+      q: 0
+      b: 0
+      CP: 0
+      target: 12
+      totalMCr: 3
+      notes: '10 passengers'
+      howMany: 3
+      e: 0
+      totalTons: 3
+      tons: 1
+      eff: 1
+      Sq: 6
+      label: 'Common Fresher'
+      mcr: 1
+      r: 0
+      type: 'Passenger'
+
+   - 
+      s: 0
+      tl: 13
+      code: 'MQC'
+      av: '40,10,10,20,10,10,10'
+      b: 0
+      CP: 0
+      target: 13
+      load: 36
+      mcr: 13
+      speed: '4G'
+      howMany: 1
+      e: 0
+      totalTons: 50
+      totalMCr: 13
+      tons: 50
+      eff: 1
+      Sq: 100
+      label: 'Modular Cutter'
+      q: 0
+      r: 0
+      type: 'Vehicle'
+
+   - 
+      s: 0
+      tl: 12
+      q: 0
+      b: 0
+      CP: 1
+      target: 12
+      totalMCr: 0
+      notes: ''
+      howMany: 1
+      e: 0
+      totalTons: 10
+      tons: 10
+      eff: 1
+      Sq: 20
+      label: 'Large Vehicle Lock'
+      mcr: 0
+      r: 0
+      type: 'Vehicle'
+
+   - 
+      tl: 12
+      CP: 1
+      config: 'Weapon'
+      notes: ''
+      Sq: 60
+      target: 14
+      tons: 3
+      q: 0
+      mount: 'B1'
+      r: 0
+      type: 'Weapon'
+      s: 0
+      mcr: 5.5
+      b: 0
+      totalTons: 30
+      totalMCr: 55
+      howMany: 10
+      basetl: 11
+      category: 'AR B1 Particle Accelerator'
+      range: 'AR'
+      eff: 1
+      e: 0
+      name: 'Particle Accelerator'
+      label: 'AR B1 Particle Accelerator'
+      mod: 2
+
+   - 
+      s: '0'
+      tl: '12'
+      q: '0'
+      mod: ''
+      b: '0'
+      CP: 0
+      target: '12'
+      totalMCr: 1
+      notes: '(5) R1 R1 R2 R2 R3'
+      howMany: 10
+      e: '0'
+      totalTons: 20
+      tons: 2
+      eff: '1'
+      Sq: 40
+      label: 'Squad (Droyne) Barracks'
+      mcr: 0.1
+      r: '0'
+      type: 'Ops'
+
+   - 
+      tl: 12
+      code: 'Q'
+      B: 0
+      CP: 2
+      original: 
+         tl: 12
+         code: 'Q'
+         B: 0
+         CP: 2
+         target: 12
+         notes: 'P 3'
+         E: 0
+         Sq: 92
+         powerFuelUsage: 0.01
+         tons: 46
+         mcr: 46
+         r: 0
+         type: 'Drive'
+         s: 0
+         q: 0
+         howMany: 1
+         totalTons: 46
+         totalMCr: 46
+         b: 0
+         e: 0
+         Q: 0
+         rating: 3
+         R: 0
+         basetl: 10
+         name: 'PowerPlant'
+         S: 0
+         label: 'PowerPlant-3 (Q)'
+         category: 'PowerPlant'
+         mod: 0
+         autoAdjust: 1
+         eff: 1
+      target: 12
+      notes: 'P 3'
+      E: 0
+      Sq: 92
+      eff: 1
+      tons: 46
+      q: 0
+      r: 0
+      type: 'Drive'
+      s: 0
+      mcr: 46
+      b: 0
+      totalTons: 46
+      totalMCr: 46
+      howMany: 1
+      basetl: 10
+      Q: 0
+      rating: 3
+      R: 0
+      powerFuelUsage: 0.01
+      name: 'PowerPlant'
+      S: 0
+      label: 'PowerPlant-3 (Q)'
+      category: 'PowerPlant'
+      mod: 0
+      autoAdjust: 1
+      stage: 'Std'
+      e: 0
+
+   - 
+      s: 0
+      tl: 12
+      mcr: 1
+      b: 0
+      CP: 0
+      target: 12
+      totalMCr: 2
+      notes: '10 sophonts'
+      howMany: 2
+      e: 0
+      totalTons: 2
+      tons: 1
+      eff: 1
+      Sq: 4
+      label: 'Life Support Adaptable'
+      q: 0
+      r: 0
+      type: 'Ops'
+
+   - 
+      s: 0
+      tl: 12
+      mcr: 0.4
+      b: 0
+      CP: 0
+      target: 12
+      totalMCr: 1.6
+      notes: '1 passenger + fresher'
+      howMany: 4
+      e: 0
+      totalTons: 24
+      tons: 6
+      eff: 1
+      Sq: 48
+      totalSleeps: 4
+      label: '6-Droyne Passenger Stateroom'
+      q: 0
+      r: 0
+      sleeps: 1
+      type: 'Passenger'
+
+   - 
+      s: 0
+      tl: 12
+      mcr: 0
+      b: 0
+      CP: 0
+      target: 12
+      totalMCr: 0
+      notes: ''
+      howMany: 3
+      e: 0
+      totalTons: 12
+      tons: 4
+      eff: 1
+      Sq: 24
+      label: 'Passenger Lounge'
+      q: 0
+      r: 0
+      type: 'Passenger'
+
+   - 
+      s: '0'
+      tl: 12
+      q: '0'
+      howMany: 4
+      totalTons: 12
+      target: 12
+      totalMCr: 0.4
+      notes: '1 crew'
+      eff: '1'
+      e: '0'
+      CP: 0
+      type: 'Crew'
+      tons: 3
+      b: '0'
+      Sq: 24
+      label: '3-Droyne Crew Stateroom'
+      mcr: 0.1
+      r: '0'
+      sleeps: 1
+      totalSleeps: 4
+
+   - 
+      s: 0
+      tl: 12
+      q: 0
+      howMany: 3
+      totalTons: 12
+      target: 12
+      totalMCr: 0
+      notes: ''
+      eff: 1
+      e: 0
+      CP: 0
+      tons: 4
+      b: 0
+      Sq: 24
+      label: 'Crew Lounge'
+      mcr: 0
+      r: 0
+      type: 'Crew'
+
+   - 
+      s: 0
+      tl: 12
+      mcr: 0.5
+      b: 0
+      totalTons: 1.5
+      target: 12
+      totalMCr: 1.5
+      notes: '4 crew'
+      eff: 1
+      e: 0
+      CP: 0
+      tons: 0.5
+      howMany: 3
+      Sq: 3
+      label: 'Crew Shared Fresher'
+      q: 0
+      r: 0
+      type: 'Crew'
+
+   - 
+      s: 0
+      tl: 12
+      q: 0
+      b: 0
+      totalTons: 278
+      target: 12
+      totalMCr: 0
+      eff: 1
+      e: 0
+      CP: 0
+      category: 'Cargo'
+      tons: 278
+      howMany: 1
+      Sq: 556
+      label: 'Cargo Hold/Hangar Basic'
+      mcr: 0
+      r: 0
+      type: 'Payload'
+
+   - 
+      s: 0
+      tl: 12
+      mcr: 0
+      mod: 2
+      b: 0
+      CP: 0
+      target: 14
+      totalMCr: 0
+      notes: ''
+      howMany: 1
+      e: 0
+      totalTons: 26
+      type: 'Ops'
+      category: 'Bridge'
+      tons: 26
+      eff: 1
+      Sq: 52
+      label: 'Spacious Controls'
+      q: 0
+      r: 0
+      name: 'Bridge'
+header: 
+   brief: 'Droyne military transport'
+   format: 'T5-ACS-1'
+   config: 'U'
+   totalCargoSpace: 0
+   passengers: 4
+   demand: 4
+   tl: 12
+   undertons: 2.5
+   jumpFuelPercentage: 0.1
+   tons: 1000
+   qsp: 'T-KU33'
+   comments: |
+      Using a 1,000-ton unstreamlined hull, the Droyne Transport Bretremoy is a military ship typically placed in service for a Droyne oytrip.  It is fitted with the Nethosmeres-1 Grid E3 jump drive, the Themyo Oe.33 maneuver drive, and the Domisse Mk3913-O power plant, and is capable of Jump-3 and 3G acceleration.  Attached to the bridge is a computer Model/3. There are 4 triple-Droyne crew staterooms, 4 six-Droyne passenger staterooms, ten squad barracks, and no low berths. The ship has 10 hardpoints; installed on the hardpoints are 10 single barbettes armed with particle accelerators. There is one ship's vehicle: a cutter. Cargo capacity is 278 tons; the space is large enough to provide hangarage for a craft displacing up to 260 tons.
+      
+      The ship requires a crew of 8: pilot, astrogator, 5 engineers, and medic.  Up to 3 stewards may be added.  The ship's troops man the guns.  The ship can carry 24 passengers and no low passengers. 
+      
+   shipname: 'Bretremoy'
+   owner: 'Droyne'
+   shifts: 1
+   low: 0
+   powerFuelPercentage: 0.03
+   jf: 3
+   controlConsoles: 2
+   tonsFree: 2.5
+   crew: 6
+   operatingConsoles: 8
+   mission: 'T'
+   workstations: 3
+   missionLabel: 'Military Transport'
+   pf: 1
+   totalMCr: 323.2
+   overtons: 23
+   crewLocked: 'yes'
+   crewComfort: 1
+   spaciousness: 2
+   troops: 0
+   staff: 0

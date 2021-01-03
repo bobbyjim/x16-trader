@@ -1,0 +1,14 @@
+;
+rem initialize vertical position array
+;
+longvar \vertical-position.initialized
+
+{:vertical-position.init}
+if \vertical-position.initialized = 1 then return
+dim vp$(60)
+vp$(0)="\x13"
+for v=1 to 60
+   vp$(v) = vp$(v-1) + "\x11"
+next
+\vertical-position.initialized = 1
+return

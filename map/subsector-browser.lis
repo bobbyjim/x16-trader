@@ -1,0 +1,78 @@
+
+load "ss-502-500.bin",8,15,$a000
+
+;
+;  hex mapping is stored in 34 bytes starting at $a0c0
+;
+
+ad=$a100 :rem system data starts here
+
+;c=3  :rem column in subsector
+;r=10 :rem row in subsector
+
+poke $9f61, 15 :rem map is centered on bank 15
+
+for c = 1 to 8
+for r = 1 to 10
+
+rem ---------------------------------------
+rem
+rem  Systems are 48 bytes long.
+rem
+rem ---------------------------------------
+ad = $a100 + (r-1)*48 + (c-1)*480
+
+if peek(ad+6) = 0 goto {:skip-empty-slot} :rem skip empty hex
+
+
+lx$ = "0" + mid$(str$(peek(ad)),2)
+if peek(ad+1) > 9 then lx$ = lx$ + "10"
+if peek(ad+1) <10 then lx$ = lx$ + "0" + mid$(str$(peek(ad+1)),2)
+
+? "   " lx$ " ";             :rem row, col
+
+cc = peek(ad+2) + peek(ad+3) * 256 :rem absolute col
+rr = peek(ad+4) + peek(ad+5) * 256 :rem absolute row
+
+for x = 0 to 14 : ? chr$(peek(ad+6+x)); :next
+? " ";
+? chr$(peek(ad+21));    :rem starport
+? "-";
+? chr$(48+peek(ad+27)); :rem siz
+? chr$(48+peek(ad+28)); :rem atm
+? chr$(48+peek(ad+29)); :rem hyd
+? chr$(48+peek(ad+30)); :rem pop
+? chr$(48+peek(ad+31)); :rem gov
+? chr$(48+peek(ad+32)); :rem law
+? "-";
+? chr$(peek($a0c0 + peek(ad+33))) " ";  :rem TL
+
+? chr$(peek(ad+22));    :rem base 1
+? chr$(peek(ad+23));    :rem base 2
+? " ";
+
+tc = peek(ad+34)        :rem tcsan
+t1 = peek(ad+35)        :rem tc1
+
+? peek(ad+38);          :rem belts
+? peek(ad+39);          :rem ggs
+? left$(str$(peek(ad+40))+"    ",5); :rem star half index 1
+? left$(str$(peek(ad+41))+"    ",5); :rem star half index 2
+
+? chr$(peek(ad+25));    :rem zone
+? " ";
+? chr$(peek(ad+26));    :rem allegiance
+? " "; 
+
+yr = peek(ad+42)+1900 :rem year
+mo = peek(ad+43) :rem month
+da = peek(ad+44) :rem mday
+
+dd$ = mid$(str$(yr),2) + "-" + mid$(str$(mo),2) + "-" + mid$(str$(da),2)
+? dd$
+
+{:skip-empty-slot}
+
+next
+next
+

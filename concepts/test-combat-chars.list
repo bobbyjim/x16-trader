@@ -1,0 +1,195 @@
+rem space combat concept 2
+
+color 15,0 :rem lt grey white on black
+? chr$(147) "traveller space combat v2\x11"
+hr$ = chr$(28)
+for x=1 to 80 : hr$ = hr$ + chr$(195) :next x
+hr$ = hr$ + chr$(155)
+rem test 1 2 3
+
+? hr$
+? "battle a corsair and its crew of remorseless vargr pirates!"
+? "to play, direct each of your crew members in each turn to"
+rem 
+? "a station on your ship. though anyone can operate any station,"
+? "each crew member has a preferred role.\x11"
+? hr$
+
+input "press <return> to begin"; yn$ :?
+ti = rnd(-ti)
+
+rem
+rem ------------------- location data ---------------------
+rem
+longvar \location.name
+longvar \location.count
+longvar \location.damage
+\location.count=0
+{:read location}
+   read \location.name$(\location.count)
+   \location.damage(\location.count) = 0
+   if \location.name$(\location.count) <> "-1" then \location.count = \location.count + 1 :goto {:read location}
+
+\location.count = \location.count - 1
+
+rem    0       1           2       3
+data bridge, drive rm, medlab, turret, -1
+
+rem
+rem --------------------- skill data ----------------------
+rem
+longvar \skill.name
+longvar \skill.location
+longvar \skill.count
+
+\skill.count=-1
+{:read skill}
+  \skill.count=\skill.count+1
+  read \skill.name$(\skill.count)
+  read \skill.location$(\skill.count)
+  if \skill.name$(\skill.count) <> "-1" goto {:read skill}
+
+\skill.count = \skill.count - 1
+
+data astrogator, bridge
+data engineer,   drive rm
+data gunner,     turret
+data medic,      medlab
+data pilot,      bridge
+data -1,-1
+
+rem
+rem --------------------- wound data  --------------------
+rem
+longvar \wound.label
+longvar \wound.count
+
+\wound.count=0
+{:read wound}
+   read \wound.label$(\wound.count)
+   if \wound.label$(\wound.count) <> "-1" then \wound.count = \wound.count + 1 :goto {:read wound}
+
+\wound.count = \wound.count - 1
+
+data ok, bruised, hurt, bleeding, disoriented, comatose, dead, -1
+
+rem
+rem ---------------------- crew data ----------------------
+rem
+longvar \crew.name
+longvar \crew.location
+longvar \crew.skill
+longvar \crew.count
+longvar \crew.wounds
+
+\crew.count = 0 :rem crew starts at 1
+{:read crew}
+   read n$ :if n$ = "-1" goto {:read crew done}
+   \crew.count = \crew.count + 1
+   \crew.name$(\crew.count) = n$
+   \crew.wounds(\crew.count) = int(rnd(1)*\wound.count)
+   \crew.location(\crew.count) = int(rnd(1)*\location.count)
+   \crew.skill$(\crew.count) = \skill.name$(int(rnd(1)*\skill.count))
+   goto {:read crew}
+   
+{:read crew done}
+
+data jamison, akrind, kodray, arrlanroughl, reynaldi, sharik, -1
+
+rem
+rem --------------------- main loop --------------------
+rem
+{:main loop}
+   gosub {:show ship}
+   gosub {:show crew}
+   gosub {:crew actions}
+   input "press <return>"; yn$
+   ? chr$(147) :goto {:main loop}
+
+{:show ship}
+? " id", "location", "status"
+? hr$;
+for x = 0 to \location.count
+   ? x, \location.name$(x), \location.damage(x)
+   ?
+next
+?
+return
+
+{:show crew}
+? " id", "crew name       ", "skill          ", "location", "status"
+? hr$;
+for x = 1 to \crew.count :rem crew starts at 1
+   ? x,
+   ? left$(\crew.name$(x)+"          ",16),
+   ? left$(\crew.skill$(x)+"          ",10),
+   ? left$(\location.name$(\crew.location(x))+"        ",8), 
+   ? \wound.label$(\crew.wounds(x))
+   ?
+next
+return
+
+{:crew actions}
+for x = 1 to \crew.count :rem crew starts at 1
+   ? \crew.name$(x);
+   if \crew.wounds(x) = 5 then ? " - this crewperson is unconscious.\x11" :goto {:next crewmember}
+{:crew menu}
+   input ": (a)id (m)ove (o)perate (r)epair"; ch$
+   if ch$ = "a" goto {:menu aid}
+   if ch$ = "m" goto {:menu move}
+   if ch$ = "o" goto {:menu operate}
+   if ch$ = "r" goto {:menu repair}
+   goto {:crew menu}
+
+{:menu operate}
+   ? "operate"
+   ? " - equipment operation not yet implemented."
+   goto {:next crewmember}
+
+{:menu aid}
+   cp$ = "0"
+   input "help which crewperson (id#)"; cp$ :cp = val(cp$)
+   if cp < 1 or cp > \crew.count goto {:crew menu}
+   if \crew.location(cp) <> \crew.location(x) then ? \crew.name$(cp) " is not here!" :goto {:crew menu}
+   
+   p = 4
+   if \crew.skill$(x) = "medic"     then p=8
+   if \location.name$(\crew.location(x)) = "medlab" then p=p+2
+
+   ? \crew.name$(x) " is aiding " \crew.name$(cp) 
+   if int(rnd(1)*6)+int(rnd(1)*6) > p then ? " - no improvement yet" :goto {:next crewmember}
+   ? " - " \crew.name$(cp) " is improving"
+   if \crew.wounds(cp)>0 then \crew.wounds(cp) = \crew.wounds(cp) - 1
+   if \location.name$(\crew.location(x)) <> "medlab" goto {:next crewmember}
+   rem medlab treats twice as well
+   if \crew.wounds(cp)>0 then \crew.wounds(cp) = \crew.wounds(cp) - 1
+   goto {:next crewmember}
+
+{:menu move}
+   input "move to"; l$
+   for y = 0 to \location.count
+      if \location.name$(y) = l$ then ? \crew.name$(x) " moved to the " l$ :\crew.location(x) = y
+   next y
+   goto {:next crewmember}
+
+{:menu repair}
+   ? "repair"
+   l = \crew.location(x)
+   if \location.damage(l) = 0 then ? " - fully operational" :goto {:next crewmember}
+
+   p = 6
+   if \crew.skill$(x) = "engineer" then p = 8 
+
+   ? \crew.name$(x) " is repairing the " \location.name$(l)
+   if int(rnd(1)*6)+int(rnd(1)*6) > p then ? " - no improvement yet" :goto {:next crewmember}
+   ? " - " \location.name$(l) " is improving"
+   if \location.damage(l) > 0 then \location.damage(l) = \location.damage(l) - 1
+   goto {:next crewmember}
+
+{:next crewmember}
+?
+next x
+return
+
+
+

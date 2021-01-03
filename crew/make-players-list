@@ -1,0 +1,1 @@
+perl ../../module-basic/basic-labelmaster.pl players.list > players.bas

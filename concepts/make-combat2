@@ -1,0 +1,1 @@
+perl ../module-basic/basic-labelmaster.pl test-combat-chars.list > test-combat2.bas

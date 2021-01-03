@@ -1,0 +1,57 @@
+
+poke $9f61, 1 :rem bank 1
+load "characters.bin",8,1,$a000
+
+ad = $a000
+
+{:read-character}
+	if peek(ad) < 41 then end
+
+        ?
+	for x = 0 to 14 : ? chr$(peek(ad+x)); :next
+  	rc$ = chr$(peek(ad+16))
+
+        ?
+        if rc$ = "d" then ? "droyne"
+        if rc$ = "u" then ? "human"
+        if rc$ = "m" then ? "amindii"
+        if rc$ = "v" then ? "vargr"
+
+	? "terms:  " peek(ad+17)-48
+
+	c1 = peek(ad+18) - 48
+	c2 = peek(ad+19) - 48
+	c3 = peek(ad+20) - 48
+	c4 = peek(ad+21) - 48
+	c5 = peek(ad+22) - 48
+	c6 = peek(ad+23) - 48
+
+        ?
+	? "STR" c1
+        if rc$ <> "D" then ? "DEX" c2
+ 	if rc$ =  "D" then ? "AGL" c2
+	if rc$ <> "M" then ? "END" c3
+	if rc$ =  "M" then ? "STA" c3
+	? "INT" c4
+	if rc$ <> "D" then ? "EDU" c5
+	if rc$ =  "D" then ? "INS" c5
+	if rc$ <> "V" then ? "SOC" c6
+	if rc$ =  "V" then ? "CHA" c6
+
+	? "weapon: " peek(ad+24) " " peek(ad+25)
+	? "armor:  " peek(ad+26) " " peek(ad+27)
+
+        lo$ = chr$(peek(ad+31))
+        ? "location: ";
+        if lo$ = "A" then ? "astrogation"
+        if lo$ = "e" then ? "engineering"
+        if lo$ = "p" then ? "pilot"
+        if lo$ = "S" then ? "sensors"
+
+        ? "skill levels: ";
+     	for x = 0 to 15: ? chr$(peek(ad+48+x)); :next
+
+	ad = ad + 64
+	goto {:read-character}
+
+

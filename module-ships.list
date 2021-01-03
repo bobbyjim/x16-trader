@@ -1,0 +1,58 @@
+;
+;   $buffer = pack('A3C', 'ACS', length($buffer)) . $buffer;
+;
+;   $buffer .= pack 'A18',       uc $class;              
+;   $buffer .= pack 'A2',        uc $hdr{mission};
+;   $buffer .= pack 'CC',        $siz, $tl;
+;   $buffer .= pack 'C',         $comfortDemand;
+;   $buffer .= pack 'C',         $mcrp;
+;   $buffer .= pack 'A',         uc $owner;              
+;
+;   Each component:  pack 'CCCC', $id, $quality, $rating, 1 (status)
+;   "type" = $id >> 5
+;  
+;     $r /= $siz if $id == 32  # fuel
+;                or $id == 33; # cargo
+;
+{:ships.list}
+   ? chr$(147) "ship list\x11"
+   poke $9f61,3  :rem ships
+   ad = $a000
+   ct = 0
+
+{:read ship}
+
+   if peek(ad) = 0 then {:finished-reading-ships}
+   o% = peek(ad+28) :rem owner
+   l = peek(ad+3)   :rem component length
+   t = peek(ad+24)  :rem size code
+   m1 = peek(ad+22) :rem mission code 1
+
+   if \uwp.allegiance <> o% goto {:next-ship-in-list}
+   if m1 = asc("E") goto {:next-ship-in-list} :rem no escorts
+   if m1 = asc("C") goto {:next-ship-in-list} :rem no cruisers
+
+   ? "     ";
+   ? chr$(m1);          :rem mission code 1
+   ? chr$(peek(ad+23)); :rem mission code 2
+   ? " "; 
+   for x = 4 to 21 : ? chr$(peek(ad+x)); :next
+
+   ? t*100;
+   if t<10  then ? " ";
+   ? "tons";
+
+   mc = peek(ad+27)
+   ? "  MCr " mc*t
+   
+   ct=ct+1
+   if ct/4 <> int(ct/4) goto {:next-ship-in-list}
+   ? "     -----------------------------------------"
+
+{:next-ship-in-list}
+   ad = ad + 4 + l :rem next record
+   goto {:read ship}
+
+{:finished-reading-ships}
+   if ct = 0 then ? "     no ships available."
+   return

@@ -1,0 +1,251 @@
+
+input "press enter"; ln$
+l = rnd(-ti)
+
+rem -------------------------------------------
+rem
+rem  damage severity indicators
+rem
+rem -------------------------------------------
+longvar \damage
+dim \damage$(7)
+x=-1
+{:read damage}
+   x=x+1 :read \damage$(x) :if \damage$(x) <> "-1" goto {:read damage}
+   data "ISV","BSY","OFL","MIN","MAJ","CRT","DED",-1
+
+rem -------------------------------------------
+rem
+rem  names of the ship damage zones
+rem
+rem -------------------------------------------
+longvar \systems
+dim \systems$(7)
+x=-1
+{:read systems}
+   x=x+1 :read \systems$(x) :if \systems$(x) <> "-1" goto {:read systems}
+   data damage zone names, ops, hng, sta, low, hld, tur, -1
+
+rem -------------------------------------------
+rem
+rem  operational component names
+rem
+rem -------------------------------------------
+longvar \ops
+dim \ops$(7)
+x=-1
+{:read ops}
+   x=x+1 :read \ops$(x) :if \ops$(x) <> "-1" goto {:read ops}
+   data bridge,sensors,computer,engineering,medbay, -1 
+
+rem -------------------------------------------
+rem
+rem  ship status by section and component
+rem
+rem -------------------------------------------
+longvar \ship
+longvar \count
+dim \ship(6,10)
+dim \count(6)
+
+rem -------------------------------------------
+rem 
+rem  initialize ship array to -1s
+rem
+rem -------------------------------------------
+for x=1 to 6: for y = 1 to 10: \ship(x,y) = -1 :next :next
+
+rem -------------------------------------------
+rem 
+rem  read ship data
+rem
+rem -------------------------------------------
+x=1 :y=-1
+{:read ship}
+   y=y+1 :read \ship(x,y)
+   if \ship(x,y) > -1 goto {:read ship}
+   y=-1 :x=x+1 :if x<7 goto {:read ship}
+
+   data 0,1,2,1,4,5,-1           :rem ops
+   data 0,-1                     :rem hangar
+   data 0,0,0,0,0,0,0,-1         :rem staterooms
+   data 0,3,1,2,0,-1             :rem low
+   data 0,3,6,3,2,1,3,2,0,1,-1   :rem hold
+   data 0,1,2,-1                 :rem turrets
+
+longvar \enemy
+longvar \corsair.size
+longvar \corsair.tons
+longvar \round
+dim \enemy(6)
+
+\corsair.size = int(rnd(1)*4)+int(rnd(1)*4)+2
+\corsair.tons = 100 * \corsair.size
+
+? chr$(147)
+? "combat alpha test\x11"
+? "your damaged far trader has encountered a remorseless" \corsair.tons "ton"
+? "vargr corsair. it has faster m-drives, and has called for you to"
+? "power down and surrender."
+?
+
+w=0
+\round = 0
+{:loop}
+   \round = \round + 1
+   if \round > 1 then ? chr$(147)
+   ? "combat round " \round
+
+   for x = 1 to 6 :\count(x) = 0 :next
+
+   x=1 :y=-1
+{:rollup}
+   y=y+1
+   if \ship(x,y) > 0 then \count(x) = \count(x) + 1
+   if \ship(x,y) > \ship(x,0) then \ship(x,0) = \ship(x,y)
+   if \ship(x,y) > -1 goto {:rollup}
+   y=-1 :x=x+1 :if x<7 goto {:rollup}
+
+   ?:?,
+   for x = 1 to 6
+      ? \systems$(x),
+   next
+   ?:?,
+   for x = 1 to 6
+      ? \damage$(\ship(x,0)),
+   next
+   ?:?,
+   for x = 1 to 6
+      if \count(x) > 0 then ? \count(x),
+      if \count(x) = 0 then ?,
+   next
+   ?:?
+
+{:check dead}
+   if \ship(1,3) < 6 goto {:check danger}
+   ? "your ship's engineering room is a smoking wreck!"
+   ? "the corsairs board with glee."
+   goto {:boarding}
+
+{:check danger}
+   if \ship(1,3) < 5 goto {:check warn}
+   if w<5 then ? "captain, the power plant is barely hanging on!"
+   w=5
+   goto {:check done}
+
+{:check warn}
+   if \ship(1,3) < 4 goto {:check done}
+   if w<4 then ? "captain, the engines ne canna take much more o' this."
+   w=4
+
+{:check done}
+
+{:show enemy}
+   ?:?
+   ? "enemy status:" :?
+   ?,
+   et = 0
+   for z = 1 to 6
+      ? \systems$(z),
+   next
+   ?:?,
+   for z = 1 to 6
+      et = et + \enemy(z)
+      ? \damage$(\enemy(z)),
+   next
+   ?:?,
+   for z = 1 to 6
+      if \enemy(z) > 0 then ? \enemy(z),
+      if \enemy(z) = 0 then ?,
+   next
+   ?:?
+
+   if et < \corsair.size goto {:menu}
+   if int(rnd(1)*6) > 2 goto {:menu}
+   if int(rnd(1)*6) > \enemy(1) then ? "the enemy ship runs!" :end
+   ? "the enemy ship surrenders!  congratulations!" :end
+
+{:menu}
+   ? "menu"
+   ? " 1 - fire turrets"
+   ? " 2 - emergency jump"
+   ? " 3 - surrender"
+   ?
+
+{:combat menu}
+   input "your choice"; ch$
+   ch = val(ch$) :if ch<1 or ch>3 goto {:combat menu}
+   on ch gosub {:fire}, {:jump}, {:surrender} 
+
+   input "\x11press return"; r$
+
+goto {:loop}
+
+{:fire}
+  x=6
+  for y=1 to 10
+     if \ship(x,y) < 0 goto {:fire last}
+     dd = \ship(x,y)
+     if dd > 0 then ?:? "turret" y "damage level is" dd "(" \damage$(dd) ")"
+     ? "  fire turret" y;: input yn$
+     if yn$ <> "y" goto {:emergency turret maintenance}
+     c = 0 :for z = 1 to \ship(x,y) :c = c + int(rnd(1)*6)+1 :next z
+     if c > 12 then ? "  the turret misfires" :goto {:fire next}
+     ? "  the turret fires ";
+     if c > 8 then ? "and misses" :goto {:fire next}
+     tg = int(rnd(1)*6)+1
+     ? "and hits (" \systems$(tg) ")"
+     \enemy(tg) = \enemy(tg) + 1
+     goto {:fire next}
+     
+{:emergency turret maintenance}
+     if \ship(x,y) = 0 goto {:fire next}
+     ? "  perform emergency turret maintenance";: input yn$
+     if yn$ <> "y" goto {:fire next}
+     c = 0 :for z = 1 to \ship(x,y) :c = c + int(rnd(1)*6)+1 :next z
+     if c <= 8 then ? "the turret has been repaired one level"
+     if c <= 8 then \ship(x,y) = \ship(x,y) - 1 
+ 
+{:fire next}
+  next
+
+{:fire last}
+{:enemy fire}
+  ?
+  if int(rnd(1)*6)+1 < \enemy(3) goto {:enemy fire done}
+  for y=1 to \corsair.size 
+     c=0 :for z=1 to \enemy(6) :c=c+int(rnd(1)*6)+1 :next
+     if c > 8 goto {:enemy fire next}
+     tg = int(rnd(1)*6)+1
+     th = int(rnd(1)*10)+1
+     if \ship(tg,th) = -1 goto {:enemy fire next}
+     if \ship(tg,th) > 5  goto {:enemy fire next}
+     ? "  enemy turret" y "hits (" \systems$(tg) ")"
+     \ship(tg,th) = \ship(tg,th) + 1
+
+{:enemy fire next}
+  next
+
+{:enemy fire done}
+  return
+
+
+{:jump}
+  c = \ship(0,3) :rem engineering
+  if c=0 then ? "jump successful. you escaped." :end 
+  d=0
+  for x = 1 to c : d = d + int(rnd(1)*6) :next
+  if d < 8 then ? "jump successful. you escaped." :end
+  ? "damage in engineering prevents you from jumping away."
+  return
+
+{:surrender}
+  ? "you have surrendered."
+{:boarding}
+  d1 = int(rnd(1)*6)+int(rnd(1)*6)+2 
+  d2 = int(rnd(1)*6)+int(rnd(1)*6)+2
+  ifd1<7then?"half your crew are killed resisting the boarding party."
+  ifd2<6then?"your crew are enslaved." :end
+  ifd2<9then?"your crew are held for ransom." :end
+  ? "your crew are stranded on a marginally habitable world." :end
+

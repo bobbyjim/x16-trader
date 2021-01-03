@@ -1,0 +1,59 @@
+
+{:xmail-init}
+
+
+{:xmail}
+   ? "---- xmail interface ----"
+   ? " 1 - post a welcome to this system"
+   ? " 2 - post survey data about this system"
+   ? " 3 - post a middle passage from this system"
+   ? " 4 - post freight leaving this system"
+
+   input "selection"; sl
+
+   on sl gosub {:xmail-welcome}, {:xmail-survey}, {:xmail-passage}, {:xmail-freight}
+
+   ? "creating xmail [" xn$ "]"
+   open 2,8,2,"n0:" + xn$ + ",s,w"
+   ? "write encoded data [" dd$ "]"
+   print#2, dd$
+   ? "closing file"
+   close 2
+   ? "done!"
+end
+
+
+{:xmail-welcome}
+   xn$ = "xmail-welcome"
+   gosub {:message-text}
+   dd$ = "welcome," + it$ + "," + rt$
+return
+
+{:xmail-survey}
+   xn$ = "xmail-survey"
+   gosub {:message-text}
+   dd$ = "survey," + it$ + "," + rt$
+return
+
+
+{:xmail-passage}
+   xn$ = "xmail-passage"
+   gosub {:message-text}
+   dd$ = "passage," + it$ + "," + rt$
+return
+
+
+{:xmail-freight}
+   xn$ = "xmail-freight"
+   gosub {:message-text}
+   dd$ = "freight," + it$ + "," + rt$
+return
+
+
+{:message-text}
+   rt$ = ""
+   for x = 1 to 10 
+      rt$ = rt$ + chr$(rnd(1)*40+48)
+   next
+return
+

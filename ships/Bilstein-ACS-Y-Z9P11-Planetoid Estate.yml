@@ -1,0 +1,1154 @@
+--- 
+components: 
+   - 
+      e: 0
+      r: 0
+      category: 'Hull'
+      howMany: 1
+      s: 0
+      CP: 0
+      target: 12
+      totalTons: 21600
+      totalMCr: 216
+      notes: 'P, lifters, 216 a/l free'
+      label: 'Planetoid Hull, lifters, 216 a/l free'
+      eff: 1
+      name: 'Hull'
+      tons: 21600
+      mult: 9
+      tl: 12
+      preMult: 1
+      config: 'Planetoid'
+      type: 'Hull'
+      mcr: 216
+      b: 0
+      Sq: 43200
+      q: 0
+      code: 'P'
+
+   - 
+      totalMCr: 0
+      e: 0
+      r: 0
+      label: 'Cargo Hold Basic'
+      type: 'Payload'
+      eff: 1
+      s: 0
+      notes: ''
+      category: 'Cargo'
+      howMany: 1
+      tl: 12
+      tons: 20
+      Sq: 40
+      CP: 0
+      target: 12
+      b: 0
+      totalTons: 20
+      mcr: 0
+      q: 0
+
+   - 
+      totalMCr: 0
+      e: 0
+      r: 0
+      label: 'Jump Fuel (1  parsec)'
+      Sq: 3584
+      category: 'Jump Fuel'
+      s: 0
+      notes: '1 parsec jump, at 1792t per parsec'
+      eff: 1
+      howMany: 1
+      tl: 12
+      tons: 1792
+      type: 'Drive'
+      CP: 0
+      target: 12
+      b: 0
+      totalTons: 1792
+      mcr: 0
+      q: 0
+
+   - 
+      totalMCr: 0
+      e: 0
+      r: 0
+      label: 'Plant Fuel (one month)'
+      type: 'Drive'
+      category: 'Powerplant Fuel'
+      s: 0
+      notes: 'one month'
+      eff: 1
+      howMany: 1
+      tl: 12
+      tons: 172.8
+      Sq: 345.6
+      CP: 0
+      q: 0
+      b: 0
+      totalTons: 172.8
+      mcr: 0
+      target: 12
+
+   - 
+      totalMCr: 0
+      e: 0
+      r: 0
+      label: 'No Landers'
+      category: 'landers'
+      s: 0
+      name: 'No Landers'
+      mcrPerTon: 0
+      note: 'n/a'
+      q: 0
+      eff: 1
+      howMany: 1
+      tl: 10
+      tons: -108
+      type: 'Hull'
+      mcr: 0
+      tonsPercent: -0.5
+      code: 'n/a'
+      b: 0
+      totalTons: -108
+      CP: 1
+      target: 10
+
+   - 
+      totalMCr: 5
+      e: 0
+      r: 0
+      label: 'Fuel Purifiers 20t/hr'
+      Sq: 10
+      category: 'Fuel Purifiers'
+      count: 5
+      s: 0
+      notes: '20t/hr'
+      eff: 1
+      howMany: 1
+      tl: 8
+      tons: 5
+      type: 'Drive'
+      CP: 1
+      target: 8
+      b: 0
+      totalTons: 5
+      mcr: 5
+      q: 0
+
+   - 
+      totalMCr: 1
+      e: 0
+      r: 0
+      label: 'Fuel Transfer Pumps '
+      eff: 1
+      count: 1
+      s: 0
+      notes: ''
+      totalTons: 1
+      category: 'Transfer Pumps'
+      howMany: 1
+      tl: 10
+      tons: 1
+      type: 'Drive'
+      CP: 1
+      target: 10
+      b: 0
+      Sq: 2
+      mcr: 1
+      q: 0
+
+   - 
+      e: 0
+      r: 0
+      note: ''
+      category: 'AV=20. 1 Kinetic FeN'
+      s: 0
+      mod: ''
+      howMany: 1
+      CP: 1
+      q: 0
+      totalTons: 0
+      totalMCr: 0
+      notes: ''
+      label: 'AV=20. 1 Kinetic FeN'
+      eff: 1
+      name: 'AV=20. 1 Kinetic FeN'
+      config: 'Armor'
+      mount: 'Kinetic'
+      tl: 10
+      tons: 0
+      type: 'Armor'
+      mcr: 0
+      basetl: 5
+      range: '1'
+      b: 0
+      target: 10
+      code: ''
+
+   - 
+      e: 0
+      r: 0
+      category: 'Computer Model/5 fib'
+      mod: 5
+      howMany: 1
+      s: 0
+      CP: 1
+      q: 0
+      totalTons: 10
+      totalMCr: 7.5
+      notes: ''
+      label: 'Computer Model/5 fib'
+      eff: 1
+      name: 'Computer'
+      tons: 10
+      mount: 'Model/5'
+      tl: 10
+      config: 'Ops'
+      Sq: 20
+      mcr: 7.5
+      basetl: 1
+      range: 'f'
+      b: 0
+      type: 'Ops'
+      target: 15
+
+   - 
+      e: 0
+      r: 0
+      category: 'AR Ext Communicator'
+      mod: 3
+      howMany: 1
+      s: 0
+      CP: 1
+      target: 13
+      totalTons: 2
+      totalMCr: 2
+      notes: ''
+      label: 'AR Ext Communicator'
+      eff: 1
+      name: 'Communicator'
+      tons: 2
+      mount: 'Ext'
+      tl: 10
+      config: 'Sensor'
+      type: 'Sensor'
+      mcr: 2
+      basetl: 8
+      range: 'AR'
+      b: 0
+      Sq: 4
+      q: 0
+
+   - 
+      e: 0
+      r: 0
+      category: 'AR Ext EMS'
+      mod: 3
+      howMany: 1
+      s: 0
+      CP: 1
+      q: 0
+      mount: 'Ext'
+      totalMCr: 2
+      notes: ''
+      label: 'AR Ext EMS'
+      eff: 1
+      name: 'EMS'
+      tons: 2
+      totalTons: 2
+      tl: 12
+      config: 'Sensor'
+      Sq: 4
+      mcr: 2
+      basetl: 12
+      range: 'AR'
+      b: 0
+      type: 'Sensor'
+      target: 15
+
+   - 
+      e: 0
+      r: 0
+      category: 'AR Ext Visor'
+      mod: 3
+      howMany: 1
+      s: 0
+      CP: 1
+      target: 17
+      totalTons: 2
+      totalMCr: 2
+      notes: ''
+      label: 'AR Ext Visor'
+      eff: 1
+      name: 'Visor'
+      config: 'Sensor'
+      mount: 'Ext'
+      tl: 14
+      tons: 2
+      Sq: 4
+      mcr: 2
+      basetl: 14
+      range: 'AR'
+      b: 0
+      type: 'Sensor'
+      q: 0
+
+   - 
+      e: 0
+      r: 0
+      category: 'G Ext Proximeter'
+      mod: 3
+      howMany: 1
+      s: 0
+      CP: 1
+      q: 0
+      totalTons: 8
+      totalMCr: 8.1
+      notes: ''
+      label: 'G Ext Proximeter'
+      eff: 1
+      name: 'Proximeter'
+      tons: 8
+      mount: 'Ext'
+      tl: 13
+      config: 'Sensor'
+      type: 'Sensor'
+      mcr: 8.1
+      basetl: 13
+      range: 'G'
+      b: 0
+      Sq: 16
+      target: 16
+
+   - 
+      e: 0
+      r: 0
+      category: 'Vd LBay Beam Laser'
+      mod: 8
+      howMany: 2
+      s: 0
+      CP: 1
+      q: 0
+      mount: 'LBay'
+      totalMCr: 21
+      notes: ''
+      label: 'Vd LBay Beam Laser'
+      eff: 1
+      name: 'Beam Laser'
+      tons: 100
+      totalTons: 200
+      tl: 10
+      config: 'Weapon'
+      Sq: 400
+      mcr: 10.5
+      basetl: 10
+      range: 'Vd'
+      b: 0
+      type: 'Weapon'
+      target: 18
+
+   - 
+      e: 0
+      r: 0
+      category: 'Vd LBay Sandcaster'
+      mod: 8
+      howMany: 2
+      s: 0
+      CP: 1
+      target: 18
+      totalTons: 200
+      totalMCr: 20.2
+      notes: ''
+      label: 'Vd LBay Sandcaster'
+      eff: 1
+      name: 'Sandcaster'
+      tons: 100
+      mount: 'LBay'
+      tl: 10
+      config: 'Weapon'
+      type: 'Weapon'
+      mcr: 10.1
+      basetl: 9
+      range: 'Vd'
+      b: 0
+      Sq: 400
+      q: 0
+
+   - 
+      totalMCr: 10
+      e: 0
+      notes: '100 high pass./week'
+      label: 'Luxury LS (100 high pass./week)'
+      eff: 1
+      s: 0
+      r: 0
+      name: 'life support'
+      tons: 10
+      totalTons: 10
+      category: 'Luxury Life Support'
+      howMany: 1
+      tl: 10
+      b: 0
+      Sq: 20
+      mcr: 10
+      q: 0
+      type: 'Ops'
+      CP: 1
+      target: 10
+
+   - 
+      totalMCr: 20
+      e: '0'
+      r: '0'
+      label: 'Guest Common Space'
+      Sq: 320
+      eff: '1'
+      s: '0'
+      notes: ''
+      mod: ''
+      howMany: 1
+      tl: '10'
+      tons: 160
+      type: 'Passenger'
+      CP: 0
+      q: '0'
+      b: '0'
+      totalTons: 160
+      mcr: 20
+      target: '10'
+
+   - 
+      totalMCr: 6
+      e: 0
+      r: 0
+      label: 'Familial Suites'
+      eff: 1
+      s: 0
+      q: 0
+      notes: '2 passengers'
+      sleeps: 2
+      mod: ''
+      howMany: 6
+      tl: '10'
+      tons: 24
+      type: 'Passenger'
+      mcr: 1
+      totalTons: 144
+      totalSleeps: 12
+      b: 0
+      Sq: 288
+      CP: 0
+      target: '10'
+
+   - 
+      totalMCr: 2
+      e: 0
+      notes: 'treats minor trauma'
+      label: 'Infirmary'
+      Sq: 8
+      eff: 1
+      tons: 4
+      howMany: 1
+      s: 0
+      b: 0
+      r: 0
+      CP: 1
+      tl: 10
+      q: 0
+      type: 'Ops'
+      totalTons: 4
+      mcr: 2
+      target: 10
+
+   - 
+      totalMCr: 0
+      e: 0
+      notes: 'provides food + O2'
+      label: 'Aeroponic Garden'
+      type: 'Ops'
+      eff: 1
+      s: 0
+      r: 0
+      totalTons: 18
+      howMany: 6
+      tl: 10
+      b: 0
+      Sq: 36
+      CP: 0
+      target: 10
+      tons: 3
+      mcr: 0
+      q: 0
+
+   - 
+      totalMCr: 2
+      e: 0
+      r: 0
+      label: 'Hydroponic Garden'
+      Sq: 40
+      eff: 1
+      notes: 'provides food + LS'
+      tons: 4
+      howMany: 5
+      s: 0
+      b: 0
+      type: 'Ops'
+      mcr: 0.4
+      tl: 10
+      target: 10
+      totalTons: 20
+      CP: 1
+      q: 0
+
+   - 
+      totalMCr: 0
+      e: 0
+      notes: ''
+      label: 'Airlock'
+      eff: 1
+      r: 0
+      totalTons: 10
+      howMany: 20
+      s: 0
+      tons: 0.5
+      Sq: 20
+      CP: 1
+      tl: 10
+      target: 10
+      b: 0
+      type: 'Ops'
+      mcr: 0
+      q: 0
+
+   - 
+      totalMCr: 0
+      e: 0
+      notes: 'tools + stores'
+      label: 'MEG Shop'
+      Sq: 20
+      eff: 1
+      s: 0
+      r: 0
+      howMany: 1
+      tl: 10
+      tons: 10
+      b: 0
+      type: 'Payload'
+      CP: 1
+      target: 10
+      totalTons: 10
+      mcr: 0
+      q: 0
+
+   - 
+      totalMCr: 2
+      e: 0
+      notes: 'tools + stores'
+      label: 'Vehicle Repair Garage'
+      Sq: 40
+      eff: 1
+      s: 0
+      r: 0
+      totalTons: 20
+      howMany: 1
+      tl: 10
+      b: 0
+      type: 'Payload'
+      mcr: 2
+      target: 10
+      tons: 20
+      CP: 1
+      q: 0
+
+   - 
+      totalMCr: 0
+      e: 0
+      notes: ''
+      label: 'Cargo Lock'
+      Sq: 4
+      eff: 1
+      s: 0
+      r: 0
+      howMany: 1
+      tl: 10
+      tons: 2
+      b: 0
+      type: 'Payload'
+      CP: 1
+      target: 10
+      totalTons: 2
+      mcr: 0
+      q: 0
+
+   - 
+      totalMCr: 0
+      e: 0
+      notes: ''
+      label: 'Hangar'
+      eff: 1
+      s: 0
+      r: 0
+      totalTons: 1000
+      mod: ''
+      howMany: 1
+      tl: '10'
+      tons: 1000
+      Sq: 2000
+      CP: 1
+      q: 0
+      b: 0
+      type: 'Vehicle'
+      mcr: 0
+      target: '10'
+
+   - 
+      totalMCr: 0
+      e: 0
+      r: 0
+      label: 'Hangar'
+      eff: 1
+      s: 0
+      notes: ''
+      totalTons: 400
+      mod: ''
+      howMany: 1
+      tl: '10'
+      tons: 400
+      type: 'Vehicle'
+      mcr: 0
+      target: '10'
+      b: 0
+      Sq: 800
+      CP: 1
+      q: 0
+
+   - 
+      totalMCr: 0
+      e: 0
+      notes: ''
+      label: 'Hangar'
+      eff: 1
+      s: 0
+      r: 0
+      totalTons: 200
+      mod: ''
+      howMany: 1
+      tl: '10'
+      tons: 200
+      Sq: 400
+      CP: 1
+      q: 0
+      b: 0
+      type: 'Vehicle'
+      mcr: 0
+      target: '10'
+
+   - 
+      totalMCr: 0
+      e: 0
+      r: 0
+      label: 'Hangar'
+      eff: 1
+      s: 0
+      notes: ''
+      totalTons: 100
+      mod: ''
+      howMany: 1
+      tl: '10'
+      tons: 100
+      type: 'Vehicle'
+      mcr: 0
+      target: '10'
+      b: 0
+      Sq: 200
+      CP: 1
+      q: 0
+
+   - 
+      totalMCr: 1
+      e: 0
+      r: 0
+      label: 'Container Handler'
+      Sq: 2
+      eff: 1
+      tons: 1
+      totalTons: 1
+      howMany: 1
+      s: 0
+      b: 0
+      notes: '12t/hr'
+      mcr: 1
+      tl: 10
+      target: 10
+      type: 'Payload'
+      CP: 0
+      q: 0
+
+   - 
+      totalMCr: 12.5
+      e: 0
+      r: 0
+      label: 'Gardens'
+      Sq: 200
+      eff: 1
+      s: 0
+      notes: ''
+      mod: ''
+      howMany: 1
+      tl: '10'
+      tons: 100
+      type: 'Passenger'
+      CP: 0
+      q: 0
+      b: 0
+      totalTons: 100
+      mcr: 12.5
+      target: '10'
+
+   - 
+      totalMCr: 4
+      e: 0
+      notes: ''
+      label: 'Throne Room'
+      type: 'Passenger'
+      eff: 1
+      s: 0
+      tons: 32
+      totalTons: 32
+      mod: ''
+      howMany: 1
+      tl: '10'
+      b: 0
+      r: 0
+      CP: 0
+      target: '10'
+      Sq: 64
+      mcr: 4
+      q: 0
+
+   - 
+      totalMCr: 0
+      e: 0
+      r: 0
+      label: 'Yacht Hangar'
+      Sq: 400
+      eff: 1
+      s: 0
+      notes: ''
+      mod: ''
+      howMany: 1
+      tl: '10'
+      tons: 200
+      type: 'Vehicle'
+      CP: 1
+      q: 0
+      b: 0
+      totalTons: 200
+      mcr: 0
+      target: '10'
+
+   - 
+      totalMCr: 24
+      e: '0'
+      r: '0'
+      label: 'Guest Double Suites'
+      eff: '1'
+      s: '0'
+      q: '0'
+      notes: '2 passengers'
+      sleeps: 2
+      mod: ''
+      howMany: 12
+      tl: '10'
+      tons: 16
+      Sq: 384
+      mcr: 2
+      totalTons: 192
+      totalSleeps: 24
+      b: '0'
+      type: 'Passenger'
+      CP: 0
+      target: '10'
+
+   - 
+      totalMCr: 12
+      e: '0'
+      r: '0'
+      label: 'Familial Common Space'
+      eff: '1'
+      s: '0'
+      notes: ''
+      totalTons: 96
+      mod: ''
+      howMany: 1
+      tl: '10'
+      tons: 96
+      type: 'Passenger'
+      mcr: 12
+      target: '10'
+      b: '0'
+      Sq: 192
+      CP: 0
+      q: '0'
+
+   - 
+      totalMCr: 10
+      e: 0
+      notes: '1 crew'
+      label: 'Crew Single Stateroom'
+      eff: 1
+      s: 0
+      q: 0
+      r: 0
+      sleeps: 1
+      howMany: 20
+      tl: 10
+      tons: 4
+      Sq: 160
+      CP: 0
+      totalTons: 80
+      totalSleeps: 20
+      b: 0
+      type: 'Crew'
+      mcr: 0.5
+      target: 10
+
+   - 
+      totalMCr: 2
+      e: '0'
+      r: '0'
+      label: 'Library/Office'
+      Sq: 48
+      eff: '1'
+      s: '0'
+      notes: ''
+      mod: ''
+      howMany: 2
+      tl: '10'
+      tons: 12
+      type: 'Passenger'
+      CP: 0
+      q: '0'
+      b: '0'
+      totalTons: 24
+      mcr: 1
+      target: '10'
+
+   - 
+      totalMCr: 4
+      e: '0'
+      notes: '1 crew'
+      label: 'Security Officer Stateroom'
+      eff: '1'
+      s: '0'
+      q: '0'
+      r: '0'
+      sleeps: 1
+      mod: ''
+      howMany: 8
+      tl: '10'
+      tons: 4
+      Sq: 64
+      mcr: 0.5
+      totalTons: 32
+      totalSleeps: 8
+      b: '0'
+      type: 'Crew'
+      CP: 0
+      target: '10'
+
+   - 
+      totalMCr: 4
+      e: '0'
+      r: '0'
+      label: 'Barracks'
+      Sq: 64
+      eff: '1'
+      notes: '1 team + no officer'
+      sleeps: 4
+      howMany: 8
+      s: '0'
+      tons: 4
+      type: 'Crew'
+      CP: 0
+      tl: 10
+      q: '0'
+      totalSleeps: 32
+      b: '0'
+      totalTons: 32
+      mcr: 0.5
+      target: 10
+
+   - 
+      totalMCr: 8
+      e: '0'
+      notes: ''
+      label: 'Crew Lounge'
+      type: 'Crew'
+      eff: '1'
+      s: '0'
+      r: '0'
+      totalTons: 64
+      howMany: 4
+      tl: 10
+      b: '0'
+      Sq: 128
+      CP: 0
+      target: 10
+      tons: 16
+      mcr: 2
+      q: '0'
+
+   - 
+      totalMCr: 8
+      e: '0'
+      r: '0'
+      label: 'Security Lounge'
+      Sq: 128
+      eff: '1'
+      notes: ''
+      howMany: 4
+      s: '0'
+      tons: 16
+      type: 'Crew'
+      mcr: 2
+      tl: 10
+      q: '0'
+      b: '0'
+      totalTons: 64
+      CP: 0
+      target: 10
+
+   - 
+      totalMCr: 10
+      e: 0
+      r: 0
+      label: 'Life support (400 people/month)'
+      category: 'Life Support'
+      s: 0
+      name: 'life support'
+      notes: '400 people/month'
+      totalTons: 10
+      eff: 1
+      howMany: 1
+      tl: 13
+      tons: 10
+      type: 'Ops'
+      mcr: 10
+      q: 0
+      b: 0
+      Sq: 20
+      CP: 1
+      target: 13
+
+   - 
+      e: 0
+      r: 0
+      category: 'Maneuver Drive'
+      target: 13
+      howMany: 1
+      s: 0
+      B: 0
+      CP: 7
+      code: 'X5'
+      totalTons: 215
+      Q: 0
+      totalMCr: 430
+      E: 0
+      notes: '1 G'
+      label: 'Maneuver Drive-1 (X5)'
+      eff: 1
+      S: 0
+      name: 'Maneuver Drive'
+      tons: 215
+      autoAdjust: 1
+      rating: 1
+      b: 0
+      type: 'Drive'
+      mcr: 430
+      tl: 13
+      basetl: 9
+      Sq: 430
+      q: 0
+      R: 0
+
+   - 
+      e: 0
+      r: 0
+      stage: 'Adv'
+      category: 'Jump Drive'
+      notes: 'J 1'
+      q: 0
+      mod: 3
+      howMany: 1
+      s: 0
+      B: 0
+      CP: 17
+      code: 'X5'
+      original: 
+         e: 0
+         r: 0
+         type: 'Drive'
+         category: 'Jump Drive'
+         s: 0
+         mod: 0
+         howMany: ''
+         B: 0
+         CP: 16
+         target: 13
+         totalTons: 545
+         Q: 0
+         totalMCr: 545
+         E: 0
+         R: 0
+         label: 'Jump Drive-1 (X5)'
+         eff: 1
+         S: 0
+         name: 'Jump Drive'
+         jumpFuelUsage: 0.1
+         autoAdjust: 1
+         tl: '13'
+         b: 0
+         Sq: 1090
+         mcr: 545
+         rating: 1
+         basetl: 9
+         tons: 545
+         q: 0
+         notes: 'J 1'
+         code: 'X5'
+      Q: 0
+      totalMCr: 545
+      E: 0
+      R: 0
+      label: 'Adv Jump Drive-1 (X5)'
+      eff: 1.2
+      S: 0
+      name: 'Jump Drive'
+      tons: 179.85
+      autoAdjust: 1
+      rating: 1
+      jumpFuelUsage: 0.1
+      Sq: 359.7
+      powerFuelUsage: ''
+      totalTons: 179.85
+      tl: 10
+      basetl: 9
+      b: 0
+      type: 'Drive'
+      mcr: 545
+      target: 13
+
+   - 
+      e: 0
+      r: 0
+      stage: 'Adv'
+      category: 'PowerPlant'
+      notes: 'P 1'
+      q: 0
+      mod: 3
+      howMany: 1
+      s: 0
+      B: 0
+      CP: 10
+      code: 'X5'
+      original: 
+         e: 0
+         r: 0
+         category: 'PowerPlant'
+         s: 0
+         R: 0
+         q: 0
+         mod: 0
+         howMany: ''
+         B: 0
+         CP: 10
+         code: 'X5'
+         totalTons: 325
+         Q: 0
+         totalMCr: 325
+         E: 0
+         notes: 'P 1'
+         label: 'PowerPlant-1 (X5)'
+         eff: 1
+         S: 0
+         name: 'PowerPlant'
+         tons: 325
+         autoAdjust: 1
+         rating: 1
+         b: 0
+         Sq: 650
+         mcr: 325
+         tl: '13'
+         basetl: 8
+         type: 'Drive'
+         powerFuelUsage: 0.01
+         target: 13
+      Q: 0
+      totalMCr: 325
+      E: 0
+      R: 0
+      label: 'Adv PowerPlant-1 (X5)'
+      eff: 1.2
+      S: 0
+      name: 'PowerPlant'
+      tons: 107.25
+      autoAdjust: 1
+      rating: 1
+      jumpFuelUsage: ''
+      Sq: 214.5
+      powerFuelUsage: 0.01
+      totalTons: 107.25
+      tl: 10
+      basetl: 8
+      b: 0
+      type: 'Drive'
+      mcr: 325
+      target: 13
+header: 
+   crew: 19
+   format: 'ACS1.1'
+   luxuryLifeSupport: 10
+   missionLabel: 'Yacht'
+   engineer: 12
+   totalCargoSpace: 20
+   driver: 2
+   astrogator: 1
+   spaciousness: 2
+   passengers: 36
+   pilot: 1
+   controlConsoles: 0
+   nolifters: 'x'
+   demand: 15
+   staff: 0
+   operatingConsoles: 0
+   shipname: 'Planetoid Estate'
+   crewComfort: 0
+   workstations: 0
+   shifts: 1
+   freightmaster: 1
+   steward: 10
+   mission: 'Y'
+   totalMCr: 1726.3
+   medic: 2
+   sensop: 2
+   lifters: 'y'
+   jumpFuelPercentage: 0.083
+   jf: 1
+   comments: ''
+   undertons: 15766.5
+   config: 'P'
+   powerFuelPercentage: 0.008
+   mult: 9
+   lifeSupport: 10
+   tl: 13
+   low: 0
+   preMult: 1
+   tons: 21600
+   pf: 1
+   owner: 'Bilstein'
+   tonsFree: 15766.5
+   qsp: 'Y-Z9P11'
+   gunner: 2
+   crewLocked: 'yes'
+   troops: 4

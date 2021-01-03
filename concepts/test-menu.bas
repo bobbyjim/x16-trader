@@ -1,0 +1,30 @@
+5 	GOTO 50
+10 	DATA ASTROGATION,    AST, " . "
+15 	DATA LIFTERS,        LFT, " . "
+20 	DATA POWERPLANT,     POW, " . "
+25 	DATA MANEUVER DRIVE, MNU, " . "
+30 	DATA JUMP DRIVE,     JMP, " . "
+35 	DATA MISSILE RACKS,  MSL, " . "
+40 	DATA LASERS,         LAS, " . "
+45 	DATA SANDCASTERS,    SND, " . "
+50 	MU$(0) = "MAIN MENU"
+55 	MU$(1) = "  POST <SYSTEM>"
+60 	MU$(2) = "  SET  <SYSTEM> <VALUE>"
+65 	MU$(3) = "  BSY  <SYSTEM>"
+70 	MU$(4) = "  OFFL <SYSTEM>"
+75 	MU$(5) = "  TST  <SYSTEM>"
+80 	MU$(6) = "  RTS  <SYSTEM>"
+85 	FOR X=0 TO 7
+90 	   READ SM$(X), SN$(X), SS$(X)
+95 	NEXT
+100 	FOR X=0 TO 7
+105 	   ? SN$(X),
+110 	NEXT
+115 	FOR X=0 TO 7
+120 	   ? SS$(X),
+125 	NEXT
+130 	FOR X=0 TO 6
+135 	   ?:? MU$(X)
+140 	NEXT
+145 INPUT " ]";A$ 
+150 	GOTO 100

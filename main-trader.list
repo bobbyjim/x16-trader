@@ -1,0 +1,56 @@
+; -------------------------------------------------------------
+;
+;  Traveller Trader
+;
+; -------------------------------------------------------------
+color 15,0 :?chr$(147)	:rem lt grey on black
+
+longvar \credits
+longvar \gamestate
+longvar \col
+longvar \row
+longvar \range
+longvar \dest.acol
+longvar \dest.arow
+longvar \uwp.allegiance
+
+dim bu$(30) :rem line buffer
+dim dx(16),dy(16),dc(16),dr(16) :rem destination vectors
+
+; -------------------------------------------------------------
+;
+; Bank  Description
+; ----- --------------------------------------------------------
+;   1   Current player, crew, ship
+;   2   Market
+;   3   Ships
+;   4   Banner
+;   5
+;   6
+;   7   
+;   8   
+;   9   
+;  10
+;  11+  Maps
+;
+; -------------------------------------------------------------
+;load "player-data.bin"  ,8, 1,$a000 :rem bank 1
+;load "market.bin"       ,8, 2,$a000 :rem bank 2
+load "allships.bin"      ,8, 3,$a000 :rem bank 3
+load "banner.bin"        ,8, 4,$a000 :rem bank 4
+load "spinward.space.bin",8,11,$a000 :rem bank 11 and up
+
+gosub {:util.init}
+
+\credits = 100000 :rem cr
+\col = 19         :rem col
+\row = 10         :rem row
+\range = 2        :rem range
+\dest.arow = 0    :rem dest.arow
+\dest.acol = 0    :rem dest.acol
+
+{:game-loop}
+   gosub {:enter starport}
+   gosub {:enter system}
+   goto {:game-loop}
+

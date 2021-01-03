@@ -1,0 +1,2 @@
+perl ../module-basic/basic-labelmaster.pl test-combat3.list > test-combat3.bas
+../run test-combat3

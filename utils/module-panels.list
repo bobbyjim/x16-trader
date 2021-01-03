@@ -1,0 +1,153 @@
+; -----------------------------------------
+;
+;  Panel Utility 
+;
+; -----------------------------------------
+;
+;  Nifty display panels
+;
+; 
+; ÕÃÃÃÃÃÃÃÉ
+; Â       Â
+; Â       Â
+; ÊÃÃÃÃÃÃÃË
+; 
+
+longvar \panel.label		
+longvar \panel.top		
+longvar \panel.left		
+longvar \panel.width		
+longvar \panel.height		
+longvar \panel.line 		
+longvar \panel.lineSelected	
+longvar \panel.count		
+
+{:panels.init}
+;  ------------------------------------
+rem set up panel arrays based on max
+rem number of panels (n=6)
+;  ------------------------------------
+n = 6
+\panel.count = 0
+dim \panel.label$(n)
+dim \panel.top(n), \panel.left(n), \panel.width(n), \panel.height(n)
+dim \panel.line$(n,30), \panel.lineSelected(n)
+
+gosub {:vertical-position.init} :rem init vp$()
+
+;  -----------------------------------
+rem horizontal bar array
+;  -----------------------------------
+dim hb$(80)
+hb$(0) = "\xc3"
+for v=1 to 80
+   hb$(v) = hb$(v-1) + "\xc3"
+next
+
+;  -----------------------------------
+rem vertical bar array
+;  -----------------------------------
+dim vb$(30)
+vb$(0) = "\xc2\x11\x9d"
+for v=1 to 30
+   vb$(v) = vb$(v-1) + "\xc2\x11\x9d"
+next
+
+;   ----------------------------------
+rem  panel edges
+;   ----------------------------------
+ba$ = "\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d"
+ba$ = ba$ + "\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d"
+ba$ = ba$ + "\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d"
+ba$ = ba$ + "\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d"
+ba$ = ba$ + "\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d"
+ba$ = ba$ + "\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d"
+ba$ = ba$ + "\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d"
+ba$ = ba$ + "\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d"
+sp$ = "                    "
+sp$ = sp$ + "                    "
+sp$ = sp$ + "                    "
+sp$ = sp$ + "                    "
+return
+
+; ------------------------------------
+;
+rem draw panels from variable data
+;
+; ------------------------------------
+{:panels.drawframe}
+;? chr$(147); :rem clr
+for n = 0 to \panel.count - 1
+   ? vp$(\panel.top(n)) spc(\panel.left(n))
+   ? "\xd5\xc3" \panel.label$(n) "\xc3";
+   ? hb$(\panel.width(n) - 3 - len(\panel.label$(n)));
+   ? "\xc9\x11";
+   b2$ = left$(ba$, \panel.width(n)+2)
+   s2$ = left$(sp$, \panel.width(n))
+   for rr=3 to \panel.height(n)
+   rem don't forget the lines !!
+   ? b2$ "\xc2" s2$ "\xc2\x11";
+   next
+   ? b2$ "\xca";
+   ? hb$(\panel.width(n)-1);
+   ? "\xcb";
+next
+return
+
+; ------------------------------------
+;
+rem show the panel texts
+;
+; ------------------------------------
+{:panels.show}
+;                    ? chr$(19); :rem home
+for n = 0 to \panel.count - 1
+   ? vp$(\panel.top(n));
+   ?
+   for x = 0 to \panel.height(n)-3
+;      ? spc(\panel.left(n)+2) "x"
+      ? spc(\panel.left(n)+2) \panel.line$(n,x)
+   next
+next
+return
+
+; ------------------------------------
+;
+rem add a panel to the list!
+rem t: top, l: left, w: width, h:height
+rem l$: label
+;
+; ------------------------------------
+{:panels.add}
+n = \panel.count
+\panel.label$(n) = l$
+\panel.top(n) = t
+\panel.left(n) = l
+\panel.width(n) = w
+\panel.height(n) = h
+\panel.lineSelected(n) = -1
+\panel.count = n + 1
+return
+
+; ------------------------------------------------------
+;
+rem "delete" all panels
+;
+; ------------------------------------------------------
+{:panels.delete}
+\panel.count = 0
+return
+
+; ------------------------------------------------------
+;
+rem set contents of a panel
+rem n:panel num, bu$(): lines, lc: line count
+;
+; ------------------------------------------------------
+{:panels.set}
+for x = 0 to lc-1
+   \panel.line$(n,x) = bu$(x)
+next
+return
+
+

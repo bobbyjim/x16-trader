@@ -1,0 +1,615 @@
+--- 
+components: 
+   - 
+      preMult: 1
+      mult: 1
+      tl: 12
+      category: 'Hull'
+      notes: 'S'
+      code: 'S'
+      CP: 0
+      config: 'Streamlined'
+      q: 0
+      r: 0
+      s: 0
+      tons: 400
+      Sq: 800
+      b: 0
+      mcr: 26
+      e: 0
+      howMany: 1
+      target: 12
+      totalTons: 400
+      totalMCr: 26
+      label: 'Streamlined Hull'
+      eff: 1
+      type: 'Hull'
+      name: 'Hull'
+
+   - 
+      s: 0
+      label: 'Jump Fuel (2  parsecs)'
+      category: 'Jump Fuel'
+      Sq: 160
+      b: 0
+      tl: 12
+      tons: 80
+      q: 0
+      e: 0
+      notes: 'J2, 40t/pc'
+      howMany: 1
+      target: 12
+      CP: 0
+      totalMCr: 0
+      mcr: 0
+      eff: 1
+      type: 'Drive'
+      totalTons: 80
+      r: 0
+
+   - 
+      s: 0
+      label: 'Plant Fuel (0.5 months)'
+      category: 'Powerplant Fuel'
+      Sq: 8
+      b: 0
+      tl: 12
+      tons: 4
+      q: 0
+      e: 0
+      notes: '0.5 months'
+      howMany: 1
+      target: 12
+      CP: 0
+      totalMCr: 0
+      mcr: 0
+      eff: 1
+      type: 'Drive'
+      totalTons: 4
+      r: 0
+
+   - 
+      rating: 2
+      category: 'PowerPlant'
+      powerFuelUsage: 0.01
+      B: 0
+      tl: 11
+      code: 'D'
+      basetl: 9
+      howMany: 1
+      E: 0
+      notes: 'P 2'
+      CP: 1
+      q: 0
+      r: 0
+      s: 0
+      tons: 13
+      Sq: 26
+      b: 0
+      autoAdjust: 1
+      e: 0
+      mcr: 13
+      Q: 0
+      target: 11
+      totalTons: 13
+      R: 0
+      name: 'PowerPlant'
+      S: 0
+      label: 'PowerPlant-2 (D)'
+      eff: 1
+      type: 'Drive'
+      totalMCr: 13
+
+   - 
+      rating: 2
+      category: 'Jump Drive'
+      howMany: 1
+      B: 0
+      tl: 11
+      code: 'D'
+      basetl: 11
+      E: 0
+      notes: 'J 2'
+      CP: 1
+      q: 0
+      r: 0
+      s: 0
+      tons: 25
+      Sq: 50
+      b: 0
+      autoAdjust: 1
+      e: 0
+      mcr: 25
+      Q: 0
+      target: 11
+      totalTons: 25
+      R: 0
+      name: 'Jump Drive'
+      S: 0
+      label: 'Jump Drive-2 (D)'
+      eff: 1
+      type: 'Drive'
+      jumpFuelUsage: 0.1
+      totalMCr: 25
+
+   - 
+      rating: 1
+      category: 'Maneuver Drive'
+      howMany: 1
+      B: 0
+      tl: 11
+      code: 'B'
+      basetl: 9
+      E: 0
+      notes: '1 G'
+      CP: 1
+      q: 0
+      r: 0
+      s: 0
+      tons: 3
+      Sq: 6
+      b: 0
+      autoAdjust: 1
+      e: 0
+      mcr: 6
+      Q: 0
+      target: 11
+      totalTons: 3
+      R: 0
+      name: 'Maneuver Drive'
+      S: 0
+      label: 'Maneuver Drive-1 (B)'
+      eff: 1
+      type: 'Drive'
+      totalMCr: 6
+
+   - 
+      s: 0
+      label: 'Fuel Scoops 100t/hr'
+      tons: 1
+      Sq: 2
+      b: 0
+      tl: 8
+      code: 'S1'
+      q: 0
+      e: 0
+      count: 1
+      notes: '100t/hr'
+      howMany: 1
+      target: 8
+      CP: 1
+      totalMCr: 0.1
+      r: 0
+      mcr: 0.1
+      eff: 1
+      type: 'Drive'
+      totalTons: 1
+      category: 'Fuel Scoops'
+
+   - 
+      category: 'AV=11. 1 Blast Plate'
+      type: 'Armor'
+      tl: 11
+      mount: 'Blast'
+      basetl: 8
+      mod: ''
+      notes: ''
+      CP: 1
+      config: 'Armor'
+      q: 0
+      r: 0
+      s: 0
+      tons: 0
+      b: 0
+      e: 0
+      mcr: 0
+      howMany: 1
+      target: 11
+      totalTons: 0
+      name: 'Plate'
+      label: 'AV=11. 1 Blast Plate'
+      eff: 1
+      range: '1'
+      totalMCr: 0
+
+   - 
+      category: 'Computer Model/2 std'
+      type: 'Ops'
+      tl: 11
+      mount: 'Model/2'
+      basetl: 0
+      mod: 2
+      notes: ''
+      CP: 1
+      config: 'Ops'
+      q: 0
+      r: 0
+      s: 0
+      tons: 2
+      Sq: 4
+      b: 0
+      e: 0
+      mcr: 5
+      howMany: 1
+      target: 13
+      totalTons: 2
+      totalMCr: 5
+      label: 'Computer Model/2 std'
+      eff: 1
+      range: 's'
+      name: 'Computer'
+
+   - 
+      s: 0
+      tons: 2
+      Sq: 4
+      b: 0
+      tl: 11
+      q: 0
+      e: 0
+      mcr: 2
+      howMany: 1
+      target: 11
+      CP: 0
+      totalMCr: 2
+      notes: '40 person-months'
+      label: 'Life Support Long Term'
+      eff: 1
+      type: 'Ops'
+      totalTons: 2
+      r: 0
+
+   - 
+      s: 0
+      tons: 1
+      Sq: 2
+      b: 0
+      tl: 11
+      q: 0
+      e: 0
+      mcr: 1
+      howMany: 1
+      target: 11
+      CP: 0
+      totalMCr: 1
+      notes: '10 high passengers'
+      label: 'Life Support Luxury'
+      eff: 1
+      type: 'Ops'
+      totalTons: 1
+      r: 0
+
+   - 
+      s: 0
+      tons: 1
+      Sq: 2
+      b: 0
+      tl: 11
+      q: 0
+      e: 0
+      mcr: 1
+      howMany: 1
+      target: 11
+      CP: 0
+      totalMCr: 1
+      notes: '10 sophonts'
+      label: 'Life Support Adaptable'
+      eff: 1
+      type: 'Ops'
+      totalTons: 1
+      r: 0
+
+   - 
+      s: 0
+      tons: 0.5
+      Sq: 2
+      b: 0
+      mcr: 0.5
+      tl: 11
+      eff: 1
+      e: 0
+      howMany: 2
+      target: 11
+      CP: 0
+      totalMCr: 1
+      notes: '4 crew'
+      label: 'Crew Shared Fresher'
+      q: 0
+      type: 'Crew'
+      totalTons: 1
+      r: 0
+
+   - 
+      s: 0
+      tons: 0.5
+      Sq: 16
+      b: 0
+      mcr: 0.1
+      tl: 11
+      eff: 1
+      e: 0
+      howMany: 16
+      target: 11
+      CP: 0
+      totalMCr: 1.6
+      notes: '1 passenger'
+      label: 'Low Berth'
+      q: 0
+      type: 'Payload'
+      totalTons: 8
+      r: 0
+
+   - 
+      s: 0
+      label: 'Cargo Hold Basic'
+      category: 'Cargo'
+      Sq: 324
+      b: 0
+      mcr: 0
+      tl: 12
+      tons: 162
+      q: 0
+      e: 0
+      notes: ''
+      howMany: 1
+      target: 12
+      CP: 0
+      totalMCr: 0
+      eff: 1
+      type: 'Payload'
+      totalTons: 162
+      r: 0
+
+   - 
+      s: 0
+      tons: 4
+      Sq: 24
+      b: 0
+      tl: 11
+      q: 0
+      e: 0
+      mcr: 0
+      howMany: 3
+      target: 11
+      CP: 0
+      totalMCr: 0
+      notes: ''
+      label: 'Crew Lounge'
+      eff: 1
+      type: 'Crew'
+      totalTons: 12
+      r: 0
+
+   - 
+      s: 0
+      tons: 2
+      Sq: 24
+      b: 0
+      totalSleeps: 6
+      tl: 11
+      sleeps: 1
+      e: 0
+      mcr: 0.1
+      howMany: 6
+      target: 11
+      CP: 0
+      eff: 1
+      totalMCr: 0.6
+      notes: '1 crew'
+      label: 'Crew Stateroom'
+      q: 0
+      type: 'Crew'
+      totalTons: 12
+      r: 0
+
+   - 
+      s: 0
+      tons: 6
+      Sq: 96
+      b: 0
+      totalSleeps: 8
+      tl: 11
+      sleeps: 1
+      e: 0
+      mcr: 0.4
+      howMany: 8
+      target: 11
+      CP: 0
+      eff: 1
+      totalMCr: 3.2
+      notes: '1 passenger + fresher'
+      label: 'Luxury Stateroom'
+      q: 0
+      type: 'Passenger'
+      totalTons: 48
+      r: 0
+
+   - 
+      s: 0
+      tons: 0.5
+      Sq: 1
+      b: 0
+      tl: 11
+      q: 0
+      e: 0
+      mcr: 0.5
+      howMany: 1
+      target: 11
+      CP: 0
+      totalMCr: 0.5
+      notes: '4 passengers'
+      label: 'Shared Fresher'
+      eff: 1
+      type: 'Passenger'
+      totalTons: 0.5
+      r: 0
+
+   - 
+      s: 0
+      tons: 2
+      Sq: 4
+      b: 0
+      totalSleeps: 1
+      tl: 11
+      sleeps: 1
+      e: 0
+      mcr: 0.1
+      howMany: 1
+      target: 11
+      CP: 0
+      q: 0
+      totalMCr: 0.1
+      notes: '1 passenger'
+      label: 'Standard Stateroom'
+      eff: 1
+      type: 'Passenger'
+      totalTons: 2
+      r: 0
+
+   - 
+      s: 0
+      tons: 2
+      Sq: 4
+      b: 0
+      tl: 11
+      q: 0
+      e: 0
+      mcr: 1
+      howMany: 1
+      target: 11
+      CP: 1
+      totalMCr: 1
+      notes: ''
+      label: 'Clinic'
+      eff: 1
+      type: 'Ops'
+      totalTons: 2
+      r: 0
+
+   - 
+      s: 0
+      tons: 1
+      Sq: 2
+      b: 0
+      mcr: 0
+      tl: 11
+      eff: 1
+      e: 0
+      howMany: 1
+      target: 11
+      CP: 0
+      totalMCr: 0
+      notes: ''
+      label: 'Aslan Shrine'
+      q: 0
+      type: 'Payload'
+      totalTons: 1
+      r: 0
+
+   - 
+      s: 0
+      tons: 4
+      Sq: 8
+      b: 0
+      mcr: 0
+      tl: 11
+      eff: 1
+      e: 0
+      howMany: 1
+      target: 11
+      CP: 0
+      totalMCr: 0
+      notes: ''
+      label: 'Passenger Lounge'
+      q: 0
+      type: 'Passenger'
+      totalTons: 4
+      r: 0
+
+   - 
+      category: 'FR T1de Empty'
+      range: 'FR'
+      tl: 11
+      mount: 'T1de'
+      type: 'Weapon'
+      mod: -2
+      notes: ''
+      CP: 1
+      config: 'Weapon'
+      q: 0
+      r: 0
+      s: 0
+      tons: 0.99
+      Sq: 7.92
+      b: 0
+      e: 0
+      mcr: 1.6
+      howMany: 4
+      target: 9
+      totalTons: 3.96
+      totalMCr: 6.4
+      label: 'FR T1de Empty'
+      eff: 1
+      basetl: 5
+      name: 'Empty'
+
+   - 
+      s: 0
+      label: 'Spacious Controls'
+      tons: 10
+      Sq: 20
+      b: 0
+      tl: 11
+      category: 'Bridge'
+      q: 0
+      e: 0
+      notes: ''
+      howMany: 1
+      target: 13
+      CP: 0
+      mod: 2
+      name: 'Bridge'
+      mcr: 0
+      eff: 1
+      type: 'Ops'
+      totalTons: 10
+      r: 0
+      totalMCr: 0
+header: 
+   preMult: 1
+   spaciousness: 2
+   brief: 'Aslan trader'
+   comments: |
+      Using a 400-ton streamlined hull, the Eakhau-class Aslan trader is a basic interstellar merchant ship, carrying a mix of cargo and passengers. It is equipped with the Ieya-2 Grid C2 jump drive, the Faleiyeea 117m maneuver drive, and the Fesaie 2na.C power plant, giving performance of Jump-2 and 1G acceleration. Fuel tankage supports two weeks of operations and one jump-2. On the bridge is a computer Model/2. There are 16 staterooms and 16 low berths. No weapons are mounted, but the hardpoints have T1-form factor short-range lifepods. There are no ship's vehicles. Cargo capacity is 162 tons. The ship has fuel scoops for gas giant refueling.
+      
+      The trader requires a crew of four: pilot, astrogator, engineer, and steward. A medic and gunners are sometimes carried. It can carry up to ten passengers and 16 low passengers.
+      
+   troops: 0
+   crewComfort: 0
+   low: 0
+   totalCargoSpace: 162
+   tl: 11
+   passengers: 9
+   staff: 0
+   demand: 1
+   shipname: 'Eakhau'
+   config: 'S'
+   undertons: 2
+   jumpFuelPercentage: 0.1
+   powerFuelPercentage: 0.02
+   tons: 400
+   qsp: 'A-DS12'
+   pf: 0.5
+   shifts: 1
+   jf: 2
+   controlConsoles: 1
+   tonsFree: 2
+   operatingConsoles: 3
+   mission: 'A'
+   owner: 'Aslan'
+   overtons: 6.5
+   format: 'T5-ACS-1'
+   crew: 6
+   totalMCr: 94
+   workstations: 1
+   mult: 1

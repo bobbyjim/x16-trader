@@ -1,0 +1,6 @@
+;
+;  This code relies on the "immediate" nature of the emulator's
+;  load process to issue commands to create a directory structure
+;  and files.
+;
+

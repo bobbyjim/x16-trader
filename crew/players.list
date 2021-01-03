@@ -1,0 +1,206 @@
+
+longvar \status
+longvar \race 
+longvar \career.num
+longvar \career.code
+longvar \career.name
+longvar \terms
+longvar \rank
+longvar \skill
+longvar \name
+longvar \register.size
+
+\register.size = 10
+
+dim \name$(\register.size), \name(\register.size), \status(\register.size), \race(\register.size), \career.num(\register.size), ch(\register.size,5)
+dim \race$(25), \skill(15), \skill$(15), hx$(33)
+
+\status$(0) = "dead"
+\status$(1) = "alive"
+
+for x = 0 to 25 :read \race$(x) :next
+data aslan, bwap, cassildan, droyne, ebokin, florian
+data geonee, human, hiver, jonkeereen, clone
+data llellewylolly, amindii, vilani, solomani
+data synthetic, cetian, darrian, suerrat, tesslam
+data virushi, vargr, kursae
+data xaruah, yilean, zhodani
+
+\career.code$(0) = "A"
+\career.code$(1) = "G"
+\career.code$(2) = "L"
+\career.code$(3) = "M"
+\career.code$(4) = "N"
+\career.code$(5) = "O"
+\career.code$(6) = "R"
+\career.code$(7) = "S"
+
+\career.name$(0) = "soldier"
+\career.name$(1) = "agent"
+\career.name$(2) = "scholar"
+\career.name$(3) = "merchant"
+\career.name$(4) = "spacer"
+\career.name$(5) = "rogue"
+\career.name$(6) = "marine"
+\career.name$(7) = "scout"
+
+\rank$(0) = "E1"
+\rank$(1) = "E2"
+\rank$(2) = "E3"
+\rank$(3) = "E4"
+\rank$(4) = "O1"
+\rank$(5) = "O2"
+\rank$(6) = "O3"
+\rank$(7) = "O4"
+
+for x = 0 to 15 :read \skill$(x) :next
+data admin, astrogator, diplomat, engineer
+data fighter, gunner, hostile env, medic
+data pilot, recon, sensop, streetwise
+data survey, survival, trader, vacc
+
+for x = 0 to 33 :read hx$(x) :next
+data 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f,g,h,j,k,l,m,n,p,q,r,s,t,u,v,w,x,y,z
+
+input "press a key to begin"; k$
+x=rnd(-ti)
+
+for se = 0 to \register.size
+   gosub {:generate entry}
+next
+
+{:main loop}
+
+rem 1=white,3=aqua,5=green,7=yellow,13-15 ok too
+color 3,0
+? chr$(147)
+? spc(20) "character register" :?
+
+for p = 0 to \register.size
+   ? spc(5) left$(\name$(p)+"                ",16);
+   ? mid$(str$(p)+"   ",2,3);
+   ? " ";
+   for x = 0 to 5
+      ? hx$(ch(p,x));
+   next x
+   ? " ";
+   ? left$(\status$(\status(p))+"      ",6);
+   ? left$(\race$(\race(p))+"                ",16); 
+   ? \career.name$(\career.num(p));
+   ?:?
+next p
+
+?:input "     view #"; se
+if se < 0 or se > \register.size goto {:main loop}
+
+for x = 0 to 15: \skill(x)=0 :next x
+
+rem build random seed, sloppily
+rr = ch(se,0)
+rr = rr + ch(se,1)    * $10
+rr = rr + ch(se,2)    * $100
+rr = rr + ch(se,3)    * $1000
+rr = rr + ch(se,4)    * $10000
+rr = rr + ch(se,5)    * $100000
+rr = rr + \race(se)   * $1000000
+rr = rr + \career.num(se) * $10000000
+x=rnd(-rr)
+
+\terms = int(rnd(1)*7)
+\rank  = int(rnd(1)*\terms)
+
+rem
+rem assign skills *roughly* 2 levels at a time
+rem
+
+\skill = \terms * 2 + int(\rank / 2)
+
+for x = 0 to \skill
+   n = int(rnd(1)*16)
+   \skill(n) = \skill(n) + int(rnd(1)*4+1)
+next x
+
+?:?
+color 5,0 :rem green on black
+
+? spc(5) "Name:   " left$(\name$(se)+"               ",16);
+? spc(10) "(" \status$(\status(se)) " " \race$(\race(se)) ")"
+? spc(5) "Career: " \career.name$(\career.num(se)) "," \terms "terms, rank " \rank$(\rank)
+? spc(5) "UPP:    ";
+for x = 0 to 5
+   ? hx$(ch(se,x));
+next x
+
+?:? spc(5) "skills: "
+y = 0
+for x = 0 to 15
+   if \skill(x) = 0 goto {:next skill}
+   if y/2 = int(y/2)  then ? spc(20) \skill(x) left$(\skill$(x)+"          ",16),,
+   if y/2 <> int(y/2) then ? \skill(x) \skill$(x)
+   y=y+1
+{:next skill}
+next x
+?:?
+
+color 7,0 :rem yellow on black
+? spc(5) "(d)elete (i)nput (k)eep (r)ename?"
+{:keep or delete} 
+get k$ 
+if k$ = "k" goto {:keep entry}
+if k$ = "d" then gosub {:generate entry} :goto {:main loop}
+if k$ = "i" then gosub {:replace entry} :goto {:main loop}
+if k$ = "r" then gosub {:rename entry} :goto {:main loop}
+goto {:keep or delete}
+
+{:keep entry}
+if \name$(se) = "" then input "     enter name"; \name$(se)
+goto {:main loop}
+
+end
+
+rem entry num is in se
+{:generate entry}
+\name$(se) = ""
+\status(se) = 1
+\race(se)   = int(rnd(1)*26)
+\career.num(se) = int(rnd(1)*8)
+for x = 0 to 5 
+   ch(se,x) = int(rnd(1)*6)+int(rnd(1)*6)+2
+next x
+return
+
+rem entry num is in se
+{:replace entry}
+\name$(se) = ""
+
+?
+input "     race (a-z) ........."; re$
+if re$ < "a" or re$ > "z" then return :rem invalid
+\race(se) = asc(re$)-65
+
+input "     career [AGLMNORS] .."; ca$
+if ca$ = "a" then \career.num(se) = 0 :goto {:enter upp}
+if ca$ = "g" then \career.num(se) = 1 :goto {:enter upp}
+if ca$ = "l" then \career.num(se) = 2 :goto {:enter upp}
+if ca$ = "m" then \career.num(se) = 3 :goto {:enter upp}
+if ca$ = "n" then \career.num(se) = 4 :goto {:enter upp}
+if ca$ = "o" then \career.num(se) = 5 :goto {:enter upp}
+if ca$ = "r" then \career.num(se) = 6 :goto {:enter upp}
+if ca$ = "s" then \career.num(se) = 7 :goto {:enter upp}
+return :rem invalid
+
+{:enter upp}
+input "     upp ................"; up$
+if len(up$) <> 6 then return
+for x = 0 to 5
+   v$ = mid$(up$,x+1,1)
+   if v$ <= "9" then ch(se,x) = val(v$)
+   if v$ >= "a" then ch(se,x) = asc(v$) - 55
+next
+
+input "     name ..............."; \name$(se)
+return
+
+{:rename entry}
+input "     name"; \name$(se)
+return

@@ -1,0 +1,11 @@
+; left top    width   height  label
+; ---  -----  -----   ------  -----------
+l= 1  :t= 0  :w= 76  :h= 4   :l$= "status"        :gosub {:panels.add}
+l= 1  :t= 4  :w= 31  :h= 29  :l$= "map"           :gosub {:panels.add}
+l= 34 :t= 4  :w= 43  :h= 29  :l$= "target worlds" :gosub {:panels.add}
+l= 1  :t= 33 :w= 76  :h= 26  :l$= "mfd"           :gosub {:panels.add}
+
+gosub {:panels.drawframe}
+
+gosub {:panels.show}
+

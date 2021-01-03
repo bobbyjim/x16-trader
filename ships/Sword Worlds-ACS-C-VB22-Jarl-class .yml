@@ -1,0 +1,1068 @@
+--- 
+header: 
+   brief: 'Sword worlds cruiser'
+   jf: 2
+   comments: |
+      The primary naval command asset in the Confederation planetary navies, the Jarl is a titan amongst the comparatively smaller ships in Sword Worlder fleets. It is a sprawling spacecraft built to stand its ground at the centre of any engagement, weathering the storm while delivering significant counterattacks. Slow and ponderous, the Jarl is laden with numerous weapon and defense systems to make up for its lack of manoeuvrability. This includes the expensive and terrifying Svartskie (‘Black Sky’) ortillery railgun platform; a weapon designed for eliminating entire enemy cities – when necessary.
+      
+      The Jarl is built like most other Sword Worlder vessels. It has tight conditions, a lack of storage room except for each crewman’s own personal gear and redundant systems aligned throughout the hull. Something that Sword Worlds designers could not institute in smaller crafts but always wanted to, the Jarl supports two complementary-but-not-reliant primary system areas. Complete and functional alternate command bridge, service airlock and briefing rooms exist at opposed sides of the spread-out vessel to serve the command staff in case one or the other is compromised. It is expensive and somewhat wasteful of space when not needed but when the command bridge takes a direct hit and it takes minutes instead of hours to bring a second, fully equipped, command bridge back online – there is little reason to doubt its utility.
+      
+      There are four Jarls in fleet service at most times in the Sword Worlds. The Siegfried patrols the planetary orbits surrounding Gram and Tyrfing. The Valisson is commonly deployed on a month-to-month basis around Biter, keeping a close watch over the routes to and from the Metal Worlds. The Wulvenhoar lies in orbit over Narsil, a leftover from the last engagement against local interplanetary rebels. The Jormungander is the only open-patrol command element the Confederation Patrol keeps within the subsector, always roving from planet to planet just to ‘check in’ and make sure its massive array of firepower could not be put to good use on the Patrol’s foes.
+   config: 'B'
+   mission: 'C'
+   overtons: 5
+   missionLabel: 'Cruiser'
+   owner: 'Sword Worlds'
+   operatingConsoles: 6
+   format: 'T5-ACS-1'
+   workstations: 0
+   controlConsoles: 6
+   crew: 13
+   totalMCr: 472.5
+   shipname: 'Jarl'
+   mult: 1
+   preMult: 1
+   spaciousness: 2
+   pf: 1
+   troops: 0
+   staff: 0
+   totalCargoSpace: 84
+   passengers: 1
+   crewComfort: -2
+   demand: -5
+   tons: 2000
+   tonsFree: -5
+   tl: 10
+   low: 0
+   powerFuelPercentage: 0.02
+   undertons: 19
+   qsp: 'C-VB22'
+   jumpFuelPercentage: 0.1
+   shifts: 1
+components: 
+   - 
+      category: 'Hull'
+      label: 'Braced Hull'
+      Sq: 4000
+      name: 'Hull'
+      totalTons: 2000
+      howMany: 1
+      code: 'B'
+      totalMCr: 60
+      eff: 1
+      mult: 1
+      type: 'Hull'
+      s: 0
+      q: 0
+      b: 0
+      tl: 12
+      r: 0
+      CP: 0
+      notes: 'B'
+      mcr: 60
+      config: 'Braced'
+      tons: 2000
+      preMult: 1
+      target: 12
+      e: 0
+
+   - 
+      s: 0
+      category: 'Jump Fuel'
+      Sq: 800
+      CP: 0
+      notes: 'J2, 200t/pc'
+      totalTons: 400
+      b: 0
+      e: 0
+      tons: 400
+      label: 'Jump Fuel (2  parsecs)'
+      eff: 1
+      tl: 12
+      mcr: 0
+      totalMCr: 0
+      r: 0
+      q: 0
+      target: 12
+      type: 'Drive'
+      howMany: 1
+
+   - 
+      s: 0
+      category: 'Powerplant Fuel'
+      Sq: 80
+      CP: 0
+      notes: 'one month'
+      totalTons: 40
+      b: 0
+      e: 0
+      tons: 40
+      label: 'Plant Fuel (one month)'
+      eff: 1
+      tl: 12
+      mcr: 0
+      totalMCr: 0
+      r: 0
+      q: 0
+      target: 12
+      type: 'Drive'
+      howMany: 1
+
+   - 
+      B: 0
+      label: 'PowerPlant-2 (V)'
+      Sq: 122
+      name: 'PowerPlant'
+      totalTons: 61
+      howMany: 1
+      E: 0
+      totalMCr: 61
+      eff: 1
+      S: 0
+      category: 'PowerPlant'
+      rating: 2
+      q: 0
+      powerFuelUsage: 0.01
+      r: 0
+      basetl: 9
+      code: 'V'
+      s: 0
+      autoAdjust: 1
+      notes: 'P 2'
+      b: 0
+      e: 0
+      CP: 2
+      Q: 0
+      tl: 10
+      mcr: 61
+      tons: 61
+      type: 'Drive'
+      target: 10
+      R: 0
+
+   - 
+      B: 0
+      label: 'Jump Drive-2 (V)'
+      Sq: 210
+      name: 'Jump Drive'
+      totalTons: 105
+      category: 'Jump Drive'
+      E: 0
+      totalMCr: 105
+      eff: 1
+      S: 0
+      jumpFuelUsage: 0.1
+      basetl: 11
+      rating: 2
+      q: 0
+      r: 0
+      howMany: 1
+      code: 'V'
+      s: 0
+      autoAdjust: 1
+      notes: 'J 2'
+      b: 0
+      e: 0
+      CP: 3
+      Q: 0
+      tl: 11
+      R: 0
+      tons: 105
+      type: 'Drive'
+      target: 11
+      mcr: 105
+
+   - 
+      B: 0
+      label: 'Maneuver Drive-2 (V)'
+      Sq: 78
+      name: 'Maneuver Drive'
+      totalTons: 39
+      howMany: 1
+      E: 0
+      totalMCr: 78
+      eff: 1
+      S: 0
+      category: 'Maneuver Drive'
+      rating: 2
+      q: 0
+      r: 0
+      basetl: 9
+      code: 'V'
+      s: 0
+      autoAdjust: 1
+      notes: '2 G'
+      b: 0
+      e: 0
+      CP: 2
+      Q: 0
+      tl: 10
+      mcr: 78
+      tons: 39
+      type: 'Drive'
+      target: 10
+      R: 0
+
+   - 
+      category: 'Computer Model/2bis fib'
+      label: 'Computer Model/2bis fib'
+      Sq: 12
+      mod: 3
+      totalTons: 6
+      howMany: 1
+      totalMCr: 11.2
+      mount: 'Model/2bis'
+      eff: 1
+      name: 'Computer'
+      basetl: 1
+      q: 0
+      type: 'Ops'
+      s: 0
+      range: 'f'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 10
+      mcr: 11.2
+      config: 'Ops'
+      tons: 6
+      r: 0
+      target: 13
+
+   - 
+      category: 'AR Ant Communicator'
+      label: 'AR Ant Communicator'
+      Sq: 2
+      mod: 1
+      totalTons: 1
+      howMany: 1
+      totalMCr: 1.5
+      mount: 'Ant'
+      eff: 1
+      name: 'Communicator'
+      basetl: 8
+      q: 0
+      type: 'Sensor'
+      s: 0
+      range: 'AR'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 10
+      mcr: 1.5
+      config: 'Sensor'
+      tons: 1
+      r: 0
+      target: 11
+
+   - 
+      category: 'AR Ext Jammer'
+      label: 'AR Ext Jammer'
+      Sq: 6
+      mod: 4
+      totalTons: 3
+      howMany: 1
+      totalMCr: 2.5
+      mount: 'Ext'
+      eff: 1
+      name: 'Jammer'
+      basetl: 8
+      q: 0
+      type: 'Sensor'
+      s: 0
+      range: 'AR'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 10
+      mcr: 2.5
+      config: 'Sensor'
+      tons: 3
+      r: 0
+      target: 14
+
+   - 
+      category: 'AR Ext Radar'
+      label: 'AR Ext Radar'
+      Sq: 6
+      mod: 4
+      totalTons: 3
+      howMany: 1
+      totalMCr: 2.5
+      mount: 'Ext'
+      eff: 1
+      name: 'Radar'
+      basetl: 9
+      q: 0
+      type: 'Sensor'
+      s: 0
+      range: 'AR'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 10
+      mcr: 2.5
+      config: 'Sensor'
+      tons: 3
+      r: 0
+      target: 14
+
+   - 
+      category: 'AR Surf Scope'
+      label: 'AR Surf Scope'
+      mount: 'Surf'
+      mod: 0
+      totalTons: 0
+      howMany: 1
+      totalMCr: 1.5
+      eff: 1
+      name: 'Scope'
+      basetl: 9
+      q: 0
+      type: 'Sensor'
+      s: 0
+      range: 'AR'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 10
+      mcr: 1.5
+      config: 'Sensor'
+      tons: 0
+      r: 0
+      target: 10
+
+   - 
+      category: 'AR Ext Neutrino Detector'
+      label: 'AR Ext Neutrino Detector'
+      Sq: 6
+      mod: 4
+      totalTons: 3
+      howMany: 1
+      totalMCr: 2.5
+      mount: 'Ext'
+      eff: 1
+      name: 'Neutrino Detector'
+      basetl: 10
+      q: 0
+      type: 'Sensor'
+      s: 0
+      range: 'AR'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 10
+      mcr: 2.5
+      config: 'Sensor'
+      tons: 3
+      r: 0
+      target: 14
+
+   - 
+      category: 'AR B2 CommCaster'
+      label: 'AR B2 CommCaster'
+      Sq: 10
+      mod: 3
+      totalTons: 5
+      howMany: 1
+      totalMCr: 9
+      mount: 'B2'
+      eff: 1
+      name: 'CommCaster'
+      basetl: 8
+      q: 0
+      type: 'Weapon'
+      s: 0
+      range: 'AR'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 10
+      mcr: 9
+      config: 'Weapon'
+      tons: 5
+      r: 0
+      target: 13
+
+   - 
+      category: 'Or Bay Ortillery'
+      label: 'Or Bay Ortillery'
+      Sq: 200
+      mod: 5
+      totalTons: 100
+      howMany: 1
+      totalMCr: 30
+      mount: 'Bay'
+      eff: 1
+      name: 'Ortillery'
+      basetl: 13
+      q: 0
+      type: 'Weapon'
+      s: 0
+      range: 'Or'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 13
+      mcr: 30
+      config: 'Weapon'
+      tons: 100
+      r: 0
+      target: 18
+
+   - 
+      category: 'AR Bay Salvo Rack'
+      label: 'AR Bay Salvo Rack'
+      Sq: 100
+      mod: 5
+      totalTons: 50
+      howMany: 1
+      totalMCr: 15
+      mount: 'Bay'
+      eff: 1
+      name: 'Salvo Rack'
+      basetl: 10
+      q: 0
+      type: 'Weapon'
+      s: 0
+      range: 'AR'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 10
+      mcr: 15
+      config: 'Weapon'
+      tons: 50
+      r: 0
+      target: 15
+
+   - 
+      category: 'LR Bay KK Missile'
+      label: 'LR Bay KK Missile'
+      Sq: 200
+      mod: 5
+      totalTons: 100
+      howMany: 1
+      totalMCr: 18
+      mount: 'Bay'
+      eff: 1
+      name: 'KK Missile'
+      basetl: 11
+      q: 0
+      type: 'Weapon'
+      s: 0
+      range: 'LR'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 11
+      mcr: 18
+      config: 'Weapon'
+      tons: 100
+      r: 0
+      target: 16
+
+   - 
+      category: 'AR Bay Missile'
+      label: 'AR Bay Missile'
+      Sq: 100
+      mod: 5
+      totalTons: 50
+      howMany: 1
+      totalMCr: 5.2
+      mount: 'Bay'
+      eff: 1
+      name: 'Missile'
+      basetl: 7
+      q: 0
+      type: 'Weapon'
+      s: 0
+      range: 'AR'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 10
+      mcr: 5.2
+      config: 'Weapon'
+      tons: 50
+      r: 0
+      target: 15
+
+   - 
+      category: 'AR B2 Missile'
+      label: 'AR B2 Missile'
+      mount: 'B2'
+      name: 'Missile'
+      totalTons: 20
+      howMany: 4
+      totalMCr: 16.8
+      Sq: 40
+      eff: 1
+      mod: 3
+      basetl: 7
+      q: 0
+      r: 0
+      s: 0
+      b: 0
+      tl: 10
+      range: 'AR'
+      e: 0
+      tons: 5
+      notes: ''
+      mcr: 4.2
+      config: 'Weapon'
+      CP: 1
+      type: 'Weapon'
+      target: 13
+
+   - 
+      category: 'Vd T3 Sandcaster'
+      label: 'Vd T3 Sandcaster'
+      mount: 'T3'
+      name: 'Sandcaster'
+      totalTons: 2
+      howMany: 2
+      totalMCr: 2.2
+      Sq: 4
+      eff: 1
+      mod: 0
+      basetl: 9
+      q: 0
+      r: 0
+      s: 0
+      b: 0
+      tl: 10
+      range: 'Vd'
+      e: 0
+      tons: 1
+      notes: ''
+      mcr: 1.1
+      config: 'Weapon'
+      CP: 1
+      type: 'Weapon'
+      target: 10
+
+   - 
+      category: 'AR T3 Missile'
+      label: 'AR T3 Missile'
+      mount: 'T3'
+      name: 'Missile'
+      totalTons: 4
+      howMany: 4
+      totalMCr: 4.8
+      Sq: 8
+      eff: 1
+      mod: 0
+      basetl: 7
+      q: 0
+      r: 0
+      s: 0
+      b: 0
+      tl: 10
+      range: 'AR'
+      e: 0
+      tons: 1
+      notes: ''
+      mcr: 1.2
+      config: 'Weapon'
+      CP: 1
+      type: 'Weapon'
+      target: 10
+
+   - 
+      category: 'Vd T3 Beam Laser'
+      label: 'Vd T3 Beam Laser'
+      mount: 'T3'
+      name: 'Beam Laser'
+      totalTons: 5
+      howMany: 5
+      totalMCr: 7.5
+      Sq: 10
+      eff: 1
+      mod: 0
+      basetl: 10
+      q: 0
+      r: 0
+      s: 0
+      b: 0
+      tl: 10
+      range: 'Vd'
+      e: 0
+      tons: 1
+      notes: ''
+      mcr: 1.5
+      config: 'Weapon'
+      CP: 1
+      type: 'Weapon'
+      target: 10
+
+   - 
+      s: 0
+      b: 0
+      Sq: 4
+      tons: 2
+      notes: '40 person-months'
+      totalTons: 2
+      howMany: 1
+      e: 0
+      CP: 0
+      label: 'Life Support Long Term'
+      eff: 1
+      tl: 10
+      mcr: 2
+      totalMCr: 2
+      r: 0
+      q: 0
+      target: 10
+      type: 'Ops'
+
+   - 
+      s: 0
+      sleeps: 1
+      b: 0
+      Sq: 40
+      tons: 1
+      notes: '1 crew'
+      totalTons: 20
+      howMany: 20
+      e: 0
+      CP: 0
+      label: 'Spacer Niche'
+      eff: 1
+      tl: 10
+      mcr: 0.1
+      totalMCr: 2
+      r: 0
+      q: 0
+      target: 10
+      type: 'Crew'
+      totalSleeps: 20
+
+   - 
+      s: 0
+      b: 0
+      label: 'Crew Lounge'
+      Sq: 40
+      totalMCr: 0
+      notes: ''
+      totalTons: 20
+      howMany: 5
+      e: 0
+      CP: 0
+      eff: 1
+      tl: 10
+      mcr: 0
+      tons: 4
+      type: 'Crew'
+      q: 0
+      target: 10
+      r: 0
+
+   - 
+      s: 0
+      b: 0
+      label: 'Crew Common Fresher'
+      Sq: 4
+      totalMCr: 2
+      notes: '10 crew'
+      totalTons: 2
+      howMany: 2
+      e: 0
+      CP: 0
+      eff: 1
+      tl: 10
+      mcr: 1
+      tons: 1
+      type: 'Crew'
+      q: 0
+      target: 10
+      r: 0
+
+   - 
+      category: 'Cargo'
+      s: 0
+      Sq: 168
+      totalMCr: 0
+      notes: ''
+      totalTons: 84
+      b: 0
+      e: 0
+      tons: 84
+      label: 'Cargo Hold Basic'
+      eff: 1
+      tl: 12
+      mcr: 0
+      CP: 0
+      type: 'Payload'
+      q: 0
+      target: 12
+      r: 0
+      howMany: 1
+
+   - 
+      s: 0
+      b: 0
+      label: 'Platoon Barracks'
+      Sq: 72
+      totalMCr: 2
+      notes: '(22) 4 sq + R4 O1/O2'
+      totalTons: 36
+      howMany: 2
+      e: 0
+      CP: 0
+      eff: 1
+      tl: 10
+      mcr: 1
+      tons: 18
+      type: 'Ops'
+      q: 0
+      target: 10
+      r: 0
+
+   - 
+      s: 0
+      b: 0
+      Sq: 8
+      tons: 4
+      notes: '(5) R1 R1 R2 R2 R3'
+      totalTons: 4
+      howMany: 1
+      e: 0
+      CP: 0
+      label: 'Squad Barracks'
+      eff: 1
+      tl: 10
+      mcr: 0.2
+      totalMCr: 0.2
+      r: 0
+      q: 0
+      target: 10
+      type: 'Ops'
+
+   - 
+      s: 0
+      b: 0
+      Sq: 20
+      tons: 1
+      notes: 'max. 10 for 15 days'
+      totalTons: 10
+      howMany: 10
+      e: 0
+      CP: 0
+      label: 'Emergency Capsule'
+      eff: 1
+      tl: 10
+      mcr: 1
+      totalMCr: 10
+      r: 0
+      q: 0
+      target: 10
+      type: 'Ops'
+
+   - 
+      s: '0'
+      speed: '5G'
+      b: '0'
+      mcr: 10.2
+      label: "Ship's Boat + grapples"
+      Sq: 44
+      tons: 22
+      tl: '11'
+      totalTons: 22
+      howMany: 1
+      code: 'VlMLiQB'
+      totalMCr: 10.2
+      eff: '1'
+      mod: ''
+      load: 9
+      e: '0'
+      CP: 0
+      r: '0'
+      q: '0'
+      target: '11'
+      type: 'Vehicle'
+      av: '10,10,10,3,10,3,3'
+
+   - 
+      s: 0
+      b: 0
+      label: 'Vault'
+      Sq: 24
+      totalMCr: 0
+      notes: 'for express contracts'
+      totalTons: 12
+      howMany: 1
+      e: 0
+      CP: 0
+      eff: 1
+      tl: '10'
+      mcr: 0
+      tons: 12
+      type: 'Payload'
+      q: 0
+      target: 10
+      r: 0
+
+   - 
+      s: 0
+      b: 0
+      Sq: 8
+      CP: 1
+      notes: ''
+      totalTons: 4
+      howMany: 1
+      e: 0
+      tons: 4
+      label: 'Surgery'
+      eff: 1
+      tl: 10
+      mcr: 3
+      totalMCr: 3
+      r: 0
+      q: 0
+      target: 10
+      type: 'Ops'
+
+   - 
+      s: '0'
+      b: '0'
+      label: 'Briefing Room'
+      Sq: 16
+      totalMCr: 0.8
+      notes: ''
+      totalTons: 8
+      howMany: 2
+      e: '0'
+      CP: 1
+      eff: '1'
+      tl: '10'
+      mcr: 0.4
+      tons: 4
+      type: 'Ops'
+      q: '0'
+      target: '10'
+      mod: ''
+      r: '0'
+
+   - 
+      s: '0'
+      b: '0'
+      Sq: 48
+      CP: 1
+      notes: ''
+      totalTons: 24
+      howMany: 1
+      e: '0'
+      tons: 24
+      label: 'Backup Bridge (6/6/0)'
+      eff: '1'
+      tl: '10'
+      mcr: 1.8
+      totalMCr: 1.8
+      r: '0'
+      q: '0'
+      target: '10'
+      mod: ''
+      type: 'Ops'
+
+   - 
+      s: 0
+      b: 0
+      label: 'Magazine'
+      Sq: 40
+      totalMCr: 0
+      notes: '50 x Size-5'
+      totalTons: 20
+      howMany: 1
+      e: 0
+      CP: 0
+      eff: 1
+      tl: 10
+      mcr: 0
+      tons: 20
+      type: 'Weapon'
+      q: 0
+      target: 10
+      r: 0
+
+   - 
+      s: 0
+      b: 0
+      label: 'Magazine'
+      Sq: 100
+      totalMCr: 0
+      notes: '50 x Size-5'
+      totalTons: 50
+      howMany: 1
+      e: 0
+      CP: 0
+      eff: 1
+      tl: 10
+      mcr: 0
+      tons: 50
+      type: 'Weapon'
+      q: 0
+      target: 10
+      r: 0
+
+   - 
+      s: 0
+      b: 0
+      label: 'Magazine'
+      Sq: 20
+      totalMCr: 0
+      notes: '50 x Size-5'
+      totalTons: 10
+      howMany: 1
+      e: 0
+      CP: 0
+      eff: 1
+      tl: 10
+      mcr: 0
+      tons: 10
+      type: 'Weapon'
+      q: 0
+      target: 10
+      r: 0
+
+   - 
+      s: 0
+      b: 0
+      label: 'Magazine'
+      Sq: 40
+      totalMCr: 0
+      notes: '50 x Size-5'
+      totalTons: 20
+      howMany: 1
+      e: 0
+      CP: 0
+      eff: 1
+      tl: 10
+      mcr: 0
+      tons: 20
+      type: 'Weapon'
+      q: 0
+      target: 10
+      r: 0
+
+   - 
+      s: 0
+      b: 0
+      label: 'Magazine'
+      Sq: 120
+      totalMCr: 0
+      notes: '50 x Size-5'
+      totalTons: 60
+      howMany: 1
+      e: 0
+      CP: 0
+      eff: 1
+      tl: 10
+      mcr: 0
+      tons: 60
+      type: 'Weapon'
+      q: 0
+      target: 10
+      r: 0
+
+   - 
+      s: 0
+      b: 0
+      label: 'Magazine'
+      Sq: 12
+      totalMCr: 0
+      notes: '50 x Size-5'
+      totalTons: 6
+      howMany: 1
+      e: 0
+      CP: 0
+      eff: 1
+      tl: 10
+      mcr: 0
+      tons: 6
+      type: 'Weapon'
+      q: 0
+      target: 10
+      r: 0
+
+   - 
+      s: '0'
+      b: '0'
+      label: 'Armory'
+      Sq: 20
+      totalMCr: 2.5
+      notes: ''
+      totalTons: 10
+      howMany: 1
+      e: '0'
+      tons: 10
+      eff: '1'
+      tl: '10'
+      mcr: 2.5
+      CP: 1
+      type: 'Ops'
+      q: '0'
+      target: '10'
+      mod: ''
+      r: '0'
+
+   - 
+      category: 'AV=80. 8 Kinetic Plate'
+      label: 'AV=80. 8 Kinetic Plate'
+      Sq: 1120
+      mod: ''
+      totalTons: 560
+      howMany: 1
+      totalMCr: 0
+      mount: 'Kinetic'
+      eff: 1
+      name: 'Plate'
+      basetl: 8
+      q: 0
+      type: 'Armor'
+      s: 0
+      range: '8'
+      notes: ''
+      b: 0
+      e: 0
+      CP: 1
+      tl: 10
+      mcr: 0
+      config: 'Armor'
+      tons: 560
+      r: 0
+      target: 10
+
+   - 
+      s: 0
+      b: 0
+      name: 'Bridge'
+      Sq: 48
+      CP: 0
+      notes: '6cc 6op 0ws'
+      totalTons: 24
+      category: 'Bridge'
+      e: 0
+      tons: 24
+      label: 'Spacious Bridge'
+      eff: 1
+      tl: 10
+      mcr: 0
+      totalMCr: 0
+      r: 0
+      q: 0
+      target: 12
+      mod: 2
+      type: 'Ops'
+      howMany: 1

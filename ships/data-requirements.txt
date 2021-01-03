@@ -1,0 +1,256 @@
+Small Frequent Benefits = Score unlocks things
+	Jumps made.
+	Asteroids mined.
+	Locations Surveyed.
+	Combats.
+	Trades.
+	High Profit Trades?
+
+	Successes	Experience Level	Unlocks
+	-		0
+	1		1			
+	4		2	
+	8		3
+	16		4
+	32		5
+	64		6
+	128		7
+	256		8
+	512		9
+	1024		10
+	2048		11
+	4096		12
+	8192		13
+	16384		14
+	32768		15
+	65536		16
+	128k    	17
+	256k		18
+	512k		19
+	1m   		20
+	2m   		21
+	4m		22
+	8m		23
+	16m		24
+	32m		25
+	64m		26
+	128m		27
+	256m		28
+	512m		29
+	1g		30
+	2g		31
+	4g		32
+	8g		33			Everything
+
+Possible Game Modes
+	Trader
+	Patrol
+	Prospector
+	Pirate
+	Raider
+	Explorer
+	Courier
+
+Time
+	Jump = 7 days, modified by Quality up to +/- 1d
+	Jump Point to Starport = 2 days
+	Load/Unload cargo = 2 days
+
+Sounds
+	"Zip!" when entering Jump.
+	"Ta Daa!" when a sale is made.
+	Simple fanfares when arriving in system (Allegiance based!)
+	Pings, bangs, booms.
+
+Locations per System (9):
+	Comet (a variant of Deep Space)
+		there's a comet location.
+		It appears randomly (maybe once every 50 times?).
+		AND, it appears IF the system doesn't have any natural fuel (no GG, Starport E).
+		so there's a way to refuel.
+		there's always a comet if the system has no GG or Asteroids.
+	Asteroid Belt
+	Gas Giant
+	Ice World
+	Mainworld
+		Starport is at the Mainworld.
+		You can sell fuel to a starport!
+	Navy Base
+	Scout Base
+	Jump Point
+	Deep Space
+	Near the Star
+
+	Each location could have a Cache, Freeport, whatever.
+
+Survey
+	A successful survey produces a 1-ton cargo with the the notation "complete survey of System X. Quality= Q. It has a value at a Scout Base, based on its quality. You can buy better Survey Instruments to increase your quality (and decrease your time surveying).
+	Leads to the possibility you can find secret places in a system?
+
+Mining
+	Time spent in mining produces A Cargo.
+	Sometimes, mining asteroids produces Fuel.
+	Mining comets produces Fuel.
+	Gas Giant refueling is "fuel mining".
+
+Towing
+	Pay to move any hull any location in system.
+
+Freeport
+	Any ship with J0M0 is called a Freeport.
+	Created by "tow & tunnel" on an asteroid.
+		Creates a new Planetoid Hull with a random fuel volume generated.
+		Automatically towed to the Mainworld.
+	Can it be rated with a single byte?  What are its capabilities?
+	You can sell fuel to a Freeport!
+
+Mining Base
+	A Freeport towed to an asteroid belt.
+
+TAS Hostel
+	Freeports and Starports can have this.
+	You can buy "maps"?
+
+Octagon Society Shelter
+	Worlds can have this.
+
+Screens
+	Treasures
+		Salvage. Plunder cargo to take with you.
+	Asteroids
+	Comet
+	Gas Giant
+	Gifting to another player
+	Jump Point
+	Navy Base
+	Leaderboard
+	Recruiting
+		You can invite others to join the Space Traveller universe.
+		For each recruit, you get…
+		For each ___ recruits, you get…
+		They can join “your” company. Or later leave to form their own.
+
+	Scout Base
+	Startup
+	Ship
+		Ship Name.
+		Mission.
+		Ship Size. in 100 ‘s of tons. 1-2-3 etc.
+		Jump Capability.
+		Speed. in G’s. 1-2-3 etc
+		Cargo Capacity.
+		Number of Crew.
+		Fuel Tankage.
+		Overhead cost. Per day? Salary. Life Support. Ship Payment.
+		Equipment Installed.
+
+
+I think each ship/character should have a record of the last 10 or so star systems they have been to., If they revist a system within that time, its worthless... goods don't sell, treasures aren't there anymore.
+
+
+Marc proposes for sensors.
+ 
+	Standard Sensors. Always installed. You can always see the locations that are present. Starport, Asteroids, Gas Giant. etc. You can also always see the other ships in the system.
+ 
+	Jammers. Makes you invisible to others.
+ 
+	Survey Sensors. Required to "map" a system. Push the button (2 days elapse) and you get a 1-ton survey of the system that you can sell. It becomes a cargo.
+ 
+	Prospecting Sensors. Not required to prospect, but it helps.
+ 
+	Without Prospecting Sensors. Push the button (2 days elapse) and you have a small chance of seeing a small ore deposit which you can gather. It becomes a cargo to fill your hold. You can transport and sell it.
+ 
+	WITH Prospecting Sensors. Push the button (2 days elapse) and you have a better chance of finding an ore deposit, and a better chance of finding a treasure. They become cargoes, etc.
+
+
+
+
+Weapon			Targets		Blocked by
+A - Particle Accel       Ship           Damper            
+L - Beam Laser           Ship           Sand
+M - Missile Launcher     Ship           Laser
+T - Disruptor            Armor          Sand
+
+Defense                  Targets        Blocked by
+C - Meson Screen                        Laser        
+D - Nuclear Damper                      Meson Gun                    
+H - Hull Armor                          Disruptor
+S - Sandcaster
+
+
+
+ACS to TRADER-X16 conversion requirements
+=========================================
+INHERENT ATTRIBUTES
+ship class name			A15
+mission code			A2
+size code			A1
+hull configuration		A1
+maneuver rating			C1
+jump rating			C1
+powerplant rating		C1
+hop rating			C1
+landers				A1	L,W,-
+price (mcr)			C2
+crew comfort			C1
+passenger demand		C1
+armor value     		C1
+
+fuel hold%			C1
+fuel full%			C1
+cargo hold%			C1
+cargo full%			C1
+
+				ID,Q,rating(count),status
+
+OPERATIONS COMPONENTS
+------------------------
+bridge 
+computer
+life support
+barracks
+
+SENSORS
+------------------------
+communicator
+jammer
+neutrino det   => DETECTOR hi Q
+ems            => DETECTOR lo Q
+life detector  => SURVEY   hi Q
+proximeter     => SURVEY   lo Q
+
+ENGINE ROOM
+------------------------
+fuel "scoops"
+fuel refineries
+m-drive
+j-drive
+p-plant
+h-drive
+collector
+antimatter
+
+PAYLOAD
+------------------------
+capture tank
+mail vault
+stateroom
+lux stateroom
+low berth
+stasis berth
+
+WEAPONS
+------------------------
+missile
+beam laser     => LASER
+pulse laser    => LASER
+particle accel
+tractor/pressor
+AM missile
+
+DEFENSES
+------------------------
+damper
+sandcaster
+black globe
+

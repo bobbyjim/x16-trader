@@ -1,0 +1,194 @@
+rem
+rem -------------------------- Starport -----------------------
+rem
+; color 3,0  :rem aqua on black
+; color 5,0  :rem green on black
+; color 7,0  :rem yellow on black
+; color 13,0  :rem lt green on black
+; color 14,0  :rem lt blue on black
+; color 15,0 :rem lt grey on black
+{:enter starport}
+   color 15,0 :rem white on black
+   \gamestate = 1
+
+rem 
+rem there is only one exit out of the starport, and that is "exit starport"
+rem
+{:starport-loop}
+   on \gamestate goto {:starport concourse}, {:flight plan}, {:market}, {:shipyard}, {:hiring hall}, {:scout base}, {:naval base}, {:exit starport}
+
+   goto {:starport-loop}
+
+{:exit starport}
+   return
+
+; ----------------------------------------------------------------
+{:starport concourse}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "  KIGUKI"
+gosub {:util.banner}
+
+?:? spc(25) "welcome to ";
+gosub {:map.where am i}
+?:?
+
+?:? spc(25) "1 - file flight plan";
+
+if \dest.acol > 0 then ? " (filed)"
+if \dest.acol = 0 then ?
+
+?:? spc(25) "2 - commodity exchange"
+?:? spc(25) "3 - shipyard"
+?:? spc(25) "4 - hiring hall"
+?:? spc(25) "5 - scout base"
+?:? spc(25) "6 - naval base"
+?:? spc(25) "7 - exit starport"
+?:?
+{:concourse-get} get de$
+if de$ < "1" or de$ > "7" goto {:concourse-get}
+\gamestate = val(de$)+1
+goto {:starport-loop}
+
+; ----------------------------------------------------------------
+{:flight plan}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "  GIMGU"
+gosub {:util.banner}
+
+dw=1 :rem destination world count
+for cc = \col-2 to \col+2
+for rr = \row-2 to \row+2
+if cc < 1 or rr < 1 goto {:skip this fetch}
+if cc <> \col or rr <> \row then gosub {:fetch uwp data} 
+{:skip this fetch}
+next
+next
+
+?:? spc(25) "x: return"
+?:?
+
+\dest.acol = 0
+{:plan-get} get de$
+   if de$="x" then \gamestate = 1 :goto {:starport-loop}
+   if de$="" goto {:plan-get}
+   fp=asc(de$)
+   fp = fp - 64
+   if fp < 1 or fp > dw goto {:plan-get}
+
+   ? "target" fp "selected."
+   \dest.acol = dc(fp)
+   \dest.arow = dr(fp)
+   input "press <return>"; yn$
+   \gamestate = 1
+goto {:starport-loop}
+
+; ---------------------------------------------------------------
+;
+;   $rec  = pack 'CC', $col,$row;        # $00 - $01 
+;   $rec .= pack 'A4', $location;        # $02 - $05
+;   $rec .= ' ';                         # $06
+;   $rec .= pack 'AA', $sp, $base;       # $07 - $08
+;   $rec .= ' ';                         # $09
+;   $rec .= pack 'A15', $name;           # $0a - $18
+;   $rec .= ' ';                         # $19
+;   $rec .= pack 'AAA', $bgg, $al, $z;   # $1a - $1c
+;   $rec .= pack 'C', $hex{$tl};         # $1d
+;   $rec .= pack 'C', $tcSan;            # $1e
+;   $rec .= pack 'C', $tc1;              # $1f
+;
+; ---------------------------------------------------------------
+rem fetch uwp data(cc,rr)
+; ---------------------------------------------------------------
+{:fetch uwp data}
+
+   if dw = 17 then return
+
+   rem first point to the right bank
+   ba = int((cc-1)/4)
+   poke $9f61,11 + ba 
+
+   rem now calculate the actual column
+   ca = cc-1
+   ca = 4*(ca/4-int(ca/4))
+
+   ad = $a000 + ca * 32 * 64 + (rr-1) * 32 * 1
+   if peek(ad+10) = 32 then return
+
+   dc(dw) = cc 
+   dr(dw) = rr
+   ? spc(24) chr$(dw+64) " "; :for x = 2 to 27: ? chr$(peek(ad+x)); :next
+   if peek(ad+28) = asc(" ") then ? " \x99ok\x9b"
+   if peek(ad+28) = asc("A") then ? " \x9ecaution\x9b"
+   if peek(ad+28) = asc("R") then ? " \x96danger\x9b"
+   if dw/4 = int(dw/4) then ? spc(24);
+   if dw/4 = int(dw/4) then ? "\x97....................................\x9b"
+   dw=dw+1
+
+return
+
+; ----------------------------------------------------------------
+{:market}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "  KAR"          
+gosub {:util.banner}
+?:? spc(25) "<your cargo and value>"
+?:? spc(25) "<system cargo and value>"
+?:? spc(25) "x: return"
+{:market-get} get se$
+   if se$="x" then \gamestate = 1
+   if se$ < "1" or se$ > "x" goto {:market-get}
+goto {:starport-loop}
+
+; ----------------------------------------------------------------
+{:shipyard}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "  KHISDELIKUR"
+gosub {:util.banner}
+al$ = "I" :gosub {:ships.list} :rem show imperial ships
+?:? spc(25) "<component upgrades for sale>"
+?:? spc(25) "<new components for sale>"
+?:? spc(25) "x: return"
+{:shipyard-get} get se$
+   if se$="x" then \gamestate = 1
+   if se$ < "1" or se$ > "x" goto {:shipyard-get}
+goto {:starport-loop}
+
+; ----------------------------------------------------------------
+{:hiring hall}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "  KHIMEKKI"
+gosub {:util.banner}
+?:? spc(25) "<character list>"
+?:? spc(25) "x: return"
+{:hiring-get} get se$
+   if se$="x" then \gamestate = 1
+   if se$ < "1" or se$ > "x" goto {:hiring-get}
+goto {:starport-loop}
+
+; ----------------------------------------------------------------
+{:scout base}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "  MEDISHE"
+gosub {:util.banner}
+? spc(25) "the scouts buy your survey for Cr100,000."
+{:scout-get} get a$ : if a$="" goto {:scout-get}
+\gamestate = 1
+goto {:starport-loop}
+
+; ----------------------------------------------------------------
+{:naval base}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "  KIISHMU"
+gosub {:util.banner}
+? spc(25) "the navy buys your reconnaissance data for Cr100,000."
+{:navy-get} get a$ : if a$="" goto {:navy-get}
+\gamestate = 1
+goto {:starport-loop}
+
