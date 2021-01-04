@@ -22,6 +22,14 @@ longvar \uwp.allegiance
 longvar \uwp.zone
 
 ;
+; --------------- crew-related longvars ---------------------
+;
+longvar \crew.name
+longvar \crew.damage
+longvar \crew.count
+longvar \crew.role
+
+;
 ; --------------- combat-related longvars ---------------------
 ;
 longvar \round
@@ -37,14 +45,12 @@ longvar \component.subtype
 longvar \component.damage
 longvar \component.count
 
-longvar \crew.name
-longvar \crew.damage
-longvar \crew.count
+longvar \combat.result
 
 ;
 ; --------------- trade-related longvars ---------------------
 ;
-longvar \credits
+longvar \kcredits
 
 
 
@@ -82,7 +88,7 @@ gosub {:util.init}
 gosub {:crew.init}
 gosub {:ship.init}
 
-\credits = 100000 :rem cr
+\kcredits = 100 :rem kcr
 \col = 19         :rem col
 \row = 10         :rem row
 \range = 2        :rem range

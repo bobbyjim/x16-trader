@@ -7,22 +7,58 @@ rem
 rem  for now, let's just use a simple damage level
 {:enemy.init}
 
-\enemy.size = int(rnd(1)*8+2) :rem 200 to 900 tons
+\enemy.size = int(rnd(1)*5)+int(rnd(1)*4)+2 :rem 200 to 900 tons
 \enemy.damage = 0
 
 return
 
 
-rem --------------------- combat ----------------------
+rem ---------------------- combat -----------------------
+rem
+rem  The major outcome of combat is survival or destruction.
+rem
+rem  Destruction is the loss of the ship, and perhaps the
+rem  lives of the crew.
+rem  
+rem  Survival is enumerated as:
+rem
+rem   2-9 - you've won, and captured a 200-900 ton corsair
+rem   1   - you've run via a successful emergency jump
+rem   0   - the enemy is repelled and runs away
+rem  -1   - the enemy plunders your cargo and vehicles
+rem
 {:combat.run}
 \round = 1
 \battle = 30
 \repair = 30
 \medical = 30
+\combat.result = 0
 
 gosub {:enemy.init}
 ? hr$ "  sensop's report" :? hr$;
-? "  keptin, ve are facing a size" \enemy.size "corsair\x11"
+? "  keptin, ve are facing a" \enemy.size * 100 "ton corsair\x11"
+
+gosub {:combat.loop}
+
+if \combat.result = -1 then gosub {:remove cargo and vehicles}
+if \combat.result > 1  then gosub {:salvage corsair}
+
+return
+
+{:remove cargo and vehicles}
+return
+
+{:salvage corsair}
+? hg$ "  insystem salvage report" :?hg$;
+s = \combat.result + int(rnd(1)*\combat.result)
+?
+? "   thank you for defeating this scum. as a reward, your share"
+? "   of the corsair's salvage value comes to mcr" \combat.result "."
+
+\kcredits = \kcredits + s * 1000
+
+return
+
 
 rem --------------------- combat loop ------------------
 {:combat.loop}
@@ -46,13 +82,13 @@ rem --------------------- combat loop ------------------
    if cm = 1 then \battle = 60
    if cm = 2 then \repair = 60
    if cm = 3 then \medical = 60
-   if cm = 4 then gosub {:emergency jump} :if ej=1 then return
+   if cm = 4 then gosub {:emergency jump} :if \combat.result=1 then return
    if cm = 5 goto {:surrender}
    
    gosub {:battle action}  :input "   press <return>"; yn$
    gosub {:repair action}  :input "   press <return>"; yn$
    gosub {:medical action} :input "   press <return>"; yn$
-   gosub {:check powerplant}
+   gosub {:check powerplant} :if \combat.result=1 then return
    gosub {:check enemy} :if ww=1 then return
 
    \round = \round + 1
@@ -79,6 +115,10 @@ for x = 6 to \component.count
    \enemy.damage = \enemy.damage + d
 {:next turret}
 next
+td = \enemy.damage / (\enemy.size * 100)
+if td > 0.25 then ?:? "   the corsair's hull is showing signs of damage."
+if td > 0.5  then ?:? "   fire is detected in the corsair."
+if td > 0.75 then ?:? "   the corsair is showing serious damage."
 ?
 for x = 1 to \enemy.size
    if int(rnd(1)*6)+int(rnd(1)*6)+2 > 6 goto {:next enemy turret}
@@ -90,7 +130,7 @@ for x = 1 to \enemy.size
    if int(rnd(1)*6)+int(rnd(1)*6)+2 > 6 goto {:next enemy turret}
 
    c = int(rnd(1)*\crew.count)
-   ? "   " \crew.name$(c) " is hit."
+   ? "   \x9a" \crew.name$(c) "\x9b is hit."
    \crew.damage(c) = \crew.damage(c) + 1
 
 {:next enemy turret}
@@ -111,7 +151,7 @@ if \enemy.damage < \enemy.size * 100 then return
 
 ww = 1
 
-if \enemy.damage - \enemy.size > 100 goto {:the enemy surrenders}
+if \enemy.damage - \enemy.size * 100 > 100 goto {:the enemy surrenders}
 
 ? hr$ "  sensop's report" :? hr$;
 ? "   ze enemy runs!  ve have von!!" :return
@@ -133,19 +173,19 @@ if \component.damage(4) = \component.subtype(4)+1 goto {:powerplant warning}
 if \component.damage(4) <= \component.subtype(4)+1 then return
 if \crew.damage(2) > 1 goto {:something broke}
 ? hr$ "  engineer's report" :?hr$;
-? "  ach captain, the powerrr plant's a complete wrrreck!"
-? "  we're dead in th' waterrr!"
+? "\x11\x9e  ach captain, the powerrr plant's a complete wrrreck!"
+? "  we're dead in th' waterrr!\x9b\x11"
 goto {:boarding action}
 
 {:something broke}
 ? hr$ "  helm report" :?hr$;
-? "  captain, the engines aren't responding. the ship appears to be dead.\x11"
+? "\x11\x93  captain, the engines aren't responding. the ship appears to be dead.\x9b\x11"
 goto {:boarding action}
 
 {:powerplant warning}
-? hr$ "  engineer's report" :?hr$;
-? "  ach captain, the powerrr plant's a mess."
-? "  one more hit like that an' we'rrre finished!"
+? hr$ "  *** engineer's warning ***" :?hr$;
+? "\x11\x9e  ach captain, the powerrr plant's a mess."
+? "  one more hit like that an' we'rrre finished!\x9b\x11"
 return
 
 
@@ -162,6 +202,8 @@ if \crew.damage(2) > 1 then ? "  the engineer is hurt; no report available.\x11"
 for x = 0 to \component.count
 
    if \component.damage(x) > 0 and int(rnd(1)*\repair) > 19 then \component.damage(x) = \component.damage(x) - 1
+   if \component.damage(x) > 0 and int(rnd(1)*\repair) > 29 then \component.damage(x) = \component.damage(x) - 1
+   if \component.damage(x) > 0 and int(rnd(1)*\repair) > 39 then \component.damage(x) = \component.damage(x) - 1
 
    if x = 5 then ? dl$;
    ? "   ",
@@ -194,9 +236,11 @@ if \crew.damage(3) > 1 then ? "  the medic is hurt; no report available.\x11" :r
 ? "", "crewmember", "role      ", "wounds"
 ? hw$
 for x = 0 to \crew.count
+
    if \crew.damage(x) > 0 and int(rnd(1)*\medical) > 19 then \crew.damage(x)=\crew.damage(x)-1
    if \crew.damage(x) > 0 and int(rnd(1)*\medical) > 29 then \crew.damage(x)=\crew.damage(x)-1
    if \crew.damage(x) > 0 and int(rnd(1)*\medical) > 39 then \crew.damage(x)=\crew.damage(x)-1
+
    if x = 4 then ? dl$;
    ? "   ",
    ? left$(\crew.name$(x)+"            ",16),
@@ -230,28 +274,28 @@ if int(rnd(1)*6)+int(rnd(1)*6)+2 > 6 goto {:jump fail}
 ? "   aye, you've got it, captain!"
 for t = 1 to 1000 : tt = sqr(12345) :next
 ? "   captain, we've successfully jumped to safety!"
-ej=1 :return
+\combat.result=1 :return
 
 {:astrogator wounded}
 ? hr$ "   helm report" :? hr$;
 ? "   our astrogator is wounded, and cannot calculate a jump.\x11"
-ej=0 :return
+\combat.result=0 :return
 
 {:engineer wounded}
 ? hr$ "   helm report" :? hr$;
 ? "   our engineer is wounded, and cannot operate the jump drive.\x11"
-ej=0 :return
+\combat.result=0 :return
 
 {:jump fail}
 ? hr$ "   engineer's report" :? hr$;
 ? "   ach, we kenna jump yet captain, gimme 20 morrre minutes!\x11"
-ej=0 :return
+\combat.result=0 :return
 
 {:jump not operational}
 ? hr$ "   engineer's report" :? hr$;
 ? "   ach, the jump drives arrre doon, captain!"
 ? "   we ne kenna jump until they'rrre repairrred!\x11"
-ej=0 :return
+\combat.result=0 :return
 
 rem
 rem --------------------- surrender ----------------------
@@ -268,11 +312,11 @@ for t = 1 to 1000: tt=sqr(12345) :next
 ? "  fighting reported in all areas."
 for t = 1 to 1000: tt=sqr(12345) :next
 
+\combat.result = -1
 rr = int(rnd(1)*6)+int(rnd(1)*6)+2
-if rr < 6 then ? "  we have repelled the pirates!!" : return
+if rr < 6 then ? "  we have repelled the pirates!!" :\combat.result = 1 :return
 if rr < 8 then ? "  our cargo and vehicles have been taken." :return
 if rr < 10 then ? "  we have been stranded on a marginal world." :end
 
-? "  the crew has been sold into slavery."
-end
+? "  the crew has been sold into slavery." :end
 

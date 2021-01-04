@@ -15,13 +15,14 @@ rem    5 and up - gunners
 rem
 {:crew.init}
 
-dim \crew.name$(24), \crew.damage(24)
+dim \crew.name$(24), \crew.damage(24), \crew.role(24)
 
 \crew.count = -1
 {:read crew}
    \crew.count = \crew.count+1
    read \crew.name$(\crew.count)
    \crew.damage(\crew.count) = 0
+   \crew.role = \crew.count
    if \crew.name$(\crew.count) <> "-1" goto {:read crew}
 
 \crew.count = \crew.count - 1
