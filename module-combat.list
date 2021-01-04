@@ -47,7 +47,7 @@ rem --------------------- combat loop ------------------
    if cm = 2 then \repair = 60
    if cm = 3 then \medical = 60
    if cm = 4 then gosub {:emergency jump} :if ej=1 then return
-   if cm = 5 then gosub {:surrender} :return
+   if cm = 5 goto {:surrender}
    
    gosub {:battle action}  :input "   press <return>"; yn$
    gosub {:repair action}  :input "   press <return>"; yn$
@@ -169,9 +169,11 @@ for x = 0 to \component.count
    a = \component.subtype(x)
    b = \component.damage(x)
 
-   if b>0 and b>a and x<6 then ? "   " + chr$(28) + "out of action" + chr$(155)
+   if b>0 and b>a and x<6 then ? "   " + chr$(28);
+   if b>0 and b>a and x<6 then ? "out of action" + chr$(155)
 
-   if b>0 and (b<=a or x>5) then ? "   " + chr$(158) + "damaged" + chr$(155)
+   if b>0 and (b<=a or x>5) then ? "   " + chr$(158);
+   if b>0 and (b<=a or x>5) then ? "damaged" + chr$(155)
 
    if b=0 then ? "   " + chr$(153) + "ok" + chr$(155)
 

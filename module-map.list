@@ -41,8 +41,8 @@ rem map.where am i(col,row)
    if \uwp.sp = 69 then p = 5
    if \uwp.sp = 88 then p = 6
 
-   if \uwp.zone = "A" then p = p + 2
-   if \uwp.zone = "R" then p = p + 4
+   if \uwp.zone = 65 then p = p + 2
+   if \uwp.zone = 82 then p = p + 4
 
    if int(rnd(1)*6)+int(rnd(1)*6)+2 < p then p = 1 :return
    p = 0 :return

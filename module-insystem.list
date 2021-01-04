@@ -85,16 +85,13 @@ gosub {:util.banner}
 \dest.acol = 0 :rem unset flight plan
 \dest.arow = 0
 
-input "press <return>"; de$
-
-\gamestate = 1
-
 ?:? spc(25) "welcome to ";
 gosub {:map.where am i}
 ?:?
 
-if p = 1 then gosub {:combat.run}
+if p = 1 then p = 0 :gosub {:combat.run}
 
 input "press <return>"; yn$
+\gamestate = 1
 
 goto {:system-loop}
