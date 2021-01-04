@@ -5,14 +5,52 @@
 ; -------------------------------------------------------------
 color 15,0 :?chr$(147)	:rem lt grey on black
 
-longvar \credits
+;
+; ----------------- map-related longvars ----------------------
+;
 longvar \gamestate
 longvar \col
 longvar \row
 longvar \range
 longvar \dest.acol
 longvar \dest.arow
+
+longvar \uwp.sp
+longvar \uwp.bases
+longvar \uwp.bgg
 longvar \uwp.allegiance
+longvar \uwp.zone
+
+;
+; --------------- combat-related longvars ---------------------
+;
+longvar \round
+longvar \battle
+longvar \repair
+longvar \medical
+
+longvar \enemy.size
+longvar \enemy.damage
+
+longvar \component.label
+longvar \component.subtype
+longvar \component.damage
+longvar \component.count
+
+longvar \crew.name
+longvar \crew.damage
+longvar \crew.count
+
+;
+; --------------- trade-related longvars ---------------------
+;
+longvar \credits
+
+
+
+;
+; -------------- longvar declarations done -------------------
+;
 
 dim bu$(30) :rem line buffer
 dim dx(16),dy(16),dc(16),dr(16) :rem destination vectors
@@ -41,6 +79,8 @@ load "banner.bin"        ,8, 4,$a000 :rem bank 4
 load "spinward.space.bin",8,11,$a000 :rem bank 11 and up
 
 gosub {:util.init}
+gosub {:crew.init}
+gosub {:ship.init}
 
 \credits = 100000 :rem cr
 \col = 19         :rem col

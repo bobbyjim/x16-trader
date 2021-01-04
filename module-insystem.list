@@ -88,4 +88,13 @@ gosub {:util.banner}
 input "press <return>"; de$
 
 \gamestate = 1
+
+?:? spc(25) "welcome to ";
+gosub {:map.where am i}
+?:?
+
+if p = 1 then gosub {:combat.run}
+
+input "press <return>"; yn$
+
 goto {:system-loop}

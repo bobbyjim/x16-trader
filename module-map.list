@@ -26,8 +26,26 @@ rem map.where am i(col,row)
 
    ad = $a000 + ca * 32 * 64 + (\row-1) * 32 * 1
    for x = 10 to 24: ? chr$(peek(ad+x)); :next
+   \uwp.sp = peek(ad+7)
+   \uwp.bases = peek(ad+8)
+   \uwp.bgg = peek(ad+26)
    \uwp.allegiance = peek(ad+27)
-return
+   \uwp.zone = peek(ad+28)
+
+   rem check for pirates
+   p = 3
+   if \uwp.sp = 65 then p = 1
+   if \uwp.sp = 66 then p = 2
+   if \uwp.sp = 67 then p = 3
+   if \uwp.sp = 68 then p = 4
+   if \uwp.sp = 69 then p = 5
+   if \uwp.sp = 88 then p = 6
+
+   if \uwp.zone = "A" then p = p + 2
+   if \uwp.zone = "R" then p = p + 4
+
+   if int(rnd(1)*6)+int(rnd(1)*6)+2 < p then p = 1 :return
+   p = 0 :return
 
 ; ------------------------------------------
 ;

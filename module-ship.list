@@ -1,0 +1,50 @@
+;
+;  Module Player's Ship
+;
+rem
+rem ----------------- initialize ship ------------------
+rem
+rem   "subtype" is drive rating, weapon subtype, or fuel amount.
+rem
+rem   component 0 is "the hull".
+rem   component 1 is streamlining, generally.
+rem   component 2 is the maneuver drive.
+rem   component 3 is the jump drive.
+rem   component 4 is the power plant.
+rem   component 5 is fuel tankage.
+rem   component 6 and up are defenses.
+rem
+{:ship.init}
+
+dim \component.label$(40), \component.subtype(40), \component.damage(40)
+
+\component.count=-1
+{:read component}
+   \component.count=\component.count+1
+   read \component.label$(\component.count)
+   read \component.subtype(\component.count)
+   \component.damage(\component.count) = 0
+   if \component.label$(\component.count) <> "-1" goto {:read component}
+
+\component.count = \component.count - 1
+
+data hull,         	0 
+data streamlining, 	0 
+data maneuver drive,    1 
+data jump drive,        1 
+data power plant,       1 
+data fuel tankage,      10
+data turret 1,      	2
+data turret 2,     	2
+
+rem data turret 1l,   21,   turret 2l,  22,  turret 3l,  23
+rem data turret 1m,   31,   turret 2m,  32,  turret 3m,  33
+rem data turret 1s,   41,   turret 2s,  42,  turret 3s,  43
+rem
+rem data barbette l,  53,   bay l,      54
+rem data barbette m,  63,   bay m,      64
+rem data barbette s,  73,   bay s,      74
+rem data barbette a,  83,   bay a,      84
+data -1, -1
+
+return

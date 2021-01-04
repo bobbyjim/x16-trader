@@ -1,0 +1,31 @@
+;
+;  Crew Module 
+;
+rem 
+rem ---------------- initialize crew ----------------
+rem
+rem  crew roles are individualized as follows:
+rem
+rem    0 - pilot
+rem    1 - astrogator
+rem    2 - engineer
+rem    3 - medic
+rem    4 - steward/freightmaster
+rem    5 and up - gunners
+rem
+{:crew.init}
+
+dim \crew.name$(24), \crew.damage(24)
+
+\crew.count = -1
+{:read crew}
+   \crew.count = \crew.count+1
+   read \crew.name$(\crew.count)
+   \crew.damage(\crew.count) = 0
+   if \crew.name$(\crew.count) <> "-1" goto {:read crew}
+
+\crew.count = \crew.count - 1
+
+data jamison, akrind, kodray, arrlanroughl, reynaldi, sharik, -1
+
+return
