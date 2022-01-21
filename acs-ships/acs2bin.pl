@@ -22,9 +22,11 @@ my %owner = (
     Droyne              => 'D',
     Humbolt             => 'H',
     Imperial            => 'I',
+    'Ling Standard'     => 'I',
     'Judges Guild'      => 'J',
     Delta               => 'L',
     'Al Morai'          => 'M',
+    'Oberlindes'        => 'I',
     'Paranoia Press'    => 'P',
     Republic            => 'R',
     'Republic of Regina' => 'R',
@@ -45,9 +47,9 @@ my %emplacements =  # 3 bits
     'T4'    => 64,   # downgrade the T4
     'B1'    => 96,
     'B2'    => 128,
-    'Bay'   => 160,
-    'LBay'  => 196,
-    'Main'  => 224,
+    'Ba'    => 160,
+    'L'     => 196,
+    'M'     => 224,
 );
 
 my %supportedWeapons =  # 5 bits
@@ -203,7 +205,7 @@ foreach my $acsfile (sort <*.acs>)
     my $mcrp    = int(100 * $mcr / $tons);
     $mcrp = 127 if $mcrp > 127;
 
-    my $ownerName   = $yaml->{ 'Owner' } || 'Universal';
+    my $ownerName   = $yaml->{ 'Owner' } || 'Imperial';
     $ownerName = 'Republic' if $ownerName =~ /Republic of Reg/;
     $ownerName = 'Paranoia Press' if $ownerName =~ /Paranoia Press/;
 
@@ -255,16 +257,19 @@ foreach my $acsfile (sort <*.acs>)
         my ($wpn)  = $1 if $weapon =~ /$empl (.*)$/;
         next unless $wpn;
         next if $wpn =~ /Empty/;
-
         next unless $supportedWeapons{ $wpn };
         
+        $empl = 'Ba' if $empl eq 'Bay';
+        $empl = 'L'  if $empl eq 'LBay';
+        $empl = 'M'  if $empl eq 'Main';
+
         my $value = $supportedWeapons{ $wpn } + $emplacements{ $empl };
 
         #print STDERR sprintf "$value [%s, %s]\n", $empl, $wpn;
 
         unshift @weapons, $value;
 
-        push @weaponSummary, $empl . ' ' . $weaponAbbrev{ $wpn };
+        push @weaponSummary, $empl . uc $weaponAbbrev{ $wpn };
     }
     @weapons = @weapons[0..7]; # take the first 8
 #    print STDERR "weapons: @weapons\n";
@@ -298,7 +303,7 @@ foreach my $acsfile (sort <*.acs>)
     #  - small craft
     #
 
-    push @out, sprintf "%s %s-%s%s%s%s %-15s      +%s      %2s   %2s:%-2s   %3s   %3s  %2s:%-2s   %3s %s\n",
+    push @out, sprintf "%s %s-%s%s%s%s %-15s      +%s    %2s  %2s:%-2s   %3s   %3s   %2s:%-2s   %3s %s\n",
         chr($owner+64), $mission, $hull, $cfg, $m, $j, 
         $name,
         $bridge,
@@ -423,8 +428,8 @@ for (sort @out)
     unless ($index % 10)
     {
        print "\n";
-       print "A QSP    Name               Bridge  Comp  SS:WS  Cargo  Fuel  SR:LB   MCr Weapons\n";
-       print "- ------ ------------------ ------  ----  -----  -----  ----  -- --  ---- ------------\n";
+       print "A QSP    Name              Bridge  cpu  SS:WS  Cargo  Fuel  SR:LB   MCr Weapons\n";
+       print "- ------ ----------------- ------  ---  -----  -----  ----  -- --  ---- ------------\n";
     }
 
     print $_;
