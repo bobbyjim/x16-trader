@@ -1,0 +1,63 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:40 2021
+Mission: Cruiser
+QSP: C-VB22
+TL: 10 
+Name: Jarl 
+Tons: 2000
+Actual Tons: 2005
+Overtonnage: 5
+
+MCr: 472.5
+Owner: Sword Worlds
+
+Crew comfort: -2
+Passenger demand: -5
+Cargo: 84
+FuelPercentage: 12
+Components:
+ - HH0   B  1 00000 2000   60  Braced Hull
+ - AA1  80  1 00000 560    0  AV=80. 8 Kinetic Plate
+ - DF0   -  1 00000 400    0  Jump Fuel (2  parsecs)
+ - DF0   -  1 00000  40    0  Plant Fuel (one month)
+ - DP2   V  1 00000  61   61  PowerPlant-2 (V)
+ - DJ3   V  1 00000 105  105  Jump Drive-2 (V)
+ - DM2   V  1 00000  39   78  Maneuver Drive-2 (V)
+ - OC1   3  1 00000   6  11.2  Computer Model/2bis fib
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OO0   -  2 00000  18    1  Platoon Barracks
+ - OO0   -  1 00000   4  0.2  Squad Barracks
+ - OO0   - 10 00000   1    1  Emergency Capsule
+ - OO1   -  1 00000   4    3  Surgery
+ - OO1   -  2 00000   4  0.4  Briefing Room
+ - OO1   -  1 00000  10  2.5  Armory
+ - OB0   2  1 00000  24    0  Spacious Bridge
+ - SS1   1  1 00000   1  1.5  AR Ant Communicator
+ - SS1   4  1 00000   3  2.5  AR Ext Jammer
+ - SS1   4  1 00000   3  2.5  AR Ext Radar
+ - SS1   -  1 00000   0  1.5  AR Surf Scope
+ - SS1   4  1 00000   3  2.5  AR Ext Neutrino Detector
+ - WW1   3  1 00000   5    9  AR B2 CommCaster
+ - WW1   5  1 00000 100   30  Or Bay Ortillery
+ - WW1   5  1 00000  50   15  AR Bay Salvo Rack
+ - WW1   5  1 00000 100   18  LR Bay KK Missile
+ - WW1   5  1 00000  50  5.2  AR Bay Missile
+ - WW1   3  4 00000   5  4.2  AR B2 Missile
+ - WW1   -  2 00000   1  1.1  Vd T3 Sandcaster
+ - WW1   -  4 00000   1  1.2  AR T3 Missile
+ - WW1   -  5 00000   1  1.5  Vd T3 Beam Laser
+ - CO0   - 20 00000   1  0.1  Spacer Niche
+ - CO0   -  5 00000   4    0  Crew Lounge
+ - CO0   -  2 00000   1    1  Crew Common Fresher
+ - PC0   -  1 00000  84    0  Cargo Hold Basic
+ - PO0   -  1 00000  12    0  Vault
+ - PO0   -  1 00000  20    0  Magazine
+ - PO0   -  1 00000  50    0  Magazine
+ - PO0   -  1 00000  10    0  Magazine
+ - PO0   -  1 00000  20    0  Magazine
+ - PO0   -  1 00000  60    0  Magazine
+ - PO0   -  1 00000   6    0  Magazine
+ - VO0  Vl  1 00000  22  10.2  Ship's Boat + grapples
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

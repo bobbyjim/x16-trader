@@ -213,14 +213,14 @@ components:
       e: 0
       CP: 0
       mcr: 0
-      tons: 3
+      tons: 6
       r: 0
       label: 'Cargo Hold Basic'
       q: 0
       notes: ''
       howMany: ''
       Sq: 6
-      totalTons: 3
+      totalTons: 6
 
    - 
       s: 0
@@ -711,7 +711,7 @@ header:
       There are four staterooms and no low berths. The ship has one hardpoint; installed on the hardpoint is one double turret beam laser. There is one ship's vehicle: an air/raft. Cargo capacity is 3 tons. The hull has scoops, bins, and a purification plant for wilderness refueling.
       
       The Scout, by its nature, is built as a one-person operation: a single crew person can handle all operations, albeit inefficiently.  On the other hand, the Scout can carry three non-commercial passengers in relative comfort, or up to seven with double occupancy.
-   totalCargoSpace: 3
+   totalCargoSpace: 6
    config: 'L'
    passengers: 1
    demand: -5

@@ -1,0 +1,312 @@
+
+rem -------------------------------------------
+rem astrogation.init
+rem -------------------------------------------
+{:astrogation.init}
+longvar \astro.uwp
+longvar \astro.left
+longvar \astro.row
+longvar \astro.col
+
+dim \astro.row(8,8)
+dim \astro.col(8,8)
+dim \astro.uwp$(8,8)
+dim \astro.left$(9)
+
+\astro.left$(0)=""
+\astro.left$(1)=""
+for x=2to9 :\astro.left$(x)=\astro.left$(x-1)+"\x1d\x1d\x1d\x1d\x1d":next
+
+return
+
+rem -------------------------------------------
+rem astrogation.show
+rem -------------------------------------------
+{:astrogation.show}
+\destination.name$ = ""
+
+cls()
+gosub {:do a jump}  :rem do a jump
+GOSUB {:status bar} :REM Status BAR
+GOSUB {:starchart} :REM STARCHART
+GOSUB {:status bar} :REM Status BAR
+GOSUB {:uwps} :REM UWPS
+
+rem
+rem process a command
+rem
+{:astrogation shell}
+
+gosub {:util.lowclear}
+
+? \down$(40) "astrogation shell":?
+if \destination.name$ <> "" then input "hex number or [q]";co$
+if \destination.name$ = ""  then input "hex number";co$
+if \destination.name$ <> "" and co$="q" goto {:astrogation done}
+
+for c = 1 to 8
+   for r = 1 to 8
+      uw$=\astro.uwp$(c,r)
+      ar =\astro.row(c,r)
+      ac =\astro.col(c,r)
+      hx$=left$(uw$,4)
+      if hx$=co$ then gosub {:query uwp}
+   next
+next
+
+goto {:astrogation shell}
+
+{:astrogation done}
+return
+
+rem --------------------------
+rem 
+rem selected a uwp
+rem
+rem --------------------------
+{:query uwp}
+rem hx$ has the hex number
+rem uw$ has the uwp line
+na$ = mid$(uw$,6,15)
+sp$ = mid$(uw$,22,1)
+hy$ = mid$(uw$,25,1)
+po$ = mid$(uw$,26,1)
+gb$ = mid$(uw$,32,1)
+zo$ = mid$(uw$,33,1)
+ba$ = mid$(uw$,34,1)
+
+?
+
+if sp$=" " then ? "\x11this hex has no star system." :goto {:world synopsis done}
+
+? " - name      : "; na$
+? " - starport  : "; sp$; 
+if sp$="a" then ? " (excellent)"
+if sp$="b" then ? " (good)"
+if sp$="c" then ? " (average)"
+if sp$="d" then ? " (poor)"
+if sp$="e" then ? " (bedrock)"
+if sp$="x" then ? " (none)"
+
+? " - bases     : ";
+if ba$="s" then ? "scout"
+if ba$="n" then ? "navy"
+if ba$="2" then ? "scout and navy"
+if ba$="a" then ? "scout and navy"
+if ba$="b" then ? "way station and navy"
+if ba$="w" then ? "way station"
+if ba$="d" then ? "navy depot"
+if ba$=" " then ? "none"
+
+? " - tas rating: ";
+if zo$=" " then ? "green (safe)"
+if zo$="a" then ? "amber (warning)"
+if zo$="r" then ? "red (danger)"
+
+? " - gas giants: ";
+if gb$="G" or gb$="2" then ? "yes"
+if gb$="B" or gb$=" " then ? "no"
+
+? " - population: ";
+if po$<"6" then ? "transient"
+if po$="6" then ? "millions (human)"
+if po$="7" then ? "ten millions (native), millions (human)"
+if po$="8" then ? "100 millions (native), ten millions (human)"
+if po$>"8" then ? "billions (native and human)"
+{:world synopsis done}
+rem
+rem distance(ca,ra,cb,rb)->d%
+rem
+ca=\location.col:ra=\location.row
+cb=ac-3:rb=ar-3
+gosub {:util.distance-formula}
+if d% > \ship.jump.rating goto {:jump too far} :rem too far
+?
+input "set as destination"; yn$
+if yn$<>"y" then return
+\destination.name$ = na$
+\destination.row = ar-3
+\destination.col = ac-3
+home(): ? tab(43) \destination.name$
+return
+
+rem jump too far
+{:jump too far}
+? 
+? "that world is" d% "parsecs away."
+input "press <return>"; yn$
+return
+
+rem --------------------------
+rem
+REM draw STATUS BAR
+rem
+rem --------------------------
+{:status bar}
+home()
+? "  Location: " \location.name$ "  Destination: " \destination.name$ 
+print "\x11 " \hr.high$
+RETURN
+
+rem --------------------------
+rem
+rem jump!
+rem
+rem actually this is where we
+rem read in ram bank data
+rem --------------------------
+{:do a jump}
+cls()
+? "initiating jump."
+a=rnd(1)*\astrogator.skill
+if a < 1 then ? "your astrogator looks nervous."
+if a > 2 then ? "your astrogator looks happy." :goto {:now do the jump}
+if a > 4 then ? "your astrogator looks smug."
+
+rem
+rem read ram bank data
+rem
+{:now do the jump}
+lr = \location.row - 3
+lc = \location.col - 3
+da = 0 :rem day in jump
+
+for r = 1 to 8
+   for c = 1 to 8
+
+      w=ti+100/(4*\astrogator.skill+1)
+{:astrogation loop}
+      if w>ti goto {:astrogation loop}
+
+      \astro.uwp$(c,r) = "                                  "
+      \astro.row(c,r) = -1
+      \astro.col(c,r) = -1
+
+      if (lc+c<0) or (lr+r<0) goto {:skip}
+      o = (lc+c) * 64 + lr+r  :rem record num
+      ba = 10 + int(o/128)
+      o = o - 128*int(o/128)
+      poke $9f61,ba
+
+      ad=$a000 + o*64
+      \astro.col(c,r)=peek(ad)+1
+      \astro.row(c,r)=peek(ad+1)+1
+      if peek(ad+12) = 32 goto {:skip uwp string}
+      \astro.uwp$(c,r) = ""
+      for z = 7 to 41
+         \astro.uwp$(c,r)=\astro.uwp$(c,r)+chr$(peek(ad+z))
+      next z
+{:skip uwp string}
+
+      if da = 0 goto {:skip}
+      home()
+      ? chr$(153); chr$(209+6*int(rnd(1)*2)); chr$(30);
+      ? " day" da "in jumpspace. please wait..."
+       
+{:skip}
+   next c
+   da = da + 1
+   if da = 1 then cls()
+next r
+
+\location.name$ = mid$(\astro.uwp$(4,4),6,15)
+return
+
+rem -------------------------------------------
+rem
+REM draw 8 x 8 starchart
+rem why 8x8? well the sidebar can hold maybe
+rem 55 entries.  an 8x8 grid will have 55 or
+rem fewer worlds at 85% capacity, which is 
+rem unreasonably dense, so we're ok.
+rem this also leaves 39 characters for the 
+rem uwp data to the right, which is adequate.
+rem
+rem -------------------------------------------
+{:starchart}
+? \down$(3)
+PRINT"ÕÀÀÀÀ®    °ÀÀÀÀ®    °ÀÀÀÀ®    °ÀÀÀÀ®
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀÉ
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³
+PRINT"Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"ÊÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý
+PRINT"     Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý
+PRINT"     ­ÀÀÀÀœ    ­ÀÀÀÀœ    ­ÀÀÀÀœ    ­ÀÀÀÀË
+
+rem 
+rem populate starchart 
+rem 
+for c = 1 to 8
+   ? "\x13\x11\x11\x11\x11"
+   if c/2 = int(c/2) then ?:?
+   for r = 1 to 8
+      uw$ = \astro.uwp$(c,r)
+      hx$ = left$(uw$,4)
+      sp$ = mid$(uw$,22,1)
+      gb$ = mid$(uw$,32,1)
+      zo$ = mid$(uw$,33,1)
+      ba$ = mid$(uw$,34,1)
+      if gg$="G" then gg$=chr$(209)
+      if sp$=" " then hx$=""
+      if zo$="a" then sp$="Ý"+chr$(158)+chr$(18)+sp$+chr$(146)+chr$(30)
+      if zo$="r" then sp$="Ý"+chr$(150)+chr$(18)+sp$+chr$(146)+chr$(30)
+      if zo$=" " then sp$="Ý"+sp$
+      ? \astro.left$(c) ; sp$; ba$ " " gb$ "\x9d\x9d\x9d\x9d"
+      ? \astro.left$(c) ; "\x11\x1d" hx$ "\x11"
+   next
+next
+RETURN
+
+rem 
+REM show WORLD LIST
+rem we can fit display maybe 55 worlds max
+rem 
+rem also, we need enough horizontal space:
+rem hex + uwp + name is pushing 32 characters.
+rem add in bases and we're at 34 or 35. call
+rem it 36 characters, at least, assuming I
+rem don't think of something else that's critical
+rem for this display.
+rem 
+{:uwps}
+PRINT "\X13\X11\X11\X11"
+for c = 1 to 8
+   FOR r = 1 TO 8
+      uw$ = \astro.uwp$(c,r)
+      zo$ = mid$(uw$,33,1)
+      pr = asc(mid$(uw$,6,1))
+      if zo$="a" then uw$=chr$(158)+uw$+chr$(30)
+      if zo$="r" then uw$=chr$(150)+uw$+chr$(30)
+      if pr <> 32 then print tab(42) uw$
+   next
+NEXT
+RETURN
+

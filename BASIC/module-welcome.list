@@ -1,0 +1,31 @@
+{:welcome}
+cls()
+? "traveller-trader"
+?
+forx=1to80:?"-";:next
+?
+input "what is your name"; na$
+if len(na$)<3 goto {:welcome}
+?
+cls()
+? "trader " na$ ", welcome to the spinward marches.
+?
+? "trade your way to the regina system without going bankrupt or being
+? "captured by space pirates.  you have a far trader with a cargo hold
+? "full of trade goods to get you started.
+?
+? "suggested route:
+?
+? "lunion -> resten     -> quiru 
+? "       -> cogri      -> equus
+? "       -> vreibefger -> pirema 
+? "       -> k'kirka    -> treece
+? "       -> yori       -> regina.
+?
+? "good luck!"
+?
+input "press <return> to begin";f$
+t=rnd(-ti)
+
+return
+

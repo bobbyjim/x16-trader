@@ -1,0 +1,92 @@
+;
+;
+;  Testing a trade interface to Traveller Trader
+;
+;
+dim gs$(20), pr(20), sh(20), sp(20), mu(20)
+pc=0
+read g$,pr
+{:read goods}
+   gs$(pc) = g$ 
+   pr(pc) = pr
+   pc=pc+1
+   read g$,pr
+   if g$ <> "-1" then {:read goods}
+
+data ag ni ri, 8, ba de po, 1,  de hi   ,5
+data fl ni   , 4, hi in   , 9,  lo va   ,4
+data na ni po, 4, ni ri   , 8
+data -1,-1
+
+pc=pc-1
+
+input "press <enter>"; ee$ :x=rnd(-ti)
+
+y=0
+for x = 0 to pc
+   sp(x) = int(rnd(1)*20+1)
+   mu(x) = 1
+   if rnd(1) > 0.5 then mu(x) = 5
+   if rnd(1) > 0.5 then mu(x) = 10
+next x
+
+cr = 1000
+
+er$ = "        \x9d\x9d\x9d\x9d\x9d\x9d\x9d\x9d"
+wl$ = ""
+for x = 0 to 79: wl$=wl$+chr$(195) :next
+rl$ = chr$(28) + wl$ + chr$(155)
+
+rem 155 = lt grey
+
+color 15,0
+.cls 
+{:main loop}
+.home
+
+? "cursor up/down to navigate, left/right to buy/sell"
+? "\x11"
+? "type 'b' to buy all of a commodity"
+? "type 's' to sell all of a commodity"
+? wl$
+
+? "\x11\x11" spc(10) "Credits: " er$; cr * 100 "\x11\x11"
+? rl$
+
+? spc(10) "t on",  "        ", " lots at",  " lot" 
+? spc(10) "board", "lot type", " starport", " size", "kcr/t\x11"
+? rl$
+
+for x = 0 to pc
+   ? spc(10);
+   if x=y then ? er$;
+   ? sh(x) * mu(y),
+   if x=y then ? "\x12" ;
+   ? gs$(x),
+   ? "\x92" er$ "  " sp(x), mu(x), pr(x) "\x11"
+next x
+
+
+{:listen}
+x=0
+get a$: if a$="" goto {:listen}
+if a$ = "\x11" and y < pc then y=y+1
+if a$ = "\x91" and y > 0 then y=y-1
+if a$ = "\x9d" then x=-1
+if a$ = "\x1d" then x=+1
+if a$ = "b" then x=-2
+if a$ = "s" then x=2
+
+c1 = 0
+c = pr(y) * mu(y) * 10
+ca = c * sp(y)
+cb = c * sh(y)
+
+if x=-2 and sp(y)>0 and cr>=ca then sh(y)=sh(y)+sp(y):sp(y)=0:c1=-ca
+if x=-1 and sp(y)>0 and cr>=c then sp(y)=sp(y)-1 :sh(y)=sh(y)+1 :c1=-c
+if x=1  and sh(y)>0 then sp(y)=sp(y)+1 :sh(y)=sh(y)-1 :c1=c
+if x=2  then sp(y)=sp(y)+sh(y):sh(y)=0:c1=cb
+cr=cr+c1
+
+goto {:main loop}
+

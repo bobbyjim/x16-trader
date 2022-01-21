@@ -84,7 +84,7 @@ foreach(@data)
 
    # ---------------------------------------------
    #
-   #   Gently manage starport + base codes
+   #   Gently manage base codes
    #
    # ---------------------------------------------
    $ba =~ s/[JK]/N/;
@@ -214,13 +214,13 @@ foreach(@data)
    # --------------------------------------
    my $rec;
 
-   $rec  = pack 'CC', $col,$row; 	# $00 - $01 
-   $rec .= pack 'A4', $location;    	# $02 - $05
-   $rec .= ' ';				# $06
+   $rec  = pack 'CC', $col,$row; 	# $00 - $01   0-255 x 0-255
+   $rec .= pack 'A4', $location;    # $02 - $05   0101-3240
+   $rec .= ' ';				         # $06
    $rec .= pack 'AA', $sp, $base;	# $07 - $08
-   $rec .= ' ';				# $09
-   $rec .= pack 'A15', $name;           # $0a - $18
-   $rec .= ' ';				# $19
+   $rec .= ' ';				         # $09
+   $rec .= pack 'A15', $name;       # $0a - $18
+   $rec .= ' ';				         # $19
    $rec .= pack 'AAA', $bgg, $al, $z;   # $1a - $1c
    $rec .= pack 'C', $hex{$tl};  	# $1d
    $rec .= pack 'C', $tcSan;      	# $1e

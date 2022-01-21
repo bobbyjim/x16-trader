@@ -1,0 +1,47 @@
+Far Trader A2-BS12 Empress Nicholle MCr59.4
+
+Builder: Clan Severn
+Disposition: In Service
+
+
+
+Crew comfort:     +0
+Passenger demand: +0
+
+[code]
+   Tons	 Component                          	  MCr	Notes
+-------	 -----------------------------------	-----	--------------------
+    200	 Streamlined hull                   	   14	
+      2	 Landing legs with pads             	    2	
+      0	 AV=12. 1 Blast Plate               	    0	
+     40	 Jump Fuel (2  parsecs)             	    0	2 parsec jump, at 20t per parsec
+      4	 Plant Fuel (one month)             	    0	one month
+     15	 Jump Drive-2 (B)                   	   15	J 2
+      2	 Maneuver Drive-1 (A)               	    4	1 G
+      7	 PowerPlant-2 (B)                   	    7	P 2
+      2	 Fuel Scoops with Purifier          	  1.1	100 t/hr
+      2	 Fuel Intakes with Purifier         	  1.1	40 t/hr
+      1	 Vd T3 Hybrid L-S-M                 	    2	
+      1	 Computer Model/1bis std            	    3	
+      1	 Life Support Luxury                	    1	10 high passengers
+      1	 Life Support Adaptable             	    1	10 sophonts
+    0.5	 Med Console                        	  0.5	
+      2	 Clinic                             	    1	
+      2	 Life Support Long Term             	    2	40 person-months
+     12	 Spacious Bridge                    	  0.6	1cc 4op 1ws
+      4	 2x Crew Double                     	  0.2	#2 2 crew
+      2	 Crew Stateroom                     	  0.1	1 crew
+     15	 15x Crew Commons                   	    0	#15 
+      1	 2x Crew Shared Fresher             	    1	#2 4 crew
+     61	 Cargo Hold Basic                   	    0	
+      2	 4x Low Berth                       	  0.4	#4 1 passenger
+      6	 3x Standard Stateroom              	  0.3	#3 1 passenger
+    0.5	 Shared Fresher                     	  0.5	4 passengers
+      8	 2x Passenger Commons               	    0	#2 
+      4	 Air/Raft Enclosed                  	  0.1	
+      2	 Hull Niche                         	  1.5	Half Vehicle Volume
+[/code]
+
+[code]
+[/code]
+

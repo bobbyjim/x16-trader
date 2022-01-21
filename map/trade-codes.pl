@@ -1,36 +1,97 @@
 #!/usr/bin/env perl
+#use UwpTables;
 
 my $epochs = shift || 1000;
+my $search_mode = shift;
+
+die "please use search_mode instead\n  SYNOPSIS: $0 1 SEARCH" if $epochs > 100000000;
 
 my @sp = qw/- - A A A B B C C D E E X/;
 my @hex = (0..9, 'A'..'H', 'J');
 
 my %tradeCodes = ();
 
+my ($siz, $atmo, $dm, $hyd, $pop, $gov, $law, $uwp, $tradeClasses);
+
+my $count = 0;
+
 for (1..$epochs)
 {
    print "$_\n" unless $_ % 100000;
 
-   my $siz = int(rand(6))+int(rand(6));
+   $siz = int(rand(6))+int(rand(6));
    $siz = 9+int(rand(6)+1) if $siz == 10;
 
-   my $atm = range( flux($siz), 0, 15 );
-   $atm = 0 if $siz = 0;
+   if ($siz == 0)
+   {
+      $atm = 0;
+   }
+   else
+   {
+      $atm = int(rand(6))-int(rand(6)) + $siz;
+      $atm = $atm<0? 0 :
+             $atm>15? 15 :
+             $atm;
+   }
 
-   my $dm = 0;
-   $dm = -4 if $atm < 2 || $atm > 9;
-   my $hyd = range( flux($atm+$dm), 0, 10 );
+   if ($siz < 2)
+   {
+      $hyd = 0;
+   }
+   else
+   {
+      $dm = ($atm < 2 || $atm > 9)? -4 : 0;
+      $hyd = int(rand(6))-int(rand(6)) + $atm + $dm;
+      $hyd = $hyd<0? 0 :
+             $hyd>10? 10 :
+             $hyd;
+   }
 
-   my $pop = int(rand(6))+int(rand(6));
-   $pop = roll2dm2(5) if $pop == 10;
+   $pop = int(rand(6))+int(rand(6));
+   $pop = int(rand(6))+int(rand(6)) + 5 if $pop == 10;
    
-   my $gov = range(flux($pop), 0, 15 );
-   my $law = range(flux($gov), 0, 18 );
+   $gov = int(rand(6))-int(rand(6)) + $pop;
+   $gov = $gov<0? 0 :
+          $gov>15? 15 :
+          $gov;
 
-   my $uwp = $hex[$siz] . $hex[$atm] . $hex[$hyd] . $hex[$pop] . $hex[$gov] . $hex[$law];
-   my $tradeClasses = getTradeClasses($uwp);
+   $law = int(rand(6))-int(rand(6)) + $gov;
+   $law = $law<0? 0 :
+          $law>18? 18 :
+          $law;
 
-   $tradeCodes{ $tradeClasses }++;
+   #$uwp = $hex[$siz] . $hex[$atm] . $hex[$hyd] . $hex[$pop] . $hex[$gov] . $hex[$law];
+   $uwp = sprintf("%X%X%X%X%X%X", $siz, $atm, $hyd, $pop, $gov, $law);
+   $tradeClasses = getTradeClasses($uwp);
+
+   if ($search_mode)
+   {
+      unless ($tradeCodes{ $tradeClasses })
+      {
+         ++$tradeCodes{ $tradeClasses };
+         print scalar localtime, " : ", scalar(keys %tradeCodes), " : $tradeClasses\n";
+      }
+      ++$count;
+      if ($count < 1000)
+      {
+         print "$count\n" unless $count % 100;
+      }
+      elsif ($count < 10000)
+      {
+         print "$count\n" unless $count % 1000;
+      }
+      elsif ($count < 100000)
+      {
+         print "$count\n" unless $count % 10000;
+      }
+      else
+      {
+         print "$count\n" unless $count % 1000000;
+      }
+      redo;
+   } 
+   
+   ++$tradeCodes{ $tradeClasses };
 }
 
 my $i = 0;
@@ -42,7 +103,7 @@ for my $tc (sort keys %tradeCodes)
 
 for my $tc (sort keys %tradeCodes)
 {
-   print "   '$tc',\n";
+   printf "   %-16s,  # %.2f \n", "'$tc'", $tradeCodes{$tc}/100;
 }
 
 my $line = 950;

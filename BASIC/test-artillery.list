@@ -1,0 +1,68 @@
+cls()
+? "guner1"
+?
+? "press any key"
+{:any key} get a$ :if a$="" goto {:any key}
+v=rnd(-ti)
+
+
+s=int(rnd(1)*100+1)   :rem speed
+d=int(rnd(1)*10000+1) :rem distance
+{:calc max range}
+m=100000-75000*rnd(1) :rem max gun range
+
+? "speed:       "s" km/s"
+? "kill raduis: "d
+
+for k=1 to m/10000
+k1=rnd(1)
+next k
+
+r=int(.95*m-.6*m*rnd(1))
+
+n=0 :goto {:target range}
+{:check range}
+if r>m then ? "* target out of range *" :goto {:next steps}
+{:target range}
+? "target range is"r"kilometers"
+
+{:get elevation}
+input "elevation"; e
+if e>0 and e<90 goto {:elevation ok}
+if e>89 then ? "max is 89 degrees."
+if e<1  then ? "min is 1 degree." 
+goto {:get elevation}
+
+{:elevation ok}
+n=n+1
+k=int(r-m*sin(2*e/57.3))
+k1=abs(k)
+if k1<d goto {:destroyed}
+rem handle short or long
+if k>d  then ? "short of target by"k1"yards"
+if k<-d then ? "over target by"k1"yards"
+c=int(2*rnd(1)+1)
+if c<>1 then c=-1
+c1=m*s/100*rnd(1)
+c1=c*c1
+r=r+c1
+goto {:check range}
+
+
+{:destroyed}
+? "*** target destroyed ***"
+gosub {:show rounds}
+{:next steps}
+d1=k
+for k=1 to n+d/100
+k1 = rnd(1)
+next k
+goto {:calc max range}
+
+
+
+{:show rounds}
+if n=1 then print "***** direct hit *****" 
+if n>1 then print n "rounds expended"
+return
+

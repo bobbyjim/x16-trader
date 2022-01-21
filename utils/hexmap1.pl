@@ -1,0 +1,36 @@
+
+
+open OUT, ">HEXMAP1.BIN";
+print OUT pack 'xx';
+print OUT "ÕÀÀÀÀ®    °ÀÀÀÀ®    °ÀÀÀÀ®    °ÀÀÀÀ®";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "«ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "Ý    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    Ý";
+print OUT "Ý    Ý    Ý    Ý    Ý    Ý    Ý    Ý";
+print OUT "ÊÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀ³    «ÀÀÀÀË";
+print OUT "     Ý    Ý    Ý    Ý    Ý    Ý     ";
+print OUT "     ­ÀÀÀÀœ    ­ÀÀÀÀœ    ­ÀÀÀÀœ     ";
+close OUT;

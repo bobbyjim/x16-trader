@@ -1,0 +1,626 @@
+--- 
+components: 
+   - 
+      Sq: 600
+      target: 12
+      tons: 300
+      CP: 0
+      name: 'Hull'
+      mcr: 23
+      code: 'A'
+      q: 0
+      r: 0
+      tl: 12
+      s: 0
+      type: 'Hull'
+      totalTons: 300
+      b: 0
+      totalMCr: 23
+      eff: 1
+      category: 'Hull'
+      label: 'Airframe Hull, lifters, 3 a/l free'
+      e: 0
+      notes: 'A, lifters, 3 a/l free'
+      howMany: 1
+      config: 'Airframe'
+      preMult: 1
+      mult: 1
+
+   - 
+      s: 0
+      type: 'Payload'
+      q: 0
+      totalTons: 20
+      target: 12
+      b: 0
+      totalMCr: 0
+      eff: 1
+      category: 'Cargo'
+      tons: 20
+      CP: 0
+      label: 'Cargo Hold Basic'
+      e: 0
+      mcr: 0
+      howMany: 1
+      notes: ''
+      Sq: 40
+      r: 0
+      tl: 12
+
+   - 
+      s: 0
+      type: 'Drive'
+      q: 0
+      totalTons: 24
+      target: 12
+      b: 0
+      totalMCr: 0
+      eff: 1
+      category: 'Jump Fuel'
+      tons: 24
+      CP: 0
+      label: 'Jump Fuel (1  parsec)'
+      e: 0
+      notes: '1 parsec jump, at 24t per parsec'
+      howMany: 1
+      mcr: 0
+      Sq: 48
+      r: 0
+      tl: 12
+
+   - 
+      s: 0
+      type: 'Drive'
+      q: 0
+      totalTons: 18
+      target: 12
+      b: 0
+      totalMCr: 0
+      eff: 1
+      category: 'Powerplant Fuel'
+      tons: 18
+      CP: 0
+      label: 'Plant Fuel (one month)'
+      e: 0
+      notes: 'one month'
+      howMany: 1
+      mcr: 0
+      Sq: 36
+      r: 0
+      tl: 12
+
+   - 
+      target: 12
+      B: 0
+      tons: 17
+      CP: 1
+      E: 0
+      name: 'Maneuver Drive'
+      mcr: 34
+      code: 'J'
+      q: 0
+      r: 0
+      tl: 12
+      s: 0
+      type: 'Drive'
+      basetl: 12
+      totalTons: 17
+      b: 0
+      totalMCr: 34
+      eff: 1
+      category: 'Maneuver Drive'
+      label: 'Maneuver Drive-6 (J)'
+      e: 0
+      rating: 6
+      autoAdjust: 1
+      Q: 0
+      R: 0
+      howMany: 1
+      S: 0
+      notes: '6 G'
+      Sq: 34
+
+   - 
+      Sq: 56
+      target: 13
+      B: 0
+      tons: 28
+      CP: 1
+      E: 0
+      name: 'PowerPlant'
+      mcr: 28
+      code: 'J'
+      q: 0
+      r: 0
+      tl: 13
+      s: 0
+      type: 'Drive'
+      basetl: 13
+      totalTons: 28
+      b: 0
+      totalMCr: 28
+      eff: 1
+      category: 'PowerPlant'
+      label: 'PowerPlant-6 (J)'
+      e: 0
+      rating: 6
+      autoAdjust: 1
+      Q: 0
+      R: 0
+      howMany: 1
+      S: 0
+      notes: 'P 6'
+      powerFuelUsage: 0.01
+
+   - 
+      Sq: 133.18
+      target: 22
+      tons: 66.59
+      CP: 1
+      name: 'Meson Gun'
+      mcr: 15
+      range: 'FR'
+      q: 0
+      r: 0
+      tl: 12
+      s: 0
+      type: 'Weapon'
+      basetl: 11
+      totalTons: 66.59
+      mod: 10
+      b: 0
+      totalMCr: 15
+      eff: 1
+      category: 'FR M Meson Gun'
+      label: 'FR M Meson Gun'
+      e: 0
+      notes: ''
+      howMany: 1
+      config: 'Weapon'
+      mount: 'M'
+
+   - 
+      s: 0
+      type: 'Ops'
+      q: 0
+      totalTons: 1
+      target: 12
+      b: 0
+      totalMCr: 1
+      eff: 1
+      tons: 1
+      CP: 0
+      label: 'Life Support Standard'
+      e: 0
+      mcr: 1
+      howMany: 1
+      notes: '10 person-months'
+      Sq: 2
+      r: 0
+      tl: 12
+
+   - 
+      s: 0
+      type: 'Ops'
+      q: 0
+      totalTons: 1
+      target: 12
+      b: 0
+      totalMCr: 1
+      eff: 1
+      tons: 1
+      CP: 0
+      label: 'Life Support Adaptable'
+      e: 0
+      notes: '10 sophonts'
+      howMany: 1
+      mcr: 1
+      Sq: 2
+      r: 0
+      tl: 12
+
+   - 
+      s: 0
+      type: 'Crew'
+      q: 0
+      totalTons: 0.5
+      target: 12
+      b: 0
+      totalMCr: 0.5
+      eff: 1
+      tons: 0.5
+      CP: 0
+      label: 'Crew Shared Fresher'
+      e: 0
+      mcr: 0.5
+      howMany: 1
+      notes: '4 crew'
+      Sq: 1
+      r: 0
+      tl: 12
+
+   - 
+      Sq: 2
+      target: 12
+      tons: 1
+      CP: 1
+      name: 'Beam Laser'
+      mcr: 1.5
+      range: 'Vd'
+      q: 0
+      r: 0
+      tl: 12
+      s: 0
+      type: 'Weapon'
+      basetl: 10
+      totalTons: 1
+      mod: 0
+      b: 0
+      totalMCr: 1.5
+      eff: 1
+      category: 'Vd T3 Beam Laser'
+      label: 'Vd T3 Beam Laser'
+      e: 0
+      notes: ''
+      howMany: 1
+      config: 'Weapon'
+      mount: 'T3'
+
+   - 
+      Sq: 2
+      target: 12
+      tons: 1
+      CP: 1
+      name: 'Missile'
+      mcr: 1.2
+      range: 'AR'
+      q: 0
+      r: 0
+      tl: 12
+      s: 0
+      type: 'Weapon'
+      basetl: 7
+      totalTons: 1
+      mod: 0
+      b: 0
+      totalMCr: 1.2
+      eff: 1
+      category: 'AR T3 Missile'
+      label: 'AR T3 Missile'
+      e: 0
+      notes: ''
+      howMany: 1
+      config: 'Weapon'
+      mount: 'T3'
+
+   - 
+      s: 0
+      type: 'Drive'
+      q: 0
+      totalTons: 2
+      target: 8
+      b: 0
+      totalMCr: 1.1
+      eff: 1
+      category: 'Fuel Scoops'
+      tons: 2
+      CP: 2
+      label: 'Fuel Scoops with Purifier'
+      e: 0
+      notes: '100 t/hr'
+      code: 'SP'
+      howMany: 1
+      mcr: 1.1
+      Sq: 4
+      r: 0
+      tl: 8
+
+   - 
+      s: 0
+      type: 'Weapon'
+      q: 0
+      totalTons: 1
+      target: 12
+      b: 0
+      totalMCr: 0
+      eff: 1
+      tons: 1
+      CP: 0
+      label: 'Magazine'
+      e: 0
+      notes: '50 x Size-5'
+      howMany: 1
+      mcr: 0
+      Sq: 2
+      r: 0
+      tl: 12
+
+   - 
+      s: 0
+      type: 'Crew'
+      sleeps: 1
+      totalTons: 6
+      target: 12
+      b: 0
+      totalMCr: 0.4
+      q: 0
+      eff: 1
+      tons: 6
+      CP: 1
+      label: 'Officer Suite'
+      e: 0
+      mcr: 0.4
+      totalSleeps: 1
+      howMany: 1
+      notes: 'fresher + safe'
+      Sq: 12
+      r: 0
+      tl: 12
+
+   - 
+      s: 0
+      type: 'Crew'
+      Sq: 8
+      totalTons: 4
+      target: 12
+      b: 0
+      totalMCr: 0
+      eff: 1
+      tons: 4
+      CP: 0
+      label: 'Crew Commons'
+      e: 0
+      mcr: 0
+      howMany: 1
+      notes: ''
+      q: 0
+      r: 0
+      tl: 12
+
+   - 
+      s: 0
+      type: 'Crew'
+      sleeps: 1
+      totalTons: 24
+      target: 12
+      b: 0
+      totalMCr: 1.6
+      q: 0
+      eff: 1
+      tons: 6
+      CP: 1
+      label: 'Crew Suite'
+      e: 0
+      mcr: 0.4
+      totalSleeps: 4
+      howMany: 4
+      notes: 'fresher + safe'
+      Sq: 48
+      r: 0
+      tl: 12
+
+   - 
+      s: 0
+      type: 'Ops'
+      q: 0
+      totalTons: 18
+      target: 12
+      b: 0
+      totalMCr: 1
+      eff: 1
+      tons: 18
+      CP: 0
+      label: 'Platoon Barracks'
+      e: 0
+      notes: '(22) 4 sq + R4 O1/O2'
+      howMany: 1
+      mcr: 1
+      Sq: 36
+      r: 0
+      tl: 12
+
+   - 
+      Sq: 48
+      target: 12
+      tons: 24
+      CP: 1
+      name: 'Plate'
+      mcr: 0
+      range: '3'
+      q: 0
+      r: 0
+      tl: 12
+      s: 0
+      type: 'Armor'
+      basetl: 8
+      totalTons: 24
+      mod: ''
+      b: 0
+      totalMCr: 0
+      eff: 1
+      category: 'AV=36. 3 Kinetic Plate'
+      label: 'AV=36. 3 Kinetic Plate'
+      e: 0
+      notes: ''
+      howMany: 1
+      config: 'Armor'
+      mount: 'Kinetic'
+
+   - 
+      original: 
+         target: 12
+         B: 0
+         tons: 15
+         CP: 1
+         E: 0
+         name: 'Jump Drive'
+         mcr: 15
+         code: 'B'
+         q: 0
+         r: 0
+         tl: 12
+         s: 0
+         type: 'Drive'
+         basetl: 9
+         totalTons: 15
+         mod: 0
+         b: 0
+         totalMCr: 15
+         eff: 1
+         category: 'Jump Drive'
+         jumpFuelUsage: 0.1
+         label: 'Jump Drive-1 (B)'
+         e: 0
+         rating: 1
+         autoAdjust: 1
+         Q: 0
+         R: 0
+         howMany: 1
+         S: 0
+         notes: 'J 1'
+         Sq: 30
+      target: 12
+      B: 0
+      tons: 5
+      CP: 1
+      E: 0
+      name: 'Jump Drive'
+      mcr: 15
+      code: 'B'
+      stage: 'Adv'
+      q: 6
+      r: 2
+      tl: 9
+      s: 3
+      type: 'Drive'
+      basetl: 9
+      totalTons: 5
+      mod: 3
+      b: 2
+      totalMCr: 15
+      eff: 1.2
+      category: 'Jump Drive'
+      jumpFuelUsage: 0.1
+      label: 'Adv Jump Drive B (R1)'
+      e: 4
+      rating: 1
+      autoAdjust: 1
+      Q: 0
+      R: 0
+      howMany: 1
+      S: 0
+      notes: 'R1'
+      Sq: 10
+
+   - 
+      s: 0
+      type: 'Passenger'
+      q: 0
+      totalTons: 6
+      target: 12
+      b: 0
+      totalMCr: 0.4
+      sleeps: 1
+      eff: 1
+      tons: 6
+      CP: 0
+      label: 'Luxury Stateroom'
+      e: 0
+      notes: '1 passenger + fresher'
+      totalSleeps: 1
+      howMany: 1
+      mcr: 0.4
+      Sq: 12
+      r: 0
+      tl: 12
+
+   - 
+      Sq: 8
+      target: 16
+      tons: 4
+      CP: 1
+      name: 'Computer'
+      mcr: 18
+      range: 's'
+      q: 0
+      r: 0
+      tl: 12
+      s: 0
+      type: 'Ops'
+      basetl: 12
+      totalTons: 4
+      mod: 4
+      b: 0
+      totalMCr: 18
+      eff: 1
+      category: 'Computer Model/4 std'
+      label: 'Computer Model/4 std'
+      e: 0
+      notes: ''
+      howMany: 1
+      config: 'Ops'
+      mount: 'Model/4'
+
+   - 
+      cc: 2
+      tons: 5
+      target: 12
+      name: 'Bridge'
+      mcr: 0.7
+      CP: 0
+      q: 0
+      r: 0
+      tl: 12
+      s: 0
+      type: 'Ops'
+      totalTons: 5
+      mod: 0
+      b: 0
+      totalMCr: 0.7
+      eff: 1
+      category: 'Bridge'
+      op: 3
+      label: 'Standard Bridge'
+      e: 0
+      notes: '2cc 3op 0ws'
+      ws: 0
+      howMany: 1
+      Sq: 10
+header: 
+   passengers: 1
+   demand: 1
+   totalCargoSpace: 20
+   undertons: 23
+   tons: 300
+   jumpFuelPercentage: 0.083
+   tonsFree: 23
+   comments: |
+      Using a 300-ton, TL12 hull, the Blowfish Class Marauder mounts advanced jump drive-B, maneuver drive-J, and power plant-J, giving a performance of jump-1 and 6G acceleration. Fuel tankage supports a 1 parsec jump, at 24t per parsec, and one month of operations. Attached to the bridge is a Computer Model/4. There are six deluxe suites and no low berths. Installed weaponry include a fighter-ranged Main Meson Gun, a triple turret Beam Laser, and a triple turret Missile launcger. Cargo capacity is 20 tons. The ship has an airframe hull, with scoops for frontier refueling. 
+      
+      The ship has 5 crew, and can carry 1 passenger. 
+      
+   jf: 1
+   qsp: 'PN-CA61'
+   pf: 1
+   shifts: 1
+   powerFuelPercentage: 0.06
+   lifters: 'y'
+   mission: 'PN'
+   crew: 5
+   controlConsoles: 2
+   tl: 12
+   missionLabel: 'Marauder'
+   operatingConsoles: 3
+   owner: 'Arkesh Spacers'
+   workstations: 0
+   totalMCr: 143.3
+   crewComfort: 1
+   shipname: 'Blowfish'
+   low: 0
+   config: 'A'
+   troops: 0
+   spaciousness: 1
+   preMult: 1
+   staff: 0
+   format: 'T5-ACS-1'
+   mult: 1

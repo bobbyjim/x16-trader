@@ -38,7 +38,7 @@ header:
    tonsFree: 0
    mult: 1
    shifts: 1
-   low: 0
+   low: 8
    owner: 'Imperial'
 components: 
    - 
@@ -851,11 +851,11 @@ components:
       q: 0
 
    - 
-      totalTons: 2
+      totalTons: 4
       e: 0
       r: 0
       type: 'Payload'
-      totalMCr: 0.4
+      totalMCr: 0.8
       notes: '1 passenger'
       s: 0
       eff: 1
@@ -863,7 +863,7 @@ components:
       target: 12
       tl: 12
       tons: 0.5
-      howMany: 4
+      howMany: 8
       mcr: 0.1
       Sq: 4
       CP: 0

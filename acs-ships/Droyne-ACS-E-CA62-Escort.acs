@@ -1,0 +1,54 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:37 2021
+Mission: Escort
+QSP: E-CA62
+TL: 16 
+Name: Escort
+Tons: 300
+Actual Tons: 273.5
+
+MCr: 185.1
+Owner: Droyne
+
+Crew comfort: -1
+Passenger demand: 1
+Cargo: 20
+FuelPercentage: 13
+Components:
+ - HH0   A  1 00000 300   23  Airframe Hull, lifters, 3 a/l free
+ - HL1   K  1 00000   3    3  Landing legs with pads
+ - AA1  64  1 00000  12    0  AV=64. 2 Rad Charged
+ - DF0   -  1 00000  49    0  Jump Fuel (2  parsecs)
+ - DF0   -  1 00000  30    0  Plant Fuel (2 months)
+ - DF1   S  1 00000   1  0.1  Fuel Scoops
+ - DF1   I  1 00000   1  0.1  Fuel Intakes
+ - DF1   B  1 00000   1  0.1  Fuel Bins
+ - DJ1   3  1 00000 6.6   20  Adv Jump Drive-2 (C)
+ - DM1   3  1 00000 4.95   30  Adv Maneuver Drive-5 (H)
+ - DP1   3  1 00000 8.25   25  Adv PowerPlant-5 (H)
+ - OC1   4  1 00000   4   18  Computer Model/4 std
+ - OO0   -  1 00000   4  0.2  Gunner Barracks
+ - OO0   -  1 00000   4  0.2  Squad Barracks
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OO0   -  1 00000   1    1  Life Support Adaptable
+ - OB0   2  1 00000  16  0.9  Spacious Bridge
+ - SS1   -  1 00000   0  1.5  AR Surf Communicator
+ - SS1   -  1 00000   0  1.5  AR Surf Jammer
+ - SS1   -  1 00000   0  1.5  AR Surf Neutrino Detector
+ - SS1   -  1 00000   0  1.5  AR Surf EMS
+ - SS1   -  1 00000   0  1.5  AR Surf Stealth Mask
+ - SS1   -  1 00000   0  1.5  AR Surf Visor
+ - WW1   2  1 00000   3  5.5  AR B1 Particle Accelerator
+ - WW1   -  1 00000   1  1.2  AR T3 Missile
+ - WW1   1  1 00000   1    2  Vd T4 Beam Laser
+ - DD1  -1  1 00000   2    5  B Black Globe
+ - CO0   -  1 00000   1    1  Crew Common Fresher
+ - CO0   - 10 00000   2  0.1  Crew Stateroom
+ - CO0   -  4 00000   4    0  Crew Commons
+ - PC0   -  1 00000  20    0  Cargo Hold Basic
+ - PO0   -  2 00000   6  0.4  Luxury Stateroom
+ - VO1   -  1 00000  10    0  Hangar Lock
+ - VO0  LM  2 00000  20   18  Gig
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

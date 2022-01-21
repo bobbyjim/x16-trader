@@ -1,0 +1,48 @@
+rem ----------------------------------
+rem
+rem            trade code
+rem
+rem ----------------------------------
+{:trade.show}
+cls()
+y=0
+{:trade.loop}
+home()
+poke $9f61,1 :rem market is in bank 1
+for x = 0 to 10
+   if \ship.cargo.tons(x) = 0 goto {:skip this entry} 
+   ad = \ship.cargo.type(x) * 32 + 16
+   cn$=""
+   ? spc(10),
+   for y = 0 to 15
+      poke 780, peek($b000+ad+y) :sys $ffd2
+   next
+   ?,\ship.cargo.tons(x)
+   ?
+{:skip this entry}
+next x
+
+{:bid listen}
+get a$: if a$="" goto {:bid listen}
+if a$ = "\x11" and y < pc then y=y+1
+if a$ = "\x91" and y > 0 then y=y-1
+if a$ = "\x9d" goto {:sell one}
+if a$ = "\x1d" goto {:buy one}
+if a$ = "b" goto {:buy all}
+if a$ = "s" goto {:sell all}
+if a$ = "q" then return
+
+goto {:trade.loop}
+
+{:buy one}
+goto {:trade.loop}
+
+{:buy all}
+goto {:trade.loop}
+
+{:sell one}
+goto {:trade.loop}
+
+{:sell all}
+goto {:trade.loop}
+

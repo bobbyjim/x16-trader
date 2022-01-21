@@ -1,0 +1,50 @@
+--- 
+ACS1.0: Mon Dec 27 18:09:18 2021
+Mission: Yacht
+QSP: Y-BB11
+TL: 12 
+Name: MC&S-Ypsilon
+Tons: 200
+Actual Tons: 200
+
+MCr: 57.4
+Builder: GsBAG
+Owner: Judges Guild
+Disposition: In Service
+
+Crew comfort: 0
+Passenger demand: 1
+Cargo: 13
+FuelPercentage: 9
+Components:
+ - HH0   B  1 00000 200    6  Braced Hull
+ - HL1  n/  1 00000  -1    0  No Landers
+ - AA1  12  1 00000   0    0  AV=12. 1 Kinetic Plate
+ - DF0   -  1 00000  33    0  Jump Fuel (2  parsecs)
+ - DF0   -  1 00000   2    0  Plant Fuel (one month)
+ - DJ1   3  1 701D5 3.3   10  Adv Jump Drive A (R1)
+ - DM1   A  1 00000   2    4  Maneuver Drive-1 (A)
+ - DP1   A  1 00000   4    4  PowerPlant-1 (A)
+ - OC1   1  1 00000   1  1.5  Computer Model/1 std
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OO1   -  1 00000   2    1  Clinic
+ - OO0   -  1 00000   1    1  Life Support Luxury
+ - OO0   -  1 00000   1    1  Life Support Adaptable
+ - OB0   -  1 00000   6  0.6  Standard Bridge
+ - SS1   -  1 00000   0  1.5  AR Surf Communicator
+ - SS1   -  1 00000   0  1.5  AR Surf Radar
+ - SS1   -  1 00000   0  1.5  AR Surf Scope
+ - WW1  -2  1 00000   1  0.2  AR T1 Empty
+ - CO0   -  4 00000   2  0.1  Crew Stateroom
+ - CO0   -  1 00000   1    1  Crew Common Fresher
+ - CO0   -  1 00000   8    0  Crew Lounge
+ - PC0   -  1 00000  13    0  Cargo Hold Basic
+ - PO0   - 10 00000 2.5  0.6  Stateroom with Fresher
+ - PO0   - 10 00000   4    0  Passenger Lounge
+ - VO0  MS  1 00000  30   14  Slow Boat
+ - VO0  EL  1 00000   4  0.1  Air/Raft Enclosed
+ - VO1   -  1 00000  10    0  Hangar Lock
+ - VO0  EL  1 00000   4  0.1  ATV
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

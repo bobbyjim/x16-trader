@@ -4,89 +4,68 @@ components:
       e: 0
       r: 0
       category: 'Hull'
+      target: 12
       howMany: 1
       s: 0
       CP: 0
-      target: 12
+      code: 'P'
       totalTons: 21600
       totalMCr: 216
       notes: 'P, lifters, 216 a/l free'
       label: 'Planetoid Hull, lifters, 216 a/l free'
       eff: 1
       name: 'Hull'
-      tons: 21600
+      config: 'Planetoid'
       mult: 9
       tl: 12
       preMult: 1
-      config: 'Planetoid'
+      tons: 21600
       type: 'Hull'
       mcr: 216
       b: 0
       Sq: 43200
       q: 0
-      code: 'P'
 
    - 
       totalMCr: 0
       e: 0
-      r: 0
-      label: 'Cargo Hold Basic'
-      type: 'Payload'
-      eff: 1
-      s: 0
-      notes: ''
-      category: 'Cargo'
-      howMany: 1
-      tl: 12
-      tons: 20
-      Sq: 40
-      CP: 0
-      target: 12
-      b: 0
-      totalTons: 20
-      mcr: 0
-      q: 0
-
-   - 
-      totalMCr: 0
-      e: 0
-      r: 0
+      notes: '1 parsec jump, at 1792t per parsec'
       label: 'Jump Fuel (1  parsec)'
       Sq: 3584
       category: 'Jump Fuel'
       s: 0
-      notes: '1 parsec jump, at 1792t per parsec'
+      r: 0
+      totalTons: 1792
       eff: 1
       howMany: 1
       tl: 12
-      tons: 1792
-      type: 'Drive'
-      CP: 0
-      target: 12
       b: 0
-      totalTons: 1792
+      type: 'Drive'
       mcr: 0
+      target: 12
+      tons: 1792
+      CP: 0
       q: 0
 
    - 
       totalMCr: 0
       e: 0
-      r: 0
-      label: 'Plant Fuel (one month)'
-      type: 'Drive'
-      category: 'Powerplant Fuel'
-      s: 0
       notes: 'one month'
+      label: 'Plant Fuel (one month)'
       eff: 1
+      s: 0
+      r: 0
+      tons: 172.8
+      category: 'Powerplant Fuel'
       howMany: 1
       tl: 12
-      tons: 172.8
-      Sq: 345.6
-      CP: 0
-      q: 0
       b: 0
-      totalTons: 172.8
+      type: 'Drive'
       mcr: 0
+      q: 0
+      CP: 0
+      totalTons: 172.8
+      Sq: 345.6
       target: 12
 
    - 
@@ -94,20 +73,20 @@ components:
       e: 0
       r: 0
       label: 'No Landers'
-      category: 'landers'
+      tonsPercent: -0.5
       s: 0
       name: 'No Landers'
       mcrPerTon: 0
       note: 'n/a'
-      q: 0
-      eff: 1
+      category: 'landers'
       howMany: 1
-      tl: 10
       tons: -108
       type: 'Hull'
       mcr: 0
-      tonsPercent: -0.5
+      eff: 1
+      tl: 10
       code: 'n/a'
+      q: 0
       b: 0
       totalTons: -108
       CP: 1
@@ -116,23 +95,23 @@ components:
    - 
       totalMCr: 5
       e: 0
-      r: 0
+      notes: '20t/hr'
       label: 'Fuel Purifiers 20t/hr'
       Sq: 10
       category: 'Fuel Purifiers'
       count: 5
       s: 0
-      notes: '20t/hr'
+      r: 0
       eff: 1
       howMany: 1
       tl: 8
       tons: 5
-      type: 'Drive'
-      CP: 1
-      target: 8
       b: 0
-      totalTons: 5
+      type: 'Drive'
       mcr: 5
+      target: 8
+      totalTons: 5
+      CP: 1
       q: 0
 
    - 
@@ -140,21 +119,21 @@ components:
       e: 0
       r: 0
       label: 'Fuel Transfer Pumps '
-      eff: 1
+      Sq: 2
+      category: 'Transfer Pumps'
       count: 1
       s: 0
       notes: ''
-      totalTons: 1
-      category: 'Transfer Pumps'
+      eff: 1
       howMany: 1
       tl: 10
       tons: 1
-      type: 'Drive'
-      CP: 1
-      target: 10
       b: 0
-      Sq: 2
+      type: 'Drive'
       mcr: 1
+      target: 10
+      totalTons: 1
+      CP: 1
       q: 0
 
    - 
@@ -162,11 +141,11 @@ components:
       r: 0
       note: ''
       category: 'AV=20. 1 Kinetic FeN'
-      s: 0
       mod: ''
       howMany: 1
+      s: 0
       CP: 1
-      q: 0
+      code: ''
       totalTons: 0
       totalMCr: 0
       notes: ''
@@ -183,7 +162,7 @@ components:
       range: '1'
       b: 0
       target: 10
-      code: ''
+      q: 0
 
    - 
       e: 0
@@ -204,12 +183,12 @@ components:
       mount: 'Model/5'
       tl: 10
       config: 'Ops'
-      Sq: 20
+      type: 'Ops'
       mcr: 7.5
       basetl: 1
       range: 'f'
       b: 0
-      type: 'Ops'
+      Sq: 20
       target: 15
 
    - 
@@ -248,22 +227,22 @@ components:
       s: 0
       CP: 1
       q: 0
-      mount: 'Ext'
+      totalTons: 2
       totalMCr: 2
       notes: ''
       label: 'AR Ext EMS'
       eff: 1
       name: 'EMS'
       tons: 2
-      totalTons: 2
+      mount: 'Ext'
       tl: 12
       config: 'Sensor'
-      Sq: 4
+      type: 'Sensor'
       mcr: 2
       basetl: 12
       range: 'AR'
       b: 0
-      type: 'Sensor'
+      Sq: 4
       target: 15
 
    - 
@@ -274,7 +253,7 @@ components:
       howMany: 1
       s: 0
       CP: 1
-      target: 17
+      q: 0
       totalTons: 2
       totalMCr: 2
       notes: ''
@@ -285,13 +264,13 @@ components:
       mount: 'Ext'
       tl: 14
       tons: 2
-      Sq: 4
+      type: 'Sensor'
       mcr: 2
       basetl: 14
       range: 'AR'
       b: 0
-      type: 'Sensor'
-      q: 0
+      Sq: 4
+      target: 17
 
    - 
       e: 0
@@ -301,24 +280,24 @@ components:
       howMany: 1
       s: 0
       CP: 1
-      q: 0
+      target: 16
       totalTons: 8
       totalMCr: 8.1
       notes: ''
       label: 'G Ext Proximeter'
       eff: 1
       name: 'Proximeter'
-      tons: 8
+      config: 'Sensor'
       mount: 'Ext'
       tl: 13
-      config: 'Sensor'
+      tons: 8
       type: 'Sensor'
       mcr: 8.1
       basetl: 13
       range: 'G'
       b: 0
       Sq: 16
-      target: 16
+      q: 0
 
    - 
       e: 0
@@ -329,22 +308,22 @@ components:
       s: 0
       CP: 1
       q: 0
-      mount: 'LBay'
+      totalTons: 200
       totalMCr: 21
       notes: ''
       label: 'Vd LBay Beam Laser'
       eff: 1
       name: 'Beam Laser'
-      tons: 100
-      totalTons: 200
-      tl: 10
       config: 'Weapon'
-      Sq: 400
+      mount: 'LBay'
+      tl: 10
+      tons: 100
+      type: 'Weapon'
       mcr: 10.5
       basetl: 10
       range: 'Vd'
       b: 0
-      type: 'Weapon'
+      Sq: 400
       target: 18
 
    - 
@@ -362,10 +341,10 @@ components:
       label: 'Vd LBay Sandcaster'
       eff: 1
       name: 'Sandcaster'
-      tons: 100
+      config: 'Weapon'
       mount: 'LBay'
       tl: 10
-      config: 'Weapon'
+      tons: 100
       type: 'Weapon'
       mcr: 10.1
       basetl: 9
@@ -379,21 +358,21 @@ components:
       e: 0
       notes: '100 high pass./week'
       label: 'Luxury LS (100 high pass./week)'
-      eff: 1
-      s: 0
-      r: 0
-      name: 'life support'
-      tons: 10
-      totalTons: 10
       category: 'Luxury Life Support'
+      mcr: 10
+      s: 0
+      name: 'life support'
+      r: 0
+      eff: 1
       howMany: 1
       tl: 10
-      b: 0
-      Sq: 20
-      mcr: 10
-      q: 0
+      tons: 10
       type: 'Ops'
       CP: 1
+      q: 0
+      b: 0
+      totalTons: 10
+      Sq: 20
       target: 10
 
    - 
@@ -405,39 +384,39 @@ components:
       eff: '1'
       s: '0'
       notes: ''
+      totalTons: 160
       mod: ''
       howMany: 1
       tl: '10'
-      tons: 160
+      b: '0'
       type: 'Passenger'
       CP: 0
-      q: '0'
-      b: '0'
-      totalTons: 160
-      mcr: 20
       target: '10'
+      tons: 160
+      mcr: 20
+      q: '0'
 
    - 
       totalMCr: 6
       e: 0
-      r: 0
+      notes: '2 passengers'
       label: 'Familial Suites'
+      Sq: 288
       eff: 1
       s: 0
+      r: 0
       q: 0
-      notes: '2 passengers'
+      tons: 24
       sleeps: 2
       mod: ''
       howMany: 6
       tl: '10'
-      tons: 24
-      type: 'Passenger'
-      mcr: 1
-      totalTons: 144
-      totalSleeps: 12
       b: 0
-      Sq: 288
+      type: 'Passenger'
       CP: 0
+      totalSleeps: 12
+      totalTons: 144
+      mcr: 1
       target: '10'
 
    - 
@@ -445,79 +424,79 @@ components:
       e: 0
       notes: 'treats minor trauma'
       label: 'Infirmary'
-      Sq: 8
       eff: 1
-      tons: 4
-      howMany: 1
       s: 0
-      b: 0
       r: 0
-      CP: 1
-      tl: 10
-      q: 0
-      type: 'Ops'
       totalTons: 4
+      howMany: 1
+      tl: 10
+      b: 0
+      type: 'Ops'
       mcr: 2
+      q: 0
+      CP: 1
+      tons: 4
+      Sq: 8
       target: 10
 
    - 
       totalMCr: 0
       e: 0
-      notes: 'provides food + O2'
+      r: 0
       label: 'Aeroponic Garden'
-      type: 'Ops'
       eff: 1
       s: 0
-      r: 0
+      notes: 'provides food + O2'
       totalTons: 18
       howMany: 6
       tl: 10
       b: 0
-      Sq: 36
+      type: 'Ops'
       CP: 0
       target: 10
-      tons: 3
       mcr: 0
+      tons: 3
+      Sq: 36
       q: 0
 
    - 
       totalMCr: 2
       e: 0
-      r: 0
+      notes: 'provides food + LS'
       label: 'Hydroponic Garden'
       Sq: 40
       eff: 1
-      notes: 'provides food + LS'
-      tons: 4
-      howMany: 5
       s: 0
-      b: 0
-      type: 'Ops'
-      mcr: 0.4
+      r: 0
+      howMany: 5
       tl: 10
-      target: 10
-      totalTons: 20
+      tons: 4
+      type: 'Ops'
       CP: 1
       q: 0
+      b: 0
+      totalTons: 20
+      mcr: 0.4
+      target: 10
 
    - 
       totalMCr: 0
       e: 0
-      notes: ''
+      r: 0
       label: 'Airlock'
       eff: 1
-      r: 0
+      tons: 0.5
       totalTons: 10
       howMany: 20
       s: 0
-      tons: 0.5
-      Sq: 20
+      b: 0
+      notes: ''
       CP: 1
       tl: 10
       target: 10
-      b: 0
-      type: 'Ops'
       mcr: 0
+      type: 'Ops'
+      Sq: 20
       q: 0
 
    - 
@@ -525,87 +504,88 @@ components:
       e: 0
       notes: 'tools + stores'
       label: 'MEG Shop'
-      Sq: 20
       eff: 1
       s: 0
       r: 0
+      totalTons: 10
       howMany: 1
       tl: 10
-      tons: 10
       b: 0
       type: 'Payload'
       CP: 1
-      target: 10
-      totalTons: 10
-      mcr: 0
       q: 0
+      mcr: 0
+      tons: 10
+      Sq: 20
+      target: 10
 
    - 
       totalMCr: 2
       e: 0
-      notes: 'tools + stores'
-      label: 'Vehicle Repair Garage'
-      Sq: 40
-      eff: 1
-      s: 0
       r: 0
-      totalTons: 20
-      howMany: 1
-      tl: 10
-      b: 0
+      label: 'Vehicle Repair Garage'
       type: 'Payload'
+      eff: 1
+      tons: 20
+      Sq: 40
+      howMany: 1
+      s: 0
+      b: 0
+      notes: 'tools + stores'
+      CP: 1
+      tl: 10
+      q: 0
+      totalTons: 20
       mcr: 2
       target: 10
-      tons: 20
-      CP: 1
-      q: 0
 
    - 
       totalMCr: 0
       e: 0
       notes: ''
       label: 'Cargo Lock'
-      Sq: 4
       eff: 1
       s: 0
       r: 0
+      totalTons: 2
       howMany: 1
       tl: 10
-      tons: 2
       b: 0
       type: 'Payload'
       CP: 1
-      target: 10
-      totalTons: 2
-      mcr: 0
       q: 0
+      mcr: 0
+      tons: 2
+      Sq: 4
+      target: 10
 
    - 
       totalMCr: 0
       e: 0
-      notes: ''
+      r: 0
       label: 'Hangar'
+      Sq: 2000
       eff: 1
       s: 0
-      r: 0
+      notes: ''
       totalTons: 1000
       mod: ''
       howMany: 1
       tl: '10'
-      tons: 1000
-      Sq: 2000
-      CP: 1
-      q: 0
       b: 0
       type: 'Vehicle'
       mcr: 0
       target: '10'
+      tons: 1000
+      CP: 1
+      q: 0
 
    - 
       totalMCr: 0
       e: 0
       r: 0
       label: 'Hangar'
+      Sq: 800
       eff: 1
       s: 0
       notes: ''
@@ -613,45 +593,44 @@ components:
       mod: ''
       howMany: 1
       tl: '10'
-      tons: 400
+      b: 0
       type: 'Vehicle'
       mcr: 0
-      target: '10'
-      b: 0
-      Sq: 800
-      CP: 1
       q: 0
+      tons: 400
+      CP: 1
+      target: '10'
 
    - 
       totalMCr: 0
       e: 0
-      notes: ''
+      r: 0
       label: 'Hangar'
+      Sq: 400
       eff: 1
       s: 0
-      r: 0
-      totalTons: 200
+      notes: ''
+      tons: 200
       mod: ''
       howMany: 1
       tl: '10'
-      tons: 200
-      Sq: 400
-      CP: 1
-      q: 0
       b: 0
       type: 'Vehicle'
       mcr: 0
+      q: 0
+      totalTons: 200
+      CP: 1
       target: '10'
 
    - 
       totalMCr: 0
       e: 0
-      r: 0
+      notes: ''
       label: 'Hangar'
       eff: 1
+      CP: 1
       s: 0
-      notes: ''
-      totalTons: 100
+      r: 0
       mod: ''
       howMany: 1
       tl: '10'
@@ -660,8 +639,8 @@ components:
       mcr: 0
       target: '10'
       b: 0
+      totalTons: 100
       Sq: 200
-      CP: 1
       q: 0
 
    - 
@@ -669,28 +648,28 @@ components:
       e: 0
       r: 0
       label: 'Container Handler'
-      Sq: 2
       eff: 1
-      tons: 1
-      totalTons: 1
-      howMany: 1
       s: 0
-      b: 0
-      notes: '12t/hr'
-      mcr: 1
+      tons: 1
+      howMany: 1
       tl: 10
-      target: 10
+      b: 0
       type: 'Payload'
-      CP: 0
+      mcr: 1
+      target: 10
       q: 0
+      CP: 0
+      totalTons: 1
+      Sq: 2
+      notes: '12t/hr'
 
    - 
       totalMCr: 12.5
       e: 0
       r: 0
       label: 'Gardens'
-      Sq: 200
       eff: 1
+      mcr: 12.5
       s: 0
       notes: ''
       mod: ''
@@ -699,31 +678,31 @@ components:
       tons: 100
       type: 'Passenger'
       CP: 0
-      q: 0
+      target: '10'
       b: 0
       totalTons: 100
-      mcr: 12.5
-      target: '10'
+      Sq: 200
+      q: 0
 
    - 
       totalMCr: 4
       e: 0
       notes: ''
       label: 'Throne Room'
-      type: 'Passenger'
+      Sq: 64
       eff: 1
       s: 0
-      tons: 32
+      r: 0
       totalTons: 32
       mod: ''
       howMany: 1
       tl: '10'
       b: 0
-      r: 0
-      CP: 0
-      target: '10'
-      Sq: 64
+      type: 'Passenger'
       mcr: 4
+      target: '10'
+      tons: 32
+      CP: 0
       q: 0
 
    - 
@@ -735,39 +714,39 @@ components:
       eff: 1
       s: 0
       notes: ''
+      totalTons: 200
       mod: ''
       howMany: 1
       tl: '10'
-      tons: 200
+      b: 0
       type: 'Vehicle'
       CP: 1
-      q: 0
-      b: 0
-      totalTons: 200
-      mcr: 0
       target: '10'
+      tons: 200
+      mcr: 0
+      q: 0
 
    - 
       totalMCr: 24
       e: '0'
-      r: '0'
+      notes: '2 passengers'
       label: 'Guest Double Suites'
       eff: '1'
+      mcr: 2
       s: '0'
       q: '0'
-      notes: '2 passengers'
+      r: '0'
       sleeps: 2
       mod: ''
       howMany: 12
       tl: '10'
       tons: 16
-      Sq: 384
-      mcr: 2
-      totalTons: 192
-      totalSleeps: 24
-      b: '0'
       type: 'Passenger'
       CP: 0
+      totalSleeps: 24
+      b: '0'
+      totalTons: 192
+      Sq: 384
       target: '10'
 
    - 
@@ -775,6 +754,7 @@ components:
       e: '0'
       r: '0'
       label: 'Familial Common Space'
+      Sq: 192
       eff: '1'
       s: '0'
       notes: ''
@@ -782,36 +762,35 @@ components:
       mod: ''
       howMany: 1
       tl: '10'
-      tons: 96
+      b: '0'
       type: 'Passenger'
       mcr: 12
-      target: '10'
-      b: '0'
-      Sq: 192
-      CP: 0
       q: '0'
+      tons: 96
+      CP: 0
+      target: '10'
 
    - 
       totalMCr: 10
       e: 0
-      notes: '1 crew'
+      r: 0
       label: 'Crew Single Stateroom'
+      Sq: 160
       eff: 1
       s: 0
-      q: 0
-      r: 0
+      target: 10
+      notes: '1 crew'
       sleeps: 1
       howMany: 20
       tl: 10
       tons: 4
-      Sq: 160
-      CP: 0
-      totalTons: 80
-      totalSleeps: 20
       b: 0
       type: 'Crew'
       mcr: 0.5
-      target: 10
+      totalSleeps: 20
+      totalTons: 80
+      CP: 0
+      q: 0
 
    - 
       totalMCr: 2
@@ -837,24 +816,24 @@ components:
    - 
       totalMCr: 4
       e: '0'
-      notes: '1 crew'
+      r: '0'
       label: 'Security Officer Stateroom'
+      Sq: 64
       eff: '1'
       s: '0'
-      q: '0'
-      r: '0'
+      notes: '1 crew'
       sleeps: 1
       mod: ''
       howMany: 8
-      tl: '10'
       tons: 4
-      Sq: 64
-      mcr: 0.5
-      totalTons: 32
-      totalSleeps: 8
-      b: '0'
       type: 'Crew'
       CP: 0
+      tl: '10'
+      q: '0'
+      totalSleeps: 8
+      b: '0'
+      totalTons: 32
+      mcr: 0.5
       target: '10'
 
    - 
@@ -862,95 +841,95 @@ components:
       e: '0'
       r: '0'
       label: 'Barracks'
-      Sq: 64
       eff: '1'
+      mcr: 0.5
+      s: '0'
+      target: 10
       notes: '1 team + no officer'
       sleeps: 4
       howMany: 8
-      s: '0'
+      tl: 10
       tons: 4
       type: 'Crew'
       CP: 0
-      tl: 10
-      q: '0'
       totalSleeps: 32
       b: '0'
       totalTons: 32
-      mcr: 0.5
-      target: 10
+      Sq: 64
+      q: '0'
 
    - 
       totalMCr: 8
       e: '0'
-      notes: ''
+      r: '0'
       label: 'Crew Lounge'
       type: 'Crew'
       eff: '1'
-      s: '0'
-      r: '0'
-      totalTons: 64
-      howMany: 4
-      tl: 10
-      b: '0'
+      tons: 16
       Sq: 128
+      howMany: 4
+      s: '0'
+      b: '0'
+      notes: ''
+      mcr: 2
+      tl: 10
+      q: '0'
+      totalTons: 64
       CP: 0
       target: 10
-      tons: 16
-      mcr: 2
-      q: '0'
 
    - 
       totalMCr: 8
       e: '0'
       r: '0'
       label: 'Security Lounge'
-      Sq: 128
       eff: '1'
-      notes: ''
-      howMany: 4
       s: '0'
       tons: 16
-      type: 'Crew'
-      mcr: 2
-      tl: 10
-      q: '0'
-      b: '0'
       totalTons: 64
+      howMany: 4
+      tl: 10
+      b: '0'
+      notes: ''
       CP: 0
       target: 10
+      mcr: 2
+      type: 'Crew'
+      Sq: 128
+      q: '0'
 
    - 
       totalMCr: 10
       e: 0
-      r: 0
+      notes: '400 people/month'
       label: 'Life support (400 people/month)'
       category: 'Life Support'
+      mcr: 10
       s: 0
       name: 'life support'
-      notes: '400 people/month'
-      totalTons: 10
+      r: 0
       eff: 1
       howMany: 1
       tl: 13
       tons: 10
       type: 'Ops'
-      mcr: 10
-      q: 0
-      b: 0
-      Sq: 20
       CP: 1
       target: 13
+      b: 0
+      totalTons: 10
+      Sq: 20
+      q: 0
 
    - 
       e: 0
       r: 0
       category: 'Maneuver Drive'
-      target: 13
+      autoAdjust: 1
       howMany: 1
       s: 0
       B: 0
       CP: 7
-      code: 'X5'
+      q: 0
       totalTons: 215
       Q: 0
       totalMCr: 430
@@ -960,195 +939,216 @@ components:
       eff: 1
       S: 0
       name: 'Maneuver Drive'
-      tons: 215
-      autoAdjust: 1
+      R: 0
       rating: 1
       b: 0
       type: 'Drive'
       mcr: 430
       tl: 13
       basetl: 9
+      tons: 215
       Sq: 430
-      q: 0
-      R: 0
+      target: 13
+      code: 'X5'
 
    - 
       e: 0
       r: 0
       stage: 'Adv'
+      Sq: 359.7
       category: 'Jump Drive'
-      notes: 'J 1'
+      s: 0
+      R: 0
       q: 0
       mod: 3
       howMany: 1
-      s: 0
       B: 0
       CP: 17
       code: 'X5'
       original: 
          e: 0
          r: 0
-         type: 'Drive'
+         Sq: 1090
          category: 'Jump Drive'
          s: 0
+         target: 13
          mod: 0
          howMany: ''
+         jumpFuelUsage: 0.1
          B: 0
          CP: 16
-         target: 13
+         code: 'X5'
          totalTons: 545
          Q: 0
          totalMCr: 545
          E: 0
-         R: 0
+         notes: 'J 1'
          label: 'Jump Drive-1 (X5)'
          eff: 1
          S: 0
          name: 'Jump Drive'
-         jumpFuelUsage: 0.1
          autoAdjust: 1
          tl: '13'
          b: 0
-         Sq: 1090
+         type: 'Drive'
          mcr: 545
          rating: 1
          basetl: 9
          tons: 545
          q: 0
-         notes: 'J 1'
-         code: 'X5'
+         R: 0
       Q: 0
       totalMCr: 545
       E: 0
-      R: 0
+      autoAdjust: 1
       label: 'Adv Jump Drive-1 (X5)'
       eff: 1.2
       S: 0
       name: 'Jump Drive'
       tons: 179.85
-      autoAdjust: 1
-      rating: 1
-      jumpFuelUsage: 0.1
-      Sq: 359.7
-      powerFuelUsage: ''
       totalTons: 179.85
       tl: 10
+      jumpFuelUsage: 0.1
+      notes: 'J 1'
+      mcr: 545
+      rating: 1
       basetl: 9
       b: 0
       type: 'Drive'
-      mcr: 545
+      powerFuelUsage: ''
       target: 13
 
    - 
       e: 0
       r: 0
       stage: 'Adv'
+      type: 'Drive'
       category: 'PowerPlant'
-      notes: 'P 1'
-      q: 0
+      s: 0
       mod: 3
       howMany: 1
-      s: 0
       B: 0
       CP: 10
-      code: 'X5'
+      Sq: 214.5
+      q: 0
       original: 
          e: 0
          r: 0
+         Sq: 650
          category: 'PowerPlant'
          s: 0
-         R: 0
-         q: 0
+         target: 13
          mod: 0
          howMany: ''
          B: 0
          CP: 10
-         code: 'X5'
+         q: 0
          totalTons: 325
          Q: 0
          totalMCr: 325
          E: 0
-         notes: 'P 1'
+         R: 0
          label: 'PowerPlant-1 (X5)'
          eff: 1
          S: 0
          name: 'PowerPlant'
-         tons: 325
-         autoAdjust: 1
+         notes: 'P 1'
          rating: 1
-         b: 0
-         Sq: 650
+         tons: 325
+         type: 'Drive'
          mcr: 325
          tl: '13'
          basetl: 8
-         type: 'Drive'
+         b: 0
          powerFuelUsage: 0.01
-         target: 13
+         autoAdjust: 1
+         code: 'X5'
       Q: 0
       totalMCr: 325
       E: 0
-      R: 0
+      autoAdjust: 1
       label: 'Adv PowerPlant-1 (X5)'
       eff: 1.2
       S: 0
       name: 'PowerPlant'
-      tons: 107.25
-      autoAdjust: 1
-      rating: 1
-      jumpFuelUsage: ''
-      Sq: 214.5
-      powerFuelUsage: 0.01
+      R: 0
       totalTons: 107.25
+      rating: 1
+      tons: 107.25
+      notes: 'P 1'
+      powerFuelUsage: 0.01
       tl: 10
       basetl: 8
       b: 0
-      type: 'Drive'
+      jumpFuelUsage: ''
       mcr: 325
       target: 13
+      code: 'X5'
+
+   - 
+      totalMCr: 0
+      e: 0
+      r: 0
+      label: 'Cargo Hold Basic'
+      eff: 1
+      s: 0
+      notes: ''
+      category: 'Cargo'
+      howMany: 1
+      tl: 12
+      tons: 5000
+      b: 0
+      type: 'Payload'
+      mcr: 0
+      q: 0
+      CP: 0
+      totalTons: 5000
+      Sq: 10000
+      target: 12
 header: 
    crew: 19
    format: 'ACS1.1'
-   luxuryLifeSupport: 10
-   missionLabel: 'Yacht'
-   engineer: 12
-   totalCargoSpace: 20
-   driver: 2
-   astrogator: 1
-   spaciousness: 2
-   passengers: 36
-   pilot: 1
-   controlConsoles: 0
-   nolifters: 'x'
-   demand: 15
    staff: 0
+   missionLabel: 'Yacht'
+   owner: 'Bilstein'
+   controlConsoles: 0
+   driver: 2
+   spaciousness: 2
    operatingConsoles: 0
+   astrogator: 1
+   totalCargoSpace: 5000
+   workstations: 0
+   nolifters: 'x'
+   gunner: 2
+   passengers: 36
+   steward: 10
    shipname: 'Planetoid Estate'
    crewComfort: 0
-   workstations: 0
+   demand: 15
    shifts: 1
-   freightmaster: 1
-   steward: 10
+   lifters: 'y'
    mission: 'Y'
    totalMCr: 1726.3
-   medic: 2
-   sensop: 2
-   lifters: 'y'
+   undertons: 10786.5
+   preMult: 1
    jumpFuelPercentage: 0.083
    jf: 1
-   comments: ''
-   undertons: 15766.5
+   sensop: 2
+   medic: 2
    config: 'P'
    powerFuelPercentage: 0.008
-   mult: 9
-   lifeSupport: 10
-   tl: 13
-   low: 0
-   preMult: 1
-   tons: 21600
    pf: 1
-   owner: 'Bilstein'
-   tonsFree: 15766.5
+   luxuryLifeSupport: 10
+   tl: 13
+   engineer: 12
+   comments: ''
+   tons: 21600
+   mult: 9
+   low: 0
+   tonsFree: 10786.5
    qsp: 'Y-Z9P11'
-   gunner: 2
+   lifeSupport: 10
+   pilot: 1
+   freightmaster: 1
    crewLocked: 'yes'
    troops: 4

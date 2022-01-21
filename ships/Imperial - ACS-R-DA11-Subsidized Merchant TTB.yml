@@ -603,7 +603,7 @@ header:
       
       The fat trader requires a crew of five: pilot, navigator, engineer, medic, and steward. Up to two gunners may be added. The pilot operates the launch. The ship can carry eight high or middle passengers and thirteen low passengers.
       
-   shipname: 'Merchant'
+   shipname: 'March Harrier'
    shifts: 1
    low: 0
    tons: 400

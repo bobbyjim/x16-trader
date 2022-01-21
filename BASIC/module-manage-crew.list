@@ -1,0 +1,80 @@
+rem 
+rem  crew management
+rem
+{:crew.manage}
+
+cls
+
+? "current crew"
+?
+? " astrogator: " \astrogator.skill
+? " engineer:   " \engineer.skill
+? " gunner:     " \gunner.skill
+? " medic:      " \medic.skill
+? " pilot:      " \pilot.skill
+? " steward:    " \steward.skill
+?
+
+{:change astrogator}
+? "you have cr" \credits
+input "do you wish to change astrogators"; yn$
+if yn$<>"y" goto {:change pilot}
+
+input "new skill level"; s
+if s*1000 > \credits then ? "insufficient funds" :goto {:change astrogator}
+\credits = \credits - s*1000
+\astrogator.skill = s
+
+{:change pilot}
+? "you have cr" \credits
+input "do you wish to change pilots"; yn$
+if yn$<>"y" goto {:change engineer}
+
+input "new skill level"; s
+if s*1000 > \credits then ? "insufficient funds" :goto {:change pilot}
+\credits = \credits - s*1000
+\pilot.skill = s
+
+{:change engineer}
+? "you have cr" \credits
+input "do you wish to change engineers"; yn$
+if yn$<>"y" goto {:change medic}
+
+input "new skill level"; s
+if s*1000 > \credits then ? "insufficient funds" :goto {:change engineer}
+\credits = \credits - s*1000
+\engineer.skill = s
+
+{:change medic}
+? "you have cr" \credits
+input "do you wish to change medics"; yn$
+if yn$<>"y" goto {:change steward}
+
+input "new skill level"; s
+if s*1000 > \credits then ? "insufficient funds" :goto {:change medic}
+\credits = \credits - s*1000
+\medic.skill = s
+
+{:change steward}
+? "you have cr" \credits
+input "do you wish to change stewards"; yn$
+if yn$<>"y" goto {:change gunner}
+
+input "new skill level"; s
+if s*1000 > \credits then ? "insufficient funds" :goto {:change steward}
+\credits = \credits - s*1000
+\steward.skill = s
+
+{:change gunner}
+? "you have cr" \credits
+input "do you wish to change gunners"; yn$
+if yn$<>"y" goto {:changes done}
+
+input "new skill level"; s
+if s*1000 > \credits then ? "insufficient funds" :goto {:change gunner}
+\credits = \credits - s*1000
+\gunner.skill = s
+
+{:changes done}
+return
+

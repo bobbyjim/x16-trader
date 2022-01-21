@@ -1,0 +1,58 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:37 2021
+Mission: Scout/Courier
+QSP: S-AS22
+TL: 13 
+Name: Syunutstryak
+Tons: 100
+Actual Tons: 100
+Owner: Droyne
+
+MCr: 82.2
+
+Crew comfort: 6
+Passenger demand: -5
+Cargo: 6
+FuelPercentage: 12
+Components:
+ - HH0   S  1 00000 100    9  Streamlined Hull, lifters
+ - HJ1   G  1 00000   0    1  Jump Grid
+ - HL1   K  1 00000   1    1  Landing legs with pads
+ - HF1   D  1 00000   1    1  Flotation hull
+ - HW1   W  1 00000   2    2  Wings and fins
+ - AA1  13  1 00000   0    0  AV=13. 1 Rad Plate
+ - DF0   -  1 00000  20    0  Jump Fuel (2  parsecs)
+ - DF0   -  1 00000   2    0  Plant Fuel (one month)
+ - DP1   A  1 00000   4    4  PowerPlant-2 (A)
+ - DJ1   A  1 00000  10   10  Jump Drive-1 (A)
+ - DM1   A  1 00000   2    4  Maneuver Drive-2 (A)
+ - DP1   A  1 00000   4    4  PowerPlant-2 (A)
+ - DJ1   A  1 00000  10   10  Jump Drive-2 (A)
+ - DM1   A  1 00000   2    4  Maneuver Drive-2 (A)
+ - DF1  S1  1 00000   1  0.1  Fuel Scoops 100t/hr
+ - DF1  I1  1 00000   1  0.1  Fuel Intakes 40t/hr
+ - DF1  B1  1 00000   1  0.1  Fuel Bins 20t/hr
+ - DF1  P3  1 00000   3    3  Fuel Purifiers 12t/hr
+ - OO0   -  1 00000   1    1  Life Support Standard
+ - OC1   2  1 00000   1    3  Computer Model/1bis std
+ - OB0   -  1 00000   3    0  Standard Controls
+ - SS1   -  1 00000   0  1.5  AR Surf Communicator
+ - SS1   -  1 00000   0  1.5  AR Surf Neutrino Detector
+ - SS1   -  1 00000   0  2.5  LR Surf EMS
+ - SS1   -  1 00000   0  1.5  AR Surf Scope
+ - WS1   -  1 00000   0  0.6  Vd Surf Mass Sensor
+ - WS1   -  1 00000   0  0.6  Vd Surf Deep Radar
+ - WS1   -  1 00000   0  0.6  Vd Surf Densitometer
+ - WS1   -  1 00000   0  0.6  Vd Surf Life Detector
+ - WS1   -  1 00000   0  0.6  Vd Surf Activity Sensor
+ - WS1   -  1 00000   0  0.6  Vd Surf Field Sensor
+ - WW1   -  1 00000   6  12.5  Or T3de Beam Laser
+ - CO0   -  1 00000   4    0  Crew Lounge
+ - CO0   -  2 00000 0.5  0.5  Crew Shared Fresher
+ - CO0   -  1 00000   6  0.3  Six-Droyne Stateroom
+ - PC0   -  1 00000   6    0  Cargo Hold Basic
+ - VO0  EL  1 00000   4  0.1  Air/Raft Enclosed
+ - VO1   -  1 00000   4    0  Vehicle Lock
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

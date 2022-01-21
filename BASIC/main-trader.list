@@ -1,0 +1,132 @@
+rem
+rem traveller trader 2021
+rem
+; --------------------------------------
+; init: set up global vars
+; --------------------------------------
+longvar \hr.high
+longvar \hr.low
+longvar \down
+
+longvar \location.row
+longvar \location.col
+longvar \location.name
+longvar \destination.row
+longvar \destination.col
+longvar \destination.name
+longvar \goal.row
+longvar \goal.col
+longvar \goal.name
+
+longvar \astrogator.skill
+longvar \pilot.skill
+longvar \engineer.skill
+longvar \medic.skill
+longvar \steward.skill
+longvar \gunner.skill
+
+longvar \credits
+
+longvar \ship.hold
+longvar \ship.free
+longvar \ship.cargo.type
+longvar \ship.cargo.tons
+longvar \ship.jump.rating
+
+\ship.hold = 65
+\ship.free = 25
+\ship.jump.rating = 2
+
+rem
+rem  get some initial cash
+rem
+\credits = 100000
+
+rem
+rem  give the astrogator some basic training
+rem
+\astrogator.skill = 1
+
+rem
+rem  put some useful cargo in the hold
+rem
+\ship.cargo.type(0) = 0 :\ship.cargo.tons(0) = 5
+\ship.cargo.type(1) = 1 :\ship.cargo.tons(1) = 5
+\ship.cargo.type(2) = 2 :\ship.cargo.tons(2) = 5
+\ship.cargo.type(3) = 3 :\ship.cargo.tons(3) = 5
+\ship.cargo.type(4) = 4 :\ship.cargo.tons(4) = 5
+\ship.cargo.type(5) = 5 :\ship.cargo.tons(5) = 5
+\ship.cargo.type(6) = 6 :\ship.cargo.tons(6) = 5
+\ship.cargo.type(7) = 7 :\ship.cargo.tons(7) = 5
+
+\hr.high$=""
+\hr.low$=""
+for x=1 to 78
+   \hr.high$=\hr.high$+"£"
+   \hr.low$=\hr.low$+"€"
+next
+
+hh$ = ""
+for x = 1 to 40 :hh$ = hh$ + "\xc3" :next
+hg$ = "\x99" + hh$ + hh$ + "\x9b"
+hr$ = "\x1c" + hh$ + hh$ + "\x9b"
+hs$ = "\x1c" + hh$ + "\x9b"
+
+dim \down$(50)
+\down$(0)="\x13"
+forx=1to50:\down$(x)=\down$(x-1)+"\x11":next
+
+rem --------------------------------------
+rem init: read data files
+rem --------------------------------------
+VLOAD "PETFONT.BIN",8,1,0 
+POKE $9F36,128
+
+rem
+rem  the market uses bank 1.
+rem
+LOAD "MARKET.BIN",8,1,$A000
+
+rem
+rem  the map takes up banks 10 - 44 (34 banks).
+rem
+LOAD "SPINWARD-MAP-64B.BIN", 8, 10, $A000
+
+rem --------------------------------------
+rem init: set player location and goal
+rem --------------------------------------
+\location.row = 22 :rem loc = lunion
+\location.col = 25
+\goal.row     = 20 :rem goal = regina
+\goal.col     = 11 
+
+rem --------------------------------------
+rem initialize modules
+rem --------------------------------------
+gosub {:util.init}
+gosub {:astrogation.init}
+
+rem --------------------------------------
+rem now run all the things
+rem --------------------------------------
+color 5,0
+cls()
+
+gosub {:welcome} :rem welcome
+
+rem game loop
+{:game loop}
+
+gosub {:astrogation.show} :rem astrogation
+
+gosub {:crew.manage} :rem manage crew
+
+;gosub {:trade.show}       :rem trade
+\location.row = \destination.row
+\location.col = \destination.col
+\location.name$ = \destination.name$
+
+goto {:game loop} :rem game loop
+
+end
+

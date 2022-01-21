@@ -1,0 +1,77 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:37 2021
+Mission: Merchant Cruiser
+QSP: R2-TB43
+TL: 12 
+Name: Leviathan
+Tons: 1800
+Actual Tons: 1805
+Overtonnage: 5
+
+MCr: 638.9
+Builder: Bilstein Yards
+Owner: Baraccai Technum
+Disposition: In Service
+
+Crew comfort: 0
+Passenger demand: 2
+Cargo: 70
+FuelPercentage: 14
+Components:
+ - HH0   B  1 00000 1800   54  Braced Hull
+ - AA1  36  1 00000 144    0  AV=36. 3 Kinetic Plate
+ - DF0   -  1 00000 540    0  Jump Fuel (3  parsecs)
+ - DF0   -  1 00000  72    0  Plant Fuel (one month)
+ - DJ5  P2  1 00000 145  145  Jump Drive-3 (P2)
+ - DM3  T2  1 00000  71  142  Maneuver Drive-4 (T2)
+ - DP4  T2  1 00000 109  109  PowerPlant-4 (T2)
+ - DF1  P5  1 00000   5    5  Fuel Purifiers 20t/hr
+ - DF1  S1  1 00000   1  0.1  Fuel Scoops 100t/hr
+ - DF1  I2  1 00000   2  0.2  Fuel Intakes 80t/hr
+ - DF1  B2  1 00000   2  0.2  Fuel Bins 40t/hr
+ - OC1   4  1 00000   8   27  Computer Model/4 fib
+ - OO0   -  2 00000   2    2  Life Support Long Term
+ - OO0   -  1 00000   1    1  Life Support Adaptable
+ - OO0   - 10 00000   4  0.2  Squad Barracks
+ - OO1   -  1 00000   2    1  Clinic
+ - OO1   -  1 00000   4    3  Surgery
+ - OO1   -  1 00000   2  0.2  Counsellor
+ - OB0   2  1 00000  48    0  Spacious Controls
+ - SS1   2  1 00000   5    7  AR B1de EMS
+ - SS1   2  1 00000   5    7  AR B1de Neutrino Detector
+ - SS1   1  1 00000   2  2.5  LR Ant Communicator
+ - SS1   1  1 00000   2  2.5  LR Ant Jammer
+ - SS1   1  1 00000   2  2.5  LR Ant Scope
+ - SS1   1  1 00000   2  2.5  LR Ant Stealth Mask
+ - WS1   -  1 00000   0  0.6  Vd Surf Mass Sensor
+ - WS1   -  1 00000   0  0.6  Vd Surf Proximeter
+ - WS1   -  1 00000   0  0.6  Vd Surf Activity Sensor
+ - WW1   -  4 00000   1  1.2  AR T3 Missile
+ - WW1   3  2 00000   5  6.5  AR B2 Particle Accelerator
+ - WW1   -  4 00000   2  3.5  Or T3 Beam Laser
+ - WW1  -2  6 00000   1  0.2  AR T1 Empty
+ - CO0   - 10 00000   2  0.1  Crew Stateroom
+ - CO0   - 10 00000   1  0.1  Spacer Niche
+ - CO0   - 10 00000 0.5  0.1  Spacer Bunks
+ - CO0   -  2 00000   1    1  Crew Common Fresher
+ - CO0   -  6 00000 0.5  0.5  Crew Shared Fresher
+ - CO0   -  6 00000   4  0.1  Officer Stateroom
+ - CO0   - 20 00000   8    0  Crew Lounge
+ - PO0   -  4 00000   6  0.4  Luxury Stateroom
+ - PO0   -  1 00000   4    0  Passenger Lounge
+ - PC0   -  1 00000  70    0  Cargo Hold Basic
+ - PO0   -  4 00000 0.5  0.1  Low Berth
+ - PO1   -  2 00000 0.5  0.1  Air Lock
+ - PO1   -  1 00000   2    0  Cargo Lock
+ - PO0   -  1 00000   1    1  Container Handler
+ - PO0   -  1 00000   1    0  Magazine
+ - PO0   -  1 00000   1    0  Mail Vault
+ - VO0  EL  1 00000   4  0.1  Air/Raft Enclosed
+ - VO0  MF  1 00000  40   18  Pinnace
+ - VO0  MC  1 00000  95   22  Cargo Shuttle
+ - VO0  MS  2 00000  20   16  Launch
+ - VO1   -  4 00000  10    0  Smallcraft Hangar Overhead
+ - VO1   -  1 00000  10    0  Large Vehicle Lock
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

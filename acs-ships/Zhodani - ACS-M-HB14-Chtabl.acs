@@ -1,0 +1,42 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:41 2021
+Mission: Liner
+QSP: M-HB14
+TL: 12 
+Name: Chtabl
+Tons: 800
+Actual Tons: 800
+
+MCr: 228.5
+Owner: Zhodani
+
+Crew comfort: -1
+Passenger demand: 0
+Cargo: 57
+FuelPercentage: 13
+Components:
+ - HH0   B  1 00000 800   24  Braced Hull
+ - AA1  28  1 00000   0    0  AV=28. 1 Kinetic Charged
+ - DF0   -  1 00000 320    0  Jump Fuel (4  parsecs)
+ - DF0   -  1 00000 14.4    0  Plant Fuel (0.5 months)
+ - DJ3   R  1 00000  85   85  Jump Drive-4 (R)
+ - DP2   1  1 850E1  49   49  Imp PowerPlant-4 (R)
+ - DM1   3  1 613E2 2.31   14  Adv Maneuver Drive-1 (D)
+ - OS1   4  1 00000   4   18  Semi-Organic Model/4 std
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OO0   -  3 00000   1    1  Life Support Luxury
+ - OB0   -  1 00000   7    0  Standard Controls
+ - CO0   -  1 00000   1    1  Crew Common Fresher
+ - CO0   -  8 00000   2  0.1  Crew Stateroom
+ - CO0   -  3 00000   4    0  Crew Lounge
+ - CO0   -  2 00000   1  0.1  Spacer Niche
+ - PO0   - 36 00000   2  0.1  Standard Stateroom
+ - PO0   -  4 00000   1    1  Common Fresher
+ - PO0   - 34 00000 0.5  0.1  Low Berth
+ - PO0   - 18 00000   4    0  Passenger Lounge
+ - PC0   -  1 00000  57    0  Cargo Hold Basic
+ - PO1   -  1 00000 0.5  0.1  Air Lock
+ - VO0  MS  1 00000  60  19.5  Slow Pinnace + niche
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

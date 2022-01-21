@@ -1,0 +1,46 @@
+--- 
+ACS1.0: Thu Dec  2 19:52:03 2021
+Mission: Merchant
+QSP: R-EU12
+TL: 11 
+Name: Maru
+Tons: 500
+Actual Tons: 500
+
+MCr: 113.7
+
+Crew comfort: 0
+Passenger demand: 0
+Cargo: 199
+FuelPercentage: 12
+Components:
+ - HH0   U  1 00000 500   17  Unstreamlined Hull
+ - HL1   K  1 00000   5    5  Landing legs with pads
+ - AA1  11  1 00000   0    0  AV=11. 1 Kinetic Plate
+ - DF0   -  1 00000 100    0  Jump Fuel (2  parsecs)
+ - DF0   -  1 00000  10    0  Plant Fuel (one month)
+ - DP1   E  1 00000  16   16  PowerPlant-2 (E)
+ - DJ1   E  1 00000  30   30  Jump Drive-2 (E)
+ - DM1   C  1 00000   5   10  Maneuver Drive-1 (C)
+ - OC1   2  1 00000   2    5  Computer Model/2 std
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OO0   -  1 00000   1    1  Life Support Luxury
+ - OO0   -  1 00000   1    1  Life Support Adaptable
+ - OO1   -  1 00000   2    1  Clinic
+ - OO1   -  1 00000   2  0.2  Counsellor
+ - OB0   -  1 00000   8    0  Standard Controls
+ - WW1  -2  3 00000   1  0.7  Vd T1 Beam Laser
+ - WW1  -2  2 00000   1  0.2  AR T1 Empty
+ - CO0   -  4 00000   2  0.1  Crew Stateroom
+ - CO0   -  2 00000   4    0  Crew Lounge
+ - CO0   -  2 00000 0.5  0.5  Crew Shared Fresher
+ - PC0   -  1 00000 199    0  Cargo Hold Basic
+ - PO0   - 14 00000   2  0.1  Standard Stateroom
+ - PO0   -  7 00000   4    0  Passenger Lounge
+ - PO0   -  4 00000 0.5  0.5  Shared Fresher
+ - PO0   - 14 00000 0.5  0.1  Low Berth
+ - VO0  MS  1 00000  20   16  Launch
+ - VO1   -  1 00000  10    0  Launch Hangar Overhead
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

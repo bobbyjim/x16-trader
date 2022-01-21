@@ -1,0 +1,128 @@
+rem
+rem -------------------------- system -----------------------
+rem
+; color 3,0  :rem aqua on black
+; color 5,0  :rem green on black
+; color 7,0  :rem yellow on black
+; color 13,0  :rem lt green on black
+; color 14,0  :rem lt blue on black
+; color 15,0 :rem lt grey on black
+{:enter system}
+   color 15,0 :rem white on black
+   \gamestate = 1
+
+rem
+rem  there is only one exit out of the system, and that is "starport"
+rem
+{:system-loop}
+   on \gamestate goto {:insystem}, {:land at starport}, {:refuel}, {:survey}, {:jump}
+
+   goto {:system-loop}
+
+; ----------------------------------------------------------------
+{:insystem}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "      insystem"
+gosub {:util.banner}
+
+?:? spc(25) "you are in orbit around ";
+gosub {:map.where am i}
+?:?
+
+?:? spc(25) "1 - land at starport"
+?:? spc(25) "2 - wilderness refueling"
+?:? spc(25) "3 - system survey"
+?:? spc(25) "4 - jump"
+?:?
+{:insystem-get} get de$
+if de$ < "1" or de$ > "4" goto {:insystem-get}
+\gamestate = val(de$)+1
+goto {:system-loop}
+
+; ----------------------------------------------------------------
+{:land at starport}
+; ----------------------------------------------------------------
+return
+
+; ----------------------------------------------------------------
+{:refuel}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "      refuel"
+gosub {:util.banner}
+?:? spc(25) "i: ice refueling"
+?:? spc(25) "g: gas giant refueling"
+?:? spc(25) "w: wilderness refuel"
+?:? spc(25) "x: return"
+?:?
+{:refuel-get} get de$
+   if de$="x" then \gamestate = 1
+   if de$ < "1" or de$ > "x" goto {:refuel-get}
+
+?:? "refueling";
+forx=0to7
+   ? ".";
+   forz=0to199:y=sqr(x):next
+next
+? "done."
+goto {:system-loop}
+
+; ----------------------------------------------------------------
+{:survey}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "      survey"
+gosub {:util.banner}
+?:? spc(25) "<survey options>"
+?:? spc(25) "x: return"
+?:?
+{:survey-get} get de$
+   if de$="x" then \gamestate = 1
+   if de$ < "1" or de$ > "x" goto {:survey-get}
+
+?:? "surveying";
+forx=0to7
+   ? ".";
+   forz=0to199:y=sqr(x):next
+next
+? "done."
+goto {:system-loop}
+
+; ----------------------------------------------------------------
+{:jump}
+; ----------------------------------------------------------------
+? chr$(147) "\x11\x11"
+ba$ = "      jump"
+gosub {:util.banner}
+
+? "   initiating jump program."
+forx=0to499:y=sqr(x):next
+? "   jump drives charging."
+forx=0to499:y=sqr(x):next
+? "   entering jumpspace."
+forx=0to499:y=sqr(x):next
+fory=1to6
+   ? "      day" y
+   forx=0to999:z=sqr(x):next
+next
+? "      day 7: exit precipitation."
+forx=0to499:y=sqr(x):next
+? "   scanning system."
+forx=0to499:y=sqr(x):next
+
+\col = \dest.acol 
+\row = \dest.arow
+\dest.acol = 0 :rem unset flight plan
+\dest.arow = 0
+
+?:? spc(25) "welcome to ";
+gosub {:map.where am i}
+?:?
+
+if p = 1 then p = 0 :gosub {:combat.run}
+
+input "press <return>"; yn$
+\gamestate = 1
+
+goto {:system-loop}

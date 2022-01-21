@@ -1,0 +1,55 @@
+EN=5000
+
+longvar \down
+longvar \width
+longvar \height
+
+dim \down$(60)
+\down$(0)="\x13"
+for x=1 to 60: \down$(x)=\down$(x-1)+"\x11" :next
+
+\width=60
+\height=56
+
+color 15,0: cls()
+
+rem
+rem  these should be vpoked into layer 2
+rem
+for s=1 to 50 :rem stars
+   x = int(rnd(1)*\width+1)
+   y = int(rnd(1)*\height+1)
+   print \down$(y) tab(x) "."
+next
+
+rem
+rem  display crosshairs
+rem
+x = int(\width/2)
+y = int(\height/2)
+? \down$(y) TAB(x) "Ï   Ð"
+? "\x11" TAB(x-5) "ÛÛÀÀÀ     ÀÀÀÛÛ"
+? "\X11" TAB(x) "Ì   º"
+
+rem
+rem  display status bar
+rem
+print \down$(\height+1);
+? "Ï£";
+for x=1 to \width: ? "£"; :next
+? "Ð\X9D\X94£"
+
+? "¥ENERGY-  ";left$(str$(en)+"      ",6);"        HITS-   0    §\X9D\X94"
+
+? "Ì€";
+for x=1 to \width: ? "€"; :next
+? "º\X9D\X94€\X91"
+
+rem
+rem  display menu options
+rem
+? \down$(0)
+? tab(\width+1) "Jump"
+? tab(\width+1) "Dock"
+? tab(\width+1) "Guns"
+

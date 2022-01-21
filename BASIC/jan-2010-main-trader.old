@@ -1,0 +1,106 @@
+; -------------------------------------------------------------
+;
+;  Traveller Trader
+;
+; -------------------------------------------------------------
+color 15,0 :?chr$(147)	:rem lt grey on black
+
+;
+; ----------------- map-related longvars ----------------------
+;
+longvar \gamestate
+longvar \col
+longvar \row
+longvar \range
+longvar \dest.acol
+longvar \dest.arow
+
+longvar \uwp.sp
+longvar \uwp.bases
+longvar \uwp.bgg
+longvar \uwp.allegiance
+longvar \uwp.zone
+
+;
+; --------------- crew-related longvars ---------------------
+;
+longvar \crew.name
+longvar \crew.damage
+longvar \crew.count
+longvar \crew.role
+
+;
+; --------------- combat-related longvars ---------------------
+;
+longvar \round
+longvar \battle
+longvar \repair
+longvar \medical
+
+longvar \enemy.size
+longvar \enemy.damage
+
+longvar \component.label
+longvar \component.subtype
+longvar \component.damage
+longvar \component.count
+
+longvar \combat.result
+
+;
+; --------------- trade-related longvars ---------------------
+;
+longvar \kcredits
+longvar \cargo.count
+longvar \cargo.origin
+longvar \cargo.index
+longvar \cargo.tl
+longvar \cargo.tons
+
+;
+; -------------- longvar declarations done -------------------
+;
+
+dim bu$(30) :rem line buffer
+dim dx(36),dy(36),dc(36),dr(36) :rem destination vectors
+
+; -------------------------------------------------------------
+;
+; Bank  Description
+; ----- --------------------------------------------------------
+;   1   Current player, crew, ship
+;   2   Market
+;   3   Ships
+;   4   Banner
+;   5
+;   6
+;   7   
+;   8   
+;   9   
+;  10
+;  11+  Maps
+;
+; -------------------------------------------------------------
+;load "player-data.bin"  ,8, 1,$a000 :rem bank 1
+load "market.bin"        ,8, 2,$a000 :rem bank 2
+load "allships.bin"      ,8, 3,$a000 :rem bank 3
+load "banner.bin"        ,8, 4,$a000 :rem bank 4
+load "spinward.space.bin",8,11,$a000 :rem bank 11 and up
+
+gosub {:util.init}
+gosub {:crew.init}
+gosub {:ship.init}
+gosub {:cargo.init}
+
+\kcredits = 100 :rem kcr
+\col = 19         :rem col
+\row = 10         :rem row
+\range = 4        :rem range
+\dest.arow = 0    :rem dest.arow
+\dest.acol = 0    :rem dest.acol
+
+{:game-loop}
+   gosub {:enter starport}
+   gosub {:enter system}
+   goto {:game-loop}
+

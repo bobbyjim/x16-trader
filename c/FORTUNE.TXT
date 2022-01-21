@@ -1,0 +1,333 @@
+
+
+Whom computers would destroy, they must first drive mad.
+
+
+Your lucky number is 3552664958674928.  Watch for it everywhere.
+
+
+It may be that your whole purpose in life is simply to serve as a
+warning to others.
+
+
+Your fault -- Core dumped
+
+
+If we do not change our direction we may end up where we're heading.
+
+
+Q: Why did the tachyon cross the road?
+A: Because it was on the other side.
+
+
+Every little picofarad has a nanohenry all its own.
+                -- Don Vonada
+
+
+Klein bottle for rent -- inquire within.
+
+
+Niklaus Wirth has lamented that, whereas Europeans pronounce his name
+correctly (Ni-klows Virt), Americans invariably mangle it into
+(Nick-les Worth).  Which is to say that Europeans call him by name, but
+Americans call him by value.
+
+
+Q:      Why do ducks have flat feet?
+A:      To stamp out forest fires.
+
+Q:      Why do elephants have flat feet?
+A:      To stamp out flaming ducks.
+
+
+Overload -- core meltdown sequence initiated.
+
+
+All programmers are playwrights and all computers are lousy actors.
+
+
+/Earth is 98% full ... please delete anyone you can.
+
+
+There was a young poet named Dan,
+Whose poetry never would scan.
+        When told this was so,
+        He said, "Yes, I know.
+It's because I try to put every possible syllable into that last line that I can
+."
+
+
+Gyroscope, n.:
+        A wheel or disk mounted to spin rapidly about an axis and also
+free to rotate about one or both of two axes perpendicular to each
+other and the axis of spin so that a rotation of one of the two
+mutually perpendicular axes results from application of torque to the
+other when the wheel is spinning and so that the entire apparatus
+offers considerable opposition depending on the angular momentum to any
+torque that would change the direction of the axis of spin.
+                -- Webster's Seventh New Collegiate Dictionary
+
+
+How doth the VAX's C-compiler
+Improve its object code.
+And even as we speak does it
+Increase the system load.
+
+How patiently it seems to run
+And spit out error flags,
+While users, with frustration, all
+Tear all their clothes to rags.
+
+
+"A witty saying proves nothing."
+                -- Voltaire
+
+
+
+"Not only is this incomprehensible, but the ink is ugly and the paper
+is from the wrong kind of tree."
+                --Profesoor W.
+
+
+Ray's Rule of Precision:
+        Measure with a micrometer.  Mark with chalk.  Cut with an axe.
+
+
+Heuristics are bug ridden by definition.  If they didn't have bugs,
+then they'd be algorithms.
+
+
+Psychiatrists say that one out of four people are mentally ill.  Check
+three friends.  If they're ok, you're it.
+
+
+Don't get suckered in by the comments -- they can be terribly
+misleading.  Debug only code.
+                -- Dave Storer
+
+
+If the code and the comments disagree, then both are probably wrong.
+                -- Norm Schryer
+
+
+Different all twisty a of in maze are you, passages little.
+
+
+Every absurdity has a champion who will defend it.
+
+
+"I am not sure what this is, but an `F' would only dignify it."
+                -- English Professor
+
+
+"I'd love to go out with you, but I'm staying home to work on my
+cottage cheese sculpture."
+
+
+"I'd love to go out with you, but I have to stay home and see if I
+snore."
+
+
+Computer Science is merely the post-Turing decline in formal systems
+theory.
+
+
+"Beware of bugs in the above code; I have only proved it correct, not
+tried it."
+                -- Donald Knuth
+
+
+"Pascal is not a high-level language."
+                -- Steven Feiner
+
+
+Bell Labs Unix -- Reach out and grep someone.
+
+
+It is now pitch dark.  If you proceed, you will likely fall into a
+pit.
+
+
+SHIFT TO THE LEFT!  SHIFT TO THE RIGHT!
+POP UP, PUSH DOWN, BYTE, BYTE, BYTE!
+
+
+Gerrold's Laws of Infernal Dynamics:
+        1.  An object in motion will always be headed in the wrong
+            direction.
+        2.  An object at rest will always be in the wrong place.
+        3.  The energy required to change either one of these states
+            will always be more than you wish to expend, but never so
+            much as to make the task totally impossible.
+
+
+The use of COBOL cripples the mind; its teaching should, therefore, be
+regarded as a criminal offense.
+                -- E. W. Dijkstra
+
+
+God rest ye CS students now,
+Let nothing you dismay.
+The VAX is down and won't be up,
+Until the first of May.
+The program that was due this morn,
+Won't be postponed, they say.
+
+        Oh, tidings of comfort and joy,
+        Comfort and joy,
+        Oh, tidings of comfort and joy.
+
+The bearings on the drum are gone,
+The disk is wobbling, too.
+We've found a bug in Lisp, and Algol
+Can't tell false from true.
+And now we find that we can't get
+At Berkeley's 4.2.
+
+        (chorus)
+
+
+Scotty: Captain, we din' can reference it!
+Kirk:   Analysis, Mr. Spock?
+Spock:  Captain, it doesn't appear in the symbol table.
+Kirk:   Then it's of external origin?
+Spock:  Affirmative.
+Kirk:   Mr. Sulu, go to pass two.
+Sulu:   Aye aye, sir, going to pass two.
+
+
+Micro Credo:
+        Never trust a computer bigger than you can lift.
+
+
+better !pout !cry
+better watchout
+lpr why
+santa claus <north pole >town
+
+cat /etc/passwd >list
+ncheck list
+ncheck list
+cat list | grep naughty >nogiftlist
+cat list | grep nice >giftlist
+santa claus <north pole > town
+
+who | grep sleeping
+who | grep awake
+who | egrep 'bad|good'
+for (goodness sake) {
+        be good
+}
+
+
+!07/11 PDP a ni deppart m\'I  !pleH
+
+
+(1) Alexander the Great was a great general.
+(2) Great generals are forewarned.
+(3) Forewarned is forearmed.
+(4) Four is an even number.
+(5) Four is certainly an odd number of arms for a man to have.
+(6) The only number that is both even and odd is infinity.
+
+Therefore, Alexander the Great had an infinite number of arms.
+
+
+(1) Everything depends.
+(2) Nothing is always.
+(3) Everything is sometimes.
+
+
+1.79 x 10^12 furlongs per fortnight -- it\'s not just a good idea, it\'s
+the law!
+
+
+10.0 times 0.1 is hardly ever 1.0.
+
+
+101 USES FOR A DEAD MICROPROCESSOR
+	(1)  Scarecrow for centipedes
+	(2)  Dead cat brush
+	(3)  Hair barrettes
+	(4)  Cleats
+	(5)  Self-piercing earrings
+	(6)  Fungus trellis
+	(7)  False eyelashes
+	(8)  Prosthetic dog claws
+        .
+        .
+        .
+	(99)  Window garden harrow (pulled behind Tonka tractors)
+	(100) Killer velcro
+	(101) Currency
+
+
+"355/113 -- Not the famous irrational number PI, but an incredible
+simulation!"
+
+
+43rd Law of Computing:
+	Anything that can go wr
+fortune: Segmentation violation -- Core dumped
+
+
+
+7:30, Channel 5: The Bionic Dog (Action/Adventure)
+	The Bionic Dog drinks too much and kicks over the National
+	Redwood Forest.
+
+
+7:30, Channel 5: The Bionic Dog (Action/Adventure)
+	The Bionic Dog gets a hormonal short-circuit and violates the
+	Mann Act with an interstate Greyhound bus.
+
+
+A budget is just a method of worrying before you spend money, as well
+as afterward.
+
+
+A closed mouth gathers no foot.
+
+
+A cynic is a person searching for an honest man, with a stolen
+lantern.
+		-- Edgar A. Shoaff
+
+
+A day for firm decisions!!!!!  Or is it?
+
+
+A day without sunshine is like night.
+
+
+A formal parsing algorithm should not always be used.
+		-- D. Gries
+
+
+A good question is never answered.  It is not a bolt to be tightened
+into place but a seed to be planted and to bear more seed toward the
+hope of greening the landscape of idea.
+		-- John Ciardi
+
+
+A language that doesn't affect the way you think about programming is
+not worth knowing.
+
+
+A language that doesn't have everything is actually easier to program
+in than some that do.
+		-- Dennis M. Ritchie
+
+
+A little inaccuracy sometimes saves tons of explanation.
+		-- H. H. Munroe
+
+
+A new koan:
+
+	If you have some ice cream, I will give it to you.
+
+	If you have no ice cream, I will take it away from you.
+
+It is an ice cream koan.
+

@@ -1,0 +1,3 @@
+cat main-trader.list view-astrogation.list module-welcome.list module-util.list module-trade.list module-manage-crew.list > trader.tmp
+perl ../module-basic/basic-labelmaster.pl trader.tmp > trader.bas
+rm trader.tmp

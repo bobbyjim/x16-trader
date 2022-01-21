@@ -1,0 +1,45 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:37 2021
+Mission: Trader
+QSP: A-BL11
+TL: 13 
+Name: Miymosa
+Tons: 200
+Actual Tons: 197.5
+Owner: Droyne
+
+MCr: 61
+
+Crew comfort: 1
+Passenger demand: 0
+Cargo: 88
+FuelPercentage: 11
+Components:
+ - HH0   L  1 00000 200   30  Lift body Hull, lifters
+ - HL1   K  1 00000   2    2  Landing legs with pads
+ - AA1   6  1 00000   0    0  AV=6. 1 Kinetic Shell
+ - DF0   -  1 00000  20    0  Jump Fuel (1  parsec)
+ - DF0   -  1 00000   2    0  Plant Fuel (one month)
+ - DP1   A  1 00000   4    4  PowerPlant-1 (A)
+ - DJ1   A  1 00000  10   10  Jump Drive-1 (A)
+ - DM1   A  1 00000   2    4  Maneuver Drive-1 (A)
+ - DF1  S1  1 00000   1  0.1  Fuel Scoops 100t/hr
+ - DF1  I1  1 00000   1  0.1  Fuel Intakes 40t/hr
+ - DF1  B1  1 00000   1  0.1  Fuel Bins 20t/hr
+ - OC1   1  1 00000   1  1.5  Computer Model/1 std
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OO0   -  1 00000   1    1  Life Support Luxury
+ - OO0   -  1 00000   1    1  Life Support Adaptable
+ - OB0   -  1 00000   4    0  Standard Controls
+ - WW1  -2  2 00000   1  0.4  AR T1 Missile
+ - CO0   -  1 00000 0.5  0.5  Crew Shared Fresher
+ - CO0   -  2 00000   6  0.3  Crew Stateroom (6 Droyne)
+ - CO0   -  1 00000   1    1  Crew Common Fresher
+ - PC0   -  1 00000  88    0  Cargo Hold Basic
+ - PO0   -  2 00000 0.5  0.5  Shared Fresher
+ - PO0   -  8 00000   2  0.1  Standard Stateroom
+ - PO0   -  6 00000   4    0  Passenger Lounge
+ - PO0   -  1 00000   1    0  Magazine
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

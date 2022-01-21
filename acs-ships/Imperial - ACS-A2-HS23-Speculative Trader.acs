@@ -1,0 +1,58 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:38 2021
+Mission: Far Trader
+QSP: A2-HS23
+TL: 14 
+Name: Flat Trader
+Tons: 800
+Actual Tons: 798.5
+
+MCr: 316.6
+
+Crew comfort: 1
+Passenger demand: 2
+Cargo: 150
+FuelPercentage: 13
+Components:
+ - HH0   S  1 00000 800   58  Streamlined Hull, lifters
+ - HL1   K  1 00000   8    8  Landing legs with pads
+ - HF1   D  1 00000   8    8  Flotation hull
+ - AA1  56  1 00000  32    0  AV=56. 2 Kinetic Charged
+ - DF0   -  1 00000 240    0  Jump Fuel (3  parsecs)
+ - DF0   -  1 00000  48    0  Plant Fuel (2 months)
+ - DP2   M  1 00000  37   37  PowerPlant-3 (M)
+ - DJ2   M  1 00000  65   65  Jump Drive-3 (M)
+ - DM1   H  1 00000  15   30  Maneuver Drive-2 (H)
+ - DF1  S1  1 00000   1  0.1  Fuel Scoops 100t/hr
+ - DF1  I1  1 00000   1  0.1  Fuel Intakes 40t/hr
+ - DF1  B1  1 00000   1  0.1  Fuel Bins 20t/hr
+ - DF1  P5  1 00000   5    5  Fuel Purifiers 20t/hr
+ - OC1   3  1 00000   3  10.5  Computer Model/3 std
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OO0   -  1 00000   1    1  Life Support Luxury
+ - OO0   -  1 00000   1    1  Life Support Adaptable
+ - OO1   -  1 00000   4    3  Surgery
+ - OO1   -  1 00000   2  0.2  Counsellor
+ - OB0   -  1 00000  14    0  Standard Controls
+ - SS1   -  1 00000   0  2.5  LR Surf Communicator
+ - SS1   -  1 00000   0  2.5  LR Surf Jammer
+ - SS1   -  1 00000   0  2.5  LR Surf Neutrino Detector
+ - SS1   -  1 00000   0  2.5  LR Surf EMS
+ - SS1   -  1 00000   0  2.5  LR Surf Stealth Mask
+ - SS1   -  1 00000   0  1.5  AR Surf Visor
+ - WW1   -  4 00000   4  8.5  G T3 Beam Laser
+ - WW1  -1  2 00000 0.5  0.3  D T2 Sandcaster
+ - WW1  -2  1 00000   1  0.7  Vd T1 Mining Laser
+ - CO0   - 10 00000   2  0.1  Crew Stateroom
+ - CO0   -  3 00000 0.5  0.5  Crew Shared Fresher
+ - CO0   -  5 00000   8    0  Crew Lounge
+ - PO0   -  4 00000   6  0.4  Luxury Stateroom
+ - PO1   -  1 00000   4    2  Lab
+ - PC0   -  1 00000 150    0  Cargo Hold Basic
+ - VO0  Vl  1 00000  10  4.6  Lifeboat
+ - VO0  EL  1 00000   4  0.1  Air/Raft Enclosed
+ - VO0  MF  1 00000  35   18  Light Pinnace
+ - VO0   -  2 00000   2    4  Streamlined Grapple Set Single
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

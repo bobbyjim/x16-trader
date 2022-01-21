@@ -1,0 +1,86 @@
+
+longvar \down
+
+dim \down$(50)
+\down$(0) = "\x13"
+for x = 1 to 50 :\down$(x)=\down$(x-1)+"\x11" :next
+
+dim s$(20)
+y=0
+{:read ship}
+read s$(y) :if s$(y)<>"-1" then y=y+1 :goto {:read ship}
+
+cls();
+for i=0 to 16 :?s$(i) :next
+x=16 :y=4
+
+{:loop}
+? \down$(y) tab(x) chr$(94)
+{:inkey}
+ny=y :nx=x
+get a$
+if a$="i" then ny=y-1 :goto {:move}
+if a$="k" then ny=y+1 :goto {:move}
+if a$="j" then nx=x-1 :goto {:move}
+if a$="l" then nx=x+1 :goto {:move}
+goto {:inkey}
+{:move}
+if mid$(s$(ny),nx+1,1)="p" goto {:pilot}
+if mid$(s$(ny),nx+1,1)="a" goto {:astrogation}
+if mid$(s$(ny),nx+1,1)="s" goto {:sensop}
+if mid$(s$(ny),nx+1,1)="[" goto {:starport}
+if mid$(s$(ny),nx+1,1)="]" goto {:market}
+if mid$(s$(ny),nx+1,1)="!" goto {:jump}
+if mid$(s$(ny),nx+1,1)<>"." goto {:inkey}
+? \down$(y) tab(x) "."
+y=ny :x=nx
+? \down$(y) tab(x) chr$(94)
+
+goto {:loop}
+
+end
+
+data "     
+data "
+data "               P---A
+data "               .....
+data "               S....
+data "               .....
+data "                 .
+data "                 .
+data "               .....
+data "              ].....[
+data "               .....
+data "               .....
+data "               .....
+data "               .!!!.
+data "
+data "
+data "
+data -1
+
+{:pilot}
+print \down$(50) "pilot       "
+goto {:inkey}
+
+{:astrogation}
+print \down$(50) "astrogation "
+goto {:inkey}
+
+{:sensop}
+print \down$(50) "sensop      "
+goto {:inkey}
+
+{:starport}
+print \down$(50) "starport    "
+goto {:inkey}
+
+{:market}
+print \down$(50) "market      "
+goto {:inkey}
+
+{:jump}
+print \down$(50) "jump        "
+goto {:inkey}
+
+

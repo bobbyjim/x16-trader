@@ -1,0 +1,81 @@
+EN=5000
+
+longvar \down
+longvar \view.top
+longvar \view.left
+longvar \view.width
+longvar \view.height
+longvar \hr.high
+longvar \hr.low
+
+dim \down$(60)
+\down$(0)="\x13"
+for x=1 to 60: \down$(x)=\down$(x-1)+"\x11" :next
+
+\hr.high$=""
+\hr.low$=""
+for x=1 to 78
+   \hr.high$=\hr.high$+"£"
+   \hr.low$=\hr.low$+"€"
+next
+
+\view.top    =  4
+\view.left   =  1
+\view.width  = 60
+\view.height = 50
+
+color 15,0: cls()
+
+gosub {:alarm bar} :rem status bar
+
+rem
+rem  these should be vpoked into layer 2
+rem
+for s=1 to 50 :rem stars
+   x = int(rnd(1)*\view.width  + \view.left + 1)
+   y = int(rnd(1)*\view.height + \view.top)
+   print \down$(y) tab(x) "."
+next
+
+rem
+rem  display crosshairs
+rem
+x = \view.left + int(\view.width/2)
+y = \view.top  + int(\view.height/2)
+? \down$(y) TAB(x) "Ï   Ð"
+? "\x11" TAB(x-5) "ÛÛÀÀÀ     ÀÀÀÛÛ"
+? "\X11" TAB(x) "Ì   º"
+
+rem
+rem  display status bar
+rem
+print \down$(\view.height+\view.top);
+? "Ï"; \hr.high$; "Ð\X9D\X94"
+? "¥ENERGY-  ";left$(str$(en)+"      ",6);"        HITS-   0    §\X9D\X94"
+? "Ì"; \hr.low$; "º\X9D\X94\X91"
+
+rem
+rem  display menu options
+rem
+? \down$(\view.top+1)
+? tab(\view.left + \view.width + 1) "Jump"
+? tab(\view.left + \view.width + 1) "Dock"
+? tab(\view.left + \view.width + 1) "Guns"
+
+end
+
+REM ALARM BAR
+{:alarm bar}
+PRINT "  BRI PWR MDR JDR FUE HOL 123 456 789  ";
+PRINT "  JA ST ME NU MA BL GR PR WH  ";
+PRINT "   ARMOR   ";
+PRINT "   .   .   .   .   .   .  ..- --- ---  ";
+PRINT "  -- -- -- -- -- -- -- -- --  ";
+PRINT " ¢¢¢¢¢¢¢¢¢ ";
+;PRINT "                                       ";
+;PRINT "                              ";
+;PRINT "           ";
+? " " \hr.low$  " ";
+RETURN
+
+

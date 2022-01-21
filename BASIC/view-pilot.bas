@@ -1,0 +1,56 @@
+5 EN=5000
+10 DIM A0$(60)
+15 A0$(0)="\X13"
+20 FOR X=1 TO 60: A0$(X)=A0$(X-1)+"\X11" :NEXT
+25 A5$=""
+30 A6$=""
+35 FOR X=1 TO 78
+40    A5$=A5$+"£"
+45    A6$=A6$+"€"
+50 NEXT
+55 A1    =  4
+60 A2   =  1
+65 A3  = 60
+70 A4 = 50
+75 COLOR 15,0: ?CHR$(147)
+80 GOSUB 245 :REM STATUS BAR
+85 REM
+90 REM  THESE SHOULD BE VPOKED INTO LAYER 2
+95 REM
+100 FOR S=1 TO 50 :REM STARS
+105    X = INT(RND(1)*A3  + A2 + 1)
+110    Y = INT(RND(1)*A4 + A1)
+115    PRINT A0$(Y) TAB(X) "."
+120 NEXT
+125 REM
+130 REM  DISPLAY CROSSHAIRS
+135 REM
+140 X = A2 + INT(A3/2)
+145 Y = A1  + INT(A4/2)
+150 ? A0$(Y) TAB(X) "Ï   Ð"
+155 ? "\X11" TAB(X-5) "ÛÛÀÀÀ     ÀÀÀÛÛ"
+160 ? "\X11" TAB(X) "Ì   º"
+165 REM
+170 REM  DISPLAY STATUS BAR
+175 REM
+180 PRINT A0$(A4+A1);
+185 ? "Ï"; A5$; "Ð\X9D\X94"
+190 ? "¥ENERGY-  ";LEFT$(STR$(EN)+"      ",6);"        HITS-   0    §\X9D\X94"
+195 ? "Ì"; A6$; "º\X9D\X94\X91"
+200 REM
+205 REM  DISPLAY MENU OPTIONS
+210 REM
+215 ? A0$(A1+1)
+220 ? TAB(A2 + A3 + 1) "JUMP"
+225 ? TAB(A2 + A3 + 1) "DOCK"
+230 ? TAB(A2 + A3 + 1) "GUNS"
+235 END
+240 REM ALARM BAR
+245 PRINT "  BRI PWR MDR JDR FUE HOL 123 456 789  ";
+250 PRINT "  JA ST ME NU MA BL GR PR WH  ";
+255 PRINT "   ARMOR   ";
+260 PRINT "   .   .   .   .   .   .  ..- --- ---  ";
+265 PRINT "  -- -- -- -- -- -- -- -- --  ";
+270 PRINT " ¢¢¢¢¢¢¢¢¢ ";
+275 ? " " A6$  " ";
+280 RETURN

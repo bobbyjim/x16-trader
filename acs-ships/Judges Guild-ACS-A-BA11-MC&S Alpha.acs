@@ -1,0 +1,48 @@
+--- 
+ACS1.0: Mon Dec 27 18:09:18 2021
+Mission: Trader
+QSP: A-BA11
+TL: 12 
+Name: MC&S Alpha
+Tons: 200
+Actual Tons: 201
+Overtonnage: 1
+
+MCr: 45.7
+Builder: Ling Standard
+Owner: Judges Guild
+Disposition: In Service
+
+Crew comfort: 0
+Passenger demand: 1
+Cargo: 82
+FuelPercentage: 11
+Components:
+ - HH0   A  1 00000 200   16  Airframe Hull, lifters, 2 a/l free
+ - HL1   K  1 00000   2    2  Landing legs with pads
+ - DF0   -  1 00000  20    0  Jump Fuel (1  parsec)
+ - DF0   -  1 00000   2    0  Plant Fuel (one month)
+ - DF1   S  1 00000   1  0.1  Fuel Scoops
+ - DF1   I  1 00000   1  0.1  Fuel Intakes
+ - DF1   B  1 00000   1  0.1  Fuel Bins
+ - DP1   A  1 00000   4    4  PowerPlant-1 (A)
+ - DJ1   A  1 00000  10   10  Jump Drive-1 (A)
+ - DM1   A  1 00000   2    4  Maneuver Drive-1 (A)
+ - OC1   1  1 00000   1  1.5  Computer Model/1 std
+ - OO0   -  1 00000   1    1  Life Support Luxury
+ - OO0   -  1 00000   1    1  Life Support Standard
+ - OO0   -  1 00000 0.5  0.5  Med Console
+ - OB0   -  1 00000   4  0.5  Standard Bridge
+ - WW1  -2  2 00000   1  0.2  AR T1 Empty
+ - CO0   -  1 00000 0.5  0.5  Crew Shared Fresher
+ - CO0   -  4 00000   2  0.1  Crew Stateroom
+ - CO0   -  1 00000  10    0  Crew Commons
+ - PC0   -  1 00000  82    0  Cargo Hold Basic
+ - PO0   - 20 00000 0.5  0.1  Low Berth
+ - PO0   -  6 00000   2  0.1  Standard Stateroom
+ - PO1   -  1 00000   2    0  Cargo Lock
+ - PO0   -  2 00000 0.5  0.5  Shared Fresher
+ - PO0   -  1 00000  23    0  Passenger Lounge
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

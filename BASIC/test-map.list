@@ -1,0 +1,30 @@
+
+
+LOAD "SPINWARD-MAP-64B.BIN", 8, 10, $A000
+
+{:loop}
+input "col (1-256)"; y
+input "row (1-64)"; x
+x=x-1 :y=y-1
+rem o is entry number
+o = y * 64 + x
+ba = 10+int(o/128)
+o  = o - 128*int(o/128)
+poke $9f61,ba
+? "bank " ba ", entry" o
+l$="0-------:-------1-------:-------2-------:-------3-------:-------4---"
+? l$
+for y = 0 to 29
+   for x = 0 to 63
+      o1 = o*64 +x
+      v1 = peek($a000+o1)
+      a1$ = chr$(v1)
+      if v1<32 or v1>91 then a1$="."
+      ? a1$;
+   next
+   ?
+   o=o+1
+   if o=128 then ba=ba+1 :o=0 :poke $9f61,ba
+next
+goto {:loop}
+

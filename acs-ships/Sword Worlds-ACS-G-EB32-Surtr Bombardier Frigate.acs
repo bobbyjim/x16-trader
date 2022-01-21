@@ -1,0 +1,47 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:40 2021
+Mission: Frigate
+QSP: G-EB32
+TL: 11 
+Name: Surtr
+Tons: 500
+Actual Tons: 496
+
+MCr: 157.6
+Owner: Sword Worlds
+
+Crew comfort: -3
+Passenger demand: -5
+Cargo: 17
+FuelPercentage: 13
+Components:
+ - HH0   B  1 00000 500   15  Braced Hull
+ - AA1 112  1 00000  60    0  AV=112. 4 Kinetic Charged
+ - DF0   -  1 00000 100    0  Jump Fuel (2  parsecs)
+ - DF0   -  1 00000  15    0  Plant Fuel (one month)
+ - DM1   H  1 00000  15   30  Maneuver Drive-3 (H)
+ - DJ1   E  1 00000  30   30  Jump Drive-2 (E)
+ - DP1   H  1 00000  25   25  PowerPlant-3 (H)
+ - OC1   2  1 00000   4  7.5  Computer Model/2 fib
+ - OO0   -  2 00000   4  0.2  Crew Barracks
+ - OO0   -  4 00000   1    1  Emergency Capsule
+ - OB0   2  1 00000  14    0  Spacious Controls
+ - SS1   -  1 00000   0  1.5  AR Surf Communicator
+ - SS1   1  1 00000   1  1.5  AR Ant Jammer
+ - SS1   1  1 00000   1  1.5  AR Ant Radar
+ - SS1   -  1 00000   0  1.5  AR Surf Scope
+ - SS1   1  1 00000   1  1.5  AR Ant Neutrino Detector
+ - WW1   5  1 00000  50    8  AR Bay KK Missile
+ - WW1   3  2 00000   5  4.2  AR B2 Missile
+ - WW1   -  2 00000   1    2  Vd T3 Hybrid L-S-M
+ - CO0   -  8 00000   1  0.1  Spacer Niche
+ - CO0   -  2 00000   4    0  Crew Lounge
+ - PO0   -  1 00000  10    0  Magazine
+ - PO0   -  1 00000  60    0  Magazine
+ - PO0   -  1 00000  20    0  Magazine
+ - PO0   -  1 00000   3    0  Magazine
+ - PC0   -  1 00000  17    0  Cargo Hold Basic
+ - VO0  MS  1 00000  30   16  Launch + Hangar
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

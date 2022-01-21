@@ -1,0 +1,22 @@
+;
+;  Cargo module
+;
+{:cargo.init}
+dim \cargo.origin$(10), \cargo.index(10), \cargo.tl(10), \cargo.tons(10)
+\cargo.count = 4
+
+\cargo.origin$(1)="regina" :\cargo.index(1)=1 :\cargo.tl(1)=12 :\cargo.tons(1)=5
+\cargo.origin$(2)="rhylanor" :\cargo.index(2)=2 :\cargo.tl(2)=15 :\cargo.tons(2)=5
+\cargo.origin$(3)="djinni" :\cargo.index(3)=3 :\cargo.tl(3)=10 :\cargo.tons(3)=5
+\cargo.origin$(4)="macene" :\cargo.index(4)=4 :\cargo.tl(4)=13 :\cargo.tons(4)=5
+
+return
+
+{:cargo.show}
+?:?
+for x=1 to \cargo.count
+? spc(8), \cargo.origin$(x), \cargo.index(x), \cargo.tl(x), \cargo.tons(x)
+next x
+
+?:input "press <return>"; yn$
+return

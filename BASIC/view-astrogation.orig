@@ -1,0 +1,115 @@
+
+{:astrogation.init}
+longvar \hr.high
+longvar \hr.low
+longvar \astrogation.uwp
+
+dim \astrogation.uwp$(8,8)
+
+for r = 1 to 8
+   read \astrogation.uwp$(1,r)
+next
+
+data "A0101 C430698-9 NS Zeycude Alpha
+data " 0102 C4207B9-A    Reno
+data "R0103 B563664-B    Errere
+data " 0104 C566243-9    Cantrel 
+data " 0105                     "
+data " 0106                     "
+data " 0107                     "
+data " 0108 C8B2889-8    Gyomar
+
+\hr.high$=""
+\hr.low$=""
+for x=1 to 78
+   \hr.high$=\hr.high$+"£"
+   \hr.low$=\hr.low$+"€"
+next
+return
+
+{:astrogation.show}
+COLOR 5,0
+PRINT "\X93";
+GOSUB {:status bar} :REM Status BAR
+GOSUB {:starchart} :REM STARCHART
+GOSUB {:uwps} :REM UWPS
+return
+
+REM STATUS BAR
+{:status bar}
+lo$ = left$("gyomar" + "               ",15)
+de$ = left$("lysen"  + "               ",15)
+
+PRINT "  Location: " lo$ "    Destination: " de$
+?
+print " " \hr.high$
+RETURN
+
+REM starchart
+{:starchart}
+PRINT"ÕÃÃÃÃÃ®     °ÃÃÃÃÃ®     °ÃÃÃÃÃ®     °ÃÃÃÃÃ®
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"Â     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃÉ
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"«ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     Â
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"Â     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"«ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     Â
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"Â     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"«ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     Â
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"Â     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"«ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     Â
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"Â     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"«ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     Â
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"Â     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"«ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     Â
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"Â     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"«ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     Â
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"Â     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³
+PRINT"Â     Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"ÊÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     «ÃÃÃÃÃ³     Â
+PRINT"      Â     Â     Â     Â     Â     Â     Â     Â
+PRINT"      ­ÃÃÃÃÃœ     ­ÃÃÃÃÃœ     ­ÃÃÃÃÃœ     ­ÃÃÃÃÃË
+
+rem show worlds
+? "\x13\x11\x11\x11"
+for r = 1 to 8
+   uw$ = \astrogation.uwp$(1,r)
+   zo$ = left$(uw$,1)
+   hx$ = mid$(uw$,2,4)
+   sp$ = mid$(uw$,7,1)
+   if zo$="a" then sp$=chr$(158)+"\x9d+" + sp$ + "+" + chr$(30)
+   if zo$="r" then sp$=chr$(150)+"\x9d*" + sp$ + "*" + chr$(30)
+   if sp$=" " then hx$=""
+   ? "\x1d\x1d\x1d" sp$ "\x9d\x9d\x9d\x9d"
+   ? "\x11\x1d\x1d" hx$ "\x11"
+next
+
+RETURN
+
+REM WORLD LIST
+{:uwps}
+PRINT "\X13\X11\X11"
+FOR r = 1 TO 8
+   uw$ = \astrogation.uwp$(1,r)
+   zo$ = left$(uw$,1)
+   uw$ = mid$(uw$,2)
+   na$ = mid$(uw$,7)
+   if zo$="a" then uw$=chr$(158)+uw$+chr$(30)
+   if zo$="r" then uw$=chr$(150)+uw$+chr$(30)
+   if na$ <> " " then print tab(50) uw$ 
+NEXT
+RETURN
+

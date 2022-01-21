@@ -1,0 +1,48 @@
+--- 
+ACS1.0: Mon Dec 27 18:09:18 2021
+Mission: Subsidized Liner
+QSP: MK-FB13
+TL: 12 
+Name: MC&S-Mu
+Tons: 600
+Actual Tons: 600
+
+MCr: 144.9
+Builder: Ling Standard
+Owner: Judges Guild
+Disposition: In Service
+
+Crew comfort: 0
+Passenger demand: 0
+Cargo: 124
+FuelPercentage: 12
+Components:
+ - HH0   B  1 00000 600   18  Braced Hull
+ - HL1  n/  1 00000  -3    0  No Landers
+ - AA1  12  1 00000   0    0  AV=12. 1 Kinetic Plate
+ - DF0   -  1 00000 180    0  Jump Fuel (3  parsecs)
+ - DF0   -  1 00000 24.3    0  Plant Fuel (1.5 months)
+ - DJ2   J  1 00000  50   50  Jump Drive-3 (J)
+ - DM1   C  1 00000   5   10  Maneuver Drive-1 (C)
+ - DP1   1  1 93CC2  28   28  Imp PowerPlant J (R3)
+ - OC1   3  1 00000   3  10.5  Computer Model/3 std
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OO0   -  1 00000   1    1  Life Support Luxury
+ - OB0   -  1 00000   6  0.6  Standard Bridge
+ - SS1   1  1 00000   2  2.5  LR Ant Communicator
+ - SS1   4  1 00000   6    4  LR Ext Radar
+ - SS1   1  1 00000   2  2.5  LR Ant Scope
+ - WW1  -2  3 00000   1  0.2  AR T1 Empty
+ - CO0   -  9 00000   2  0.1  Crew Stateroom
+ - CO0   -  1 00000  18    0  Crew Lounge
+ - CO0   -  1 00000   1    1  Crew Common Fresher
+ - PO0   - 80 00000 0.5  0.1  Low Berth
+ - PC0   -  1 00000 124    0  Cargo Hold Basic
+ - PO1   -  1 00000   2    0  Cargo Lock
+ - PO1   -  2 00000 0.5  0.1  Air Lock
+ - PO0   - 21 00000   2  0.1  Standard Stateroom
+ - PO0   -  1 00000  42    0  Passenger Lounge
+ - PO0   -  3 00000   1    1  Common Fresher
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

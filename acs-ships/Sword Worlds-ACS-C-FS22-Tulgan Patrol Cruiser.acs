@@ -1,0 +1,56 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:39 2021
+Mission: Cruiser
+QSP: C-FS22
+TL: 11 
+Name: Tulgan
+Tons: 600
+Actual Tons: 454
+
+MCr: 172.4
+Owner: Sword Worlds
+
+Crew comfort: -3
+Passenger demand: -5
+Cargo: 8
+FuelPercentage: 12
+Components:
+ - HH0   S  1 00000 600   38  Streamlined Hull
+ - AA1  55  1 00000  96    0  AV=55. 5 Kinetic Plate
+ - DF0   -  1 00000 120    0  Jump Fuel (2  parsecs)
+ - DF0   -  1 00000   6    0  Plant Fuel (0.5 months)
+ - DF1   S  1 00000   1  0.1  Fuel Scoops
+ - DF1   I  1 00000   1  0.1  Fuel Intakes
+ - DF1   B  1 00000   1  0.1  Fuel Bins
+ - DF1   P  3 00000   1  0.1  Fuel Purifiers
+ - DP1   F  1 00000  19   19  PowerPlant-2 (F)
+ - DJ1   F  1 00000  35   35  Jump Drive-2 (F)
+ - DM1   F  1 00000  11   22  Maneuver Drive-2 (F)
+ - OO0   -  1 00000  18    1  Platoon Barracks
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OO0   -  2 00000   2    1  Frozen Watch
+ - OC1   2  1 00000   2    5  Computer Model/2 std
+ - OO1   -  1 00000   2  0.2  Counsellor
+ - OO1   -  1 00000   2    1  Clinic
+ - OB0  -2  1 00000 4.5    0  Cramped Controls
+ - SS1   -  1 00000   0  1.5  AR Surf Communicator
+ - SS1   -  1 00000   0  1.5  AR Surf Jammer
+ - SS1   -  1 00000   0  1.5  AR Surf Radar
+ - SS1   -  1 00000   0  1.5  AR Surf Scope
+ - SS1   -  1 00000   0  1.5  AR Surf Neutrino Detector
+ - SS1   -  1 00000   0  1.2  SR Surf Stealth Mask
+ - WW1   5  1 00000  50  7.5  AR Bay Particle Accelerator
+ - WW1   5  1 00000  50   15  AR Bay Salvo Rack
+ - WW1   2  1 00000   3    8  AR B1 CommCaster
+ - WW1   -  1 00000   1    2  Vd T3 DataCaster
+ - WW1   -  1 00000   1  1.5  Vd T3 Beam Laser
+ - WW1   -  1 00000   1  1.1  Vd T3 Sandcaster
+ - CO0   -  1 00000   4    0  Crew Lounge
+ - CO0   -  1 00000   1    1  Crew Common Fresher
+ - CO0   -  2 00000   1  0.1  Spacer Niche
+ - CO0   -  3 00000 0.5  0.1  Spacer Bunks
+ - CO0   -  2 00000   2  0.1  Crew Stateroom
+ - PC0   -  1 00000   8    0  Cargo Hold Basic
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

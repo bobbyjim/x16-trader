@@ -1,0 +1,56 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:36 2021
+Mission: Escort
+QSP: E-HU44
+TL: 13 
+Name: Ekawsykua
+Tons: 800
+Actual Tons: 799
+Owner: Aslan
+
+MCr: 423.5
+
+Crew comfort: -1
+Passenger demand: -5
+Cargo: 30
+FuelPercentage: 14
+Components:
+ - HH0   U  1 00000 800   26  Unstreamlined Hull
+ - HL1   K  1 00000   8    8  Landing legs with pads
+ - HF1   D  1 00000   8    8  Flotation hull
+ - HJ1   P  1 00000   0  0.8  Jump Plates
+ - AA1  26  1 00000  32    0  AV=26. 2 Blast Plate
+ - DF0   -  1 00000 320    0  Jump Fuel (4  parsecs)
+ - DF0   -  1 00000  32    0  Plant Fuel (one month)
+ - DJ3   R  1 00000  85   85  Jump Drive-4 (R)
+ - DF1  P1  1 00000   1    1  Fuel Purifiers 4t/hr
+ - DF1  S1  1 00000   1  0.1  Fuel Scoops 100t/hr
+ - DM1   3  1 741C3 10.23   62  Adv Maneuver Drive-4 (R)
+ - DP2   R  1 00000  49   49  PowerPlant-4 (R)
+ - OC1   5  1 00000   5   27  Computer Model/5 std
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OO0   -  3 00000   4  0.2  Squad Barracks
+ - OB0   -  1 00000   7    0  Standard Controls
+ - SS1   -  1 00000   0  1.5  AR Surf Communicator
+ - SS1   1  1 00000   1  1.5  AR Ant Jammer
+ - SS1   1  1 00000   1  1.5  AR Ant Neutrino Detector
+ - SS1   1  1 00000   1  1.5  AR Ant EMS
+ - SS1   1  1 00000   1  1.5  AR Ant Stealth Mask
+ - WS1   -  1 00000   0  0.6  Vd Surf Proximeter
+ - WS1   -  1 00000   0  0.6  Vd Surf Densitometer
+ - WW1   -  1 00000   1    6  AR T3 CommCaster
+ - WW1   -  2 00000   1  1.1  Vd T3 Sandcaster
+ - WW1   -  2 00000   1  1.5  Vd T3 Beam Laser
+ - WW1   -  3 00000   1  1.2  AR T3 Missile
+ - CO0   -  2 00000   1    1  Crew Common Fresher
+ - CO0   -  1 00000   2    0  Shrine of Heroes
+ - CO0   -  7 00000   2  0.1  Crew Stateroom
+ - CO0   -  9 00000   1  0.1  Spacer Niche
+ - CO0   -  6 00000   4    0  Crew Lounge
+ - PO0   -  1 00000  30    0  Cargo Hold Basic
+ - VO0  MS  2 00000  40   18  Slow Pinnace
+ - VO0  MQ  5 00000  10   18  Fighter
+ - VO1   -  1 00000   4    0  Vehicle Lock
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

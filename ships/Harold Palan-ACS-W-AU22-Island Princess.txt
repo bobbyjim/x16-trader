@@ -1,0 +1,48 @@
+Barge W-AU22 Island Princess MCr42.3
+
+Owner: Harold Palan
+
+Merchant 2nd Officer Harold Palan (5 terms)  476757, Age 38.  3 (unused) ship shares.
+Advocate-2, Archaeology-1, Astrogator-1, Comms-2, Computer-3, Driver-1 (Wheeled-2), Engineer-0 (Maneuver drive-1, Power plant-1), Mechanic-2, Medic-2, Pilot-3 (ACS-2), Steward-2, Trader-2.
+
+The unscrupulous merchant owner. 
+
+Crew comfort:     +0
+Passenger demand: +0
+
+[code]
+   Tons	 Component                          	  MCr	Notes
+-------	 -----------------------------------	-----	--------------------
+    100	 Unstreamlined Hull, lifters, 1 a/l 	    5	U, lifters, 1 a/l free
+      1	 Landing legs with pads             	    1	
+      0	 AV=11. 1 Blast Plate               	    0	
+     20	 Jump Fuel (2  parsecs)             	    0	2 parsec jump, at 10t per parsec
+      2	 Plant Fuel (one month)             	    0	one month
+      2	 Maneuver Drive-2 (A)               	    4	2 G
+     10	 Jump Drive-2 (A)                   	   10	J 2
+      4	 PowerPlant-2 (A)                   	    4	P 2
+      2	 Fuel Scoops with Purifier          	  1.1	100 t/hr
+      2	 Fuel Intakes with Purifier         	  1.1	40 t/hr
+      2	 Fuel Bins with Purifier            	  1.1	20 t/hr
+      1	 Vd T3 Hybrid L-S-M                 	    2	
+      2	 Computer Model/2 std               	    5	
+    0.5	 Med Console                        	  0.5	
+      2	 Clinic                             	    1	
+      1	 Life Support Standard              	    1	10 person-months
+      1	 Life Support Luxury                	    1	10 high passengers
+      1	 Life Support Adaptable             	    1	10 sophonts
+     10	 Spacious Bridge                    	  0.6	1cc 4op 0ws
+      6	 Officer Suite                      	  0.4	fresher + safe
+      4	 Crew Commons                       	    0	
+      1	 Crew Common Fresher                	    1	10 crew
+      4	 2x Crew Stateroom                  	  0.2	#2 1 crew
+      1	 2x Steerage                        	    0	#2 2 Space Bunks
+      4	 8x Low Berth                       	  0.8	#8 1 passenger
+     14	 Cargo Hold Basic                   	    0	
+    0.5	 Shared Fresher                     	  0.5	4 passengers
+      2	 Passenger Commons                  	    0	
+[/code]
+
+[code]
+[/code]
+

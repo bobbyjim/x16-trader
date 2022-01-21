@@ -1,0 +1,120 @@
+; ----------------------------------------------
+;
+;  Utility functions:
+;
+;     - distance(ca,ra,cb,rb) -> d%
+;     - roll-dice(dm%) -> dm%
+;     - roll-flux() -> fl%
+;     - ehex2dec(hx$) -> n%
+;     - decode-ztext(b0%()) -> o$
+;
+; ----------------------------------------------
+{:util.init}
+rem utils module initialization
+rem (nop)
+return
+
+rem clear lower part of screen
+{:util.lowclear}
+? \down$(40)
+for x=1 to 17
+   ? "                                                            "
+next
+for x=1 to 17: ? "\x91"; :next
+return
+
+; ----------------------------------------------
+;
+REM banner(ba$)
+;
+; ----------------------------------------------
+{:util.banner}
+poke $9f61,4 :rem banner code
+? hr$;
+for x = 1 to len(ba$)
+   a = asc(mid$(ba$,x,1))
+   poke $a000,a
+   sys $a001
+next x
+?:?:?:? hr$
+return
+
+; ----------------------------------------------
+;
+REM distance(CA,RA,CB,RB) -> D%
+;
+; ----------------------------------------------
+{:util.distance-formula}
+AA = RA + INT(CA/2)
+AB = RB + INT(CB/2)
+DA% = ABS(AA-AB)
+DB% = ABS(CA-CB)
+D% = ABS( AA - AB - CA + CB )
+IF (DA% >= DB%) AND (DA% >= D%) THEN D% = DA%
+IF (DB% >= DA%) AND (DB% >= D%) THEN D% = DB%
+RETURN
+
+; ----------------------------------------------
+;
+REM dice(dm%) -> 2d6+dm% -> dm%
+;
+; ----------------------------------------------
+{:util.roll-dice}
+dm% = dm% + 2 + int(rnd(1)*6) + int(rnd(1)*6)
+return
+
+; ----------------------------------------------
+;
+REM flux() -> fl%
+;
+; ----------------------------------------------
+{:util.roll-flux}
+fl% = 6 * (rnd(1)-rnd(1))
+return
+
+;rem ----------------------------------------------
+;rem
+;REM ehex2dec(hx$) -> n%
+;rem
+;rem ----------------------------------------------
+;{:util.ehex-to-dec}
+;n%=0
+;if hx$ <= "9" then n%=asc(hx$)-48 :return
+;if hx$ >= "P" then n%=asc(hx$)-57 :return
+;if hx$ >= "J" then n%=asc(hx$)-56 :return
+;if hx$ >= "A" then n%=asc(hx$)-55 :return
+;return
+
+;rem ----------------------------------------------
+;rem
+;REM   DECOMPRESS BYTE PAIRS OF UWP-TEXT
+;REM   PASSED IN AS B0%(), COUNT IN B0%(0)
+;REM   OUTPUT TO O$
+;REM   ASSUME b0%() is initialized
+;rem
+;rem ----------------------------------------------
+;{:util.decode-ztext}
+;rem
+;rem   Initialize translation alphabets
+;rem
+;AL$(0) = " ABCDEFGHIJKLMNOPQRSTUVWXYZ?:'-"
+;AL$(1) = " 0123456789ABCDEFGHILMNORSTUWY-"
+;O$ = "": V=0: FOR BB = 1 TO B0%(0) STEP 2
+;B0% = B0%(BB)
+;B1% = B0%(BB+1)
+;rem ? BB, B0%, B1%
+;B2% = B0% AND 31
+;B3% = (B0%/32) + (B1% AND 3)*8
+;B4% = (B1% AND 127) / 4
+;REM TRANSLATE
+;B% = B2% :GOSUB {:decode-byte-pair} :rem decode
+;B% = B3% :GOSUB {:decode-byte-pair} :REM DECODE
+;B% = B4% :GOSUB {:decode-byte-pair} :REM DECODE
+;NEXT
+;RETURN
+;{:decode-byte-pair}
+;IF B% = 31 THEN V = 1 - V :RETURN
+;rem ? "INDEX: " B%+1 " LETTER: " MID$(AL$(V),B%+1,1)
+;O$ = O$ + MID$(AL$(V),B%+1,1)
+;RETURN
+

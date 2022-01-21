@@ -1,0 +1,67 @@
+;
+;   UWP Record
+;
+;  $rec  = pack 'CC', $col,$row;        # $00 - $01 
+;  $rec .= pack 'A4', $location;        # $02 - $05
+;  $rec .= ' ';                         # $06
+;  $rec .= pack 'AA', $sp, $base;       # $07 - $08
+;  $rec .= ' ';                         # $09
+;  $rec .= pack 'A15', $name;           # $0a - $18
+;  $rec .= ' ';                         # $19
+;  $rec .= pack 'AAA', $bgg, $al, $z;   # $1a - $1c
+;  $rec .= pack 'C', $hex{$tl};         # $1d
+;  $rec .= pack 'C', $tcSan;            # $1e
+;  $rec .= pack 'C', $tc1;              # $1f
+;
+rem map.where am i(col,row)
+{:map.where am i}
+
+   rem first point to the right bank
+   ba = int((\col-1)/4)
+   poke $9f61,11+ba
+
+   rem now calculate the actual column
+   ca = \col - 1
+   ca = 4*(ca/4-int(ca/4))
+
+   ad = $a000 + ca * 32 * 64 + (\row-1) * 32 * 1
+   for x = 10 to 24: ? chr$(peek(ad+x)); :next
+   \uwp.sp = peek(ad+7)
+   \uwp.bases = peek(ad+8)
+   \uwp.bgg = peek(ad+26)
+   \uwp.allegiance = peek(ad+27)
+   \uwp.zone = peek(ad+28)
+
+   rem check for pirates
+   p = 3
+   if \uwp.sp = 65 then p = 1
+   if \uwp.sp = 66 then p = 2
+   if \uwp.sp = 67 then p = 3
+   if \uwp.sp = 68 then p = 4
+   if \uwp.sp = 69 then p = 5
+   if \uwp.sp = 88 then p = 6
+
+   if \uwp.zone = 65 then p = p + 2
+   if \uwp.zone = 82 then p = p + 4
+
+   if int(rnd(1)*6)+int(rnd(1)*6)+2 < p then p = 1 :return
+   p = 0 :return
+
+; ------------------------------------------
+;
+rem  get regional uwps(col,row,rng)
+;
+;   out:
+;
+;   dw   = world count (always 10 or less)
+;   dc() 
+;
+; ------------------------------------------
+{:map.get-neighborhood}
+poke $9f61,11 :rem map
+dw = 0
+for cc = \col - \range to \col + \range
+for rr = \row - \range to \row + \range
+
+next rr
+next cc

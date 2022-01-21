@@ -47,7 +47,7 @@ foreach my $source (@table)
          }
          $price = -$price if $sourceTradeCode eq 'Po';
          $price += 5;
-         $tradeMatrix->{"$sourceIndex.$marketIndex"} = $price;
+         $tradeMatrix->{"$sourceIndex.$marketIndex"} = $price * 10;
          ++$marketIndex;
       }
    }
@@ -57,17 +57,44 @@ foreach my $source (@table)
 # Now create a binary file and pad to 64 entries 
 # (i.e. this becomes a 64x64 matrix filling 4K exactly)
 open my $fp, '>', 'MARKET.BIN';
+
+print $fp pack 'xx';  # initial two byte padding required
+
 for my $source (0..63)
 {
    for my $market (0..63)
    {
       my $value = $tradeMatrix->{"$source.$market"};
-      $value = 5 unless defined $tradeMatrix->{"$source.$market"};
+      $value = 50 unless defined $tradeMatrix->{"$source.$market"};
 
+      #
+      #  NOTE the value is in HUNDREDS of credits
+      #
       print $fp pack 'C', $value; # $source, $market, $value, '|'; 
-      # write 3 bytes just for testing purposes!
    }
 }
+
+#
+# Dump the source-world data:
+#
+#    The base price, in hundreds of Cr  $00     (1 byte)
+#    The trade remarks string           $01-$0f (15 bytes)
+#    The text description               $10-$1f (16 bytes)
+#
+my %coderef = UwpTables::getCoderef();
+foreach my $code (sort keys %coderef)
+{
+   my ($prob, $baseCr, $label) = @{$coderef{ $code }};
+   
+   $baseCr = int($baseCr/100); 
+
+   print $fp pack 'C', $baseCr; # gonna be between 10 and 60
+   print $fp sprintf "%-14s", uc $code;
+   print $fp pack 'x';
+   print $fp sprintf "%-15s", uc $label;
+   print $fp pack 'x';
+}
+
 close $fp;
 
 =pod

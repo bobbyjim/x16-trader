@@ -1,0 +1,52 @@
+--- 
+ACS1.0: Mon Dec 27 18:09:18 2021
+Mission: Scout/Courier
+QSP: S-AA22
+TL: 12 
+Name: MC&S-Sigma
+Tons: 100
+Actual Tons: 99.5
+
+MCr: 46.6
+Builder: Ling Standard
+Owner: Judges Guild
+Disposition: In Service
+
+Crew comfort: 0
+Passenger demand: -5
+Cargo: 3
+FuelPercentage: 12
+Components:
+ - HH0   A  1 00000 100    9  Airframe Hull, lifters, 1 a/l free
+ - HF1   D  1 00000   1    1  Flotation hull
+ - HL1   K  1 00000   1    1  Landing legs with pads
+ - AA1  24  1 00000   4    0  AV=24. 2 Kinetic Plate
+ - DF0   -  1 00000  20    0  Jump Fuel (2  parsecs)
+ - DF0   -  1 00000  10    0  Plant Fuel (5 months)
+ - DM1   A  1 00000   2    4  Maneuver Drive-2 (A)
+ - DJ1   A  1 00000  10   10  Jump Drive-2 (A)
+ - DP1   A  1 00000   4    4  PowerPlant-2 (A)
+ - DF2  SP  1 00000   2  1.1  Fuel Scoops with Purifier
+ - DF2  IP  1 00000   2  1.1  Fuel Intakes with Purifier
+ - DF2  BP  1 00000   2  1.1  Fuel Bins with Purifier
+ - OC1   1  1 00000   1  1.5  Computer Model/1 std
+ - OO1   -  1 00000   2    1  Clinic
+ - OO0   -  1 00000   2    2  Life Support Long Term
+ - OB0   2  1 00000   6  0.5  Spacious Bridge
+ - SS1   -  1 00000   0  1.5  AR Surf Communicator
+ - SS1   -  1 00000   0  1.5  AR Surf Radar
+ - SS1   -  1 00000   0  1.5  AR Surf Scope
+ - SS1   -  1 00000   0  1.5  AR Surf Neutrino Detector
+ - WS1   -  1 00000   0  0.6  Vd Surf Mass Sensor
+ - WS1   -  1 00000   0  0.6  Vd Surf Deep Radar
+ - WS1   -  1 00000   0  0.6  Vd Surf Densitometer
+ - WW1  -1  1 00000   1  0.5  AR T2 Empty
+ - CO0   -  4 00000   2  0.1  Crew Stateroom
+ - CO0   -  1 00000 0.5  0.5  Crew Shared Fresher
+ - CO0   -  1 00000  10    0  Crew Lounge
+ - PC0   -  1 00000   3    0  Cargo Hold Basic
+ - VO0  EL  1 00000   4  0.1  Air/Raft Enclosed
+ - VO1   -  1 00000   4    0  Air/Raft Lock
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+

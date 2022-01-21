@@ -346,19 +346,26 @@ sub mapOwner
 	'Bilstein'		=> 'C',
 	'Droyne'		=> 'D',
 	'Kursae'		=> 'E',
+# F
+# G
 	'Hiver'			=> 'H',
 	'Imperial'		=> 'I',
+        'InStarSpec'		=> 'J',
 	'Kkree'			=> 'K',
 	'Valtra'		=> 'L',
 	'Al Morai'		=> 'M',
+	'MagnetoDynamics'	=> 'N',
 	'Oberlindes'		=> 'O',
 	'Republic of Regina'	=> 'P',
+# Q
 	'Darrian'		=> 'R',
 	'Sword Worlds'		=> 'S',
 	'Tukera'		=> 'T',
 	'Humbolt'		=> 'U',
 	'Vargr'			=> 'V',
+# W
 	'Chamaxi'		=> 'X',
+# Y
 	'Zhodani'		=> 'Z',
    };
    my $abbr = $map->{ $owner };

@@ -1,0 +1,48 @@
+--- 
+ACS1.0: Thu Dec  2 19:29:38 2021
+Mission: Far Trader
+QSP: A2-BS12
+TL: 11 
+Name: Empress Marava
+Tons: 200
+Actual Tons: 200
+
+MCr: 53.8
+Builder: Clan Severn
+Disposition: In Service
+
+Crew comfort: 0
+Passenger demand: 0
+Cargo: 64
+FuelPercentage: 12
+Components:
+ - HH0   S  1 00000 200   16  Streamlined Hull, lifters
+ - HL1   K  1 00000   2    2  Landing legs with pads
+ - AA1  11  1 00000   0    0  AV=11. 1 Kinetic Plate
+ - DF0   -  1 00000  40    0  Jump Fuel (2  parsecs)
+ - DF0   -  1 00000   4    0  Plant Fuel (one month)
+ - DF1  S1  1 00000   1  0.1  Fuel Scoops 100t/hr
+ - DF1  I1  1 00000   1  0.1  Fuel Intakes 40t/hr
+ - DJ1   B  1 00000  15   15  Jump Drive-2 (B)
+ - DM1   A  1 00000   2    4  Maneuver Drive-1 (A)
+ - DP1   B  1 00000   7    7  PowerPlant-2 (B)
+ - OC1   2  1 00000   1    3  Computer Model/1bis std
+ - OO0   -  1 00000   1    1  Life Support Standard
+ - OO0   -  1 00000   1    1  Life Support Luxury
+ - OB0   -  1 00000   4    0  Standard Controls
+ - WW1  -2  2 00000   1  0.2  AR T1 Empty
+ - CO0   -  1 00000   7    0  Crew Lounge
+ - CO0   -  1 00000   4  0.2  Owner's Cabin
+ - CO0   -  2 00000   2  0.1  Crew Stateroom
+ - CO0   -  2 00000 0.5  0.5  Crew Shared Fresher
+ - PC0   -  1 00000  64    0  Cargo Hold Basic
+ - PO0   -  7 00000   2  0.1  Standard Stateroom
+ - PO0   -  4 00000 0.5  0.1  Low Berth
+ - PO0   -  4 00000   4    0  Passenger Lounge
+ - PO0   -  2 00000 0.5  0.5  Shared Fresher
+ - PO0   -  1 00000   1    0  Mail Vault
+ - PO1   -  2 00000 0.5  0.1  Air Lock
+ - VO0  EL  1 00000   4  0.1  Air/Raft Enclosed
+
+ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
+
