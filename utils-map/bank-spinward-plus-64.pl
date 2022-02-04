@@ -125,6 +125,29 @@ foreach(@data)
       $tc1++ if $tc =~ /$code\b/;
    }
 
+   my $tc2 = 0; # this one is two bytes.
+   for my $code (qw/Ag As Ba De Fl Hi In Lo Na Ni Po Ri Va Wa/)
+   {
+      $tc2 << 1;
+      $tc2++ if $tc =~ /$code\b/;
+   }
+
+   #
+   #  Let's see if we can classify the world very broadly.
+   #
+   my $tc3 = 0;
+   $tc3 = 1 if $tc =~ /(Ag|Ga)\b/;
+   $tc3 = 2 if $tc =~ /Ic\b/;
+   $tc3 = 3 if $tc =~ /Fl\b/;
+   $tc3 = 4 if $tc =~ /(Va|De)\b/;
+   $tc3 = 5 if $hex{$atm} > 9;
+   $tc3 = 6 if $tc =~ /(He|In)\b/;
+   $tc3 = 7 if $tc =~ /(He|In)\b/ && rand() > 0.5;
+   $tc3 = 8 if $tc =~ /(Na|Ni)\b/;
+   $tc3 = 9 if $tc =~ /(Wa|Oc)\b/;
+   $tc3 = 10 if $tc =~ /(Va|De)\b/ && rand() > 0.5;
+   $tc3 = 11 if $tc =~ /As\b/;
+
    # ---------------------------------------------
    #
    #  Manage Belts + GGs and Zone ($b, $g, $z)
@@ -208,13 +231,15 @@ foreach(@data)
    $rec .= pack 'x';                    # 28
    $rec .= pack 'A', $ba;               # 29
    $rec .= pack 'A', $bgg;              # 2a
-   $rec .= pack 'C', $tcSan;      	# 2b
-   $rec .= pack 'C', $tc1;        	# 2c
+   $rec .= pack 'C', $tcSan;      	    # 2b
+   $rec .= pack 'C', $tc1;        	    # 2c
    $rec .= pack 'C', $sizatm;           # 2d
    $rec .= pack 'C', $hydpop;           # 2e
    $rec .= pack 'C', $govlaw;           # 2f
-   $rec .= pack 'C', $hex{$tl};  	# 30
-   $rec .= pack 'x9';                   # 31 - 39  trade goods quantities?
+   $rec .= pack 'C', $hex{$tl};  	    # 30
+   $rec .= pack 'v', $tc2;              # 31 - 32
+   $rec .= pack 'C', $tc3;              # 33
+   $rec .= pack 'x6';                   # 34 - 39  spare
    $rec .= $stp;                        # 3a - 3f
 
 
@@ -237,7 +262,7 @@ foreach(@data)
 
 print "writing $count entries\n";
 
-open OUT, '>', 'SPINWARD-MAP-64B.BIN';
+open OUT, '>', 'MAP64B.BIN';
 print OUT pack 'xx'; # 2 byte header to ignore
 
 my $hexnums = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
@@ -304,8 +329,10 @@ C  tc1
 C  siz+atm     
 C  hyd+pop     
 C  gov+law     
-C  tl          
-x9             
+C  tl        
+v  tc2  
+C  tc3 (0-11)
+x6             
 C  s1 class    
 C  s1 div+siz  
 C  s2 class    

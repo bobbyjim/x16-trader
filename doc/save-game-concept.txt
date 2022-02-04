@@ -1,0 +1,22 @@
+Let's try creating a "game state" that could be copied down 
+and re-inserted into a game to reset it.
+
+MVP:
+
+(1) the current star system: 12 bits (0 - 4095).
+(2) the ship number: 7 bits (0-127).
+(3) cargo lots converted to cash.
+(4) cash on hand in MCr: 8 bits (0-255).
+(5) does not include additional state.
+
+EXAMPLE.  
+
+current system:   18DB (6363 base 16)
+ship number:      7F   (127 base 16)
+cash in MCr:      FF   (255 base 16)
+
+Encoded:          18DB7FFF in base 16
+
+Eight characters is EASY.
+
+
