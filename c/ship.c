@@ -24,7 +24,7 @@
 #include <peekpoke.h>
 
 #include "common.h"
-#include "bank.h"
+//#include "bank.h"
 #include "ship.h"
 #include "alarm.h"
 

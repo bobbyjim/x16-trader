@@ -20,18 +20,14 @@
 
 */
 
-#include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
 #include <string.h>
 #include <cbm.h>
-#include <peekpoke.h>
 #include <time.h>
 #include <conio.h>
 #include <cx16.h>
 
 #include "alarm.h"
-#include "bank.h"
 #include "common.h"
 #include "hexmap.h"
 #include "hold.h"
@@ -44,6 +40,9 @@
 #include "shipyard.h"
 #include "starport.h"
 #include "hiring_hall.h"
+#include "jump-map.h"
+#include "sprite.h"
+#include "maneuver-map.h"
 
 //
 //  Player data
@@ -96,49 +95,137 @@ void updateShipSkills()
    streetwise = findHighestSkillFor(SKILL_STREETWISE);
 }
 
+SpriteDefinition shipicon, worldicon, jamison;
+
+void shipiconShow(int x, int y)
+{
+   shipicon.block =  0x4000;
+   shipicon.mode  =  SPRITE_MODE_8BPP;
+   shipicon.layer =  SPRITE_LAYER_1;
+   shipicon.dimensions = SPRITE_64_BY_64;
+   shipicon.x     = SPRITE_X_SCALE(x);
+   shipicon.y     = SPRITE_Y_SCALE(y);
+
+   sprite_define(1, &shipicon);
+}
+
+void shipiconHide()
+{
+   shipicon.layer = SPRITE_DISABLED;
+   sprite_define(1, &shipicon);
+}
+
+// void worldiconShow()
+// {
+//    worldicon.block =  0x6000;
+//    worldicon.mode  =  SPRITE_MODE_8BPP;
+//    worldicon.layer =  SPRITE_LAYER_BACKGROUND;
+//    worldicon.dimensions = SPRITE_32_BY_32;
+//    worldicon.x     = SPRITE_X_SCALE(363);
+//    worldicon.y     = SPRITE_Y_SCALE(240);
+
+//    sprite_define(2, &worldicon);
+// }
+
+void jamisonShow()
+{
+   jamison.block =  0x5000;
+   jamison.mode  =  SPRITE_MODE_8BPP;
+   jamison.layer =  SPRITE_LAYER_1;
+   jamison.dimensions = SPRITE_64_BY_64;
+   jamison.x     = SPRITE_X_SCALE(440);
+   jamison.y     = SPRITE_Y_SCALE(70);
+
+   sprite_define(3, &jamison);
+}
+
+void jamisonHide()
+{
+   jamison.layer = SPRITE_DISABLED;
+   sprite_define(3, &jamison);
+}
+
+char *expository_text[] = {
+   "congratulations, young captain!  you have full ownership of your very own",
+   "type a2 marava-class far trader.  in seeking fame and fortune, you can:",
+   "",
+   " * buy and sell speculative cargo",
+   " * survey remote worlds",
+   " * prospect in planetoid belts",
+   " * capture pirates",
+   "",
+   "you can refuel for free at gas giants.",
+   "",
+   "avoid amber- and red-zone systems until you upgrade to a gazelle or",
+   "mercenary cruiser!",
+   "",
+   "good luck!"
+};
+
 //
-//   universe data
+//   print splash screen
 //
 void splash()
 {
-   int i;
-
-   loadFile("misc.bin", MISC_BANK);   
-   loadFile("market.bin", TRADE_MATRIX_BANK);
-//   loadFileAtB800("trig.bin", TRIG_BANK);
-   loadFile("ships.bin", SHIP_BANK);
-   loadFile("spinward-map-64b.bin",MAP_BANK_BEGIN);
-
-//   readShip(43, &ship);
-//   ship_debug(&ship);
+   int i, j;
 
    cbm_k_bsout(CH_BLACK);
    cbm_k_bsout(TO_BACKGROUND);
-
    clrscr();
 
+   // load PET font
    cbm_k_bsout(0x8E); // revert to primary case
-   
    cbm_k_setnam("petfont.bin");
    cbm_k_setlfs(0,8,0);
    cbm_k_load(2, 0x0f800);
 
+   //
+   //  Print the banner
+   //
+   loadFileToBank("bt-misc.bin",  MISC_BANK, 0xa000);
+   loadFileToBank("bt-title.bin", MISC_BANK, 0xa100);
    titleLine();
-
    setBank(MISC_BANK); 
    cbm_k_bsout(CH_GRAY3);
-   for(i=0; i<17; ++i)
-      cputsxy(0, i+5, ((char*) 0xa100 + i*80));
+
+   for(i=0; i<14; ++i)
+      cputsxy(15, i+4, ((char*) 0xa100 + i*52));
 
    cbm_k_bsout(CH_GREEN);
-   cputsxy(5,35,"                       press <space> to begin");
+
+   for(i=0; i<12; ++i)
+   {
+      gotoxy(3,22+i*2);
+      for(j=0; j<strlen(expository_text[i]);++j)
+      {
+         cputc(expository_text[i][j]);
+
+      }
+   }
+
+   jamisonShow();
+
+   cputsxy(5,55,"                       press <space> to begin");
    cgetc();
+
+   jamisonHide();
+
    _randomize();
 }
 
 void init()
 {
    byte i;
+
+   loadFileToBank("bt-hexgrid.bin", MISC_BANK,         JUMP_GRID_ADDRESS);
+   loadFileToBank("bd-market.bin",  TRADE_MATRIX_BANK, 0xa000);
+   loadFileToBank("bd-ships.bin",   SHIP_BANK,         0xa000);
+   loadFileToBank("bd-map64.bin",  MAP_BANK_BEGIN,    0xa000);
+
+   sprite_loadToVERA("bi-acs-a2.bin",  0x4000);
+   sprite_loadToVERA("bi-acs-p.bin",   0x5000);
+   sprite_loadToVERA("bi-worlds.bin",  0x6000);
+   vera_sprites_enable(1); // cx16.h
 
    ship_init(&ship);
 
@@ -160,13 +247,24 @@ void burnFuel()
 void main() 
 {
    int range;
+   int i;
 
-   splash();
    init();
+   splash();
 
-   current.col = 19;
-   current.row = 10;
+   //
+   //  Start at Regina
+   //
+   current.col = destination.col = 19;
+   current.row = destination.row = 10;
+
    getWorld(&current);
+
+   // // In-System Maneuver
+   // shipiconShow(300, 220);
+   // maneuvermapShow();
+
+   // exit(0);
 
    for(;;)
    {
@@ -174,7 +272,32 @@ void main()
       switch(doPilot())
       {
          case ASTROGATION_OPTION:
-		      pickDestination(current.col,current.row,range);
+            //
+            // Astrogation
+            //
+            titleLine();
+            printAlarmBar();
+            jumpmapShow();
+            jumpmapShowWorldData(19,10);
+            shipiconShow(335, 235);
+            i = jumpmapSetDestination();
+            shipiconHide();
+//		      pickDestination(current.col,current.row,range);
+            if (i != 'j') break;
+            // fall through for immediate jump
+
+	      case JUMP_OPTION:
+		      if (destination.bank > 0)
+		      {
+ 		         bookPassengers();
+	    	      jump();
+               distance = parsecDistance(current.col, current.row, destination.col, destination.row);
+		         burnFuel();
+      		   current.col = destination.col;
+      		   current.row = destination.row;
+      		   getWorld(&current);
+               destination.bank = 0; // null out
+		      }
 		      break;
 
 	      case MARKET_OPTION:
@@ -197,19 +320,6 @@ void main()
 	      case HIRING_HALL_OPTION:
             hire();
             updateShipSkills();
-		      break;
-
-	      case JUMP_OPTION:
-		      if (destination.bank > 0)
-		      {
- 		         bookPassengers();
-	    	      jump();
-		         burnFuel();
-      		   current.col = destination.col;
-      		   current.row = destination.row;
-      		   getWorld(&current);
-               destination.bank = 0; // null out
-		      }
 		      break;
 
       }

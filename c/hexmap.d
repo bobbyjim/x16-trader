@@ -1,4 +1,4 @@
-.obj/hexmap.o:	hexmap.c bank.h common.h hexmap.h world.h
+.obj/hexmap.o:	hexmap.c common.h hexmap.h world.h
 
-hexmap.c bank.h common.h hexmap.h world.h:
+hexmap.c common.h hexmap.h world.h:
 

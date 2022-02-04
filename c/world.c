@@ -24,11 +24,8 @@
 #include <stdlib.h>
 
 #include "common.h"
-#include "bank.h"
 #include "world.h"
 #include "trade.h"
-
-// #include "burtle.h"
 
 extern World localSystem[];
 extern byte  localSystemCount;

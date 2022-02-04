@@ -20,10 +20,11 @@
         
 */      
 
+#include <stdlib.h>
+#include <stdint.h>
 #include <conio.h>
 #include <cbm.h>
 #include <peekpoke.h>
-#include <stdlib.h>
 
 #include "common.h"
 
@@ -34,6 +35,42 @@
 #define HOST_FILE_SYSTEM        1
 #define SA_IGNORE_HEADER        0
 #define LOAD_FLAG               0
+
+int currentBank = -1;
+
+void setBank(int bank)
+{
+   if (bank < 1) bank = 1;
+
+   if (currentBank != bank)
+   {
+      POKE(0x9f61, bank); // r38
+      POKE(0,bank);       // r39+
+      currentBank = bank;
+   }
+}
+
+int getBank()
+{
+   return currentBank;
+}
+
+byte parsecDistance(unsigned char col1,
+   unsigned char row1,
+	unsigned char col2,
+	unsigned char row2)
+{
+   int aa, ab, da, db, d;
+
+   aa = row1 + (col1/2);
+   ab = row2 + (col2/2);
+   da = abs(aa-ab);
+   db = abs(col1-col2);
+   d = abs(aa - ab - col1 + col2);
+   if ((da >= db) && (da >= d)) d = da;
+   if ((db >= da) && (db >= d)) d = db;
+   return (byte)(d & 0xff);
+}
 
 void hr(byte color)
 {
@@ -73,22 +110,27 @@ void toDefaultColor()
    textcolor(COLOR_GREEN);
 }
 
-void loadFile(char* name, byte bankNum)
-{  
-   cbm_k_setnam(name);
-   cbm_k_setlfs(IGNORE_LFN,EMULATOR_FILE_SYSTEM,SA_IGNORE_HEADER);
-   POKE(0x9f61, bankNum); // r38
-   POKE(0,bankNum);       // r39+
-   cbm_k_load(LOAD_FLAG, 0xa000);
-}
-
-void loadFileAtB800(char* name, byte bankNum)
+//
+//  Loads a file into RAM.
+//
+void loadFile(char* name, unsigned address)
 {
    cbm_k_setnam(name);
    cbm_k_setlfs(IGNORE_LFN,EMULATOR_FILE_SYSTEM,SA_IGNORE_HEADER);
+   cbm_k_load(LOAD_FLAG, address);
+}
+
+//
+//  Loads a file into banked RAM at (0xa000 - 0xbfff).
+//
+void loadFileToBank(char* name, byte bankNum, unsigned address)
+{  
    POKE(0x9f61, bankNum); // r38
    POKE(0,bankNum);       // r39+
-   cbm_k_load(LOAD_FLAG, 0xb800);
+   loadFile(name, address);
+   // cbm_k_setnam(name);
+   // cbm_k_setlfs(IGNORE_LFN,EMULATOR_FILE_SYSTEM,SA_IGNORE_HEADER);
+   // cbm_k_load(LOAD_FLAG, address);
 }
 
 void down(byte count)

@@ -1,72 +1,56 @@
 
+#include <stdlib.h>
 
-#include <peekpoke.h>
-
-#include "common.h"
 #include "trig.h"
-#include "bank.h"
 
-// azimuth and elevation are in 1.4 degree steps
-byte trig_azimuth;
-byte trig_elevation;
- 
-TrigEntry trig_x; 
-TrigEntry trig_y;
-TrigEntry trig_z;
 
-TrigEntry* trigTable = (TrigEntry*) TRIG_ADDRESS;
+/*
+    The trig table is stored in RAM, and is 400 bytes long.
+    The first 321 bytes is for sine and cosine:
 
-TrigEntry  trig_sinAzimuth, 
-	   trig_cosAzimuth,
-	   trig_sinElevation,
-	   trig_cosElevation;
+    Its values run from 
+        0 at position 0, to
+        +100 at position 64, to
+        0 at position 128, to
+        -100 at position 192, to
+        0 at position 256, to
+        +100 at position 320.
 
-void unitVector()
-{
-   // first, get the sin and cos of azimuth and elevation.
-   // because we only have integers, the resulting values
-   // are in hundredths; for example, a value of 0.21 is 
-   // represented as a byte value 21.
-   setBank(TRIG_BANK);
+    The bytes from 336 to 400 are for arctangent.
+    Its values run from 0 to 63.
 
-   trig_sinAzimuth   =  trigTable[trig_azimuth];
-   trig_cosAzimuth   =  trigTable[trig_azimuth+64];
-   trig_sinElevation =  trigTable[trig_elevation];
-   trig_cosElevation =  trigTable[trig_elevation+64];
-
-   // second, compute unit vector while remembering that
-   // the sin and cos values are in hundredths.
-
-/* the old clunky way...
-   trig_x.mantissa = (byte) (trig_sinAzimuth.mantissa * trig_cosElevation.mantissa / 100);
-   trig_y.mantissa = (byte) (trig_cosAzimuth.mantissa * trig_cosElevation.mantissa / 100);
-   trig_z.mantissa = trig_sinElevation.mantissa;
-
-   // XOR the signs for the unit vector sign
-   trig_x.sign = trig_sinAzimuth.sign ^ trig_cosElevation.sign; 
-   trig_y.sign = trig_cosAzimuth.sign ^ trig_cosElevation.sign; 
-
-   trig_z.sign = trig_sinElevation.sign;
+    The unit circle is thus divided into 256 interpolated degrees.
+    You have been warned.
 */
-   trig_x = (char) (trig_sinAzimuth * trig_cosElevation / 100);
-   trig_y = (char) (trig_cosAzimuth * trig_cosElevation / 100);
-   trig_z = (char) trig_sinElevation;
 
-   // OK, we're done.  Did it work?
-}
+#define        TRIG_TABLE       ((unsigned char*)(0x0400))
 
-char sin(byte theta)
+int sin(int pseudoDegrees)
 {
-   //TrigEntry entry;
-   setBank(TRIG_BANK);
-   //entry = trigTable[theta];
-   //return entry.sign? -entry.mantissa : entry.mantissa;
-   return trigTable[theta];
+    pseudoDegrees %= 256;
+    if (pseudoDegrees < 128)
+        return TRIG_TABLE[ pseudoDegrees ];
+    else
+        return -(TRIG_TABLE[ pseudoDegrees ] & 127);
 }
-   
 
-char cos(byte theta)
+int cos(int pseudoDegrees)
 {
-   return sin(theta+64);
+    return sin(pseudoDegrees + 64);
 }
 
+/*
+    atan: pass in an int, and I'll return the pseudoDegrees.
+    And it's going to be super coarse.
+*/
+int atan(int x)
+{
+    if (x<-100) return -64; // close enuf
+    if (x>100)  return  64; // close enuf
+
+    // now we use the table for the rest.
+    if (x >= 0)
+        return TRIG_TABLE[0x150 + x];
+    else
+        return -TRIG_TABLE[0x150 + x];
+}

@@ -6,7 +6,6 @@
 #include "passengers.h"
 #include "ship.h"
 #include "world.h"
-// #include "burtle.h"
 
 extern Starship ship;
 extern World current;

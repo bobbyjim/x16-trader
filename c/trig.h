@@ -1,20 +1,8 @@
-#ifndef _trig_h_
-#define _trig_h_
+#ifndef _TRIG_H_
+#define _TRIG_H_
 
-#include "common.h"
-
-#define	TRIG_ADDRESS	0xb800
-
-//typedef struct
-//{
-   //byte mantissa: 9;
-   //byte sign    : 1;
-//
-//} TrigEntry;
-typedef char TrigEntry;
-
-void unitVector();
-char sin(byte theta);
-char cos(byte theta);
+int atan(int x);
+int sin(int pseudoDegrees);
+int cos(int pseudoDegrees);
 
 #endif

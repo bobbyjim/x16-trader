@@ -47,17 +47,17 @@
 #define O_STAR3         62
 
 #define WORLD_ADDR(W)	(ADDRESS_START+W->record*64)
-#define HEXCOL(A)	PEEK(A+O_HEXCOL)
-#define HEXROW(A)	PEEK(A+O_HEXROW)
-#define STARPORT(A)	PEEK(A+O_STARPORT)
-#define BGG(A)		PEEK(A+O_BGG)
-#define ZONE(A)		PEEK(A+O_ZONE)
-#define ALLEG(A)	PEEK(A+O_ALLEGIANCE)
-#define BASES(A)	PEEK(A+O_BASES)
-#define TCINDEX(A)	PEEK(A+O_TCINDEX)
-#define	TC1(A)		PEEK(A+O_TC1)
-#define POP(A)		(PEEK(A+O_HYDPOP)<<4)
-#define TL(A)		PEEK(A+O_TL)
+#define HEXCOL(A)	      PEEK(A+O_HEXCOL)
+#define HEXROW(A)	      PEEK(A+O_HEXROW)
+#define STARPORT(A)	   PEEK(A+O_STARPORT)
+#define BGG(A)		      PEEK(A+O_BGG)
+#define ZONE(A)		   PEEK(A+O_ZONE)
+#define ALLEG(A)	      PEEK(A+O_ALLEGIANCE)
+#define BASES(A)	      PEEK(A+O_BASES)
+#define TCINDEX(A)	   PEEK(A+O_TCINDEX)
+#define TC1(A)		      PEEK(A+O_TC1)
+#define POP(A)		      (PEEK(A+O_HYDPOP)<<4)
+#define TL(A)		      PEEK(A+O_TL)
 
 typedef struct
 {
@@ -74,10 +74,10 @@ typedef struct
 //
 // for non-mainworlds, row,col = orbit, theta
 //
-#define	SET_ORBIT(W,O)	(W.row=O)
+#define SET_ORBIT(W,O)	(W.row=O)
 #define SET_THETA(W,T)	(W.col=T)
 #define GET_ORBIT(W)  	W.row
-#define GET_THETA(W)	W.col
+#define GET_THETA(W)	   W.col
 
 typedef struct
 {

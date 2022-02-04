@@ -6,7 +6,6 @@
 #include "shipyard.h"
 #include "ship.h"
 #include "common.h"
-#include "bank.h"
 #include "alarm.h"
 
 extern Starship ship; // your ship
@@ -51,7 +50,7 @@ void tradeStarships()
       i = indexMap[shipSelected]-65;
       readShip(i, &ship);
 
-      // and update our player's mortgage
+      // and update our player's mortgage?
    }
 
    for(i=0; i<20; ++i) indexMap[i] = 255; // reset map

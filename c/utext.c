@@ -23,7 +23,7 @@ unsigned char zcase = 0;
 unsigned char outbufpos = 0;
 unsigned char b0, b1, b2, b3, b4, b5;
 
-void decodeZbyte(unsigned char b, char* outbuf) 
+void decodeUbyte(unsigned char b, char* outbuf) 
 {
    if (b == 31) 
    {
@@ -42,6 +42,7 @@ char* decodeUtext(unsigned startLoc, char* outbuf)
 {
    b5 = 0;
    outbufpos = 0;
+   zcase = 0;
 
    for(; b5 == 0; startLoc += 2)
    {
@@ -53,9 +54,9 @@ char* decodeUtext(unsigned startLoc, char* outbuf)
       b4 = (b1 & 127)/4;
       b5 = (b1/128);
   
-      decodeZbyte(b2, outbuf);    
-      decodeZbyte(b3, outbuf);    
-      decodeZbyte(b4, outbuf);    
+      decodeUbyte(b2, outbuf);    
+      decodeUbyte(b3, outbuf);    
+      decodeUbyte(b4, outbuf);    
    }
 
    outbuf[outbufpos] = 0; // terminate string
@@ -65,7 +66,8 @@ char* decodeUtext(unsigned startLoc, char* outbuf)
 char* decodeUtextbuf(unsigned char *buf, char* outbuf)
 {
    unsigned char loc;
-   outbufpos = 0;
+   outbufpos = 0; // used by decodeUbyte
+   zcase = 0;     // used by decodeUbyte
 
    for(loc=0; loc<strlen(buf); loc += 2)
    {
@@ -77,9 +79,9 @@ char* decodeUtextbuf(unsigned char *buf, char* outbuf)
       b4 = (b1 & 127)/4;
       b5 = (b1/128);
 
-      decodeZbyte(b2, outbuf);
-      decodeZbyte(b3, outbuf);
-      decodeZbyte(b4, outbuf);
+      decodeUbyte(b2, outbuf);
+      decodeUbyte(b3, outbuf);
+      decodeUbyte(b4, outbuf);
 
       if (b5 == 1) break;
    }
@@ -87,6 +89,39 @@ char* decodeUtextbuf(unsigned char *buf, char* outbuf)
    outbuf[outbufpos] = 0; // terminate string
    return outbuf;
 }
+
+typedef union {
+   unsigned int encoded;
+   typedef struct {
+      int b0     :5;
+      int b1     :5;
+      int b2     :5;
+      int parity :1;
+   } AsBytes;
+} Converter;
+
+// void encodeUtext(char* src, unsigned char* outbuf)
+// {
+//    unsigned char loc;
+//    unsigned char uvalue;
+//    zcase     = 0;
+//    unsigned char bufpos = 0;
+//    unsigned char buf[256];
+
+//    // Convert to 5-bit bytes
+//    for(loc=0; loc<strlen(src); loc += 2)
+//    {
+//       if (!alphabet[zcase][src[loc]]) // switch case
+//       {
+//          zcase = 1 - zcase;
+//          buf[bufpos] = 31;
+//          ++bufpos;
+//       }
+//       buf[bufpos] = alphabet[zcase][src[loc]];
+//    }
+//
+//    // Now compress those bytes
+// }
 
 /*
 void main()

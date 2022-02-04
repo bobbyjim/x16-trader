@@ -1,4 +1,4 @@
-.obj/trig.o:	trig.c common.h trig.h bank.h
+.obj/trig.o:	trig.c trig.h
 
-trig.c common.h trig.h bank.h:
+trig.c trig.h:
 

@@ -29,19 +29,11 @@
 #include "world.h"
 #include "ship.h"
 #include "alarm.h"
-#include "trig.h"
 
 extern World destination;
 extern World current;
 extern World localSystem[];
 extern Starship ship;
-
-// --------- Trig stuff below here -----------
-// our azimuth and elevation go here
-extern byte trig_azimuth;
-extern byte trig_elevation;
-
-// --------- Trig stuff above here -----------
 
 byte    componentSelection = 0; // main ship components
 byte 	turretSelection    = 0; // emplacements
@@ -270,11 +262,9 @@ byte doPilot()
 
 	      // Elevation
 	      case 0x11:
-            ++trig_elevation;
 		      drawScreen(0,-1);
 		      break;
 	      case 0x91:
-            --trig_elevation;
 		      drawScreen(0,1);
 		      break;
 
@@ -288,11 +278,9 @@ byte doPilot()
 
 	      // Steering
 	      case 0x9d: // right
-		      ++trig_azimuth;
 		      drawScreen(1,0);
 		      break;
 	      case 0x1d: // left
-		      --trig_azimuth;
 		      drawScreen(-1,0);
 		      break;
 	

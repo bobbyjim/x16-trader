@@ -24,21 +24,48 @@
 typedef unsigned char byte;
 typedef unsigned int  word;
 
+void setBank(int bank);
+int  getBank();
+
+byte parsecDistance(
+        unsigned char col1, 
+ 		unsigned char row1,
+		unsigned char col2,
+		unsigned char row2 );
+        
 void hr(byte color);
 void redline();
 void titleLine();
 void statusLine();
 
 void toDefaultColor();
-void loadFile(char* name, byte bankNum);
-void loadFileAtB800(char* name, byte bankNum);
+void loadFile(char* name, unsigned address);
+void loadFileToBank(char* name, byte bankNum, unsigned address);
 void down(byte count);
 void left(byte count);
 char pressReturnAndClear();
 byte diceRoll2d();
 
 
-// the banner and various strings live here
+// PLAYER STATE BANK CONTENTS
+//
+// Item            Address
+// --------------- -----------------
+// Ship Icon       $b000 - $bfff
+//
+#define PLAYER_STATE_BANK       6
+
+
+// MISC BANK CONTENTS
+//
+// Item            Address
+// --------------  ----------------
+// Mission Labels   $a000 - $a0ff
+// Banner           $a100 - $a64f
+// Owner Labels     $a650 - $a902
+// Hexgrid          $aa00 - $ac60
+// Trig table       $ad00 - $ae41 more or less
+//
 #define MISC_BANK		        7
 
 // trade and trig share a bank

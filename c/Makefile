@@ -1,4 +1,4 @@
-SOURCES = main.c alarm.c bank.c common.c emplacement.c hexmap.c hiring_hall.c hold.c jump.c passengers.c pilot.c ship.c shipyard.c starport.c trade.c trig.c world.c 
+SOURCES = main.c alarm.c common.c emplacement.c hiring_hall.c hold.c jump.c jump-map.c maneuver-map.c passengers.c pilot.c ship.c shipyard.c sprite.c starport.c trade.c world.c
 
 PROGRAM = TRADER
 

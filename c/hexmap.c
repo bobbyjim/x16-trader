@@ -24,7 +24,7 @@
 #include <peekpoke.h>
 #include <stdlib.h>
 
-#include "bank.h"
+//#include "bank.h"
 #include "common.h"
 #include "hexmap.h"
 #include "world.h"
@@ -233,23 +233,6 @@ void showWorlds(unsigned char col, unsigned char row)
          }
       }
    }
-}
-
-byte parsecDistance( 	unsigned char col1, 
- 		unsigned char row1,
-		unsigned char col2,
-		unsigned char row2 )
-{
-   int aa, ab, da, db, d;
-
-   aa = row1 + (col1/2);
-   ab = row2 + (col2/2);
-   da = abs(aa-ab);
-   db = abs(col1-col2);
-   d = abs(aa - ab - col1 + col2);
-   if ((da >= db) && (da >= d)) d = da;
-   if ((db >= da) && (db >= d)) d = db;
-   return (byte)(d & 0xff);
 }
 
 byte pickDestination(unsigned char col, unsigned char row, unsigned char range)
