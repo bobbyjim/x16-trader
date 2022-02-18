@@ -23,96 +23,101 @@
 #ifndef _world_h_
 #define _world_h_
 
-#include <peekpoke.h>
-
 #include "common.h"
 
-#define O_HEXCOL        0
-#define O_HEXROW        1
-#define O_LONGLABEL     2
-#define O_LABEL         7
-#define O_STARPORT      28
-#define O_ZONE          38
-#define O_ALLEGIANCE    39
-#define O_BASES         41
-#define O_BGG           42
-#define O_TCINDEX       43
-#define O_TC1           44
-#define O_SIZATM        45
-#define O_HYDPOP        46
-#define O_GOVLAW        47
-#define O_TL            48
-#define O_STAR1         58
-#define O_STAR2         60
-#define O_STAR3         62
+#define  DIFFERENT_WORLDS(w1,w2)       (w1.row != w2.row || w1.col != w2.col)
+#define  WORLD_LONG_LABEL(worldptr)    ((worldptr)->data.name)
+#define  WORLD_HAS_GGS(worldptr)       ((worldptr)->data.bgg == 'g' || (worldptr)->data.bgg == '2')
+#define  WORLD_HAS_BELTS(worldptr)     ((worldptr)->data.bgg == 'b' || (worldptr)->data.bgg == '2')
 
-#define WORLD_ADDR(W)	(ADDRESS_START+W->record*64)
-#define HEXCOL(A)	      PEEK(A+O_HEXCOL)
-#define HEXROW(A)	      PEEK(A+O_HEXROW)
-#define STARPORT(A)	   PEEK(A+O_STARPORT)
-#define BGG(A)		      PEEK(A+O_BGG)
-#define ZONE(A)		   PEEK(A+O_ZONE)
-#define ALLEG(A)	      PEEK(A+O_ALLEGIANCE)
-#define BASES(A)	      PEEK(A+O_BASES)
-#define TCINDEX(A)	   PEEK(A+O_TCINDEX)
-#define TC1(A)		      PEEK(A+O_TC1)
-#define POP(A)		      (PEEK(A+O_HYDPOP)<<4)
-#define TL(A)		      PEEK(A+O_TL)
+//
+// for non-mainworlds, row,col = orbit, theta
+//
+// #define SET_ORBIT(W,O)	(W.row=O)
+// #define SET_THETA(W,T)	(W.col=T)
+// #define GET_ORBIT(W)  	W.row
+// #define GET_THETA(W)	   W.col
 
-typedef struct
-{
-   int ancients: 1;
-   int capital:  1;
+typedef struct {
+   unsigned char col;
+   unsigned char row;
+   char sector[10];      // sector, hex, and null byte
+   char name[16];        // name and null byte
+   char starport;
+   char uwp[9];          // sahpgl-t and null byte
+   char zone;
+   char allegiance[2];
+   char bases;
+   char bgg;
+   unsigned char tcIndex;
+   
+   int ancients:  1;
+   int capital:   1;
    int hellworld: 1;
    int icecapped: 1;
    int military:  1;
    int reserve:   1;
    int research:  1;
    int satellite: 1;
-} TC1BitFields;
 
-//
-// for non-mainworlds, row,col = orbit, theta
-//
-#define SET_ORBIT(W,O)	(W.row=O)
-#define SET_THETA(W,T)	(W.col=T)
-#define GET_ORBIT(W)  	W.row
-#define GET_THETA(W)	   W.col
+   int siz       :4;
+   int atm       :4;
+   int hyd       :4;
+   int pop       :4;
+   int gov       :4;
+   int law       :4;
+   int tl        :8;
+
+   int agricultural :1;
+   int asteroid     :1;
+   int barren       :1;
+   int desert       :1;
+   int fluid_seas   :1;
+   int hi_pop       :1;
+   int industrial   :1;
+   int lo_pop       :1;
+   int non_agri     :1;
+   int non_ind      :1;
+   int poor         :1;
+   int rich         :1;
+   int vacuum       :1;
+   int water_world  :1;
+   int junk         :2;
+
+   unsigned char general_world_type;
+   unsigned char buffer2[6];
+   char star_class_1;
+   int  star_size_1   :3;
+   int  star_num_1    :5;
+   char star_class_2;
+   int  star_size_2   :3;
+   int  star_num_2    :5;
+   char star_class_3;
+   int  star_size_3   :3;
+   int  star_num_3    :5;
+
+} WorldData;
+
 
 typedef struct
 {
+   WorldData data;   // all read-only world data
+   byte bank;        // the bank this world is in
+   byte record;      // the byte offset
+   unsigned int address;
+
+   //
+   //  These two fields are R/W for READING in the world data.
+   //
    byte col;		// for non-mainworlds, this is theta
    byte row;		// for non-mainworlds, this is orbit #
-   byte bank;
-   byte record;
-
-   char starport;
-   byte siz;
-   byte atm;
-   byte hyd;
-   byte pop;
-   byte tl;
-
-   char bgg;
-   char zone;
-   char bases;
-   char alleg;
-   byte tcIndex;
-   byte tc1;
 
 } World;
 
+void showTradeCodes(World* world);
 void printWorld(World* world);
-char* getLabel(World* world);
-char* getShortLabel(World* world);
+void drawWorld(World* world);
 void getWorld(World* world);
-char* getBases(World* world);
-char hasGasGiants(World* world);
-char hasBelts(World* world);
-char* getZone(World* world);
-byte getHexCol(World* world);
-byte getHexRow(World* world);
-
-void buildLocalSystem(World* mainworld);
+void world_describe(World* world);
 
 #endif

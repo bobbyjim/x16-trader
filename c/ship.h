@@ -25,6 +25,27 @@
 
 #include "common.h"
 
+#define	SHIP_INDEX_RISEK		0x01
+#define SHIP_INDEX_LEVIATHAN	0x0c
+#define SHIP_INDEX_ORCA			0x0f
+#define SHIP_INDEX_SERPENT		0x11
+#define SHIP_INDEX_ESCORT		0x17
+#define SHIP_INDEX_MARAVA		0x1b
+#define SHIP_INDEX_GAZELLE		0x1f
+#define SHIP_INDEX_SAFARI		0x20
+#define SHIP_INDEX_LINER		0x23
+#define SHIP_INDEX_MERCHANT		0x24
+#define SHIP_INDEX_SCOUT		0x27
+#define SHIP_INDEX_BEOWULF		0x2a
+#define SHIP_INDEX_MAADA		0x2b
+#define SHIP_INDEX_BROADSWORD	0x2d
+#define SHIP_INDEX_HOSHISAME	0x2e
+#define SHIP_INDEX_DONOSEV		0x30
+#define SHIP_INDEX_PACKET		0x31
+#define SHIP_INDEX_SUSA			0x3b
+#define SHIP_INDEX_SHIVVA		0x52
+
+
 #define O_QSP_M			0
 #define O_QSP_J			1
 #define O_QSP_BRIDGE	2
@@ -45,6 +66,8 @@
 #define O_QSP_GLOBE		13
 
 #define O_QDP_HP(x)		(14+x)
+#define	SHIP_JUMP_RATING(shptr)			((shptr)->component[O_QSP_J])
+#define	SHIP_MANEUVER_RATING(shptr)		((shptr)->component[O_QSP_M])
 
 typedef struct
 {
@@ -74,6 +97,7 @@ void showShipSummary(Starship* ship);
 
 void ship_init(Starship* ship);
 void ship_debug(Starship* ship);
+void ship_describe(Starship* ship);
 
 byte readShip(byte index, Starship* ship);
 char* shipName(byte index);

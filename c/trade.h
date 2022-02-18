@@ -32,6 +32,6 @@ char* getTradeGoods(byte tradeIndex);
 void printTradeCodes(byte tradeIndex);
 void printTradeGoods(byte tradeIndex);
 
-void moveCargo();
+void trade_speculate();
 
 #endif

@@ -1,13 +1,36 @@
 #include <cbm.h>
 #include <cx16.h>
+#include <6502.h>
 
 #include "sprite.h"
+
+
+#define     ABI_SPRITE_SET_IMAGE     0xfef0
+#define     ABI_SPRITE_SET_POSITION  0xfef3
+#define     ABI_R0                   (*(unsigned *)0x02)
+#define     ABI_R1                   (*(unsigned *)0x04)
+#define     ABI_R2                   (*(unsigned *)0x06)
+#define     ABI_R2L                  (*(unsigned char*)0x06)
+#define     ABI_R3                   (*(unsigned *)0x08)
+#define     ABI_R4                   (*(unsigned *)0x0a)
+#define     ABI_R5                   (*(unsigned *)0x0c)
+#define     ABI_R6                   (*(unsigned *)0x0e)
+#define     ABI_R7                   (*(unsigned *)0x10)
+#define     ABI_R8                   (*(unsigned *)0x12)
+#define     ABI_R9                   (*(unsigned *)0x14)
+#define     ABI_R10                  (*(unsigned *)0x16)
+#define     ABI_R11                  (*(unsigned *)0x18)
+#define     ABI_R12                  (*(unsigned *)0x1a)
+#define     ABI_R13                  (*(unsigned *)0x1c)
+#define     ABI_R14                  (*(unsigned *)0x1e)
 
 // x and y are 15 bit uint's so we can toy with them just a bit.
 #define     SPRITE_XH(x)             ((x>>5) & 0xff)
 #define     SPRITE_XL(x)             (x>>13)
 #define     SPRITE_YH(y)             ((y>>5) & 0xff)
 #define     SPRITE_YL(y)             (y>>13)
+
+struct regs testregs;
 
 void sprite_loadToVERA(char *filename, uint16_t address)
 {
@@ -34,6 +57,26 @@ void sprite_refresh()
    //
    while(sourceAddress < ((unsigned char *)0xa400))
       VERA.data0 = *sourceAddress++;
+}
+
+void abi_sprite_set_image(uint8_t spritenum, SpriteDefinition *sprdef)
+{
+   testregs.a  = spritenum;
+   testregs.x  = sprdef->x >> 5;
+   testregs.y  = sprdef->y >> 5;
+   ABI_R0      = sprdef->block;
+   ABI_R2L     = sprdef->mode;   // bpp
+   testregs.pc = ABI_SPRITE_SET_IMAGE;
+   _sys(&testregs);
+}
+
+void abi_sprite_set_position(uint8_t spritenum, SpriteDefinition *sprdef)
+{
+   testregs.a = spritenum;
+   testregs.x = sprdef->x >> 5;
+   testregs.y = sprdef->y >> 5;
+   testregs.pc = ABI_SPRITE_SET_POSITION;
+   _sys(&testregs);
 }
 
 void sprite_define(uint8_t spritenum, SpriteDefinition *sprdef)

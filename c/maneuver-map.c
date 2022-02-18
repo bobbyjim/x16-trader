@@ -2,160 +2,226 @@
 #include <stdlib.h>
 
 #include "maneuver-map.h"
-#include "sprite.h"
+//#include "sprite.h"
+#include "world.h"
+#include "ship.h"
+//#include "burtle_jsf32.h"
+#include "alarm.h"
+#include "menu.h"
 
-#define     OBJ_NONE            0
-#define     OBJ_INSTALLATION    1
-#define     OBJ_ASTEROID        2
-#define     OBJ_ASTEROID_BELT   3
-#define     OBJ_PLANET          4
-#define     OBJ_GAS_GIANT       5
-#define     OBJ_STAR            6
-#define     OBJ_MAINWORLD       7
+// #define     OBJ_NONE            0
+// #define     OBJ_INSTALLATION    1
+// #define     OBJ_ASTEROID        2
+// #define     OBJ_ASTEROID_BELT   3
+// #define     OBJ_PLANET          4
+// #define     OBJ_GAS_GIANT       5
+// #define     OBJ_STAR            6
+// #define     OBJ_MAINWORLD       7
 
-typedef struct {
+// typedef struct {
 
-    int type    :3;
-    int quality :4; // could be color or rating
-    int size    :4; 
-    int junk    :5; 
+//     int type    :3;
+//     int size    :4; 
 
-} SystemSquare;
+// } SystemSquare;
 
-#define SYSTEM_WIDTH    64
-#define SYSTEM_HEIGHT   64
+// #define SYSTEM_ORBIT_COUNT  16
 
-SystemSquare map[SYSTEM_WIDTH][SYSTEM_HEIGHT]; // whatever
+/*
+    Moving around the system.
+ */
 
+// SystemSquare map[SYSTEM_ORBIT_COUNT]; // whatever
+// long rho;
+// unsigned theta;
+// unsigned char worldVisible;
+// unsigned char worldMenuVisible;
 
-typedef struct {
+// SpriteDefinition tmpManeuverWorldSprite;
+extern World     current, destination;
+extern byte      playerAchievementLevel;
+extern Starship  ship;
+extern long      hcr;
 
-    char type;
-    int x;
-    int y;
+// extern Starship ship;
 
-} WorldLocation;
-
-int shipx, shipy, shipdx, shipdy;
-WorldLocation world[10];
-SpriteDefinition tmpManeuverWorldSprite;
-
-void showWorldSprite(
-   unsigned char spriteNum, 
-   unsigned char general_world_type,
-   int x,
-   int y
-   )
-{
-   if (general_world_type > 10) 
-      return;
-
-   if (general_world_type == 0) ++general_world_type;
-
-   tmpManeuverWorldSprite.block = 0x6000 + (general_world_type - 1) * 0x400;
-   tmpManeuverWorldSprite.mode  = SPRITE_MODE_8BPP;
-   tmpManeuverWorldSprite.layer = SPRITE_LAYER_BACKGROUND;
-   tmpManeuverWorldSprite.dimensions = SPRITE_32_BY_32;
-   tmpManeuverWorldSprite.x     = SPRITE_X_SCALE(x);
-   tmpManeuverWorldSprite.y     = SPRITE_Y_SCALE(y);
+// void maneuvermapInit()
+// {
+//    int i  = burtle32_srand( current.col + current.row * 11 + current.data.siz * 13 + current.data.atm * 17 + current.data.hyd * 19);
+//    int mw =      1 + burtle32_random() % 4; // 1 to 4
+//    int ab = mw + 1 + burtle32_random() % 6; // 2 to 10
+//    int gg = ab + 1 + burtle32_random() % 6; // 3 to 14
    
-   sprite_define(spriteNum, &tmpManeuverWorldSprite);
-}
+//    map[0].type = OBJ_STAR;
+//    map[3].type = OBJ_MAINWORLD;
+//    if (WORLD_HAS_BELTS(&current))
+//       map[ab].type = OBJ_ASTEROID_BELT;   
 
-void maneuvermapInit()
+//    if (WORLD_HAS_GGS(&current))
+//       map[gg].type = OBJ_GAS_GIANT;
+
+//    for(i=1; i<gg+2; ++i)
+//       if ((map[i].type == 0) && (burtle32_random() % 2 == 1))
+//          map[i].type  = OBJ_PLANET;
+// }
+
+// void maneuvermapShowSystem()
+// {
+//     int i;
+//     int x = 0;
+//     int y = 30;
+//     for(i=0; i<SYSTEM_ORBIT_COUNT; ++i)
+//     {
+//         switch(map[i].type)
+//         {
+//             case OBJ_ASTEROID:
+//                 x += 4;
+//                 textcolor(COLOR_GRAY1);
+//                 cputcxy(x,y,',');
+//                 break;
+//             case OBJ_ASTEROID_BELT:
+//                 x += 4;
+//                 textcolor(COLOR_GRAY1);
+//                 cputcxy(x,y,';');
+//                 break;
+//             case OBJ_GAS_GIANT:
+//                 x += 4;
+//                 textcolor(COLOR_LIGHTBLUE);
+//                 cputcxy(x,y,209);
+//                 break;
+//             case OBJ_INSTALLATION:
+//                 x += 4;
+//                 textcolor(COLOR_WHITE);
+//                 cputcxy(x,y,'i');
+//                 break;
+//             case OBJ_MAINWORLD:
+//                 x += 4;
+//                 textcolor(COLOR_GREEN);
+//                 cputcxy(x,y,209);
+//                 break;
+//             case OBJ_PLANET:
+//                 x += 4;
+//                 textcolor(COLOR_GRAY3);
+//                 cputcxy(x,y,172);
+//                 break;
+//             case OBJ_STAR:
+//                 x += 4;
+//                 textcolor(COLOR_YELLOW);
+//                 cputcxy(x,y,'*');
+//                 break;
+//             case OBJ_NONE:
+//             default: // nothing
+//                 break;
+//         }
+//     }
+// }
+
+// void showWorldSprite(
+//    unsigned char spriteNum, 
+//    unsigned char general_world_type,
+//    unsigned x,
+//    unsigned y)
+// {
+//    if (general_world_type > 10) 
+//       return;
+
+//    if (general_world_type == 0) ++general_world_type;
+
+//    tmpManeuverWorldSprite.block = 0x6000 + (general_world_type - 1) * 0x400;
+//    tmpManeuverWorldSprite.mode  = SPRITE_MODE_8BPP;
+//    tmpManeuverWorldSprite.layer = SPRITE_LAYER_BACKGROUND;
+//    tmpManeuverWorldSprite.dimensions = SPRITE_32_BY_32;
+//    tmpManeuverWorldSprite.x     = SPRITE_X_SCALE(x);
+//    tmpManeuverWorldSprite.y     = SPRITE_Y_SCALE(y+120);
+   
+//    sprite_define(spriteNum, &tmpManeuverWorldSprite);
+// }
+
+// void hideWorldSprite(unsigned char spriteNum)
+// {
+//     tmpManeuverWorldSprite.layer = SPRITE_DISABLED;
+//     sprite_define(spriteNum, &tmpManeuverWorldSprite);
+// }
+
+// void showWorldMenu()
+// {
+//     gotoxy(4,1);
+//     cputs("(d)ock  (l)and  (o)rbit  (r)efuel  (s)urvey");
+// }
+
+// void hideWorldMenu()
+// {
+//     cclearxy(4,1,40);
+// }
+
+void showCurrentLocation()
 {
-    int i;
-    for(i=0; i<2; ++i)
+    clrscr();
+
+    printAlarmBar();
+
+    gotoxy(0,7);
+    textcolor(COLOR_LIGHTRED);
+    cputs("     current world\r\n\r\n");
+    world_describe(&current);
+    cputs("\r\n");
+    //cprintf("         credits         : %ld00\r\n\r\n", hcr);
+
+    if (DIFFERENT_WORLDS(destination, current))
     {
-        world[i].x = (rand() % 2500) - (rand() % 2500);
-        world[i].y = (rand() % 500)  - (rand() % 500);
-        world[i].type = rand() % 16;
+        gotoxy(0,17);
+        textcolor(COLOR_LIGHTRED);
+        cputs("     destination world\r\n\r\n");
+        world_describe(&destination);
     }
-
-    for(i=4;i<60;++i)
-       cclearxy(0,i,80);
-
-    for(i=50; i<99; ++i)
-       sprite_disable(i);
 }
 
-void maneuvermapShow()
+unsigned char maneuver()
 {
-    int i;
-    int x1, y1;
-    int wx, wy;
+    int opts = 6;
+    char* mainworldMenuOptions[] = {
+        "astrogation",
+        "jump",
+        "starport",
+        "trade",
+        "hiring hall",
+        "shipyard",
+    };  
 
-   maneuvermapInit();
+    textcolor(COLOR_YELLOW);
+    if (playerAchievementLevel > 1)
+        cputsxy(9, 30, "move to location:");
+    else   
+        cputsxy(9, 30, "press <return>");
+   
+    if (playerAchievementLevel < opts)
+        opts = playerAchievementLevel;
 
-    shipx = 5000;
-    shipy = 5000;
-
-    shipdx = 0;
-    shipdy = 0;
-
-
-    for(;;)
-    {
-        if (kbhit())
-        {
-            switch(cgetc())
-            {
-                case 'w': // north
-                    //shipdy /= 2;
-                    if (shipdy > -16) --shipdy;
-                    break;
-                case 's': // south
-                    //shipdy /= 2;
-                    if (shipdy < 16) ++shipdy;
-                    break;
-                case 'a': // east
-                    //shipdx /= 2;
-                    if (shipdx < 16) ++shipdx;
-                    break;
-                case 'd': // west
-                    //shipdx /= 2;
-                    if (shipdx > -16) --shipdx;
-                    break;
-                case 'x':
-                    shipdx /= 2;
-                    shipdy /= 2;
-                    break;
-            }
-        }
-        shipx += shipdx;
-        shipy += shipdy;
-
-        gotoxy(5,15);
-        cprintf("%d,%d", shipx >> 4, shipy >> 4);
-        
-        for(i=0; i<10; ++i)
-        {           
-            x1 = world[i].x - (shipx >> 4);
-            y1 = world[i].y - (shipy >> 4);
-
-            wx = 310 + (shipx>>4) - world[i].x;
-            wy = 230 + (shipy>>4) - world[i].y;
-
-            if (abs(x1) < 255 && abs(y1) < 255) // close
-            {
-                if (x1 != 0) shipdx += x1/abs(x1*y1);
-                if (y1 != 0) shipdy += y1/abs(x1*y1);
-            }
-            else
-            {
-                if (x1 < -320)
-                    wx = 620-x1/256;
-                else if (x1 > 320)
-                    wx = 20-x1/256;
-
-                if (y1 < -240)
-                    wy = 450-y1/256;
-                else if (y1 > 240)
-                    wy = 20-y1/256;
-            }            
-            showWorldSprite(50+i, world[i].type, wx, wy);
-        }
-    }
-
+    return menu_run(9, 30, opts, mainworldMenuOptions);
 }
 
+// void maneuvermapShow()
+// {
+//     int cpos = 1;
+
+//     // maneuvermapShowSystem();
+
+//     // cputcxy(4 + cpos * 4, 32, '^');
+//     // for(;;)
+//     // {
+//     //     if (kbhit())
+//     //     {
+//     //         switch(cgetc())
+//     //         {
+//     //             case 0x9d: // left
+//     //                 cpos = (cpos + 15) % 16;
+//     //                 break;
+//     //             case 0x1d: // right
+//     //                 cpos = (cpos + 1) % 16;
+//     //                 break;
+//     //         }
+//     //         cclearxy(0, 32, 80);
+//     //         cputcxy(4 + cpos * 4, 32, '^');
+//     //     }
+//     // }
+// }

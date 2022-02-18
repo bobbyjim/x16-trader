@@ -7,11 +7,13 @@
 #include "ship.h"
 #include "common.h"
 #include "alarm.h"
+#include "world.h"
 
 extern Starship ship; // your ship
 extern long hcr;      // your cash
 extern char* hullCode;
 extern char* cfgCode;
+extern World current;
 
 byte indexMap[] = {
 	255,255,255,255,255,
@@ -57,13 +59,12 @@ void tradeStarships()
    //exit(0);
 }
 
-void landAtShipyard(
-        char starport,
-        char bases,
-        char zone,
-        char alleg
-)
+void landAtShipyard()
 {
+   char starport = current.data.starport;
+   char bases    = current.data.bases;
+   char zone     = current.data.zone;
+   char alleg    = current.data.allegiance[0];
    byte ok = 1;
    byte i  = 0;
    byte i2 = 0;

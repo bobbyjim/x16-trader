@@ -1,7 +1,7 @@
 /*
 
     Traveller-Trader: a space trader game
-    Copyright (C) 2021 Robert Eaglestone
+    Copyright (C) 2022 Robert Eaglestone
 
     This file is part of Traveller-Trader.
         
@@ -29,155 +29,153 @@
 
 extern World localSystem[];
 extern byte  localSystemCount;
+extern byte  playerAchievementLevel;
+
+char *stellarSizeMap[] = { "h", "i", "ii", "iii", "iv", "v", "d", "d" };
 
 void printWorld(World* worldptr)
 {
-   cputs(getLabel(worldptr));
+   cputs(WORLD_LONG_LABEL(worldptr));
    cputs("  ");
-   printTradeCodes(worldptr->tcIndex);
+   showTradeCodes(worldptr);
    cprintf("\r\n\r\n");
 }
 
-char* getShortLabel(World* world)
+void showTradeCodes(World* world)
 {
-   setBank(world->bank);
-   return (char *) (world->record * 64 + O_LABEL);
+   if (world->data.agricultural) cputs("ag ");
+   if (world->data.ancients    ) cputs("an ");
+   if (world->data.asteroid    ) cputs("as ");
+   if (world->data.barren      ) cputs("ba ");
+   if (world->data.capital     ) cputs("cp ");
+   if (world->data.desert      ) cputs("de ");
+   if (world->data.fluid_seas  ) cputs("fl ");
+   if (world->data.hellworld   ) cputs("he ");
+   if (world->data.hi_pop      ) cputs("hi ");
+   if (world->data.icecapped   ) cputs("ic ");
+   if (world->data.industrial  ) cputs("in ");
+   if (world->data.lo_pop      ) cputs("lo ");
+   if (world->data.military    ) cputs("mr ");
+   if (world->data.non_agri    ) cputs("na ");
+   if (world->data.non_ind     ) cputs("ni ");
+   if (world->data.poor        ) cputs("po ");
+   if (world->data.reserve     ) cputs("re ");
+   if (world->data.rich        ) cputs("ri ");
+   if (world->data.research    ) cputs("rs ");
+   if (world->data.satellite   ) cputs("sa ");
+   if (world->data.vacuum      ) cputs("va ");
+   if (world->data.water_world ) cputs("wa ");
 }
 
-char* getLabel(World* world)
+char* starportQuality(char letter)
 {
-   setBank(world->bank);
-   return (char *) (0xa002 + world->record * 64);
+   switch(letter)
+   {
+      case 'a': return "excellent";
+      case 'b': return "good";
+      case 'c': return "fair";
+      case 'd': return "poor";
+      case 'e': return "barely there";
+      case 'x': return "non-existent";
+      default:  return "unknown!";
+   }
 }
+void world_describe(World* world)
+{
+   textcolor(COLOR_LIGHTBLUE);
+
+   cprintf("         world name      : %s\r\n\r\n", world->data.name);
+
+   if (playerAchievementLevel > 1)
+      cprintf("         starport quality: %c (%s)\r\n\r\n", world->data.starport, starportQuality(world->data.starport));
+
+   if (playerAchievementLevel > 2)
+   {
+      cprintf("         gas giant       : %s\r\n\r\n", 
+         WORLD_HAS_GGS(world)? "yes" : "no"
+      );
+      cputs("         trade comments  : ");
+      showTradeCodes(world);
+   }
+   cputs("\r\n\r\n");
+}
+
+// #define     MU                   2
+// #define     MU2                  MU*2
+// #define     MU5                  MU*5
+// #define     WR                   30
+// #define     HALF_WR              15
+// #define     WC                   80
+
+// unsigned char worldmap[WC][WR];
+// unsigned char worldmapColor[] = 
+// {
+//    COLOR_BLUE,
+//    COLOR_CYAN,    COLOR_CYAN,    COLOR_CYAN,
+//    COLOR_YELLOW,  COLOR_YELLOW,  COLOR_YELLOW, 
+//    COLOR_GREEN,   COLOR_GREEN,   COLOR_GREEN,   COLOR_GREEN,   COLOR_GREEN,
+//    COLOR_LIGHTGREEN, COLOR_LIGHTGREEN,
+//    COLOR_GRAY3,   COLOR_GRAY3,   COLOR_GRAY3,   COLOR_GRAY3,   
+//    COLOR_GRAY2,   COLOR_GRAY2,
+//    COLOR_GRAY3,   COLOR_GRAY3
+// };
+
+// void drawWorld(World* world)
+// {
+//    int i, j, x, y;
+//    for(i=0; i<MU5; ++i)
+//    {
+//       x = (rand() % (WC-10)) + 5;
+//       y = (rand() % (WR-10)) + 5;
+//       for(j=0; j<(rand() % (WR * WC))/MU2; ++j)
+//       {
+//          x += 1 * ((rand() % 3) - 1);
+//          y += 1 * ((rand() % 3) - 1);
+//          if (x>=0 && x<=WC && y>=0 && y<=WR && (worldmap[x][y] < 20))
+//             ++worldmap[x][y];
+//       }
+//    }
+
+//    for(j=0; j<WR; ++j)
+//    {
+//       for(i=0; i<WC; ++i)
+//       {
+//           if (j == HALF_WR && worldmap[i][j] == 0)
+//           {
+//             textcolor(COLOR_BLUE);
+//             cputc('x');
+//             // 195 is nice, especially with dark blue.
+//           }
+//           else
+//           {
+//             textcolor(worldmapColor[worldmap[i][j]]);
+//             if (worldmap[i][j] == 0)
+//                cputc(166);
+//             else
+//                cputc('x');
+//             // 166 is too bold.
+//             // 214 isn't bad.
+//           }
+//       }
+//    }
+// }
 
 void getWorld(World* world)
 {
-   int offset, bank, address;
-   offset = world->col * 64 + world->row;
-   bank = MAP_BANK_BEGIN + offset/128;
+   int offset = world->col * 64 + world->row;
+   int bank = MAP_BANK_BEGIN + offset/128;
+
+   int address;
+   WorldData* data;
+
    setBank(bank);
    offset %= 128;
    address = ADDRESS_START + offset * 64;
  
-   world->record   = offset;
    world->bank     = bank;
+   world->record   = offset;
+   world->address  = address;
 
-   world->alleg    = ALLEG(address);
-   world->bases    = BASES(address);
-   world->bgg      = BGG(address);   
-   world->starport = STARPORT(address);
-   world->pop      = POP(address);
-   world->tcIndex  = TCINDEX(address);
-   world->tc1      = TC1(address);
-   world->tl       = TL(address);
-   world->zone     = ZONE(address);
+   data = (WorldData*)(address);
+   world->data     = *data;           // COPY THE DATA IN!
 }
-
-char* getBases(World* world)
-{
-   int address;
-   address = ADDRESS_START + world->record * 64;
-
-   switch(BASES(address))
-   {
-      case 'N': return "navy base";
-      case 'S': return "scout base";
-      case 'A': return "navy and scout base";
-      case 'W': return "way station";
-      case 'B': return "navy and way station";
-      case 'D': return "navy depot";
-   }
-   return "none";
-}
-
-char hasGasGiants(World* world)
-{
-   int address;
-   int bgg;
-   address = ADDRESS_START + world->record * 64;
-   bgg = BGG(address);
-
-   if (bgg == 'g' || bgg == '2')
-      return 'y';
-   return 'n';
-}
-
-char hasBelts(World* world)
-{
-   int address;
-   int bgg;
-   address = ADDRESS_START + world->record * 64;
-   bgg = BGG(address);
-
-   if (bgg == 'b' || bgg == '2')
-      return 'y';
-   return 'n';
-}
-
-char* getZone(World* world)
-{
-   int address;
-   address = ADDRESS_START + world->record * 64;
-
-   switch(ZONE(address))
-   {
-      case 'A': return "amber";
-      case 'R': return "red";
-   }
-   return "green";
-}
-
-byte getHexCol(World* world)
-{
-   return HEXCOL(ADDRESS_START + world->record * 64);
-}
-
-byte getHexRow(World* world)
-{
-   return HEXROW(ADDRESS_START + world->record * 64);
-}
-
-/*
-   un-comment this when we have a burtle library to link in
-
-void buildLocalSystem(World* mainworld)
-{
-
-   byte i;
-
-   //
-   // OK, the UWP is sufficient to randomize the local system.
-   //
-   burtleVal seed; // sufficiently gigantic
-
-   // row and col are unique.  let's use that for now.
-   // col is up to 256.
-   seed = mainworld->row * 256 + mainworld->col;
-
-   burtleInit(seed);
-   localSystemCount = burtleRand() % 256;
-
-   for(i=0; i<localSystemCount; ++i)
-   { 
-      SET_ORBIT(localSystem[i], burtleRand() % 256);
-      SET_THETA(localSystem[i], burtleRand() % 256);
-
-      localSystem[i].record = i;
-
-      localSystem[i].starport = 'X';
-      localSystem[i].siz      = twoD(-2);
-      localSystem[i].atm      = goodFlux(localSystem[i].siz);
-      localSystem[i].hyd      = goodFlux(localSystem[i].atm);
-      localSystem[i].pop      = 0;
-      localSystem[i].tl       = 0;
-
-      localSystem[i].bgg      = ' ';
-      localSystem[i].zone     = mainworld->zone;
-      localSystem[i].bases    = ' ';
-      localSystem[i].alleg    = ' ';
-      localSystem[i].tcIndex  = mainworld->tcIndex;
-      localSystem[i].tc1      = 0;
-   }   
-}
-*/
-

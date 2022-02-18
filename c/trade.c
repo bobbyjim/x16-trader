@@ -25,7 +25,6 @@
 #include <cbm.h>
 
 #include "common.h"
-//#include "bank.h"
 #include "world.h"
 #include "trade.h"
 #include "hold.h"
@@ -135,7 +134,7 @@ void cleanUpStarport()
    }
 }
 
-void moveCargo() // from 'current' to 'destination'
+void trade_speculate() // from 'current' to 'destination'
 {
    int price;
    int matrixValue;
@@ -149,22 +148,22 @@ void moveCargo() // from 'current' to 'destination'
    toDefaultColor();
 
    printWorld(&current);
-   cprintf("this world is selling tl-%u ", current.tl);
-   printTradeGoods(current.tcIndex);
-   price = 100 * (getBasePrice(current.tcIndex) + current.tl);
+   cprintf("this world is selling tl-%u ", current.data.tl);
+   printTradeGoods(current.data.tcIndex);
+   price = 100 * (getBasePrice(current.data.tcIndex) + current.data.tl);
    cprintf(" at %u cr/ton", price);
    cprintf("\r\n\r\n");
 
    printWorld(&destination);
    setBank(TRADE_MATRIX_BANK);
-   matrixValue = getMarketPrice(current.tcIndex, destination.tcIndex);
-   cprintf("destination sale value: %u\n", (matrixValue + current.tl - destination.tl) * 100);
+   matrixValue = getMarketPrice(current.data.tcIndex, destination.data.tcIndex);
+   cprintf("destination sale value: %u\n", (matrixValue + current.data.tl - destination.data.tl) * 100);
 
    cprintf("\r\n");
 
-   starport[0].index = current.tcIndex;
+   starport[0].index = current.data.tcIndex;
    starport[0].tons  = 100;
-   starport[0].tl    = current.tl;
+   starport[0].tl    = current.data.tl;
    
    cputsxy(8,12,"ship    cargo type        starport     cr/ton       dest.price\r\n");
    redline();
@@ -187,17 +186,17 @@ void moveCargo() // from 'current' to 'destination'
 	         getTradeGoods(starport[0].index),
 	         starport[0].tons,
 	         price,
-                 getMarketPrice(starport[0].index, destination.tcIndex) + starport[i].tl - destination.tl);
+                 getMarketPrice(starport[0].index, destination.data.tcIndex) + starport[i].tl - destination.data.tl);
          }
          else if(cargo[i].tons>0 || starport[i].tons>0)
          {
-            selPrice = getMarketPrice(cargo[i].index, current.tcIndex) + cargo[i].tl - current.tl;
+            selPrice = getMarketPrice(cargo[i].index, current.data.tcIndex) + cargo[i].tl - current.data.tl;
 	    cprintf("%4u    %-15s    %4u       %4u00        %4u00\r\n\r\n",
          	   cargo[i].tons,
 	           getTradeGoods(cargo[i].index),
          	   starport[i].tons,
                    selPrice,
-                   getMarketPrice(cargo[i].index, destination.tcIndex) + cargo[i].tl - destination.tl);
+                   getMarketPrice(cargo[i].index, destination.data.tcIndex) + cargo[i].tl - destination.data.tl);
          }
          else
          {

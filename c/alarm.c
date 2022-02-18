@@ -34,6 +34,7 @@
 extern Starship ship;
 extern byte     shipState[];
 extern byte     shipDamage[];
+extern byte     playerAchievementLevel;
 
 unsigned char cost[20];
 unsigned char xposition[] = {
@@ -150,6 +151,11 @@ void printAlarmBar()
 {
    byte x;
 
+   titleLine();
+
+   if (playerAchievementLevel < 3)
+      return;
+      
    //cputsxy(2,1,"mnv jmp bri cpu hol fue   12345678   ss ws fs co st dm sc gl");
 
    for(x=0; x<COMPONENT_COUNT; ++x)
@@ -162,5 +168,4 @@ void printAlarmBar()
    cprintf("%3u", ship.armor * ship.tl);
 
    cprintf("\r\n");
-   titleLine();
 }

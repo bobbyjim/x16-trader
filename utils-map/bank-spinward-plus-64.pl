@@ -119,16 +119,16 @@ foreach(@data)
    #
    # ---------------------------------------------
    my $tc1 = 0;
-   for my $code (qw/An Cp He Ic Mr Re Rs Sa/)
+   for my $code (reverse qw/An Cp He Ic Mr Re Rs Sa/)
    {
-      $tc1 << 1;
+      $tc1 <<= 1;
       $tc1++ if $tc =~ /$code\b/;
    }
 
    my $tc2 = 0; # this one is two bytes.
-   for my $code (qw/Ag As Ba De Fl Hi In Lo Na Ni Po Ri Va Wa/)
+   for my $code (reverse qw/Ag As Ba De Fl Hi In Lo Na Ni Po Ri Va Wa/)
    {
-      $tc2 << 1;
+      $tc2 <<= 1;
       $tc2++ if $tc =~ /$code\b/;
    }
 
@@ -164,14 +164,15 @@ foreach(@data)
    #
    #  Prepare Stellar Data
    #
-   #  e.g.
+   #  example 1:
    #  1.  G3 IV M0 V M3 V
    #  2.  G34M05M35
    #  3.  G,34,M,5,M,35 = 6 bytes
    # ---------------------------------------------
+   $st =~ s/BD/M0 D/g;
    $st =~ s/\s//g;
 
-   $st =~ s/VI/6/g;
+   $st =~ s/VI|D/6/g;
    $st =~ s/IV/4/g;
    $st =~ s/V/5/g;
 
@@ -183,11 +184,11 @@ foreach(@data)
 
    my @st2 = (
       $st1[0],                # byte 1
-      $st1[1] * 8 + $st1[2],  # byte 2  (5:3)
+      $st1[1] * 8 + $st1[2],  # byte 2  (3:5) little-endian
       $st1[3],                # byte 3
-      $st1[4] * 8 + $st1[5],  # byte 4  (5:3)
+      $st1[4] * 8 + $st1[5],  # byte 4  (3:5) little-endian
       $st1[6],                # byte 5
-      $st1[7] * 8 + $st1[8]   # byte 6  (5:3)
+      $st1[7] * 8 + $st1[8]   # byte 6  (3:5) little-endian
    );
 
    my $stp = pack 'ACACAC', @st2;
@@ -216,31 +217,31 @@ foreach(@data)
    my $rec;
 
    $rec  = pack 'CC', $col,$row; 	# 00 - 01   0-255 x 0-255
-   $rec .= pack 'A4', $sectorAbbr;      # 02 - 05
-   $rec .= ' ';				# 06
-   $rec .= pack 'A4', $location;    	# 07 - 0a   e.g. 0101-3240
-   $rec .= ' ';				# 0b
-   $rec .= pack 'A15', $name;           # 0c - 1a   16 bytes
-   $rec .= ' ';				# 1b
-   $rec .= pack 'A',   $sp;             # 1c
-   $rec .= pack 'A6',  $uwp;            # 1d - 22           
-   $rec .= pack 'AA',  '-', $tl;        # 23 - 24
-   $rec .= ' ';				# 25
-   $rec .= pack 'A', $z;                # 26
-   $rec .= pack 'A', $al;               # 27
-   $rec .= pack 'x';                    # 28
-   $rec .= pack 'A', $ba;               # 29
-   $rec .= pack 'A', $bgg;              # 2a
-   $rec .= pack 'C', $tcSan;      	    # 2b
-   $rec .= pack 'C', $tc1;        	    # 2c
-   $rec .= pack 'C', $sizatm;           # 2d
-   $rec .= pack 'C', $hydpop;           # 2e
-   $rec .= pack 'C', $govlaw;           # 2f
-   $rec .= pack 'C', $hex{$tl};  	    # 30
-   $rec .= pack 'v', $tc2;              # 31 - 32
-   $rec .= pack 'C', $tc3;              # 33
-   $rec .= pack 'x6';                   # 34 - 39  spare
-   $rec .= $stp;                        # 3a - 3f
+   $rec .= pack 'A4', $sectorAbbr;  # 02 - 05
+   $rec .= ' ';				         # 06
+   $rec .= pack 'A4', $location;    # 07 - 0a   e.g. 0101-3240
+   $rec .= pack 'x';		      		# 0b
+   $rec .= pack 'A15', $name;       # 0c - 1a   16 bytes
+   $rec .= pack 'x';			   	   # 1b
+   $rec .= pack 'A',   $sp;         # 1c
+   $rec .= pack 'A6',  $uwp;        # 1d - 22           
+   $rec .= pack 'AA',  '-', $tl;    # 23 - 24
+   $rec .= pack 'x';				      # 25
+   $rec .= pack 'A', $z;            # 26
+   $rec .= pack 'A', $al;           # 27
+   $rec .= pack 'x';                # 28
+   $rec .= pack 'A', $ba;           # 29
+   $rec .= pack 'A', $bgg;          # 2a
+   $rec .= pack 'C', $tcSan;      	# 2b
+   $rec .= pack 'C', $tc1;        	# 2c
+   $rec .= pack 'C', $sizatm;       # 2d
+   $rec .= pack 'C', $hydpop;       # 2e
+   $rec .= pack 'C', $govlaw;       # 2f
+   $rec .= pack 'C', $hex{$tl};  	# 30
+   $rec .= pack 'v', $tc2;          # 31 - 32
+   $rec .= pack 'C', $tc3;          # 33
+   $rec .= pack 'x6';               # 34 - 39  spare
+   $rec .= $stp;                    # 3a - 3f
 
 
    $mapref->[ $col ]->[ $row ] = $rec;

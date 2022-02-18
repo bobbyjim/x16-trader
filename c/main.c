@@ -29,11 +29,9 @@
 
 #include "alarm.h"
 #include "common.h"
-#include "hexmap.h"
 #include "hold.h"
 #include "jump.h"
 #include "passengers.h"
-#include "pilot.h"
 #include "trade.h"
 #include "ship.h"
 #include "world.h"
@@ -43,30 +41,35 @@
 #include "jump-map.h"
 #include "sprite.h"
 #include "maneuver-map.h"
+#include "console.h"
 
 //
 //  Player data
 //
+byte              playerAchievementLevel = 1; 
 Starship          ship;
 byte              shipState[22];
 byte              shipDamage[22];
-
-word hold  	      = 64;   // should actually be ship.cargo, but whatever
 long hcr 	      = 5000; // in hundreds of cr (because of how trade works)
 long mortgage_cr  = 0;    
+
+word hold  	      = 64;   // should actually be ship.cargo, but whatever
 Cargo cargo[20];
 
-byte admin	    = 0;
-byte astrogator = 0;
-byte engineer   = 0;
-byte gunner     = 0;
-byte medic      = 0;
-byte pilot      = 0;
-byte steward    = 0;
-byte streetwise = 0;
+//
+//  These are the only skills that matter.
+//
+byte admin	      = 0;
+byte astrogator   = 0;
+byte engineer     = 0;
+byte gunner       = 0;
+byte medic        = 0;
+byte pilot        = 0;
+byte steward      = 0;
+byte streetwise   = 0;
 
 //
-//   world data
+//   World data
 //
 World current;
 World destination;
@@ -146,20 +149,13 @@ void jamisonHide()
 }
 
 char *expository_text[] = {
-   "congratulations, young captain!  you have full ownership of your very own",
-   "type a2 marava-class far trader.  in seeking fame and fortune, you can:",
+   "congratulations, captain!  you have full ownership of your",
+   "very own type a2 marava-class far trader.",
    "",
-   " * buy and sell speculative cargo",
-   " * survey remote worlds",
-   " * prospect in planetoid belts",
-   " * capture pirates",
+   "earn your fortune by jumping from system to system."
    "",
-   "you can refuel for free at gas giants.",
-   "",
-   "avoid amber- and red-zone systems until you upgrade to a gazelle or",
-   "mercenary cruiser!",
-   "",
-   "good luck!"
+   "good luck!",
+   "END"
 };
 
 //
@@ -167,7 +163,7 @@ char *expository_text[] = {
 //
 void splash()
 {
-   int i, j;
+   int i;
 
    cbm_k_bsout(CH_BLACK);
    cbm_k_bsout(TO_BACKGROUND);
@@ -186,31 +182,35 @@ void splash()
    loadFileToBank("bt-title.bin", MISC_BANK, 0xa100);
    titleLine();
    setBank(MISC_BANK); 
-   cbm_k_bsout(CH_GRAY3);
+   textcolor(COLOR_CYAN);
 
    for(i=0; i<14; ++i)
       cputsxy(15, i+4, ((char*) 0xa100 + i*52));
 
-   cbm_k_bsout(CH_GREEN);
+   textcolor(COLOR_LIGHTBLUE);
 
-   for(i=0; i<12; ++i)
+   for(i=0;; ++i)
    {
-      gotoxy(3,22+i*2);
-      for(j=0; j<strlen(expository_text[i]);++j)
-      {
-         cputc(expository_text[i][j]);
+      if (!strcmp(expository_text[i], "END"))
+         break;
 
-      }
+      gotoxy(10,22+i*2);
+      cputs(expository_text[i]);
    }
 
+   textcolor(COLOR_YELLOW);
+   cputsxy(5,26 + i*2,"                       press <space> to begin");
+
    jamisonShow();
-
-   cputsxy(5,55,"                       press <space> to begin");
-   cgetc();
-
+   i = cgetc();
+   _randomize(); // while we're here.
    jamisonHide();
 
-   _randomize();
+   //
+   //  shortcut the hands-on mode
+   //
+   if (i == 'x')
+      playerAchievementLevel = 10;
 }
 
 void init()
@@ -222,25 +222,18 @@ void init()
    loadFileToBank("bd-ships.bin",   SHIP_BANK,         0xa000);
    loadFileToBank("bd-map64.bin",  MAP_BANK_BEGIN,    0xa000);
 
-   sprite_loadToVERA("bi-acs-a2.bin",  0x4000);
-   sprite_loadToVERA("bi-acs-p.bin",   0x5000);
+   sprite_loadToVERA("aia-far.bin",  0x4000);
+   sprite_loadToVERA("bi-jamison.bin", 0x5000);
    sprite_loadToVERA("bi-worlds.bin",  0x6000);
    vera_sprites_enable(1); // cx16.h
 
    ship_init(&ship);
-
-   for(i=1; i<11; ++i)
-   {
-      cargo[i].index = rand() % 50;
-      cargo[i].tl    = rand() % 20;
-      cargo[i].tons  = 8;
-   }
 }
 
 void burnFuel()
 {
    shipState[ O_STATE_JUMP_FUEL_USED ] += distance;
-   if (shipState[ O_STATE_JUMP_FUEL_USED ] == ship.component[ O_QSP_J ])
+   if (shipState[ O_STATE_JUMP_FUEL_USED ] > 0) // ship.component[ O_QSP_J ])
       shipState[ O_STATE_JUMP_FUEL_USED ] = STATUS_LOW;
 }
 
@@ -260,34 +253,33 @@ void main()
 
    getWorld(&current);
 
-   // // In-System Maneuver
-   // shipiconShow(300, 220);
-   // maneuvermapShow();
-
-   // exit(0);
-
    for(;;)
    {
+      // bookkeeping required to handle fuel consumption.
       range = ship.component[ O_QSP_J ] - shipState[ O_STATE_JUMP_FUEL_USED ];
-      switch(doPilot())
+      showCurrentLocation();
+      switch(maneuver())
       {
          case ASTROGATION_OPTION:
             //
             // Astrogation
             //
             titleLine();
+
             printAlarmBar();
+            
             jumpmapShow();
-            jumpmapShowWorldData(19,10);
+            jumpmapShowWorldData(current.col,current.row);
             shipiconShow(335, 235);
             i = jumpmapSetDestination();
             shipiconHide();
-//		      pickDestination(current.col,current.row,range);
+            if (playerAchievementLevel < 2)
+               playerAchievementLevel = 2;
             if (i != 'j') break;
             // fall through for immediate jump
 
 	      case JUMP_OPTION:
-		      if (destination.bank > 0)
+		      if ((destination.row != current.row) || (destination.col != current.col))
 		      {
  		         bookPassengers();
 	    	      jump();
@@ -296,12 +288,12 @@ void main()
       		   current.col = destination.col;
       		   current.row = destination.row;
       		   getWorld(&current);
-               destination.bank = 0; // null out
+               ++playerAchievementLevel;
 		      }
 		      break;
 
 	      case MARKET_OPTION:
-            moveCargo();
+            trade_speculate();
 		      break;
 
 	      case STARPORT_OPTION:
@@ -309,21 +301,14 @@ void main()
 		      break;
 
 	      case SHIPYARD_OPTION:
-		      landAtShipyard(
-			      current.starport,
-			      current.bases,
-			      current.zone,
-			      current.alleg
-		      );
+		      landAtShipyard();
 		      break;
 
 	      case HIRING_HALL_OPTION:
             hire();
             updateShipSkills();
 		      break;
-
       }
-
    }
 }
 

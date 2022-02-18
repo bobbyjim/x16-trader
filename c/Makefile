@@ -1,4 +1,4 @@
-SOURCES = main.c alarm.c common.c emplacement.c hiring_hall.c hold.c jump.c jump-map.c maneuver-map.c passengers.c pilot.c ship.c shipyard.c sprite.c starport.c trade.c world.c
+SOURCES = main.c alarm.c burtle_jsf32.c common.c console.c emplacement.c hiring_hall.c hold.c jump.c jump-map.c maneuver-map.c menu.c passengers.c ship.c shipyard.c sprite.c starport.c trade.c world.c
 
 PROGRAM = TRADER
 

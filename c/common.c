@@ -147,7 +147,8 @@ char pressReturnAndClear()
 {
    char c;
 
-   cputsxy(3,58,"press <return> to continue");
+   textcolor(COLOR_YELLOW);
+   cputsxy(27,50,"press <return> to continue");
    c = cgetc();
    clrscr();
    return c;

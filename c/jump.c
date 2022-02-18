@@ -29,22 +29,28 @@
 #include "common.h"
 
 extern byte astrogator;
+extern byte playerAchievementLevel;
 
 void jump()
 {
    char colors[10] = { CH_BLACK, CH_BLACK, CH_RED, CH_BLUE, CH_GREEN, CH_LIGHTRED, CH_ORANGE, CH_YELLOW };
    word days = 8;
+   byte mod_astrogator = astrogator;
    word x;
   
+   if (playerAchievementLevel > 1)
+      ++mod_astrogator;
+
    clrscr();
-   cputsxy(5,2,"entering jumpspace.");
+   textcolor(COLOR_LIGHTRED);
+   cputsxy(5,2,"entering jumpspace.  please stand by.");
    titleLine();
 
-   sleep(10/(astrogator+1));
+   sleep(10/(mod_astrogator+1));
    
    while(--days)
    {
-      x = 6000 / (astrogator+1);
+      x = 6000 / (mod_astrogator+1);
       while(--x)
       {
          cbm_k_bsout( colors[days] );

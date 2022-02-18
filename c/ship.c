@@ -24,7 +24,6 @@
 #include <peekpoke.h>
 
 #include "common.h"
-//#include "bank.h"
 #include "ship.h"
 #include "alarm.h"
 
@@ -46,6 +45,9 @@ char* weapon[] = {
 
 };
 
+extern byte playerAchievementLevel;
+
+
 void showShipSummary(Starship* ship)
 {
    cprintf("(%c) %s %c-%c%c%u%u  %s  hi:%d (+%d) lo:%d mcr %d\r\n", 
@@ -65,7 +67,7 @@ void showShipSummary(Starship* ship)
 
 void ship_init(Starship* ship)
 {
-   readShip(0x2b, ship); // Beowulf
+   readShip(SHIP_INDEX_MARAVA, ship); // Marava
 }
 
 byte readShip(byte index, Starship* ship)
@@ -233,6 +235,16 @@ byte  shipMatchesStarportRequirements(Starship* ship, char starport)
 	   return 0; // no ships normally sold here
    }
    return 0;
+}
+
+void ship_describe(Starship* ship)
+{
+   cprintf("         ship class      : %s\r\n\r\n", ship->name);
+
+   if (playerAchievementLevel > 1)
+   {
+
+   }
 }
 
 void ship_debug( Starship* ship )

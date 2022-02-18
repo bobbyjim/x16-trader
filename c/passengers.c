@@ -40,17 +40,18 @@ void bookPassengers()
    word subtotal;
 
    clrscr();
-   gotoxy(3,2);
-   cprintf("booking passengers bound for %s", getLabel(&destination));
+   gotoxy(5,2);
+   textcolor(COLOR_LIGHTRED);
+   cprintf("booking passengers bound for %s", WORLD_LONG_LABEL(&destination));
    titleLine();
 
-   high = goodFlux(current.pop + steward);
+   high = goodFlux(current.data.pop + steward);
    if (high > ship.sr) high = ship.sr;
 
-   mid  = goodFlux(current.pop + admin);
+   mid  = goodFlux(current.data.pop + admin);
    if (high+mid > ship.sr) mid = ship.sr - high;
 
-   low  = goodFlux(current.pop + streetwise);
+   low  = goodFlux(current.data.pop + streetwise);
    if (low > ship.lb) low = ship.lb;
 
    high_00 = ship.demand + 100;
@@ -60,11 +61,12 @@ void bookPassengers()
    subtotal = high * high_00 + mid * mid_00 + low * low_00;
    hcr += subtotal;
 
-   cprintf(" high passengers booked: %u at cr %u00 each.\r\n\r\n", high, high_00);
-   cprintf(" mid passengers booked:  %u at cr %u00 each.\r\n\r\n", mid, mid_00);
-   cprintf(" low passengers booked:  %u at cr %u00 each.\r\n\r\n", low, low_00);
+   cprintf("     %2u high passengers booked at cr %u00 each.\r\n\r\n", high, high_00);
+   cprintf("     %2u mid passengers booked at cr %u00 each.\r\n\r\n", mid, mid_00);
+   cprintf("     %2u low passengers booked at cr %u00 each.\r\n\r\n", low, low_00);
    cprintf("\r\n\r\n");
-   cprintf(" total revenue from passengers: cr %u00\r\n\r\n", subtotal );
+   cprintf("     total revenue from passengers: cr %u00\r\n\r\n", subtotal );
+   cprintf("     current balance:  cr %ld00\r\n\r\n", hcr );
 
    pressReturnAndClear();
 }

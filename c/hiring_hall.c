@@ -96,6 +96,8 @@ void showCrew()
 {
     int i;
 
+    textcolor(COLOR_LIGHTBLUE);
+
     gotoxy(0,5);
     cprintf("   crewmember       profile  skills\r\n");
     cputs("   ");
@@ -142,6 +144,9 @@ void hireSomeone()
 
     createCandidate( &candidate );
     redline();
+
+    textcolor(COLOR_GRAY2);
+
     cputs("\r\ncandidate:\r\n\r\n");
     printCrewmember( &candidate );
     cputs("\r\n");

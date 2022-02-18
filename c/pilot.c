@@ -35,7 +35,7 @@ extern World current;
 extern World localSystem[];
 extern Starship ship;
 
-byte    componentSelection = 0; // main ship components
+byte  componentSelection = 0; // main ship components
 byte 	turretSelection    = 0; // emplacements
 byte	systemSelection	   = 0; // specialized systems
 
@@ -142,7 +142,7 @@ byte pilotMenu()
             break;
         case 0x0d: // return key
          	cputsxy(73,pilotMenuSelection+5,pilotMenuOptions[pilotMenuSelection]);
-		      if (pilotMenuSelection != JUMP_OPTION || destination.bank > 0)
+		      if (pilotMenuSelection != JUMP_OPTION || destination.row != current.row || destination.col != current.col)
             {
                return pilotMenuSelection;
             }
