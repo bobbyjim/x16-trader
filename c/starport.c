@@ -1,7 +1,7 @@
 /*
 
     Traveller-Trader: a space trader game
-    Copyright (C) 2021 Robert Eaglestone
+    Copyright (C) 2022 Robert Eaglestone
 
     This file is part of Traveller-Trader.
         
@@ -63,8 +63,10 @@ void showComponentStatus(byte selected)
    byte i;
    byte mult;
 
+   textcolor(COLOR_CYAN);
    cputsxy(2,5,"component        status   rating  current\r\n" );
    cputsxy(2,6,"---------------  -------  ------  -------\r\n" );
+   textcolor(COLOR_LIGHTBLUE);
    for(i=0; i<COMPONENT_COUNT; ++i)
    {
       gotoxy(2,7+i);
@@ -117,18 +119,22 @@ void landAtStarport()
 {
    byte componentSelected = 0;
 
+   // if (shipState[ O_STATE_JUMP_FUEL_USED ] > 0)
+   //    shipState[ O_STATE_JUMP_FUEL_USED ] = STATUS_LOW;
+
    clrscr();
 
    for(;;) // menu
    {
       titleLine();
       statusLine();
+      textcolor(COLOR_YELLOW);
       cputsxy(5,30,"press <r> over selection to refuel or repair");
 
       // ship summary goes above the title line, so row 2.
       gotoxy(0,2);
+      textcolor(COLOR_LIGHTRED);
       showShipSummary(&ship);
-
       showComponentStatus(componentSelected);
       checkComponentSelection(componentSelected);
       switch(cgetc())

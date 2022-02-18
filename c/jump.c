@@ -29,7 +29,7 @@
 #include "common.h"
 
 extern byte astrogator;
-extern byte playerAchievementLevel;
+//extern byte playerAchievementLevel;
 
 void jump()
 {
@@ -38,8 +38,8 @@ void jump()
    byte mod_astrogator = astrogator;
    word x;
   
-   if (playerAchievementLevel > 1)
-      ++mod_astrogator;
+   // if (playerAchievementLevel > 1)
+   //    ++mod_astrogator;
 
    clrscr();
    textcolor(COLOR_LIGHTRED);

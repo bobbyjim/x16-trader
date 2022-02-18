@@ -1,6 +1,4 @@
-// auto-generated with perl
 #include <string.h>
-#include <stdio.h>
 #include "ship-struct.h"
 
 //////////////////////////////////////////////////

@@ -1,7 +1,7 @@
 /*
 
     Traveller-Trader: a space trader game
-    Copyright (C) 2021 Robert Eaglestone
+    Copyright (C) 2022 Robert Eaglestone
 
     This file is part of Traveller-Trader.
         
@@ -21,12 +21,11 @@
 */      
 
 #include <stdlib.h>
-#include <stdint.h>
 #include <conio.h>
-#include <cbm.h>
 #include <peekpoke.h>
 
 #include "common.h"
+#include "burtle_jsf32.h"
 
 #define LOGICAL_FILE_NUM        1
 #define IGNORE_LFN              0
@@ -60,54 +59,38 @@ byte parsecDistance(unsigned char col1,
 	unsigned char col2,
 	unsigned char row2)
 {
-   int aa, ab, da, db, d;
+   int aa = row1 + (col1/2);
+   int ab = row2 + (col2/2);
+   int da = abs(aa-ab);
+   int db = abs(col1-col2);
+   int d = abs(aa - ab - col1 + col2);
 
-   aa = row1 + (col1/2);
-   ab = row2 + (col2/2);
-   da = abs(aa-ab);
-   db = abs(col1-col2);
-   d = abs(aa - ab - col1 + col2);
    if ((da >= db) && (da >= d)) d = da;
    if ((db >= da) && (db >= d)) d = db;
    return (byte)(d & 0xff);
 }
 
-void hr(byte color)
-{
-   int x=81;
-   textcolor(color);
-   while(--x)
-   {
-      //cbm_k_bsout(HORIZ_BAR);
-      cputc(HORIZ_BAR);
-   }
-   cprintf("\r\n");
-//   cbm_k_bsout(0x0d);
-//   toDefaultColor();
-}
-
 void redline()
 {
-   hr(COLOR_RED);
-   toDefaultColor();
+   textcolor(COLOR_RED);
+   chline(80);
 }
 
 void titleLine()
 {
-    gotoxy(0,3);
-    redline();
+    textcolor(COLOR_RED);
+    chlinexy(0,3,80);
 }
 
 void statusLine()
 {
-   gotoxy(0,56);
-   redline();
+   textcolor(COLOR_RED);
+   chlinexy(0,56,80);
 }
 
 void toDefaultColor()
 {
-//   cbm_k_bsout(COLOR_GREEN); 
-   textcolor(COLOR_GREEN);
+   textcolor(COLOR_LIGHTBLUE);
 }
 
 //
@@ -156,7 +139,15 @@ char pressReturnAndClear()
 
 byte diceRoll2d()
 {
-   return (rand() % 6)
-        + (rand() % 6)
+   return (burtle32() % 6)
+        + (burtle32() % 6)
         + 2;
+}
+
+byte diceRoll3d()
+{
+   return (burtle32() % 6)
+        + (burtle32() % 6)
+        + (burtle32() % 6)
+        + 3;
 }

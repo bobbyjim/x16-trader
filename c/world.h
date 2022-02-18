@@ -1,7 +1,7 @@
 /*
 
     Traveller-Trader: a space trader game
-    Copyright (C) 2021 Robert Eaglestone
+    Copyright (C) 2022 Robert Eaglestone
 
     This file is part of Traveller-Trader.
         
@@ -29,6 +29,11 @@
 #define  WORLD_LONG_LABEL(worldptr)    ((worldptr)->data.name)
 #define  WORLD_HAS_GGS(worldptr)       ((worldptr)->data.bgg == 'g' || (worldptr)->data.bgg == '2')
 #define  WORLD_HAS_BELTS(worldptr)     ((worldptr)->data.bgg == 'b' || (worldptr)->data.bgg == '2')
+
+#define  STARPORT_NO_MAINTENANCE(worldptr)   ((worldptr)->data.starport > 'c')
+#define  STARPORT_NO_SHIPYARD(worldptr)      ((worldptr)->data.starport > 'b')
+#define  STARPORT_SLOW_FUEL(worldptr)        ((worldptr)->data.starport > 'b')    
+#define  STARPORT_NO_HIRING_HALL(worldptr)   ((worldptr)->data.starport > 'd')
 
 //
 // for non-mainworlds, row,col = orbit, theta

@@ -1,3 +1,25 @@
+/*
+
+    Traveller-Trader: a space trader game
+    Copyright (C) 2022 Robert Eaglestone
+
+    This file is part of Traveller-Trader.
+        
+    Traveller-Trader is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+        
+    Traveller-Trader is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
+        
+*/      
+
 #include <conio.h>
 #include <stdlib.h>
 
@@ -182,8 +204,9 @@ unsigned char maneuver()
     char* mainworldMenuOptions[] = {
         "astrogation",
         "jump",
-        "starport",
+        "wilderness refuel",
         "trade",
+        "starport",
         "hiring hall",
         "shipyard",
     };  
@@ -196,6 +219,15 @@ unsigned char maneuver()
    
     if (playerAchievementLevel < opts)
         opts = playerAchievementLevel;
+
+    if (opts >= STARPORT_OPTION && STARPORT_NO_MAINTENANCE(&current))
+        opts = STARPORT_OPTION-1; // no maintenance or easy fuel
+
+    if (opts >= HIRING_HALL_OPTION && STARPORT_NO_HIRING_HALL(&current))
+        opts = HIRING_HALL_OPTION-1; // no hiring hall
+
+    if (opts >= SHIPYARD_OPTION && STARPORT_NO_SHIPYARD(&current))
+        opts = SHIPYARD_OPTION-1; // no shipyard
 
     return menu_run(9, 30, opts, mainworldMenuOptions);
 }

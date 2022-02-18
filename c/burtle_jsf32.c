@@ -1,28 +1,30 @@
 /*
-  
-    8SH: a command interpreter for 8 bit 'retro' systems.
-    Copyright (C) 2020 Robert Eaglestone
 
-    This file is part of 8SH.
+    Traveller-Trader: a space trader game
+    Copyright (C) 2022 Robert Eaglestone
 
-    8SH is free software: you can redistribute it and/or modify
+    This file is part of Traveller-Trader.
+        
+    Traveller-Trader is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
-    8SH is distributed in the hope that it will be useful,
+        
+    Traveller-Trader is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with 8SH.  If not, see <https://www.gnu.org/licenses/>.
-
-*/
+    along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
+        
+*/      
 
 #include <conio.h>
 #include <time.h>
 #include "burtle_jsf32.h"
+
+#define randrot(x,k) (((x)<<(k))|((x)>>(32-(k))))
 
 ranctx rrgenerator;
 
@@ -52,22 +54,10 @@ int burtle32_srand(u4 seed)
    return 1;
 }
 
-u4 burtle32_random()
+unsigned long burtle32()
 {
    if ( rrgenerator.initialized == 0 )
       burtle32_srand(clock());
 
    return ran32val(&rrgenerator); // / 0xffffffff; 
 }
-
-// void main() // int argc, char* argv[])
-// {
-//    int i = 100;
-//    burtle_srand(100);
-//    while(--i > 0)
-//    {
-//       int r = burtle_random();
-//       cprintf("%d\n", r);
-//    }
-// }
-

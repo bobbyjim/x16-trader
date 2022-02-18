@@ -1,7 +1,7 @@
 /*
 
     Traveller-Trader: a space trader game
-    Copyright (C) 2021 Robert Eaglestone
+    Copyright (C) 2022 Robert Eaglestone
 
     This file is part of Traveller-Trader.
         

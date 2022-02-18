@@ -1,10 +1,33 @@
 
+/*
+
+    Traveller-Trader: a space trader game
+    Copyright (C) 2022 Robert Eaglestone
+
+    This file is part of Traveller-Trader.
+        
+    Traveller-Trader is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+        
+    Traveller-Trader is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
+        
+*/      
+
 #include <conio.h>
 #include <string.h>
 #include <stdlib.h>
 
 #include "common.h"
 #include "hiring_hall.h"
+#include "burtle_jsf32.h"
 
 #define     TOTAL_PERSON_NAMES      34
 
@@ -21,6 +44,8 @@ char* skillName[TOTAL_SKILLS] = {
     "stwi",
     "stwd"
 };
+
+char* noname = "";
 
 char* personName[TOTAL_PERSON_NAMES] = {
     "santanocheev",
@@ -71,17 +96,47 @@ byte findHighestSkillFor(byte skillIndex)
    return high;
 }
 
+//
+// 3D distribution
+//                       3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18
+char validPeoples[] = { 'm', 'r', 'b', 'a', 'a', 'd', 'i', 'i', 't', 't', 'l', 'v', 'v', 'z', 'r', 's' };
+
+char* decodeRace(char r)
+{
+    switch(r)
+    {
+        case 'a': return "aslan";
+        case 'b': return "bwap";
+        case 'd': return "droyne";
+        case 'i': return "vilani";
+        case 'l': return "llellewy";
+        case 'm': return "amindii";
+        case 'r': return "threep";
+        case 's': return "shrieker";
+        case 't': return "solomani";
+        case 'v': return "vargr";
+        case 'z': return "zhodani";
+
+        default:
+            return "";
+    }
+}
+
 void printCrewmember(Crew* crew)
 {
    int j;
-   cprintf("%-15s  %x%x%x%x%x%x   ", 
+
+   if (crew->name == 0) crew->name = noname;
+
+   cprintf("%-12s %x%x%x%x%x%x %8s ", 
        crew->name, 
        crew->upp[0],
        crew->upp[1],
        crew->upp[2],
        crew->upp[3],
        crew->upp[4],
-       crew->upp[5]
+       crew->upp[5],
+       decodeRace(crew->race)
    );
 
    for(j=1; j<TOTAL_SKILLS; ++j)
@@ -98,14 +153,10 @@ void showCrew()
 
     textcolor(COLOR_LIGHTBLUE);
 
-    gotoxy(0,5);
-    cprintf("   crewmember       profile  skills\r\n");
-    cputs("   ");
-    chline(15);
-    cputs("  ");
-    chline(7);
-    cputs("  ");
-    chline(45);
+    cputsxy(2, 5, "crewmember      profile                 skills");
+    chlinexy( 2, 6, 12);
+    chlinexy(16, 6, 15);
+    chlinexy(32, 6, 47);
     cputs("\r\n");
 
     for(i=0; i<TOTAL_CREW_SLOTS; ++i)
@@ -119,10 +170,13 @@ void createCandidate(Crew* candidate)
 {
     byte i;
 
-    strncpy(candidate->name, personName[ rand() % TOTAL_PERSON_NAMES ], 15);
+    candidate->name = personName[ burtle32() % TOTAL_PERSON_NAMES ];
+//    strncpy(candidate->name, personName[ rand() % TOTAL_PERSON_NAMES ], 15);
 
     for(i=0; i<6; ++i)
-       candidate->upp[i] = (rand() % 6) + (rand() % 6) + 2;
+       candidate->upp[i] = diceRoll2d();
+
+    candidate->race = validPeoples[ diceRoll3d() - 3 ];
 
     for(i=0; i<TOTAL_SKILLS; ++i)
     {

@@ -3,7 +3,7 @@
 /*
 
     Traveller-Trader: a space trader game
-    Copyright (C) 2021 Robert Eaglestone
+    Copyright (C) 2022 Robert Eaglestone
 
     This file is part of Traveller-Trader.
         
@@ -33,7 +33,6 @@ byte parsecDistance(
 		unsigned char col2,
 		unsigned char row2 );
         
-void hr(byte color);
 void redline();
 void titleLine();
 void statusLine();
@@ -45,6 +44,7 @@ void down(byte count);
 void left(byte count);
 char pressReturnAndClear();
 byte diceRoll2d();
+byte diceRoll3d();
 
 
 // PLAYER STATE BANK CONTENTS
@@ -81,20 +81,20 @@ byte diceRoll2d();
 
 #define ADDRESS_START	0xA000
 
-#define NW_CORNER       0x75
-#define NE_CORNER       0x69
-#define SW_CORNER       0x6a
-#define SE_CORNER       0x6b
+// #define NW_CORNER       0x75
+// #define NE_CORNER       0x69
+// #define SW_CORNER       0x6a
+// #define SE_CORNER       0x6b
 
-#define HORIZ_BAR       0xc0
-#define VERT_BAR        0xdd
+// #define HORIZ_BAR       0xc0
+// #define VERT_BAR        0xdd
 
-#define T_LEFT          179
-#define T_RIGHT         171
+// #define T_LEFT          179
+// #define T_RIGHT         171
 
 #define TO_BACKGROUND	0x01
 
-#define RVS_ON          18
-#define RVS_OFF         146
+// #define RVS_ON          18
+// #define RVS_OFF         146
 
 #endif

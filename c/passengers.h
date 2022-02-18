@@ -4,6 +4,6 @@
 #include "common.h"
 
 byte getPassengerDemand(byte cd);
-void bookPassengers();
+void bookPassengersAndPayCrew();
 
 #endif

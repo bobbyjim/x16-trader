@@ -1,7 +1,7 @@
 /*
 
     Traveller-Trader: a space trader game
-    Copyright (C) 2021 Robert Eaglestone
+    Copyright (C) 2022 Robert Eaglestone
 
     This file is part of Traveller-Trader.
         
@@ -247,52 +247,52 @@ void ship_describe(Starship* ship)
    }
 }
 
-void ship_debug( Starship* ship )
-{
-   int i;
-   byte hardpoint;
+// void ship_debug( Starship* ship )
+// {
+//    int i;
+//    byte hardpoint;
 
-   cprintf("index: %u\r\n", ship->index);
-   cprintf("%c %s %c-%c%c%u%u-%c mcr %u\r\n", 
-         ship->allegiance,
-         ship->name,
-         ship->mission,
-         hullCode[ship->size],
-         ship->cfg,
-         ship->component[O_QSP_M],
-         ship->component[O_QSP_J],
-         tlCode[ship->tl],
-         ship->mcrp * ship->size );
+//    cprintf("index: %u\r\n", ship->index);
+//    cprintf("%c %s %c-%c%c%u%u-%c mcr %u\r\n", 
+//          ship->allegiance,
+//          ship->name,
+//          ship->mission,
+//          hullCode[ship->size],
+//          ship->cfg,
+//          ship->component[O_QSP_M],
+//          ship->component[O_QSP_J],
+//          tlCode[ship->tl],
+//          ship->mcrp * ship->size );
    
-   cputs("\r\n");
-   cprintf("bri cpu hol fue ss  ww  scp col stl dmp scr glo\r\n");
-   cprintf("--- --- --- --- --- --- --- --- --- --- --- ---\r\n");
-   cprintf("%3u %3u %3u %3u %3u %3u %3u %3u %3u %3u %3u %3u\r\n",
-      ship->component[O_QSP_BRIDGE],
-      ship->component[O_QSP_CPU],
-      ship->component[O_QSP_CARGOP] * ship->size,
-      ship->component[O_QSP_FUELP]  * ship->size,
-      ship->component[O_QSP_SPACE],
-      ship->component[O_QSP_WORLD],
-      ship->component[O_QSP_SCOOPS],
-      ship->component[O_QSP_COLLECT],
-      ship->component[O_QSP_STEALTH],
-      ship->component[O_QSP_DAMPER],
-      ship->component[O_QSP_SCREEN],
-      ship->component[O_QSP_GLOBE]
-   );
+//    cputs("\r\n");
+//    cprintf("bri cpu hol fue ss  ww  scp col stl dmp scr glo\r\n");
+//    cprintf("--- --- --- --- --- --- --- --- --- --- --- ---\r\n");
+//    cprintf("%3u %3u %3u %3u %3u %3u %3u %3u %3u %3u %3u %3u\r\n",
+//       ship->component[O_QSP_BRIDGE],
+//       ship->component[O_QSP_CPU],
+//       ship->component[O_QSP_CARGOP] * ship->size,
+//       ship->component[O_QSP_FUELP]  * ship->size,
+//       ship->component[O_QSP_SPACE],
+//       ship->component[O_QSP_WORLD],
+//       ship->component[O_QSP_SCOOPS],
+//       ship->component[O_QSP_COLLECT],
+//       ship->component[O_QSP_STEALTH],
+//       ship->component[O_QSP_DAMPER],
+//       ship->component[O_QSP_SCREEN],
+//       ship->component[O_QSP_GLOBE]
+//    );
 
-   cputs("\r\n");
-   for(i=0; i<8; ++i)
-   {
-      hardpoint = ship->component[O_QDP_HP(i)];
-      if (hardpoint & 31)
-         cprintf("hardpoint %d: %s %s\r\n", 
-            i, 
-            emplacement[ hardpoint >> 5],
-            weapon[ hardpoint & 31 ]
-         );
-      else
-         cprintf("hardpoint %d: none\r\n", i);
-   }
-}
+//    cputs("\r\n");
+//    for(i=0; i<8; ++i)
+//    {
+//       hardpoint = ship->component[O_QDP_HP(i)];
+//       if (hardpoint & 31)
+//          cprintf("hardpoint %d: %s %s\r\n", 
+//             i, 
+//             emplacement[ hardpoint >> 5],
+//             weapon[ hardpoint & 31 ]
+//          );
+//       else
+//          cprintf("hardpoint %d: none\r\n", i);
+//    }
+// }

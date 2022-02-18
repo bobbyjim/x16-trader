@@ -45,7 +45,6 @@ void setZoneColor(char zone)
 
 void jumpmapReticle()
 {
-   int i;
    int col = 3 + destination.col - current.col;
    int row = 3 + destination.row - current.row;
 
@@ -155,31 +154,6 @@ char jumpmapSetDestination()
    }
 }
 
-void jumpmapShow()
-{
-    unsigned char x,y,z;
-    char* address;
-    char  tmp[67];
-    tmp[66] = 0;
-
-    jumpmapInit();
-
-    textcolor(COLOR_LIGHTBLUE);
-    setBank(MISC_BANK);
-
-    for(y=0; y<7; ++y)
-    {
-       address = HEXGRID_START;
-       z = 3+y*8;
-       for(x=0;x<8;++x)
-       {
-          strncpy(tmp, address, 66);
-          cputsxy(14,z+x+1,tmp);
-          address += 77; // or whatever
-       }      
-    }
-}
-
 unsigned char worldColor[] = {
    COLOR_GRAY3,   COLOR_GREEN,      COLOR_WHITE,   COLOR_LIGHTRED, 
    COLOR_GRAY1,   COLOR_LIGHTGREEN, COLOR_PURPLE,  COLOR_ORANGE, 
@@ -237,4 +211,33 @@ void jumpmapShowWorldData(unsigned char col, unsigned char row)
          // }
          // ++spriteNum;
       }
+}
+
+void jumpmapShow()
+{
+    unsigned char x,y,z;
+    char* address;
+    char  tmp[67];
+    tmp[66] = 0;
+
+    titleLine();
+    printAlarmBar();
+    jumpmapInit();
+
+    textcolor(COLOR_LIGHTBLUE);
+    setBank(MISC_BANK);
+
+    for(y=0; y<7; ++y)
+    {
+       address = HEXGRID_START;
+       z = 3+y*8;
+       for(x=0;x<8;++x)
+       {
+          strncpy(tmp, address, 66);
+          cputsxy(14,z+x+1,tmp);
+          address += 77; // or whatever
+       }      
+    }
+
+    jumpmapShowWorldData(current.col,current.row);
 }

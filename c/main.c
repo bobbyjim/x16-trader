@@ -1,7 +1,7 @@
 /*
 
     Traveller-Trader: a space trader game
-    Copyright (C) 2021 Robert Eaglestone
+    Copyright (C) 2022 Robert Eaglestone
 
     This file is part of Traveller-Trader.
 
@@ -20,14 +20,9 @@
 
 */
 
-#include <stdlib.h>
-#include <string.h>
-#include <cbm.h>
-#include <time.h>
 #include <conio.h>
 #include <cx16.h>
 
-#include "alarm.h"
 #include "common.h"
 #include "hold.h"
 #include "jump.h"
@@ -41,7 +36,6 @@
 #include "jump-map.h"
 #include "sprite.h"
 #include "maneuver-map.h"
-#include "console.h"
 
 //
 //  Player data
@@ -155,7 +149,7 @@ char *expository_text[] = {
    "earn your fortune by jumping from system to system."
    "",
    "good luck!",
-   "END"
+   "0"
 };
 
 //
@@ -175,6 +169,9 @@ void splash()
    cbm_k_setlfs(0,8,0);
    cbm_k_load(2, 0x0f800);
 
+   // load Jamison
+   sprite_loadToVERA("bi-jamison.bin", 0x5000);
+
    //
    //  Print the banner
    //
@@ -191,7 +188,7 @@ void splash()
 
    for(i=0;; ++i)
    {
-      if (!strcmp(expository_text[i], "END"))
+      if (expository_text[i][0] == '0') // end of text
          break;
 
       gotoxy(10,22+i*2);
@@ -201,9 +198,10 @@ void splash()
    textcolor(COLOR_YELLOW);
    cputsxy(5,26 + i*2,"                       press <space> to begin");
 
+   vera_sprites_enable(1); // cx16.h
+
    jamisonShow();
    i = cgetc();
-   _randomize(); // while we're here.
    jamisonHide();
 
    //
@@ -215,26 +213,16 @@ void splash()
 
 void init()
 {
-   byte i;
-
-   loadFileToBank("bt-hexgrid.bin", MISC_BANK,         JUMP_GRID_ADDRESS);
-   loadFileToBank("bd-market.bin",  TRADE_MATRIX_BANK, 0xa000);
-   loadFileToBank("bd-ships.bin",   SHIP_BANK,         0xa000);
-   loadFileToBank("bd-map64.bin",  MAP_BANK_BEGIN,    0xa000);
+   loadFileToBank("bt-hexgrid.bin",  MISC_BANK,         JUMP_GRID_ADDRESS);
+//   loadFileToBank("bd-market.bin",   TRADE_MATRIX_BANK, 0xa000);
+   loadFileToBank("b3-trade.bin",    TRADE_MATRIX_BANK, 0xa000); // replaces the T5 trade matrix
+   loadFileToBank("bd-ships.bin",    SHIP_BANK,         0xa000);
+   loadFileToBank("bd-map64.bin",    MAP_BANK_BEGIN,    0xa000);
 
    sprite_loadToVERA("aia-far.bin",  0x4000);
-   sprite_loadToVERA("bi-jamison.bin", 0x5000);
-   sprite_loadToVERA("bi-worlds.bin",  0x6000);
-   vera_sprites_enable(1); // cx16.h
+//   sprite_loadToVERA("bi-worlds.bin",  0x6000);
 
    ship_init(&ship);
-}
-
-void burnFuel()
-{
-   shipState[ O_STATE_JUMP_FUEL_USED ] += distance;
-   if (shipState[ O_STATE_JUMP_FUEL_USED ] > 0) // ship.component[ O_QSP_J ])
-      shipState[ O_STATE_JUMP_FUEL_USED ] = STATUS_LOW;
 }
 
 void main() 
@@ -264,33 +252,33 @@ void main()
             //
             // Astrogation
             //
-            titleLine();
-
-            printAlarmBar();
-            
             jumpmapShow();
-            jumpmapShowWorldData(current.col,current.row);
             shipiconShow(335, 235);
             i = jumpmapSetDestination();
             shipiconHide();
             if (playerAchievementLevel < 2)
                playerAchievementLevel = 2;
+
             if (i != 'j') break;
-            // fall through for immediate jump
+            // release player mode and fall through for immediate jump
+            playerAchievementLevel = 10; // at least
 
 	      case JUMP_OPTION:
 		      if ((destination.row != current.row) || (destination.col != current.col))
 		      {
- 		         bookPassengers();
+ 		         bookPassengersAndPayCrew();
 	    	      jump();
                distance = parsecDistance(current.col, current.row, destination.col, destination.row);
-		         burnFuel();
+		         shipState[ O_STATE_JUMP_FUEL_USED ] += distance; // burn fuel
       		   current.col = destination.col;
       		   current.row = destination.row;
       		   getWorld(&current);
                ++playerAchievementLevel;
 		      }
 		      break;
+
+         case WILDERNESS_REFUEL_OPTION:
+            break;
 
 	      case MARKET_OPTION:
             trade_speculate();

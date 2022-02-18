@@ -6,7 +6,7 @@ Let's convert ASCII to PETSCII in a binary file.
 
 my @hexrow = <DATA>;
 
-open my $fp, '>', 'TEST.BIN';
+open my $fp, '>', 'BT-TITLE.BIN';
 print $fp pack 'xx';
 
 foreach my $row (@hexrow)
