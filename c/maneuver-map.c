@@ -191,7 +191,7 @@ void showCurrentLocation()
 
     if (DIFFERENT_WORLDS(destination, current))
     {
-        gotoxy(0,17);
+        gotoxy(0,19);
         textcolor(COLOR_LIGHTRED);
         cputs("     destination world\r\n\r\n");
         world_describe(&destination);
@@ -200,7 +200,7 @@ void showCurrentLocation()
 
 unsigned char maneuver()
 {
-    int opts = 6;
+    int opts = SHIPYARD_OPTION+1;
     char* mainworldMenuOptions[] = {
         "astrogation",
         "jump",
@@ -213,9 +213,9 @@ unsigned char maneuver()
 
     textcolor(COLOR_YELLOW);
     if (playerAchievementLevel > 1)
-        cputsxy(9, 30, "move to location:");
+        cputsxy(9, 32, "move to location:");
     else   
-        cputsxy(9, 30, "press <return>");
+        cputsxy(9, 32, "press <return>");
    
     if (playerAchievementLevel < opts)
         opts = playerAchievementLevel;
@@ -229,7 +229,7 @@ unsigned char maneuver()
     if (opts >= SHIPYARD_OPTION && STARPORT_NO_SHIPYARD(&current))
         opts = SHIPYARD_OPTION-1; // no shipyard
 
-    return menu_run(9, 30, opts, mainworldMenuOptions);
+    return menu_run(9, 32, opts, mainworldMenuOptions);
 }
 
 // void maneuvermapShow()

@@ -25,13 +25,45 @@
 
 #include "common.h"
 
-byte getBasePrice(byte tradeIndex);
-char* getTradeCodes(byte tradeIndex);
-char* getTradeGoods(byte tradeIndex);
+typedef struct
+{
+    char      label[16];
+    unsigned  base;
+    byte      dice;
+    byte      mult;
 
-void printTradeCodes(byte tradeIndex);
-void printTradeGoods(byte tradeIndex);
+    char      p00;
+    char      p01;
+    char      p10;
+    char      p11;
+    char      p20;
+    char      p21;
 
+    char      r00;
+    char      r01;
+    char      r10;
+    char      r11;
+    char      r20;
+    char      r21;
+} CargoEntry;
+
+typedef struct
+{
+    CargoEntry* cargoAddress;
+    byte tons; 
+    long price;
+} Cargo;
+
+
+unsigned getHoldFree();
+
+// byte getBasePrice(byte tradeIndex);
+// char* getTradeCodes(byte tradeIndex);
+// char* getTradeGoods(byte tradeIndex);
+// void printTradeCodes(byte tradeIndex);
+// void printTradeGoods(byte tradeIndex);
+
+void trade_calculateMarketPrices();
 void trade_speculate();
 
 #endif

@@ -26,31 +26,40 @@
 #include <unistd.h>
 
 #include "jump.h"
+#include "world.h"
+#include "ship.h"
 #include "common.h"
+#include "passengers.h"
+#include "piracy.h"
 
 extern byte astrogator;
-//extern byte playerAchievementLevel;
+extern World current, destination;
+extern byte shipState[22];
+extern byte playerAchievementLevel;
+extern byte pay_period;
 
-void jump()
+void burnJumpFuel()
+{
+   int distance = parsecDistance(current.col, current.row, destination.col, destination.row);
+   shipState[ O_STATE_JUMP_FUEL_USED ] += distance; // burn fuel
+}
+
+void specialEffects()
 {
    char colors[10] = { CH_BLACK, CH_BLACK, CH_RED, CH_BLUE, CH_GREEN, CH_LIGHTRED, CH_ORANGE, CH_YELLOW };
-   word days = 8;
-   byte mod_astrogator = astrogator;
-   word x;
+   unsigned days = 8;
+   unsigned x;
   
-   // if (playerAchievementLevel > 1)
-   //    ++mod_astrogator;
-
    clrscr();
    textcolor(COLOR_LIGHTRED);
    cputsxy(5,2,"entering jumpspace.  please stand by.");
    titleLine();
 
-   sleep(10/(mod_astrogator+1));
+   sleep(10/(astrogator+1));
    
    while(--days)
    {
-      x = 6000 / (mod_astrogator+1);
+      x = 6000 / (astrogator+1);
       while(--x)
       {
          cbm_k_bsout( colors[days] );
@@ -82,5 +91,27 @@ void jump()
          
       }
    }
+}
+
+void updateLocation()
+{
+   current.col = destination.col;
+   current.row = destination.row;
+   getWorld(&current);
+}
+
+void jump()
+{
+   if ((destination.row == current.row) && (destination.col == current.col)) return;
+
+   pay_period += 7;  // one week in jump
+   bookPassengersAndPayCrew();   
+
+   burnJumpFuel();
+
+   specialEffects();
+   updateLocation();
+   ++playerAchievementLevel;
+   piracy();
 }
 

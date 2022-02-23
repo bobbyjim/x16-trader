@@ -39,7 +39,6 @@
 
 byte getComponentState(byte component);
 void clearComponentState(byte component);
-byte setComponentState(byte component, byte state, word cost);
 void showComponentStatus(byte compnum);
 
 void printAlarmBar();

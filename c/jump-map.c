@@ -84,10 +84,11 @@ void jumpmapReticle()
          cclearxy(5,22+i,20);
 
       gotoxy(0,23);
-      cprintf("    use <cursor> keys\r\n\r\n");
-      cprintf("    to find destination\r\n\r\n");
-      cprintf("    press <return>\r\n\r\n");
-      cprintf("    to set destination\r\n\r\n");
+      cputs("    use <cursor> keys  \r\n\r\n");
+      cputs("    to find destination\r\n\r\n");
+      cputs("                       \r\n");
+      cputs("    press <return>     \r\n\r\n");
+      cputs("    to set destination \r\n\r\n");
    }
 }
 
@@ -186,15 +187,21 @@ void jumpmapShowWorldData(unsigned char col, unsigned char row)
          {
             x = 20 + c * 9;
             y =  4 + r * 8;
+
+            //
+            //  WARNING -- there is a bug in here that distorts
+            //  the display when the column number is odd.
+            //
+            
             if (c%2==0) y += 4;
 
             textcolor(COLOR_WHITE);
             cputcxy(x,y,world->starport);
 
             textcolor(COLOR_LIGHTBLUE);
-            if (world->bgg == 'b' || world->bgg == '2') 
+            if (world->belt) 
                cputcxy(x-4,y+3,':');
-            if (world->bgg == 'g' || world->bgg == '2')
+            if (world->gg)
                cputcxy(x+4,y+3,188);
             
             memset(shortname, 0, 6);

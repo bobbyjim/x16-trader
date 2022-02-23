@@ -24,9 +24,8 @@
 #include <cx16.h>
 
 #include "common.h"
-#include "hold.h"
+#include "trade.h"
 #include "jump.h"
-#include "passengers.h"
 #include "trade.h"
 #include "ship.h"
 #include "world.h"
@@ -36,6 +35,7 @@
 #include "jump-map.h"
 #include "sprite.h"
 #include "maneuver-map.h"
+#include "wilderness.h"
 
 //
 //  Player data
@@ -46,8 +46,9 @@ byte              shipState[22];
 byte              shipDamage[22];
 long hcr 	      = 5000; // in hundreds of cr (because of how trade works)
 long mortgage_cr  = 0;    
+byte pay_period;   // in days between jump.  7 = normal schedule.  insystem jaunts increase this.
 
-word hold  	      = 64;   // should actually be ship.cargo, but whatever
+unsigned hold  	= 64;   // should actually be ship.cargo, but whatever
 Cargo cargo[20];
 
 //
@@ -233,9 +234,6 @@ void main()
    init();
    splash();
 
-   //
-   //  Start at Regina
-   //
    current.col = destination.col = 19;
    current.row = destination.row = 10;
 
@@ -264,25 +262,17 @@ void main()
             playerAchievementLevel = 10; // at least
 
 	      case JUMP_OPTION:
-		      if ((destination.row != current.row) || (destination.col != current.col))
-		      {
- 		         bookPassengersAndPayCrew();
-	    	      jump();
-               distance = parsecDistance(current.col, current.row, destination.col, destination.row);
-		         shipState[ O_STATE_JUMP_FUEL_USED ] += distance; // burn fuel
-      		   current.col = destination.col;
-      		   current.row = destination.row;
-      		   getWorld(&current);
-               ++playerAchievementLevel;
-		      }
+  	         jump();
+            trade_calculateMarketPrices();
 		      break;
 
          case WILDERNESS_REFUEL_OPTION:
+            wilderness_refuel();
             break;
 
-	      case MARKET_OPTION:
+         case TRADE_OPTION:
             trade_speculate();
-		      break;
+            break;
 
 	      case STARPORT_OPTION:
       		landAtStarport();

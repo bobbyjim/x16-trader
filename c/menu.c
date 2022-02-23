@@ -2,13 +2,13 @@
 
 #include "menu.h"
 
-unsigned char mi, oldmi;
+unsigned char mi, oldmi, i;
 
 unsigned char menu_run(unsigned char  x, unsigned char y, unsigned char optcount, char* opts[])
 {
     chlinexy(x, y+1, 50);
-    for(mi=0; mi<optcount; ++mi)
-        cputsxy(x + 2, 2 + y + mi * 2, opts[mi]);
+    for(i=0; i<optcount; ++i)
+        cputsxy(x + 2, 2 + y + i * 2, opts[i]);
 
     mi = 0;
     for(;;)

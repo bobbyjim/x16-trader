@@ -22,7 +22,6 @@
         
 */      
 typedef unsigned char byte;
-typedef unsigned int  word;
 
 void setBank(int bank);
 int  getBank();
@@ -45,6 +44,7 @@ void left(byte count);
 char pressReturnAndClear();
 byte diceRoll2d();
 byte diceRoll3d();
+byte diceRoll(byte dice, char dm);
 
 
 // PLAYER STATE BANK CONTENTS

@@ -151,3 +151,12 @@ byte diceRoll3d()
         + (burtle32() % 6)
         + 3;
 }
+
+byte diceRoll(byte dice, char dm)
+{
+   while(dice--)
+   {
+      dm += 1 + (burtle32() % 6);
+   }
+   return dm;
+}

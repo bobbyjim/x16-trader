@@ -2,12 +2,12 @@ use strict;
 use autodie;
 
 my %normalizeComment = (
-    'A'  => 'a',
-    'NA' => 'b',
-    'I'  => 'i',
-    'NI' => 'j',
-    'P'  => 'p',
-    'R'  => 'r'
+    'A'  => 'A',
+    'NA' => 'B',
+    'I'  => 'I',
+    'NI' => 'J',
+    'P'  => 'P',
+    'R'  => 'R'
 );
 
 print "build speculative trade database\n";
@@ -45,20 +45,23 @@ foreach (<DATA>)
         $dice,
         $multiplier;
 
+    $label =~ s/\s*$//;
+    my $z = length($label);
+
     # This is a tidy 32 byte record.
-    print $out pack 'A15', $label;
+    print $out pack 'Z15', uc $label;
     print $out pack 'x';
     print $out pack 'v',   $base;      # in hcr (hundreds of credits)
     print $out pack 'C',   $dice;
     print $out pack 'C',   $multiplier;
 
-    print $out pack 'AC',  $purchase[0]->[0], $purchase[0]->[1];
-    print $out pack 'AC',  $purchase[1]->[0], $purchase[1]->[1];
-    print $out pack 'AC',  $purchase[2]->[0], $purchase[2]->[1];
+    print $out pack 'Ac',  $purchase[0]->[0], $purchase[0]->[1];
+    print $out pack 'Ac',  $purchase[1]->[0], $purchase[1]->[1];
+    print $out pack 'Ac',  $purchase[2]->[0], $purchase[2]->[1];
 
-    print $out pack 'AC',  $resale[0]->[0], $resale[0]->[1];
-    print $out pack 'AC',  $resale[1]->[0], $resale[1]->[1];
-    print $out pack 'AC',  $resale[2]->[0], $resale[2]->[1];
+    print $out pack 'Ac',  $resale[0]->[0], $resale[0]->[1];
+    print $out pack 'Ac',  $resale[1]->[0], $resale[1]->[1];
+    print $out pack 'Ac',  $resale[2]->[0], $resale[2]->[1];
 }
 
 close $out;

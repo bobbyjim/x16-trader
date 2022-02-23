@@ -34,11 +34,11 @@ extern byte       shipState[24];
 extern byte       shipDamage[24];
 
 extern char* componentLabel[];
-extern word  cost[];
+extern unsigned cost[];
 
 void checkComponentSelection(byte selected)
 {
-   word kcr = cost[selected];
+   unsigned kcr = cost[selected];
 
    cclearxy(0,40,70);
    cclearxy(0,41,70);
@@ -98,7 +98,7 @@ void showComponentStatus(byte selected)
 
 void repair(byte componentSelected)
 {
-   word cost_00 = 0;
+   unsigned cost_00 = 0;
    int range = ship.component[ O_QSP_J ] - shipState[ O_STATE_JUMP_FUEL_USED ];
 
    if (shipState[componentSelected] == STATUS_LOW)

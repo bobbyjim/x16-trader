@@ -10,9 +10,8 @@
 extern Starship ship;
 extern World current;
 extern World destination;
-extern byte steward;
-extern byte admin;
-extern byte streetwise;
+extern byte pay_period;
+
 extern long hcr;
 
 extern byte admin;
@@ -46,9 +45,8 @@ void bookPassengersAndPayCrew()
    byte high_00;
    byte mid_00;
    byte low_00;
-   word subtotal;
-
-   byte crewPay = 0;
+   unsigned subtotal;
+   unsigned crewPay;
 
    clrscr();
    gotoxy(5,2);
@@ -82,13 +80,32 @@ void bookPassengersAndPayCrew()
    textcolor(COLOR_LIGHTRED);
    cprintf("     balance subtotal:              cr %ld00\r\n\r\n", hcr );
 
+   //
+   //  hcr per week
+   //
    crewPay = admin + astrogator + engineer + gunner + medic + pilot + steward + streetwise;
+
+   //
+   //  scale to credits and pay period
+   //
+   crewPay *= (2 + 14 * pay_period);
+
+   //
+   //  scale back to hcr
+   //
+   crewPay /= 100;
+
+   //
+   //  reset pay period
+   //
+   pay_period = 0;
+
    textcolor(COLOR_LIGHTBLUE);
-   cprintf("     crew salaries based on skill:  cr %u.\r\n\r\n", crewPay * 100 );
+   cprintf("     crew salaries:  cr %u.\r\n\r\n", crewPay * 100 );
    hcr -= crewPay;
 
    textcolor(COLOR_LIGHTRED);
-   cprintf("     balance:                       cr %ld00\r\n\r\n", hcr );
+   cprintf("     balance:        cr %ld00\r\n\r\n", hcr );
 
    pressReturnAndClear();
 }

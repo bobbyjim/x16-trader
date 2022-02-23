@@ -27,8 +27,8 @@
 
 #define  DIFFERENT_WORLDS(w1,w2)       (w1.row != w2.row || w1.col != w2.col)
 #define  WORLD_LONG_LABEL(worldptr)    ((worldptr)->data.name)
-#define  WORLD_HAS_GGS(worldptr)       ((worldptr)->data.bgg == 'g' || (worldptr)->data.bgg == '2')
-#define  WORLD_HAS_BELTS(worldptr)     ((worldptr)->data.bgg == 'b' || (worldptr)->data.bgg == '2')
+#define  WORLD_HAS_GGS(worldptr)       ((worldptr)->data.gg)
+#define  WORLD_HAS_BELTS(worldptr)     ((worldptr)->data.belt)
 
 #define  STARPORT_NO_MAINTENANCE(worldptr)   ((worldptr)->data.starport > 'c')
 #define  STARPORT_NO_SHIPYARD(worldptr)      ((worldptr)->data.starport > 'b')
@@ -50,10 +50,17 @@ typedef struct {
    char name[16];        // name and null byte
    char starport;
    char uwp[9];          // sahpgl-t and null byte
+
    char zone;
-   char allegiance[2];
+   char allegiance;
    char bases;
-   char bgg;
+   byte pad1;
+
+   int  zone_digital : 2;
+   int  belt : 1;
+   int  gg   : 1;
+   int  junk : 4;
+
    unsigned char tcIndex;
    
    int ancients:  1;
@@ -87,7 +94,7 @@ typedef struct {
    int rich         :1;
    int vacuum       :1;
    int water_world  :1;
-   int junk         :2;
+   int sparebits    :2;
 
    unsigned char general_world_type;
    unsigned char buffer2[6];
@@ -120,8 +127,10 @@ typedef struct
 } World;
 
 void showTradeCodes(World* world);
+void world_setGasGiantPalette();
+void world_setRockballPalette();
 void printWorld(World* world);
-void drawWorld(World* world);
+void drawWorld(byte streaky, byte variance);
 void getWorld(World* world);
 void world_describe(World* world);
 

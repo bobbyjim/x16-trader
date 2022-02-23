@@ -180,7 +180,7 @@ sub buildBodiesForComponentField
 open my $out, '>', '32B-ALL-SHIPS.BIN';
 print $out pack 'xx';
 
-open my $outfoxed, '>', 'SHIPS.BIN';
+open my $outfoxed, '>', 'BD-SHIPS.BIN';
 print $outfoxed pack 'xx';
 print $outfoxed sprintf "%-64s", uc "26 byte header, 22 byte component array";
 
@@ -327,7 +327,7 @@ foreach my $acsfile (sort <*.acs>)
     #
     ############################################################################
     print $outfoxed pack 'C', $index;                                         #
-    print $outfoxed pack 'A15x', uc $name;                                    #  Header
+    print $outfoxed pack 'Z16', uc $name;                                     #  Header
     print $outfoxed pack 'AAC', chr($owner+64), $mission, int($tons/100);     #
     print $outfoxed pack 'CCC', $cfgtl, $av, $mcrp;                           #
     print $outfoxed pack 'CCC', $sr, $lb, $dmco;                              #
@@ -435,6 +435,12 @@ for (sort @out)
     print $_;
     ++$index;
 }
+
+
+print "\n\n  ***** NOT GENERATING THE C FILES.  SUE ME.  ***** \n\n";
+exit(0);
+
+
 
 
 #####################################################################

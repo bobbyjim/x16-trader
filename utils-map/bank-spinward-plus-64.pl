@@ -79,9 +79,9 @@ foreach(@data)
    # ---------------------------------------------
    my ($siz, $atm, $hyd, $pop, $gov, $law) = split '', $uwp;
 
-   my $sizatm = ($hex{$siz} & 15) + ($hex{$atm} & 15) << 4;
-   my $hydpop = ($hex{$hyd} & 15) + ($hex{$pop} & 15) << 4;
-   my $govlaw = ($hex{$gov} & 15) + ($hex{$law} & 15) << 4;
+   my $sizatm = ($hex{$siz} & 15) + (($hex{$atm} & 15) * 16);
+   my $hydpop = ($hex{$hyd} & 15) + (($hex{$pop} & 15) * 16);
+   my $govlaw = ($hex{$gov} & 15) + (($hex{$law} & 15) * 16);
 
    # ---------------------------------------------
    #
@@ -155,10 +155,14 @@ foreach(@data)
    # ---------------------------------------------
    $z = ' ' if $z eq '-';
 
-   my $bgg = ' ';
-   $bgg = 'B' if $b > 0;
-   $bgg = 'G' if $gg > 0;
-   $bgg = '2' if $b > 0 && $gg > 0;
+   my $bggz = 0;
+   $bggz  = 0 if  $z eq ' ';  # 
+   $bggz  = 1 if  $z eq 'A';  # zone = bits 0 & 1
+   $bggz  = 2 if  $z eq 'R';  # 
+   # there is no '3'
+
+   $bggz += 4 if  $b > 0;
+   $bggz += 8 if $gg > 0;
 
    # ---------------------------------------------
    #
@@ -216,12 +220,14 @@ foreach(@data)
    # --------------------------------------
    my $rec;
 
+   $name =~ s/\s*$//;  # remove that space padding.  we'll null pad.
+
    $rec  = pack 'CC', $col,$row; 	# 00 - 01   0-255 x 0-255
    $rec .= pack 'A4', $sectorAbbr;  # 02 - 05
    $rec .= ' ';				         # 06
    $rec .= pack 'A4', $location;    # 07 - 0a   e.g. 0101-3240
    $rec .= pack 'x';		      		# 0b
-   $rec .= pack 'A15', $name;       # 0c - 1a   16 bytes
+   $rec .= pack 'Z15', $name;       # 0c - 1a   15 bytes
    $rec .= pack 'x';			   	   # 1b
    $rec .= pack 'A',   $sp;         # 1c
    $rec .= pack 'A6',  $uwp;        # 1d - 22           
@@ -229,17 +235,17 @@ foreach(@data)
    $rec .= pack 'x';				      # 25
    $rec .= pack 'A', $z;            # 26
    $rec .= pack 'A', $al;           # 27
-   $rec .= pack 'x';                # 28
-   $rec .= pack 'A', $ba;           # 29
-   $rec .= pack 'A', $bgg;          # 2a
-   $rec .= pack 'C', $tcSan;      	# 2b
-   $rec .= pack 'C', $tc1;        	# 2c
-   $rec .= pack 'C', $sizatm;       # 2d
-   $rec .= pack 'C', $hydpop;       # 2e
-   $rec .= pack 'C', $govlaw;       # 2f
-   $rec .= pack 'C', $hex{$tl};  	# 30
+   $rec .= pack 'A', $ba;           # 28
+   $rec .= pack 'x';                # 29
+   $rec .= pack 'C', $bggz;         # 2a  
+   $rec .= pack 'C', $tcSan;      	# 2b  # probably don't need this
+   $rec .= pack 'C', $tc1;        	# 2c  
+   $rec .= pack 'C', $sizatm;       # 2d  # probably don't need this
+   $rec .= pack 'C', $hydpop;       # 2e  # probably don't need this
+   $rec .= pack 'C', $govlaw;       # 2f  # probably don't need this
+   $rec .= pack 'C', $hex{$tl};  	# 30  # probably don't need this
    $rec .= pack 'v', $tc2;          # 31 - 32
-   $rec .= pack 'C', $tc3;          # 33
+   $rec .= pack 'C', $tc3;          # 33  # probably don't need this
    $rec .= pack 'x6';               # 34 - 39  spare
    $rec .= $stp;                    # 3a - 3f
 
@@ -263,7 +269,7 @@ foreach(@data)
 
 print "writing $count entries\n";
 
-open OUT, '>', 'MAP64B.BIN';
+open OUT, '>', 'BD-MAP64.BIN';
 print OUT pack 'xx'; # 2 byte header to ignore
 
 my $hexnums = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
@@ -312,27 +318,27 @@ cc col,row
 a4 sector      
 ' '            
 a4 hex         
-' '            
-a15 name       
-' '            
+x              
+z15 name       
+x              
 a  starport    
 a6 uwp         
 a  -           
 a  tl          
-' '            
-a  zone [ AR]  
-a  allegiance  
 x              
+zone:2 b:1 gg:1  
+a  alleg [A-Z]
 a  bases:NSAWBD
-a  bgg [ BG2]  
+x              
+x              
 C  tcSan       
 C  tc1         
 C  siz+atm     
 C  hyd+pop     
 C  gov+law     
-C  tl        
-v  tc2  
-C  tc3 (0-11)
+C  tl          
+v  tc2         
+C  tc3 (0-11)  
 x6             
 C  s1 class    
 C  s1 div+siz  

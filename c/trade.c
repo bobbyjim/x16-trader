@@ -20,243 +20,203 @@
         
 */      
 
-#include <peekpoke.h>
 #include <conio.h>
-#include <cbm.h>
 
 #include "common.h"
 #include "world.h"
+#include "ship.h"
 #include "trade.h"
-#include "hold.h"
+#include "burtle_jsf32.h"
 
+extern Starship ship;
 extern World current, destination;
 extern Cargo cargo[], starport[], temp[];
 extern long hcr; // hundreds of credits
-extern word hold;
+extern unsigned hold;
 
-byte getBasePrice(byte tradeIndex)
-{
-   setBank(TRADE_MATRIX_BANK);
-   return PEEK(0xb000 + tradeIndex * 32);
+int holdFree;
+
+unsigned getHoldFree(unsigned hold)
+{  
+   int i;
+   for(i=0; i<20; ++i)
+      hold -= cargo[i].tons;
+
+   return hold;
 }
 
-char* getTradeCodes(/*char* toBuffer,*/ byte tradeIndex)
+int  getModifierForCurrentWorld(char tradeComment, signed char mod)
 {
-   setBank(TRADE_MATRIX_BANK);
-   return (char*) 0xb001 + tradeIndex * 32; 
-   //bankgets(toBuffer, 15, 0xb001 + tradeIndex * 32);
-}
-
-char* getTradeGoods(/*char* toBuffer,*/ byte tradeIndex)
-{
-   setBank(TRADE_MATRIX_BANK);
-   return (char*) 0xb010 + tradeIndex * 32; 
-   //bankgets(toBuffer, 15, 0xb010 + tradeIndex * 32);
-}
-
-void printTradeCodes(byte tradeIndex)
-{
-   char* address = (char*)(0xb001 + tradeIndex * 32);
-   setBank(TRADE_MATRIX_BANK);
-   while(PEEK(address) > 0)
-   { 
-	cputc(address[0]);
-	++address;
-   }
-}
-
-void printTradeGoods(byte tradeIndex)
-{
-   char* address = (char*)0xb010 + tradeIndex * 32;
-   setBank(TRADE_MATRIX_BANK);
-   while(PEEK(address) > 0)
-   { 
-	cputc(address[0]);
-	++address;
-   }
-}
-
-byte getMarketPrice(byte sourceIndex, byte marketIndex)
-{
-   setBank(TRADE_MATRIX_BANK);
-   return PEEK(0xa000 + sourceIndex * 64 + marketIndex);
-}
-
-void showCredits()
-{
-   cputsxy(5,55,"cr ");
-   gotoxy(10,55);
-   cprintf("%ld00    ", hcr);
-}
-
-void showHoldFree(word holdFree)
-{
-   gotoxy(10,50);
-   cprintf("%u tons free    ", holdFree);
-}
-
-void cleanUpCargo()
-{
-   byte i;
-   byte j=1;
-
-   for(i=0; i<19; ++i)
-      if (cargo[i].tons > 0)
-      {
-         temp[j].index = cargo[i].index;
-         temp[j].tl    = cargo[i].tl;
-         temp[j].tons  = cargo[i].tons;
-	 ++j;
-         cargo[i].index = 0;
-	 cargo[i].tl    = 0;
-	 cargo[i].tons  = 0;
-      }
-
-   for(i=1; i<j; ++i)
+//   cprintf("trade comment %c, dm %d\r\n", tradeComment, mod);
+   switch(tradeComment)
    {
-      cargo[i].index = temp[i].index;
-      cargo[i].tl    = temp[i].tl;
-      cargo[i].tons  = temp[i].tons;
+      case 'a': if (current.data.agricultural) return mod; break;
+      case 'b': if (current.data.non_agri) return mod;     break;
+      case 'r': if (current.data.rich) return mod;         break;
+      case 'p': if (current.data.poor) return mod;         break;
+      case 'i': if (current.data.industrial) return mod;   break;
+      case 'j': if (current.data.non_ind) return mod;      break;
+      default : return 0;
    }
-   cargo[0].index = 0;
-   cargo[0].tl    = 0;
-   cargo[0].tons  = 0;
 }
 
-void cleanUpStarport()
+byte modarray[] = { 4, 5, 7, 8, 9, 10, 11, 12, 13, 15, 17, 20, 30, 40 };
+
+byte modifier(int dm)
 {
-   byte i;
+   dm = diceRoll(2,dm) - 2; // translate to zero
+   if (dm < 0)  dm = 0;
+   if (dm > 13) dm = 13;
+   return modarray[dm];
+}
+
+// void showTable()
+// {
+//    int i;
+//    setBank(TRADE_MATRIX_BANK);
+//    for(i=0; i<36; ++i)
+//    {
+//       CargoEntry* tmp = ((CargoEntry*)(0xa000 + 32 * i));
+//       cprintf("%16s %5u %lu\r\n", 
+//          tmp->label,
+//          tmp->base,
+//          (unsigned long)tmp->base * 100
+//       );
+//    }
+// }
+
+/*
+   
+      Calculate the local (starport) prices of goods.
+      Do this once, when entering a system.
+
+      Multiply by 10 to get the price in Cr.
+      Divide by 10 to get the price in Hundreds of Cr.
+
+ */
+void trade_calculateMarketPrices()
+{
+   int i;
+   CargoEntry* tmp;
+
+   setBank(TRADE_MATRIX_BANK);
+   tmp   = ((CargoEntry*)(0xa000 + 32 * (burtle32() % 36)));
+   starport[0].cargoAddress = tmp;
+   starport[0].tons = diceRoll(tmp->dice,0) * tmp->mult;
+
    for(i=0; i<20; ++i)
    {
-      starport[i].index = 0;   
-      starport[i].tl    = 0;
-      starport[i].tons  = 0; 
+      int purchaseMod = getModifierForCurrentWorld( starport[i].cargoAddress->p00, starport[i].cargoAddress->p01 )
+                      + getModifierForCurrentWorld( starport[i].cargoAddress->p10, starport[i].cargoAddress->p11 )
+                      + getModifierForCurrentWorld( starport[i].cargoAddress->p20, starport[i].cargoAddress->p21 );
+
+      starport[i].price = (unsigned long)starport[i].cargoAddress->base * (unsigned long)modifier( purchaseMod );
+      cargo[i].price    = starport[i].price;
    }
 }
+
+void showInventory(byte sel)
+{
+   int i;
+
+   sel %= 20;
+
+
+   cputsxy(8,0,"ship    cargo type        starport        cr/ton\r\n");
+   redline();
+   textcolor(COLOR_LIGHTBLUE);
+
+   for(i=0; i<20; ++i)
+   {
+      if (sel == i)
+         revers(1);
+
+      if (starport[i].cargoAddress > 0)
+         cprintf("        %-3u     %-15s   %-3u          %8ld0  \r\n", 
+            cargo[i].tons, 
+            starport[i].cargoAddress->label, 
+            starport[i].tons, 
+            starport[i].price);
+      else
+         cprintf("        %-3s     %-15s   %-3s           %8s  \r\n", "-", "-", "-", "-" );
+
+      revers(0);
+   }
+
+   holdFree = getHoldFree(ship.component[ O_QSP_CARGOP ] * ship.size);
+
+   cclear(50);
+   gotox(0);
+   cprintf("  %d tons free.    cr %ld00\n", holdFree, hcr);
+}
+
+void buy(byte sel, byte amount)
+{
+   long price = (long)amount * starport[sel].price / 10;
+
+   if (cargo[19].cargoAddress > 0) return; // that's right, FIFO
+   if (starport[sel].tons < amount) return;
+   if (price > hcr) return;
+   if (holdFree < 1) return;
+
+   cargo[sel].cargoAddress = starport[sel].cargoAddress;
+   cargo[sel].tons    += amount;
+   starport[sel].tons -= amount;
+   hcr -= price;
+}
+
+void sell(byte sel, byte amount)
+{
+   if (cargo[sel].tons < amount) return;
+
+   cargo[sel].cargoAddress = starport[sel].cargoAddress;
+   cargo[sel].tons    -= amount;
+   starport[sel].tons += amount;
+   hcr += (long)amount * starport[sel].price / 10;
+}
+
+//
+//  shifts all cargos down one.
+//
+void cleanup()
+{
+   int i;
+   for(i=18; i>-1; --i)
+   {
+      cargo[i+1] = cargo[i];
+      starport[i+1].cargoAddress = cargo[i+1].cargoAddress;
+      starport[i+1].tons = 0;
+   }
+   cargo[0].tons = 0;
+   cargo[0].cargoAddress = 0;
+
+//   showInventory(0);
+//   cgetc();
+}
+
 
 void trade_speculate() // from 'current' to 'destination'
 {
-   int price;
-   int matrixValue;
-   byte i;
-   word holdFree;
-
-   byte sel = 0;
-   word selPrice = 0;
+   byte selected = 0;
 
    clrscr();
    toDefaultColor();
 
-   printWorld(&current);
-   cprintf("this world is selling tl-%u ", current.data.tl);
-   printTradeGoods(current.data.tcIndex);
-   price = 100 * (getBasePrice(current.data.tcIndex) + current.data.tl);
-   cprintf(" at %u cr/ton", price);
-   cprintf("\r\n\r\n");
+//   trade_calculateMarketPrices();
 
-   printWorld(&destination);
-   setBank(TRADE_MATRIX_BANK);
-   matrixValue = getMarketPrice(current.data.tcIndex, destination.data.tcIndex);
-   cprintf("destination sale value: %u\n", (matrixValue + current.data.tl - destination.data.tl) * 100);
-
-   cprintf("\r\n");
-
-   starport[0].index = current.data.tcIndex;
-   starport[0].tons  = 100;
-   starport[0].tl    = current.data.tl;
-   
-   cputsxy(8,12,"ship    cargo type        starport     cr/ton       dest.price\r\n");
-   redline();
-   toDefaultColor();
    while(1)
    {
-      gotoxy(0,14);
-      holdFree = hold;
-      for(i=0;i<20;++i)
-      {
-         holdFree -= cargo[i].tons;
-         cputs("        ");
-         if(sel == i)
-            revers(1);
+      if (selected == 255) selected = 20;
+      if (selected >  20 ) selected = 0;
 
-         if(i==0)
-         {
-            cprintf("%4u    %-15s    %4u         %4u        %4u00\r\n\r\n",
-	         cargo[0].tons,
-	         getTradeGoods(starport[0].index),
-	         starport[0].tons,
-	         price,
-                 getMarketPrice(starport[0].index, destination.data.tcIndex) + starport[i].tl - destination.data.tl);
-         }
-         else if(cargo[i].tons>0 || starport[i].tons>0)
-         {
-            selPrice = getMarketPrice(cargo[i].index, current.data.tcIndex) + cargo[i].tl - current.data.tl;
-	    cprintf("%4u    %-15s    %4u       %4u00        %4u00\r\n\r\n",
-         	   cargo[i].tons,
-	           getTradeGoods(cargo[i].index),
-         	   starport[i].tons,
-                   selPrice,
-                   getMarketPrice(cargo[i].index, destination.data.tcIndex) + cargo[i].tl - destination.data.tl);
-         }
-         else
-         {
-            cprintf("\r\n\r\n");
-         }
-
-         if(sel == i)
-            revers(0);
-      }
-      showHoldFree(holdFree);
-      switch(cgetc())
+      showInventory(selected);
+      switch( cgetc() )
       {
-         case 0x91:
-         case 'i': if (sel > 0) --sel; break;
-         case 0x11:
-         case 'k': if (sel < 20) ++sel; break;
-         case 0x9d:
-                if (holdFree == 0) break;
-		if (starport[sel].tons == 0) break;
-                if (hcr < selPrice) break;
-                cargo[sel].index = starport[sel].index;
-                cargo[sel].tl    = starport[sel].tl;
-		++cargo[sel].tons; 
-		--starport[sel].tons; 
-                hcr -= selPrice;
-                showCredits();
-		break;
-         case 0x1d:
-		if (cargo[sel].tons == 0) break;
-                starport[sel].index = cargo[sel].index;
-                starport[sel].tl    = cargo[sel].tl;
-		--cargo[sel].tons; 
-		++starport[sel].tons; 
-                hcr += selPrice;
-                showCredits();
-		break;
-         case 'j': 
-                if (holdFree < 10) break;
-		if (starport[sel].tons < 10) break;
-                if (hcr < 10 * selPrice) break;
-                cargo[sel].index = starport[sel].index;
-                cargo[sel].tl    = starport[sel].tl;
-		cargo[sel].tons += 10; 
-		starport[sel].tons -= 10; 
-                hcr -= 10 * selPrice;
-                showCredits();
-		break;
-         case 'l': 
-		if (cargo[sel].tons < 10) break;
-                starport[sel].index = cargo[sel].index;
-                starport[sel].tl    = cargo[sel].tl;
-		cargo[sel].tons -= 10; 
-		starport[sel].tons += 10; 
-                hcr += 10 * selPrice;
-                showCredits();
-		break;
-	 case 13: 
-                cleanUpCargo();
-    		cleanUpStarport();
-		return;
+         case 0x91: --selected; break;
+         case 0x11: ++selected; break;
+         case 0x9d: buy( selected, 1 ); break;
+         case 0x1d: sell( selected, 1 ); break;
+         case 13:   cleanup(); return; // done
       }
    }
 }

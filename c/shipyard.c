@@ -42,6 +42,25 @@ byte indexMap[] = {
 	255,255,255,255,255
 };
 
+void showStarships(byte beginningIndex)
+{
+   Starship* floormodel;
+   int i;
+
+   clrscr();
+   titleLine();
+
+   setBank(SHIP_BANK);
+
+   //cputs(" # l  m  c  name              tons  cargo high  low   mcr\r\n");
+   //redline();
+   for(i=0; i<5; ++i)
+   {
+      floormodel = (Starship*)(0xa040 + i * 48);
+      cprintf(" %s \r\n", floormodel->name);
+   }
+}
+
 void shipSummaryHeader()
 {
    revers(1);
@@ -83,7 +102,7 @@ void landAtShipyard()
    char starport = current.data.starport;
    char bases    = current.data.bases;
    char zone     = current.data.zone;
-   char alleg    = current.data.allegiance[0];
+   char alleg    = current.data.allegiance;
    byte ok = 1;
    byte i  = 0;
    byte i2 = 0;
@@ -92,6 +111,11 @@ void landAtShipyard()
    Starship floorModel;
 
    clrscr();
+
+   showStarships(0);
+
+   cgetc();
+   return;
 
    // 
    // Filter ships by TL and Allegiance.

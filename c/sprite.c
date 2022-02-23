@@ -80,25 +80,17 @@ void sprite_refresh()
       VERA.data0 = *sourceAddress++;
 }
 
-void abi_sprite_set_image(uint8_t spritenum, SpriteDefinition *sprdef)
-{
-   testregs.a  = spritenum;
-   testregs.x  = sprdef->x >> 5;
-   testregs.y  = sprdef->y >> 5;
-   ABI_R0      = sprdef->block;
-   ABI_R2L     = sprdef->mode;   // bpp
-   testregs.pc = ABI_SPRITE_SET_IMAGE;
-   _sys(&testregs);
-}
-
-void abi_sprite_set_position(uint8_t spritenum, SpriteDefinition *sprdef)
-{
-   testregs.a = spritenum;
-   testregs.x = sprdef->x >> 5;
-   testregs.y = sprdef->y >> 5;
-   testregs.pc = ABI_SPRITE_SET_POSITION;
-   _sys(&testregs);
-}
+// void abi_sprite_set_image(uint8_t spritenum, SpriteDefinition *sprdef)
+// {
+//    testregs.a  = spritenum;
+//    testregs.x  = sprdef->x >> 5;
+//    testregs.y  = sprdef->y >> 5;
+//    ABI_R0      = sprdef->block;
+//    ABI_R2L     = sprdef->mode;   // bpp
+//    testregs.flags = 0;
+//    testregs.pc = ABI_SPRITE_SET_IMAGE;
+//    _sys(&testregs);
+// }
 
 void sprite_define(uint8_t spritenum, SpriteDefinition *sprdef)
 {
@@ -118,6 +110,16 @@ void sprite_define(uint8_t spritenum, SpriteDefinition *sprdef)
    VERA.data0 = sprdef->layer + (sprdef->flip_vert << 1) + sprdef->flip_horiz;     // leave collision mask alone for now
    VERA.data0 = sprdef->dimensions + sprdef->palette_offset;
 }
+
+// void abi_sprite_set_position(uint8_t spritenum, SpriteDefinition *sprdef)
+// {
+//    testregs.a = spritenum;
+//    testregs.x = sprdef->x >> 5;
+//    testregs.y = sprdef->y >> 5;
+//    testregs.flags = 0;
+//    testregs.pc = ABI_SPRITE_SET_POSITION;
+//    _sys(&testregs);
+// }
 
 void sprite_pos(uint8_t spritenum, SpriteDefinition* pos)
 {

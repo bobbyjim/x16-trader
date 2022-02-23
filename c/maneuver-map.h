@@ -25,7 +25,7 @@
 #define ASTROGATION_OPTION          0
 #define JUMP_OPTION                 1
 #define WILDERNESS_REFUEL_OPTION    2
-#define MARKET_OPTION               3
+#define TRADE_OPTION                3
 #define STARPORT_OPTION             4
 #define HIRING_HALL_OPTION          5
 #define SHIPYARD_OPTION		        6
