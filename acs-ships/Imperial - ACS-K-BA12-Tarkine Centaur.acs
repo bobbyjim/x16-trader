@@ -39,7 +39,7 @@ Components:
  - CO0   -  2 00000   1  0.1  Spacer Niche
  - CO0   -  4 00000 0.5  0.5  Crew Shared Fresher
  - CO0   -  2 00000   6  0.4  Luxury Suite
- - CO0   -  7 00000   2  0.1  Single Stateroom
+ - CO0   -  7 00000   2  0.1  Standard Stateroom
  - CO0   -  4 00000   8    0  Crew Lounge
  - PO1   -  1 00000   2    0  Air/Raft Cargo Lock
  - PC0   -  1 00000   6    0  Cargo Hold Basic

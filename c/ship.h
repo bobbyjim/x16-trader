@@ -25,6 +25,8 @@
 
 #include "common.h"
 
+#define	STARSHIP_DATA(i)		((Starship*)(0xa040 + i * 48))
+
 #define SHIP_INDEX_ESCORT		0x00
 #define SHIP_INDEX_YT_PACKET	0x01
 #define SHIP_INDEX_MARAVA		0x02
@@ -47,7 +49,6 @@
 #define SHIP_INDEX_PACKET		0x13
 #define SHIP_YACHT				0x14
 
-
 #define O_QSP_M			0
 #define O_QSP_J			1
 #define O_QSP_BRIDGE	2
@@ -68,8 +69,27 @@
 #define O_QSP_GLOBE		13
 
 #define O_QDP_HP(x)		(14+x)
-#define	SHIP_JUMP_RATING(shptr)			((shptr)->component[O_QSP_J])
+
 #define	SHIP_MANEUVER_RATING(shptr)		((shptr)->component[O_QSP_M])
+#define	SHIP_JUMP_RATING(shptr)			((shptr)->component[O_QSP_J])
+#define SHIP_BRIDGE_RATING(ship)		((ship)->component[O_QSP_BRIDGE])
+#define SHIP_CPU_RATING(ship)			((ship)->component[O_QSP_CPU])
+#define SHIP_CARGO(s)					((s)->component[O_QSP_CARGOP] * (s)->size)
+#define SHIP_HAS_SCOOPS(s)				((s)->component[O_QSP_SCOOPS])
+#define SHIP_HAS_COLLECTORS(s)			((s)->component[O_QSP_COLLECT])
+#define SHIP_SPACE_SENSORS(s)			((s)->component[O_QSP_SPACE]   & 0x1f)
+#define SHIP_WORLD_SENSORS(s)			((s)->component[O_QSP_WORLD]   & 0x1f)
+#define SHIP_STEALTH_RATING(s)			((s)->component[O_QSP_STEALTH] & 0x1f)
+#define SHIP_DAMPER_RATING(s)			((s)->component[O_QSP_DAMPER]  & 0x1f)
+#define SHIP_SCREEN_RATING(s)			((s)->component[O_QSP_SCREEN]  & 0x1f)
+#define SHIP_GLOBE_RATING(s)			((s)->component[O_QSP_GLOBE]   & 0x1f)
+
+typedef struct
+{
+	int unit        : 5;
+	int emplacement : 3;
+
+} ShipComponent;
 
 typedef struct
 {
@@ -102,14 +122,7 @@ void ship_debug(Starship* ship);
 void ship_describe(Starship* ship);
 
 byte readShip(byte index, Starship* ship);
-char* shipName(byte index);
-char* shipMissionFromCode(char code);
-char* shipBasicMission(byte index);
-char* shipOwner(byte index);
-
-byte  shipOwnerMatchesAllegiance(Starship* ship, char alleg);
-byte  shipMatchesBaseRequirements(Starship* ship, char bases);
-byte  shipMatchesZoneRequirements(Starship* ship, char zone);
-byte  shipMatchesStarportRequirements(Starship* ship, char starport);
+char* shipMission(char code);
+char* shipOwner(char owner);
 
 #endif

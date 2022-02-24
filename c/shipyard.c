@@ -31,142 +31,54 @@
 
 extern Starship ship; // your ship
 extern long hcr;      // your cash
-extern char* hullCode;
-extern char* cfgCode;
-extern World current;
 
-byte indexMap[] = {
-	255,255,255,255,255,
-	255,255,255,255,255,
-	255,255,255,255,255,
-	255,255,255,255,255
-};
-
-void showStarships(byte beginningIndex)
+byte showStarships()
 {
-   Starship* floormodel;
-   int i;
-
-   clrscr();
-   titleLine();
-
-   setBank(SHIP_BANK);
-
-   //cputs(" # l  m  c  name              tons  cargo high  low   mcr\r\n");
-   //redline();
-   for(i=0; i<5; ++i)
+   byte index = 0;
+   while(1)
    {
-      floormodel = (Starship*)(0xa040 + i * 48);
-      cprintf(" %s \r\n", floormodel->name);
-   }
-}
-
-void shipSummaryHeader()
-{
-   revers(1);
-   cputs(" ##  type       ar classname          cmj  tons cargo px lo scoops  mcr finance\r\n\r\n");
-   revers(0);
-}
-
-void tradeStarships()
-{
-   char shipSelected;
-   byte i;
-
-   cputsxy(3,55,"enter ship letter to finance ship purchase.");
-   shipSelected = pressReturnAndClear();
-  
-   if (shipSelected == 13) // return
-      return;
-
-   if (shipSelected > 64 			// at least A
-    && shipSelected < 85 			// at most T
-    && indexMap[shipSelected-65] < 255)		// and there's a ship here
-   {
+      clrscr();
       titleLine();
-      cputsxy(3,6,"congratulations, you have traded in your ship");
+      setBank(SHIP_BANK);
+      textcolor(COLOR_LIGHTBLUE);
 
-      // replace the old one
-      i = indexMap[shipSelected]-65;
-      readShip(i, &ship);
+      ship_describe( STARSHIP_DATA(index) );
 
-      // and update our player's mortgage?
+      switch(cgetc())
+      {
+         case 0x11: 
+           if (STARSHIP_DATA((int)(index+1))->index != 0)
+               ++index; 
+            break;
+
+         case 0x91: 
+            if (index > 0) 
+               --index; 
+            break;
+
+         case 13:
+            return index;
+      }
    }
-
-   for(i=0; i<20; ++i) indexMap[i] = 255; // reset map
-   //exit(0);
 }
+
 
 void landAtShipyard()
 {
-   char starport = current.data.starport;
-   char bases    = current.data.bases;
-   char zone     = current.data.zone;
-   char alleg    = current.data.allegiance;
-   byte ok = 1;
-   byte i  = 0;
-   byte i2 = 0;
-   char shipSize;
-   long refinance = 0;
-   Starship floorModel;
+   byte index = showStarships();
 
-   clrscr();
+   cputs("\r\ndo you wish to buy this ship?\r\n\r\n");
 
-   showStarships(0);
-
-   cgetc();
-   return;
-
-   // 
-   // Filter ships by TL and Allegiance.
-   // 
-   shipSummaryHeader();
-
-   for(i=0;ok > 0;++i)
+   switch(cgetc())
    {
-      readShip(i,&floorModel);
-      ok = floorModel.name[0];
+      case 'y': // congrats!
+         readShip( index, &ship );
+         cputs("congratulations!\r\n\r\n");
+         cputs("press <return> to continue.\r\n\r\n");
+         cgetc();
+         break;
 
-      if ( //shipOwnerMatchesAllegiance(&floorModel,alleg)
-	      //&& shipMatchesBaseRequirements(&floorModel,bases)
-	      //&& shipMatchesZoneRequirements(&floorModel,zone)
-	      //&& 
-         shipMatchesStarportRequirements(&floorModel,starport)
-	   )
-      {
-         shipSize  = hullCode[ floorModel.size ];      
-         refinance = (floorModel.mcrp * floorModel.size) 
-                   - (ship.mcrp       * ship.size);
-
-         if (refinance<0) refinance = 0;
-
-         indexMap[i2] = i;
-         cprintf(" (%c) %-9s %3u %-18s %c%u%u %5u %5u %2u %2u  %2s     %-4ld\r\n\r\n",
-		      65+i2,
-		      shipBasicMission(i),
-		      floorModel.armor,
-		      shipName(i),
-		      cfgCode[floorModel.cfg],
-		      floorModel.component[ O_QSP_M ],
-		      floorModel.component[ O_QSP_J ],
-		      floorModel.size * 100,
-		      floorModel.component[ O_QSP_CARGOP ] * floorModel.size,
-		      floorModel.sr,
-		      floorModel.lb,
-		      floorModel.component[ O_QSP_SCOOPS ]? "  ":"no",
-		      refinance
-	         );
-         ++i2;
-         if (i2 % 20 == 0)
-         {
-	         tradeStarships();
-   	      i2=0;
-            shipSummaryHeader();
-         }
-      }
-      ++i;
+      default:
+         break; // no
    }
-
-   if (i2>0) tradeStarships();
-   return;
 }

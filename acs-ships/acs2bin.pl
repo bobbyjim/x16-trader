@@ -100,6 +100,15 @@ my %weaponAbbrev =  # 5 bits
 my @out;
 
 
+sub build_component_structure
+{
+    my $unit = shift;                #  5 bits
+    my $emplacement = shift || 0;    #  3 bits
+
+    return $unit + $emplacement * 32;
+}
+
+
 sub registerBitfield
 {
     my $field = shift;
@@ -333,11 +342,21 @@ foreach my $acsfile (sort <*.acs>)
     print $outfoxed pack 'CCC', $sr, $lb, $dmco;                              #
 
     # Component array
-    print $outfoxed pack 'CCCC',     $m, $j, $bridge, $cpu;
-    print $outfoxed pack 'CC',       $cargop, $fuelp;
-    print $outfoxed pack 'CCCC',     $spaceSensors, $worldSensors, $scoops, $collectors;
-    print $outfoxed pack 'xxxx';     # stealth, damper, screen, globe
-    print $outfoxed pack 'C8', @weapons;   # "hardpoints"
+    print $outfoxed pack 'C',     build_component_structure($m);
+    print $outfoxed pack 'C',     build_component_structure($j);
+    print $outfoxed pack 'C',     build_component_structure($bridge);
+    print $outfoxed pack 'C',     build_component_structure($cpu);
+    print $outfoxed pack 'C',     build_component_structure($cargop);
+    print $outfoxed pack 'C',     build_component_structure($fuelp);
+    print $outfoxed pack 'C',     build_component_structure($spaceSensors);
+    print $outfoxed pack 'C',     build_component_structure($worldSensors);
+    print $outfoxed pack 'C',     build_component_structure($scoops);
+    print $outfoxed pack 'C',     build_component_structure($collectors);
+    print $outfoxed pack 'x';     # stealth
+    print $outfoxed pack 'x';     # damper
+    print $outfoxed pack 'x';     # screen
+    print $outfoxed pack 'x';     # globe
+    print $outfoxed pack 'C8',    @weapons;   # "hardpoints"
 
     ############################################################################
     #

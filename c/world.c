@@ -82,9 +82,9 @@ char* starportQuality(char letter)
 }
 
 char* zoneString[] = {
-   "green",
-   "amber",
-   "red"
+   "green (safe)",
+   "amber (warning)",
+   "red (dangerous)"
 };
 
 void world_describe(World* world)
