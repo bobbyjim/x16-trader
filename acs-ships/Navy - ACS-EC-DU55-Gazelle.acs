@@ -7,6 +7,7 @@ Name: Gazelle
 Tons: 400
 Actual Tons: 517
 Overtonnage: 117
+Owner: Navy
 
 MCr: 275.4
 Builder: Bilstein Yards
@@ -14,7 +15,7 @@ Disposition: In Service
 
 Crew comfort: -1
 Passenger demand: -5
-Cargo: 0
+Cargo: 5
 FuelPercentage: 15
 Components:
  - HH0   U  1 00000 400   14  Unstreamlined Hull
@@ -48,6 +49,7 @@ Components:
  - CO0   -  8 00000   1  0.1  Spacer Niche
  - CO0   -  4 00000 0.5  0.5  Crew Shared Fresher
  - CO0   -  1 00000  19    0  Crew Lounge
+ - PC0   -  1 00000   5    0  Cargo Hold
  - VO0  LM  1 00000  20   28  Gig
  - VO1   -  1 00000  10    1  Hull Niche for Gig
  - VO0   -  1 00000   4    8  Droptank grapples

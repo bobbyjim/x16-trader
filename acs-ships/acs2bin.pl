@@ -20,13 +20,15 @@ my %owner = (
     Aslan               => 'A',
     'Baraccai Technum'  => 'B',
     Droyne              => 'D',
+    Scouts              => 'E', # imperial scouts, labs, surveys, etc
     Humbolt             => 'H',
-    Imperial            => 'I',
+    Imperial            => 'I', # imperial commercial
     'Ling Standard'     => 'I',
     'Judges Guild'      => 'J',
     Delta               => 'L',
     'Al Morai'          => 'M',
-    'Oberlindes'        => 'I',
+    Navy                => 'N', # imperial cruisers, escorts, etc
+    Oberlindes          => 'I',
     'Paranoia Press'    => 'P',
     Republic            => 'R',
     'Republic of Regina' => 'R',
@@ -185,16 +187,19 @@ sub buildBodiesForComponentField
     return ($getter, $setter);
 }
 
-
 open my $out, '>', '32B-ALL-SHIPS.BIN';
 print $out pack 'xx';
 
+my @acs = sort <*.acs>;
+print STDERR "There are ", scalar @acs, " ships.\n";
+
 open my $outfoxed, '>', 'BD-SHIPS.BIN';
 print $outfoxed pack 'xx';
-print $outfoxed sprintf "%-64s", uc "26 byte header, 22 byte component array";
+print $outfoxed pack 'C', scalar @acs;
+print $outfoxed sprintf "%-63s", uc "26 byte header, 22 byte component array";
 
 my $index = 0;
-foreach my $acsfile (sort <*.acs>)
+foreach my $acsfile (@acs)
 {
     my $yaml = YAML::LoadFile($acsfile);
 
@@ -312,8 +317,10 @@ foreach my $acsfile (sort <*.acs>)
     #  - small craft
     #
 
-    push @out, sprintf "%s %s-%s%s%s%s %-15s      +%s    %2s  %2s:%-2s   %3s   %3s   %2s:%-2s   %3s %s\n",
-        chr($owner+64), $mission, $hull, $cfg, $m, $j, 
+    push @out, sprintf "%-18s %s-%s%s%s%s %-15s      +%s    %2s  %2s:%-2s   %3s   %3s   %2s:%-2s   %3s \n", # %s\n",
+        #chr($owner+64), 
+        $ownerName,
+        $mission, $hull, $cfg, $m, $j, 
         $name,
         $bridge,
         $cpu,
@@ -324,8 +331,8 @@ foreach my $acsfile (sort <*.acs>)
         int($fuelp  * $tons / 100),
 #        $av,
         $sr, $lb,
-        int($mcrp * $tons / 100),
-        join ' ', @weaponSummary;
+        int($mcrp * $tons / 100);
+       #  join ' ', @weaponSummary;
 
     my $cfgtl = $cfg{$cfg} + ($tl << 3);
     my $dmco  = $comfort   + ($demand << 3);
@@ -447,8 +454,8 @@ for (sort @out)
     unless ($index % 10)
     {
        print "\n";
-       print "A QSP    Name              Bridge  cpu  SS:WS  Cargo  Fuel  SR:LB   MCr Weapons\n";
-       print "- ------ ----------------- ------  ---  -----  -----  ----  -- --  ---- ------------\n";
+       print "Origination        QSP    Name              Bridge  cpu  SS:WS  Cargo  Fuel  SR:LB   MCr \n"; # Weapons\n";
+       print "------------------ ------ ----------------- ------  ---  -----  -----  ----  -- --  ---- \n"; # ------------\n";
     }
 
     print $_;
@@ -460,7 +467,7 @@ print "\n\n  ***** NOT GENERATING THE C FILES.  SUE ME.  ***** \n\n";
 exit(0);
 
 
-
+=pod
 
 #####################################################################
 #
@@ -651,3 +658,4 @@ print $cout "$END\n\n";
 
 close $cout;
 
+=cut

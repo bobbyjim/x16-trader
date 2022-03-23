@@ -6,13 +6,13 @@ TL: 18
 Name: ANNIC NOVA
 Tons: 600
 Actual Tons: 549.5
-Owner: Exotic
+Owner: Republic
 
 MCr: 213.7
 
 Crew comfort: 0
 Passenger demand: -5
-Cargo: 
+Cargo: 150
 FuelPercentage: 11
 Components:
  - HH0   C  1 00000 600   16  Cluster Hull, no lifters

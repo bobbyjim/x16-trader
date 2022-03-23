@@ -12,7 +12,7 @@ Owner: Imperial
 
 Crew comfort: 1
 Passenger demand: 1
-Cargo: 4
+Cargo: 5
 FuelPercentage: 12
 Components:
  - HH0   A  1 00000 300   26  Airframe Hull, lifters
@@ -44,7 +44,7 @@ Components:
  - CO0   -  1 00000  18    0  Crew Commons
  - PO0   -  1 00000   1    0  Magazine
  - PO0   -  1 00000   1    0  Mail Vault
- - PC0   -  1 00000   4    0  Cargo Hold Basic
+ - PC0   -  1 00000   5    0  Cargo Hold
  - PO0   -  6 00000   6  0.4  Luxury Stateroom
  - PO0   -  2 00000 0.5  0.5  Shared Fresher
  - PO0   -  4 00000 0.5  0.1  Low Berth

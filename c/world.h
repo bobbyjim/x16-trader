@@ -25,11 +25,12 @@
 
 #include "common.h"
 
-#define  DIFFERENT_WORLDS(w1,w2)       (w1.row != w2.row || w1.col != w2.col)
-#define  WORLD_LONG_LABEL(worldptr)    ((worldptr)->data.name)
-#define  WORLD_HAS_GGS(worldptr)       ((worldptr)->data.gg)
-#define  WORLD_HAS_BELTS(worldptr)     ((worldptr)->data.belt)
-
+#define  DIFFERENT_WORLDS(w1,w2)             (w1.row != w2.row || w1.col != w2.col)
+#define  WORLD_LONG_LABEL(worldptr)          ((worldptr)->data.name)
+#define  WORLD_HAS_GGS(worldptr)             ((worldptr)->data.gg)
+#define  WORLD_HAS_BELTS(worldptr)           ((worldptr)->data.belt)
+#define  WORLD_HAS_NAVAL_BASE(worldptr)      ((worldptr)->data.bases == 'n' || (worldptr)->data.bases == 'a' || (worldptr)->data.bases == 'b' || (worldptr)->data.bases == 'd')
+#define  WORLD_HAS_SCOUT_BASE(worldptr)      ((worldptr)->data.bases == 's' || (worldptr)->data.bases == 'a' || (worldptr)->data.bases == 'b' || (worldptr)->data.bases == 'w')
 #define  STARPORT_NO_MAINTENANCE(worldptr)   ((worldptr)->data.starport > 'c')
 #define  STARPORT_NO_SHIPYARD(worldptr)      ((worldptr)->data.starport > 'b')
 #define  STARPORT_SLOW_FUEL(worldptr)        ((worldptr)->data.starport > 'b')    

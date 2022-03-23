@@ -94,43 +94,30 @@ char* zoneString[] = {
    "red (dangerous)"
 };
 
-/*
-char* allegiance[] = {
-   "aslan",
-   "b",
-   "c",
-   "droyne",
-   "e",
-   "f",
-   "g",
-   "humbolt",
-   "imperial",
-   "j",
-   "kkree",
-   "llellew",
-   "m",
-   "n",
-   "o",
-   "p",
-   "q",
-   "r",
-   "s",
-   "t",
-   "u",
-   "vargr",
-   "w",
-   "x",
-   "y",
-   "zhodani"
-};
-*/
 char* worldAllegiance(byte code)
 {
-   // switch(code)
-   // {
+   switch(code)
+   {
+      case 'a': return "aslan";
+      case 'd': return "droyne";
+      case 'v': return "vargr";
+      case 'z': return "zhodani";
+      default : return "imperial";
+   }
+}
 
-   // }
-   return "Imperial";
+char* displayBases(char bases)
+{
+   switch(bases)
+   {
+      case 'n': return "navy";
+      case 's': return "scout";
+      case 'a': return "navy + scout";
+      case 'b': return "navy + way station";
+      case 'd': return "depot";
+      case 'w': return "way station";
+      default : return "none";
+   }
 }
 
 void world_describe(World* world)
@@ -140,7 +127,7 @@ void world_describe(World* world)
    cprintf("         world name      : %s (%s)\r\n\r\n", world->data.name, worldAllegiance(world->data.allegiance));
 
    if (playerAchievementLevel > 1)
-      cprintf("         starport quality: %c (%s)\r\n\r\n", world->data.starport, starportQuality(world->data.starport));
+      cprintf("         starport quality: %c (%s), bases: %s\r\n\r\n", world->data.starport, starportQuality(world->data.starport), displayBases(world->data.bases));
 
    if (playerAchievementLevel > 2)
    {

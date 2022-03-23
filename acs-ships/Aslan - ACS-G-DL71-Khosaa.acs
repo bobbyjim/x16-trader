@@ -12,7 +12,7 @@ Owner: Aslan
 
 Crew comfort: 0
 Passenger demand: -5
-Cargo: 0
+Cargo: 4
 FuelPercentage: 17
 Components:
  - HH0   L  1 00000 400   56  Lift body Hull, lifters

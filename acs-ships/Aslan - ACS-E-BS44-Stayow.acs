@@ -1,9 +1,10 @@
 --- 
 ACS1.0: Thu Dec  2 19:29:36 2021
 Mission: Corvette
-QSP: V-BS44
+QSP: E-BS44
 TL: 13 
-Name: Hkauiya
+Name: Stayow
+Was: Hkauiya
 Tons: 200
 Actual Tons: 200
 Owner: Aslan
@@ -12,7 +13,7 @@ MCr: 105.2
 
 Crew comfort: 0
 Passenger demand: -5
-Cargo: 17
+Cargo: 24
 FuelPercentage: 14
 Components:
  - HH0   S  1 00000 200   16  Streamlined Hull, lifters
@@ -39,7 +40,7 @@ Components:
  - WW1  -1  2 00000   1  0.5  AR T2 Empty
  - CO0   -  3 00000   2  0.1  Crew Stateroom
  - CO0   -  2 00000   4    0  Crew Lounge
- - PC0   -  1 00000  17    0  Cargo Hold Basic
+ - PC0   -  1 00000  24    0  Cargo Hold Basic
 
 ref: [<a href='http://www.farfuture.net/'>Far Future Enterprises</a>]
 

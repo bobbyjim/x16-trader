@@ -35,25 +35,43 @@ extern World current;
 
 byte starshipCount;
 
-int getNextShip(int curIndex, char a)
+byte shipIsHere(Starship* thisShip)
+{
+   // 
+   // If this current system is IMPERIAL and has BASES, then we determine visibility by BASES ONLY.
+   //
+   if (current.data.allegiance == 'i' && current.data.bases != ' ')
+   {
+      if (thisShip->allegiance == 'n' && WORLD_HAS_NAVAL_BASE(&current)) // n 'navy'
+         return 1;
+
+      if (thisShip->allegiance == 'e' && WORLD_HAS_SCOUT_BASE(&current)) // e 'exploration'
+         return 1;
+
+      return 0;
+   }  
+   return thisShip->allegiance == current.data.allegiance;
+}
+
+int getNextShip(int curIndex)
 {
    Starship* ships = (Starship*) 0xa040;
    setBank(SHIP_BANK);
 
    while(++curIndex < STARSHIP_COUNT)
-      if (ships[curIndex].allegiance == a)
+      if (shipIsHere(&ships[curIndex])) //.allegiance == current.data.allegiance)
          return curIndex;
 
    return -1;
 }
 
-int getPrevShip(int curIndex, char a)
+int getPrevShip(int curIndex)
 {
    Starship* ships = (Starship*) 0xa040;
    setBank(SHIP_BANK);
 
    while(--curIndex > 0)
-      if (ships[curIndex].allegiance == a)
+      if (shipIsHere(&ships[curIndex])) //.allegiance == current.data.allegiance)
          return curIndex;
 
    return -1;
@@ -61,7 +79,7 @@ int getPrevShip(int curIndex, char a)
 
 byte showStarships()
 {
-   int index = getNextShip(-1, current.data.allegiance);
+   int index = getNextShip(-1);
 
    while(1)
    {
@@ -83,18 +101,16 @@ byte showStarships()
       {
          case 0x11: 
          case 0x1d:
-            index = getNextShip(index, current.data.allegiance);
+            index = getNextShip(index);
             if (index == -1) 
-               index = getPrevShip(STARSHIP_COUNT, current.data.allegiance);
+               index = getPrevShip(STARSHIP_COUNT);
             break;
 
          case 0x91:
          case 0x9d: 
-            index = getPrevShip(index, current.data.allegiance);
+            index = getPrevShip(index);
             if (index == -1)
-               index = getNextShip(-1, current.data.allegiance);
-//            if (index > 0) // && shipIsNotHere(index-1, current.data.allegiance)) 
-  //             --index;
+               index = getNextShip(-1);
             break;
 
          case 32:

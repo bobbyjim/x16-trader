@@ -145,7 +145,7 @@ void ship_describe(Starship* ship)
    cprintf("         config     : %-15s   armor   : %u\r\n\r\n", cfg[ ship->cfg ], ship->armor);
    cprintf("         m-drive    : %-15d   j-drive : %d\r\n\r\n",       SHIP_MANEUVER_RATING(ship), SHIP_JUMP_RATING(ship) );
    cprintf("         bridge     : %-15d   cpu     : model/%d\r\n\r\n", SHIP_BRIDGE_RATING(ship), SHIP_CPU_RATING(ship) );
-   cprintf("         staterooms : %-15d   lberths : %d\r\n\r\n", ship->sr, ship->lb);
+   cprintf("         staterooms : %-14dlow berths  : %d\r\n\r\n", ship->sr, ship->lb);
    cprintf("         cargo hold : %-15d   \r\n\r\n\r\n", SHIP_CARGO(ship));
    cprintf("         sensor ratings: s: %d, r: %d\r\n\r\n\r\n", SHIP_SPACE_SENSORS(ship), SHIP_WORLD_SENSORS(ship));
    cprintf("         collectors : %-15s   scoops  : %s\r\n\r\n", SHIP_HAS_COLLECTORS(ship)? "yes" : "no", SHIP_HAS_SCOOPS(ship)? "yes" : "no" );
