@@ -191,6 +191,10 @@ void splash()
 
    for(i=0; i<14; ++i)
       cputsxy(15, i+4, ((char*) 0xa100 + i*52));
+   // 
+   //  Print the version
+   //
+   cputsxy(49,16,"0.5");
 
    textcolor(COLOR_LIGHTBLUE);
 
