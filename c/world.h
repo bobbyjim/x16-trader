@@ -134,4 +134,6 @@ void drawWorld(byte streaky, byte variance);
 void getWorld(World* world);
 void world_describe(World* world);
 
+void world_drawPlanetoid(byte x, byte y);
+
 #endif

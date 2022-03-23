@@ -36,14 +36,15 @@
 #include "sprite.h"
 #include "maneuver-map.h"
 #include "wilderness.h"
+#include "menu.h"
 
 //
 //  Player data
 //
 byte              playerAchievementLevel = 1; 
 Starship          ship;
-byte              shipState[22];
-byte              shipDamage[22];
+byte              shipState[SHIP_COMPONENT_COUNT];
+byte              shipDamage[SHIP_COMPONENT_COUNT];
 long hcr 	      = 5000; // in hundreds of cr (because of how trade works)
 long mortgage_cr  = 0;    
 byte pay_period;   // in days between jump.  7 = normal schedule.  insystem jaunts increase this.
@@ -153,6 +154,12 @@ char *expository_text[] = {
    "0"
 };
 
+#define  START_OPTION_COUNT   4
+byte experienceLevel = 0;
+char* startingExperienceLevel[] = {
+   "i'm new to traveller", "call me intermediate", "veteran scout", "veteran trader"
+};
+
 //
 //   print splash screen
 //
@@ -197,19 +204,41 @@ void splash()
    }
 
    textcolor(COLOR_YELLOW);
-   cputsxy(5,26 + i*2,"                       press <space> to begin");
+//   cputsxy(5,26 + i*2,"                       press <space> to begin");
 
    vera_sprites_enable(1); // cx16.h
 
    jamisonShow();
-   i = cgetc();
-   jamisonHide();
 
-   //
-   //  shortcut the hands-on mode
-   //
-   if (i == 'x')
-      playerAchievementLevel = 10;
+   cputsxy(15, 26 + i*2, "select your experience level");
+   experienceLevel = menu_run(15, 26 + i*2, START_OPTION_COUNT, startingExperienceLevel);
+
+   switch (experienceLevel)
+   {
+      case 0: // beginner
+         playerAchievementLevel = 1;
+         ship_init(SHIP_INDEX_MARAVA, &ship);
+         ship.component[ O_QDP_BATTERY(0) ] = SHIP_BATTERY_T1 + SHIP_WEAPON_PULSE_LASER;
+         ship.component[ O_QDP_BATTERY(1) ] = SHIP_BATTERY_T1 + SHIP_WEAPON_PULSE_LASER;
+         break;
+
+      case 1: // merchant
+         playerAchievementLevel = 3;
+         ship_init(SHIP_INDEX_MARAVA, &ship);
+         break;
+
+      case 2: // scout
+         playerAchievementLevel = 5;
+         ship_init(SHIP_INDEX_SCOUT, &ship);
+         break;
+
+      case 3: // trader
+         playerAchievementLevel = 8;
+         ship_init(SHIP_INDEX_BEOWULF, &ship);
+         break;
+   }
+
+   jamisonHide();
 }
 
 void init()
@@ -222,8 +251,6 @@ void init()
 
    sprite_loadToVERA("aia-far.bin",  0x4000);
 //   sprite_loadToVERA("bi-worlds.bin",  0x6000);
-
-   ship_init(&ship);
 }
 
 void main() 

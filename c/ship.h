@@ -25,7 +25,8 @@
 
 #include "common.h"
 
-#define	STARSHIP_DATA(i)		((Starship*)(0xa040 + i * 48))
+#define STARSHIP_COUNT			(((byte*)(0xa000))[0])
+#define	STARSHIP_DATA			((Starship*)0xa040)
 
 #define SHIP_INDEX_ESCORT		0x00
 #define SHIP_INDEX_YT_PACKET	0x01
@@ -68,7 +69,48 @@
 #define O_QSP_SCREEN	12
 #define O_QSP_GLOBE		13
 
-#define O_QDP_HP(x)		(14+x)
+#define O_QDP_BATTERY(x)		(14+x)
+
+#define	SHIP_BATTERY_T1			0
+#define SHIP_BATTERY_T2			32
+#define SHIP_BATTERY_T3			64
+#define SHIP_BATTERY_B1			96
+#define SHIP_BATTERY_B2			128
+#define SHIP_BATTERY_BAY		160
+#define SHIP_BATTERY_LBAY		196
+#define SHIP_BATTERY_MAIN 		228
+
+// char* weapon[] = {
+//    "none",
+//    "empty",
+//    "mining laser",   "pulse laser",       "beam laser",
+//    "plasma gun",     "fusion gun",
+//    "salvo rack",     "missile",           "kk missile",     "am missile",
+//    "jump damper",    "tractor/pressor",   "inducer",        "disruptor",   "stasis",
+//    "sandcaster",
+//    "hybrid l-s-m",   "particle accelerator",    "meson gun" 
+// };
+
+#define SHIP_WEAPON_NONE			0
+#define SHIP_WEAPON_EMPTY			1
+#define SHIP_WEAPON_MINING_LASER	2
+#define SHIP_WEAPON_PULSE_LASER		3
+#define SHIP_WEAPON_BEAM_LASER		4
+#define SHIP_WEAPON_PLASMA_GUN		5
+#define SHIP_WEAPON_FUSION_GUN		6
+#define SHIP_WEAPON_SALVO_RACK		7
+#define SHIP_WEAPON_MISSILE_RACK	8
+#define SHIP_WEAPON_KK_MISSILE_RACK	9
+#define SHIP_WEAPON_AM_MISSILE_RACK	10
+#define SHIP_WEAPON_JUMP_DAMPER		11
+#define SHIP_WEAPON_TRACTOR_PRESSOR	12
+#define SHIP_WEAPON_INDUCER			13
+#define SHIP_WEAPON_DISRUPTOR		14
+#define SHIP_WEAPON_STASIS_GUN		15
+#define SHIP_WEAPON_SANDCASTER		16
+#define SHIP_WEAPON_HYBRID			17
+#define SHIP_WEAPON_PARTICLE_ACCEL	18
+#define SHIP_WEAPON_MESON_GUN		19
 
 #define	SHIP_MANEUVER_RATING(shptr)		((shptr)->component[O_QSP_M])
 #define	SHIP_JUMP_RATING(shptr)			((shptr)->component[O_QSP_J])
@@ -91,6 +133,7 @@ typedef struct
 
 } ShipComponent;
 
+#define		SHIP_COMPONENT_COUNT		22
 typedef struct
 {
 	// header
@@ -112,12 +155,12 @@ typedef struct
 	int demand       :5;
 
 	// component array
-	byte component[22];	
+	byte component[SHIP_COMPONENT_COUNT];	
 } Starship;
 
 void showShipSummary(Starship* ship);
 
-void ship_init(Starship* ship);
+void ship_init(byte ship_index, Starship* ship);
 void ship_debug(Starship* ship);
 void ship_describe(Starship* ship);
 

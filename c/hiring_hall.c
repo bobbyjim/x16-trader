@@ -41,7 +41,7 @@ char* skillName[TOTAL_SKILLS] = {
     "gunr",
     "medc",
     "pilt",
-    "stwi",
+    "strw",
     "stwd"
 };
 

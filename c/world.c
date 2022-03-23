@@ -81,17 +81,63 @@ char* starportQuality(char letter)
    }
 }
 
+byte  zoneColor[]  = {
+   COLOR_GREEN,
+   COLOR_YELLOW,
+   COLOR_LIGHTRED,
+   COLOR_GREEN
+};
+
 char* zoneString[] = {
    "green (safe)",
    "amber (warning)",
    "red (dangerous)"
 };
 
+/*
+char* allegiance[] = {
+   "aslan",
+   "b",
+   "c",
+   "droyne",
+   "e",
+   "f",
+   "g",
+   "humbolt",
+   "imperial",
+   "j",
+   "kkree",
+   "llellew",
+   "m",
+   "n",
+   "o",
+   "p",
+   "q",
+   "r",
+   "s",
+   "t",
+   "u",
+   "vargr",
+   "w",
+   "x",
+   "y",
+   "zhodani"
+};
+*/
+char* worldAllegiance(byte code)
+{
+   // switch(code)
+   // {
+
+   // }
+   return "Imperial";
+}
+
 void world_describe(World* world)
 {
    textcolor(COLOR_LIGHTBLUE);
 
-   cprintf("         world name      : %s\r\n\r\n", world->data.name);
+   cprintf("         world name      : %s (%s)\r\n\r\n", world->data.name, worldAllegiance(world->data.allegiance));
 
    if (playerAchievementLevel > 1)
       cprintf("         starport quality: %c (%s)\r\n\r\n", world->data.starport, starportQuality(world->data.starport));
@@ -107,9 +153,11 @@ void world_describe(World* world)
 
    if (playerAchievementLevel > 3)
    {
+      textcolor(zoneColor[world->data.zone_digital]);
       cprintf("\r\n\r\n         zone            : %s\r\n\r\n",
          zoneString[world->data.zone_digital]
       );
+      textcolor(COLOR_LIGHTBLUE);
    }
    cputs("\r\n\r\n");
 }
@@ -118,8 +166,11 @@ void world_describe(World* world)
 #define     MU2                  MU*2
 #define     MU5                  MU*5
 #define     WR                   30
+#define     WR2                  20
 #define     HALF_WR              15
 #define     WC                   80
+#define     WC2                  70
+#define     WRXWC                2400
 
 unsigned char worldmap[WC][WR];
 unsigned char worldmapColor[] = 
@@ -151,15 +202,17 @@ unsigned char* mapColorPalette = worldmapColor;
 void world_setGasGiantPalette() { mapColorPalette = gasgiantMapColor; }
 void world_setRockballPalette() { mapColorPalette = worldmapColor; }
 
-void drawWorld(byte streaky, byte variance)
+byte world_map_calculated = 0;
+
+void calculateWorldmap(byte streaky)
 {
    int i, j, x, y;
 
    for(i=0; i<MU5; ++i)
    {
-      x = (rand() % (WC-10)) + 5;
-      y = (rand() % (WR-10)) + 5;
-      for(j=0; j<(rand() % (WR * WC))/MU2; ++j)
+      x = (rand() % WC2) + 5;
+      y = (rand() % WR2) + 5;
+      for(j=0; j<(rand() % WRXWC)/MU2; ++j)
       {
          x += 1 * ((rand() % 3) - 1) + streaky;
          y += 1 * ((rand() % 3) - 1) + streaky;
@@ -167,6 +220,16 @@ void drawWorld(byte streaky, byte variance)
             ++worldmap[x][y];
       }
    }
+
+   world_map_calculated = 1;
+}
+
+void drawWorld(byte streaky, byte variance)
+{
+   int i, j;
+
+   //if (world_map_calculated == 0)
+   calculateWorldmap(streaky);
 
    for(j=4; j<WR; ++j)
    {
@@ -183,14 +246,14 @@ void drawWorld(byte streaky, byte variance)
           //
           if (r2 > 1600) continue;
 
-          if (j == HALF_WR && worldmap[i][j] == 0)
-          {
-            textcolor(mapColorPalette[0]);
-            cputcxy(i,j,'x');
-            // 195 is nice, especially with dark blue.
-          }
-          else
-          {
+          //if (j == HALF_WR && worldmap[i][j] == 0)
+          //{
+          //  textcolor(mapColorPalette[0]);
+          //  cputcxy(i,j,'x');
+          //  // 195 is nice, especially with dark blue.
+          //}
+          //else
+          //{
             textcolor(mapColorPalette[worldmap[i][j] + rand() % variance]);
             if (worldmap[i][j] == 0)
                cputcxy(i,j,166);
@@ -198,7 +261,7 @@ void drawWorld(byte streaky, byte variance)
                cputcxy(i,j,'x');
             // 166 is too bold.
             // 214 isn't bad.
-          }
+          //}
       }
    }
 }
@@ -222,3 +285,31 @@ void getWorld(World* world)
    data = (WorldData*)(address);
    world->data     = *data;           // COPY THE DATA IN!
 }
+
+byte planetoidPetscii[4][7] = {
+   {  18,  169, 32, 32, 32, 223,  146 },     // rvs incline ... decline rvs_off
+   {  18,  32, 215, 32, 32, 32,   146 },     // rvs . circle ... rvs_off
+   {  18,  32,  32, 32, 213, 201, 146 },     // rvs ... arc1 arc2 rvs_off
+   { 223,  18,  32, 32, 202, 146, 169 } // decline rvs .. arc3 rvs_off incline
+};
+
+void world_drawPlanetoid(byte x, byte y)
+{
+   textcolor(COLOR_GRAY1);
+   revers(1);
+   gotoxy(x,y);
+   cprintf("%c   %c", 169, 223);
+   gotoxy(x,y+1);
+   cprintf(" %c   ",  215);
+   gotoxy(x,y+2);
+   cprintf("   %c%c", 213, 201);
+   
+   revers(0);
+   gotoxy(x,y+3);
+   cputc(223);
+   revers(1);
+   cprintf("  %c", 202);
+   revers(0);
+   cputc(169);
+}
+

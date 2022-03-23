@@ -160,7 +160,8 @@ void printAlarmBar()
 
    for(x=0; x<COMPONENT_COUNT; ++x)
    {
-      showStatus(x);
+      if (ship.component[x])
+         showStatus(x);
    }
 
    cputsxy(76,1,"ar");

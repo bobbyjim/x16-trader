@@ -38,6 +38,26 @@ extern byte shipState[22];
 extern byte playerAchievementLevel;
 extern byte pay_period;
 
+#define     ADVICE_COUNT      16
+char* advicePerPlayerAchievementLevel[] = {
+   "",
+   "",
+   "wilderness refueling is a cheap way to refuel, but takes time.",
+   "    e-class starports are simply marked landing fields.",
+   "         beware of amber and red zone worlds!",
+   "     hire an astrogator... these jumps take forever!",
+   "       buy and sell speculative cargo at the market.",
+   "         upgrade defenses at a and b starports.",
+   "            a-class starports have shipyards",
+   "            get weapons, then hire a gunner.",
+   "       buy a liner if you want longer trade legs.",
+   "       buy a cruiser if you want to hunt pirates.",
+   "          special systems have special ships.",
+   "         time spent in mining produces cargo.",
+   "       sometimes, mining asteroids produces fuel.",
+   "      sometimes, mining asteroids produces salvage."
+};
+
 void burnJumpFuel()
 {
    int distance = parsecDistance(current.col, current.row, destination.col, destination.row);
@@ -51,15 +71,25 @@ void specialEffects()
    unsigned x;
   
    clrscr();
-   textcolor(COLOR_LIGHTRED);
-   cputsxy(5,2,"entering jumpspace.  please stand by.");
    titleLine();
+   //cputsxy(5,2,"jumpspace transition");
+   textcolor(COLOR_LIGHTRED);
+   cputsxy(22,20,"entering jumpspace.  please stand by.");
+   textcolor(COLOR_YELLOW);
+
+   if (playerAchievementLevel < ADVICE_COUNT)
+   {
+      cputsxy(30,26,"** game hints **");
+      cputsxy(10,30,advicePerPlayerAchievementLevel[playerAchievementLevel]);
+   }
 
    sleep(10/(astrogator+1));
    
    while(--days)
    {
       x = 6000 / (astrogator+1);
+      if (days == 1) x *= 2;
+
       while(--x)
       {
          cbm_k_bsout( colors[days] );

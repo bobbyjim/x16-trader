@@ -130,6 +130,7 @@ void landAtStarport()
       statusLine();
       textcolor(COLOR_YELLOW);
       cputsxy(5,30,"press <r> over selection to refuel or repair");
+      cputsxy(5,32,"press <return> to exit");
 
       // ship summary goes above the title line, so row 2.
       gotoxy(0,2);

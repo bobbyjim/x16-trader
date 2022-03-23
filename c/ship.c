@@ -73,9 +73,9 @@ void showShipSummary(Starship* ship)
          ship->mcrp * ship->size );
 }
 
-void ship_init(Starship* ship)
+void ship_init(byte ship_index, Starship* ship)
 {
-   readShip(SHIP_INDEX_MARAVA, ship); // Marava
+   readShip(ship_index, ship); // Marava
 }
 
 byte readShip(byte index, Starship* ship)
@@ -119,11 +119,13 @@ char* shipOwner(char owner)
       case 'a': return "aslan";
       case 'b': return "baraccai technum";
       case 'd': return "droyne";
+      case 'e': return "scouts";
       case 'h': return "humbolt";
       case 'i': return "imperial";
       case 'j': return "mc&s";
       case 'l': return "delta";
       case 'm': return "al morai";
+      case 'n': return "navy";
       case 'p': return "delta";
       case 'r': return "republic";
       case 's': return "sword worlds";
@@ -138,15 +140,13 @@ char* shipOwner(char owner)
 
 void ship_describe(Starship* ship)
 {
-   cprintf("         ship class : %-15s   mission : %c (%s)\r\n\r\n", ship->name, ship->mission, shipMission(ship->mission) ); 
-   cprintf("         owner      : %-15s   size    : %u00 tons\r\n\r\n", shipOwner(ship->allegiance), ship->size);
-   cprintf("         config     : %-15s   tl      : %u\r\n\r\n", cfg[ ship->cfg ], ship->tl);
-   cprintf("         staterooms : %-15d   lberths : %d\r\n\r\n", ship->sr, ship->lb);
-   cprintf("         armor      : %-15d   cost    : mcr %u\r\n\r\n", ship->armor, ship->mcrp * ship->size);
-
+   cprintf("         %s-class type %c %s (%d00 tons)   mcr %u\r\n\r\n\r\n", ship->name, ship->mission, shipMission(ship->mission), ship->size, ship->mcrp * ship->size);
+   cprintf("         owner      : %-15s   tl      : %u\r\n\r\n", shipOwner(ship->allegiance), ship->tl );
+   cprintf("         config     : %-15s   armor   : %u\r\n\r\n", cfg[ ship->cfg ], ship->armor);
    cprintf("         m-drive    : %-15d   j-drive : %d\r\n\r\n",       SHIP_MANEUVER_RATING(ship), SHIP_JUMP_RATING(ship) );
    cprintf("         bridge     : %-15d   cpu     : model/%d\r\n\r\n", SHIP_BRIDGE_RATING(ship), SHIP_CPU_RATING(ship) );
-   cprintf("         cargo      : %-15d   \r\n\r\n\r\n", SHIP_CARGO(ship));
+   cprintf("         staterooms : %-15d   lberths : %d\r\n\r\n", ship->sr, ship->lb);
+   cprintf("         cargo hold : %-15d   \r\n\r\n\r\n", SHIP_CARGO(ship));
    cprintf("         sensor ratings: s: %d, r: %d\r\n\r\n\r\n", SHIP_SPACE_SENSORS(ship), SHIP_WORLD_SENSORS(ship));
    cprintf("         collectors : %-15s   scoops  : %s\r\n\r\n", SHIP_HAS_COLLECTORS(ship)? "yes" : "no", SHIP_HAS_SCOOPS(ship)? "yes" : "no" );
    cprintf("         stealth    : %-15d   damper  : %d\r\n\r\n", SHIP_STEALTH_RATING(ship), SHIP_DAMPER_RATING(ship));
@@ -155,11 +155,10 @@ void ship_describe(Starship* ship)
 }
 
 
-
 //    cputs("\r\n");
 //    for(i=0; i<8; ++i)
 //    {
-//       hardpoint = ship->component[O_QDP_HP(i)];
+//       hardpoint = ship->component[O_QDP_BATTERY(i)];
 //       if (hardpoint & 31)
 //          cprintf("hardpoint %d: %s %s\r\n", 
 //             i, 
