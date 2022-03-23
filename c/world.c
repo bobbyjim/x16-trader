@@ -134,18 +134,23 @@ void world_describe(World* world)
       cprintf("         gas giant       : %s\r\n\r\n", 
          WORLD_HAS_GGS(world)? "yes" : "no"
       );
-      cputs("         trade comments  : ");
-      showTradeCodes(world);
    }
 
    if (playerAchievementLevel > 3)
    {
       textcolor(zoneColor[world->data.zone_digital]);
-      cprintf("\r\n\r\n         zone            : %s\r\n\r\n",
+      cprintf("         zone            : %s\r\n\r\n",
          zoneString[world->data.zone_digital]
       );
       textcolor(COLOR_LIGHTBLUE);
    }
+
+   if (playerAchievementLevel > 4)
+   {
+      cputs("         trade comments  : ");
+      showTradeCodes(world);
+   }
+
    cputs("\r\n\r\n");
 }
 

@@ -86,6 +86,12 @@ void bookPassengersAndPayCrew()
    crewPay = admin + astrogator + engineer + gunner + medic + pilot + steward + streetwise;
 
    //
+   //  add in ship maintenance 
+   //
+   crewPay += (unsigned)ship.size; // 1 share per 100 tons
+   cprintf("ship size: %u\r\n", ship.size);
+
+   //
    //  scale to credits and pay period
    //
    crewPay *= (2 + 14 * pay_period);

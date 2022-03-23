@@ -48,7 +48,7 @@ char* advicePerPlayerAchievementLevel[] = {
    "     hire an astrogator... these jumps take forever!",
    "       buy and sell speculative cargo at the market.",
    "         upgrade defenses at a and b starports.",
-   "            a-class starports have shipyards",
+   "        a- and b-class starports have shipyards",
    "            get weapons, then hire a gunner.",
    "       buy a liner if you want longer trade legs.",
    "       buy a cruiser if you want to hunt pirates.",

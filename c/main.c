@@ -194,7 +194,7 @@ void splash()
    // 
    //  Print the version
    //
-   cputsxy(49,16,"0.5");
+   cputsxy(49,16,"0.51");
 
    textcolor(COLOR_LIGHTBLUE);
 
@@ -233,7 +233,7 @@ void splash()
 
       case 2: // scout
          playerAchievementLevel = 5;
-         ship_init(SHIP_INDEX_SCOUT, &ship);
+         ship_init(SHIP_INDEX_MURPHY, &ship);
          break;
 
       case 3: // trader
