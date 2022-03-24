@@ -102,7 +102,9 @@ void jumpmapDisableReticle()
 
 unsigned char rangeIsOk(int dcol, int drow)
 {
-   return parsecDistance(current.col, current.row, destination.col + dcol, destination.row + drow) <= ship.component[O_QSP_J];
+   unsigned distance = parsecDistance(current.col, current.row, destination.col + dcol, destination.row + drow);
+   if (distance == 0) return 0;
+   return distance <= ship.component[O_QSP_J];
 }
 
 char jumpmapSetDestination()
@@ -134,6 +136,18 @@ char jumpmapSetDestination()
                --destination.col;
                getWorld(&destination);
             }
+            else if (rangeIsOk(-1,1))
+            {
+               --destination.col;
+               ++destination.row;
+               getWorld(&destination);
+            }
+            else if (rangeIsOk(-1,-1))
+            {
+               --destination.col;
+               --destination.row;
+               getWorld(&destination);
+            }
             break;
 
          case 0x1d:
@@ -141,18 +155,36 @@ char jumpmapSetDestination()
             {
                ++destination.col;
                getWorld(&destination);
+            } 
+            else if (rangeIsOk(1,1))
+            {
+               ++destination.col;
+               ++destination.row;
+               getWorld(&destination);
+            }
+            else if (rangeIsOk(1,-1))
+            {
+               ++destination.col;
+               --destination.row;
+               getWorld(&destination);
             }
             break;
 
          case 202: // shift-J
-            getWorld(&destination);
-            jumpmapDisableReticle();
-            return 'j';
+            if (HEX_HAS_WORLD(&destination))
+            {
+               getWorld(&destination);
+               jumpmapDisableReticle();
+               return 'j';
+            }
 
          case 13: // select
-            getWorld(&destination);
-            jumpmapDisableReticle();
-            return 13;
+            if (HEX_HAS_WORLD(&destination))
+            {
+               getWorld(&destination);
+               jumpmapDisableReticle();
+               return 13;
+            }
       }
    }
 }

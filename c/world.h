@@ -25,6 +25,7 @@
 
 #include "common.h"
 
+#define  HEX_HAS_WORLD(worldptr)             ((worldptr)->data.name[0] > 32)
 #define  DIFFERENT_WORLDS(w1,w2)             (w1.row != w2.row || w1.col != w2.col)
 #define  WORLD_LONG_LABEL(worldptr)          ((worldptr)->data.name)
 #define  WORLD_HAS_GGS(worldptr)             ((worldptr)->data.gg)

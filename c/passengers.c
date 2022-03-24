@@ -47,6 +47,7 @@ void bookPassengersAndPayCrew()
    byte low_00;
    unsigned subtotal;
    unsigned crewPay;
+   unsigned mtc;
 
    clrscr();
    gotoxy(5,2);
@@ -88,7 +89,7 @@ void bookPassengersAndPayCrew()
    //
    //  add in ship maintenance 
    //
-   crewPay += (unsigned)ship.size; // 1 share per 100 tons
+   mtc = (unsigned)ship.size; // 1 share per 100 tons
    //cprintf("ship size: %u\r\n", ship.size);
 
    //
@@ -107,8 +108,11 @@ void bookPassengersAndPayCrew()
    pay_period = 0;
 
    textcolor(COLOR_LIGHTBLUE);
-   cprintf("     crew and mtc:   cr %u.\r\n\r\n", crewPay * 100 );
+   cprintf("     crew and mtc:   cr %u.\r\n\r\n", crewPay * 100);
    hcr -= crewPay;
+
+   cprintf("     maintenance:    cr %u.\r\n\r\n", mtc * 100);
+   hcr -= mtc;
 
    textcolor(COLOR_LIGHTRED);
    cprintf("     balance:        cr %ld00\r\n\r\n", hcr );
