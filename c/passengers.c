@@ -89,7 +89,7 @@ void bookPassengersAndPayCrew()
    //  add in ship maintenance 
    //
    crewPay += (unsigned)ship.size; // 1 share per 100 tons
-   cprintf("ship size: %u\r\n", ship.size);
+   //cprintf("ship size: %u\r\n", ship.size);
 
    //
    //  scale to credits and pay period
@@ -107,7 +107,7 @@ void bookPassengersAndPayCrew()
    pay_period = 0;
 
    textcolor(COLOR_LIGHTBLUE);
-   cprintf("     crew salaries:  cr %u.\r\n\r\n", crewPay * 100 );
+   cprintf("     crew and mtc:   cr %u.\r\n\r\n", crewPay * 100 );
    hcr -= crewPay;
 
    textcolor(COLOR_LIGHTRED);

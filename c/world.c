@@ -120,6 +120,21 @@ char* displayBases(char bases)
    }
 }
 
+char* systemStuff(World* world)
+{
+   if (WORLD_HAS_BELTS(world))
+   {
+      if (WORLD_HAS_GGS(world)) 
+         return "belt and gas giant";
+      else 
+         return "belt";
+   }
+
+   if (WORLD_HAS_GGS(world)) return "gas giant";
+
+   return "none";
+}
+
 void world_describe(World* world)
 {
    textcolor(COLOR_LIGHTBLUE);
@@ -127,13 +142,12 @@ void world_describe(World* world)
    cprintf("         world name      : %s (%s)\r\n\r\n", world->data.name, worldAllegiance(world->data.allegiance));
 
    if (playerAchievementLevel > 1)
-      cprintf("         starport quality: %c (%s), bases: %s\r\n\r\n", world->data.starport, starportQuality(world->data.starport), displayBases(world->data.bases));
+      cprintf("         starport quality: %c - %-15s  bases: %s\r\n\r\n", world->data.starport, starportQuality(world->data.starport), displayBases(world->data.bases));
 
    if (playerAchievementLevel > 2)
    {
-      cprintf("         gas giant       : %s\r\n\r\n", 
-         WORLD_HAS_GGS(world)? "yes" : "no"
-      );
+      if (WORLD_HAS_BELTS(world) || WORLD_HAS_GGS(world))
+         cprintf("         system contents : %s\r\n\r\n", systemStuff(world)); 
    }
 
    if (playerAchievementLevel > 3)
