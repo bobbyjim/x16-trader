@@ -30,12 +30,13 @@
 #define     SKILL_ASTROGATOR    2
 #define     SKILL_ENGINEER      3
 #define     SKILL_GUNNER        4
-#define     SKILL_MEDIC         5
-#define     SKILL_PILOT         6
-#define     SKILL_STEWARD       7
-#define     SKILL_STREETWISE    8
+#define     SKILL_LIAISON       5
+#define     SKILL_MEDIC         6
+#define     SKILL_PILOT         7
+#define     SKILL_STEWARD       8
+#define     SKILL_STREETWISE    9
 
-#define     TOTAL_SKILLS        9
+#define     TOTAL_SKILLS        10
 #define     TOTAL_CREW_SLOTS    10
 
 typedef struct
@@ -43,7 +44,7 @@ typedef struct
     char* name;
     byte upp[6];
     char race;
-    byte skill[10];
+    byte skill[TOTAL_SKILLS];
     byte room;
 } Crew;
 

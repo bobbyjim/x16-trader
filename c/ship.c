@@ -26,6 +26,7 @@
 #include "common.h"
 #include "ship.h"
 #include "alarm.h"
+#include "sprite.h"
 
 char* cfgCode  = "cbpusal";
 char* cfg[] = {
@@ -169,3 +170,33 @@ void ship_describe(Starship* ship)
 //          cprintf("hardpoint %d: none\r\n", i);
 //    }
 // }
+
+void ship_loadImage(char* filename)
+{
+   sprite_loadToVERA(filename,  0x4000);
+}
+
+void ship_loadImageFromIndex(byte ship_index)
+{
+   switch(ship_index)
+   {
+      case SHIP_INDEX_BEOWULF: ship_loadImage("aia-beo.bin"); break;
+      case SHIP_INDEX_MAADA  : ship_loadImage("aia-maa.bin"); break;
+      case SHIP_INDEX_MARAVA : ship_loadImage("aia-far.bin"); break;
+      case SHIP_INDEX_SAFARI : ship_loadImage("aik-saf.bin"); break;
+      case SHIP_INDEX_LINER  : ship_loadImage("aim-lin.bin"); break;
+      case SHIP_INDEX_MARCH  : ship_loadImage("air-sub.bin"); break;
+      case SHIP_INDEX_PACKET : ship_loadImage("aiu-pak.bin"); break;
+      case SHIP_INDEX_SUNFLOWER: ship_loadImage("aik-saf.bin"); break;
+      case SHIP_INDEX_BROADSWORD: ship_loadImage("aic-cru.bin"); break;
+      case SHIP_INDEX_KILAALUM: ship_loadImage("aie-kil.bin"); break;
+      case SHIP_INDEX_GAZELLE : ship_loadImage("aie-gaz.bin"); break;
+      case SHIP_INDEX_DONOSEV : ship_loadImage("ain-don.bin"); break;
+      case SHIP_INDEX_LAB    : ship_loadImage("ail-lab.bin"); break;
+      case SHIP_INDEX_MURPHY : ship_loadImage("ais-sc.bin"); break;
+
+      default:
+         ship_loadImage("aia-beo.bin"); break;
+   }
+}
+

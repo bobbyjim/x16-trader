@@ -6,6 +6,7 @@
 #include "passengers.h"
 #include "ship.h"
 #include "world.h"
+#include "trade.h"
 
 extern Starship ship;
 extern World current;
@@ -18,6 +19,7 @@ extern byte admin;
 extern byte astrogator;
 extern byte engineer;
 extern byte gunner;
+extern byte liaison;
 extern byte medic;
 extern byte pilot;
 extern byte steward;
@@ -35,19 +37,30 @@ byte goodFlux( int num )
    return abs(d2);
 }
 
+int posFlux( int num )
+{
+   num += rand() % 6;
+   num -= rand() % 6;
+   return (num > 0)? num : 0;
+}
+
 void bookPassengersAndPayCrew()
 {
    byte demand  = 0;
    byte high    = 0;
    byte mid     = 0;
    byte low     = 0;
+   unsigned freight = 0;
+   unsigned totalFreight = 0;
+   unsigned totalTCs = 0;
+   unsigned holdFree = getHoldFree();
 
+   int i;
    byte high_00;
    byte mid_00;
    byte low_00;
    unsigned subtotal;
    unsigned crewPay;
-   unsigned mtc;
 
    clrscr();
    gotoxy(5,2);
@@ -68,6 +81,9 @@ void bookPassengersAndPayCrew()
    mid_00  = ship.demand + 80;
    low_00  = ship.demand + 10;
 
+   textcolor(COLOR_LIGHTRED);
+   cprintf("     balance subtotal 1:              cr %7ld00\r\n\r\n", hcr );
+
    subtotal = high * high_00 + mid * mid_00 + low * low_00;
    hcr += subtotal;
 
@@ -76,20 +92,52 @@ void bookPassengersAndPayCrew()
    cprintf("     %2u mid passengers booked at cr %u00 each.\r\n\r\n", mid, mid_00);
    cprintf("     %2u low passengers booked at cr %u00 each.\r\n\r\n", low, low_00);
    cprintf("\r\n\r\n");
-   cprintf("     total revenue from passengers: cr %u.\r\n\r\n", subtotal * 100 );
+   cprintf("     revenue from passengers:       + cr %9lu\r\n\r\n", (long)subtotal * 100L );
 
    textcolor(COLOR_LIGHTRED);
-   cprintf("     balance subtotal:              cr %ld00\r\n\r\n", hcr );
+   cprintf("     balance subtotal 2:              cr %7ld00\r\n\r\n", hcr );
 
+   //
+   // freight (T5 Book 2 p220)
+   //
+   totalTCs = 1
+            + current.data.agricultural
+            + current.data.asteroid
+            + current.data.barren
+            + current.data.desert
+            + current.data.fluid_seas
+            + current.data.hi_pop
+            + current.data.icecapped
+            + current.data.industrial
+            + current.data.lo_pop
+            + current.data.non_agri
+            + current.data.non_ind
+            + current.data.poor
+            + current.data.rich
+            + current.data.vacuum;
+
+   for(i=0; i<7; ++i)
+   {
+      freight = posFlux( current.data.pop ) * totalTCs + liaison;
+      if (totalFreight + freight <= holdFree)
+         totalFreight += freight;
+   }
+
+   textcolor(COLOR_LIGHTBLUE);
+   cprintf("     freight:                       + cr %6u000\r\n\r\n", totalFreight);
+   hcr += totalFreight * 10;
+
+   textcolor(COLOR_LIGHTRED);
+   cprintf("     balance subtotal 3:              cr %7ld00\r\n\r\n", hcr );
    //
    //  hcr per week
    //
-   crewPay = admin + astrogator + engineer + gunner + medic + pilot + steward + streetwise;
+   crewPay = admin + astrogator + engineer + gunner + liaison + medic + pilot + steward + streetwise;
 
    //
    //  add in ship maintenance 
    //
-   mtc = (unsigned)ship.size; // 1 share per 100 tons
+   crewPay += (unsigned)ship.size + SHIP_JUMP_RATING(&ship) + SHIP_MANEUVER_RATING(&ship); // 1 share per 100 tons
    //cprintf("ship size: %u\r\n", ship.size);
 
    //
@@ -108,14 +156,11 @@ void bookPassengersAndPayCrew()
    pay_period = 0;
 
    textcolor(COLOR_LIGHTBLUE);
-   cprintf("     crew and mtc:   cr %u.\r\n\r\n", crewPay * 100);
+   cprintf("     crew and maintenance:          - cr %9u\r\n\r\n", crewPay * 100);
    hcr -= crewPay;
 
-   cprintf("     maintenance:    cr %u.\r\n\r\n", mtc * 100);
-   hcr -= mtc;
-
    textcolor(COLOR_LIGHTRED);
-   cprintf("     balance:        cr %ld00\r\n\r\n", hcr );
+   cprintf("     balance:                         cr %7ld00\r\n\r\n", hcr );
 
    pressReturnAndClear();
 }

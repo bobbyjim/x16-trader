@@ -28,6 +28,14 @@
 #define STARSHIP_COUNT			(((byte*)(0xa000))[0])
 #define	STARSHIP_DATA			((Starship*)0xa040)
 
+#define SHIP_INDEX_EAKHAU		0x01
+#define SHIP_INDEX_STAYOW		0x02
+#define SHIP_INDEX_EKAWSYKUA	0x03
+#define SHIP_INDEX_KHOSAA		0x04
+#define SHIP_INDEX_KTEIROA		0x05
+#define SHIP_INDEX_KHTUKHAO		0x06
+#define SHIP_INDEX_AOSITAOH		0x07
+
 #define SHIP_INDEX_BEOWULF		0x0e
 #define SHIP_INDEX_MAADA		0x0f
 #define SHIP_INDEX_MARAVA		0x10
@@ -37,7 +45,14 @@
 #define SHIP_INDEX_MARCH		0x14
 #define SHIP_INDEX_PACKET		0x15
 #define SHIP_INDEX_SUNFLOWER    0x16
+#define SHIP_INDEX_BROADSWORD   0x17
+#define SHIP_INDEX_KILAALUM		0x18
+#define SHIP_INDEX_GAZELLE	  	0x19
+#define SHIP_INDEX_ANNIC_NOVA	0x1a
+#define SHIP_INDEX_KURGULASH	0x1b
 #define SHIP_INDEX_DONOSEV		0x1c
+#define SHIP_INDEX_LAB			0x1d
+#define SHIP_INDEX_SERPENT		0x1e
 #define SHIP_INDEX_MURPHY		0x1f
 
 #define O_QSP_M			0
@@ -153,6 +168,8 @@ void showShipSummary(Starship* ship);
 void ship_init(byte ship_index, Starship* ship);
 void ship_debug(Starship* ship);
 void ship_describe(Starship* ship);
+void ship_loadImageFromIndex(byte ship_index);
+void ship_loadImage(char* filename);
 
 byte readShip(byte index, Starship* ship);
 char* shipMission(char code);

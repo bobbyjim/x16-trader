@@ -30,11 +30,11 @@
 #define  WORLD_LONG_LABEL(worldptr)          ((worldptr)->data.name)
 #define  WORLD_HAS_GGS(worldptr)             ((worldptr)->data.gg)
 #define  WORLD_HAS_BELTS(worldptr)           ((worldptr)->data.belt)
-#define  WORLD_HAS_NAVAL_BASE(worldptr)      ((worldptr)->data.bases == 'n' || (worldptr)->data.bases == 'a' || (worldptr)->data.bases == 'b' || (worldptr)->data.bases == 'd')
-#define  WORLD_HAS_SCOUT_BASE(worldptr)      ((worldptr)->data.bases == 's' || (worldptr)->data.bases == 'a' || (worldptr)->data.bases == 'b' || (worldptr)->data.bases == 'w')
-#define  STARPORT_NO_MAINTENANCE(worldptr)   ((worldptr)->data.starport > 'c')
+#define  WORLD_HAS_NAVAL_BASE(worldptr)      ((worldptr)->data.navy_flag)
+#define  WORLD_HAS_SCOUT_BASE(worldptr)      ((worldptr)->data.scout_flag)
 #define  STARPORT_NO_SHIPYARD(worldptr)      ((worldptr)->data.starport > 'b')
 #define  STARPORT_SLOW_FUEL(worldptr)        ((worldptr)->data.starport > 'b')    
+#define  STARPORT_NO_MAINTENANCE(worldptr)   ((worldptr)->data.starport > 'c')
 #define  STARPORT_NO_HIRING_HALL(worldptr)   ((worldptr)->data.starport > 'd')
 
 //
@@ -58,10 +58,12 @@ typedef struct {
    char bases;
    byte pad1;
 
-   int  zone_digital : 2;
+   int  zone_digital  : 2;
    int  belt : 1;
    int  gg   : 1;
-   int  junk : 4;
+   int  scout_flag : 1;
+   int  navy_flag  : 1;
+   int  junk : 2;
 
    unsigned char tcIndex;
    

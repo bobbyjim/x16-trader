@@ -50,7 +50,6 @@ long hcr 	      = 5000; // in hundreds of cr (because of how trade works)
 long mortgage_cr  = 0;    
 byte pay_period;   // in days between jump.  7 = normal schedule.  insystem jaunts increase this.
 
-unsigned hold  	= 64;   // should actually be ship.cargo, but whatever
 Cargo cargo[20];
 
 //
@@ -60,6 +59,7 @@ byte admin	      = 0;
 byte astrogator   = 0;
 byte engineer     = 0;
 byte gunner       = 0;
+byte liaison      = 0;
 byte medic        = 0;
 byte pilot        = 0;
 byte steward      = 0;
@@ -89,6 +89,7 @@ void updateShipSkills()
    astrogator = findHighestSkillFor(SKILL_ASTROGATOR);
    engineer   = findHighestSkillFor(SKILL_ENGINEER);
    gunner     = findHighestSkillFor(SKILL_GUNNER);
+   liaison    = findHighestSkillFor(SKILL_LIAISON);
    medic      = findHighestSkillFor(SKILL_MEDIC);
    pilot      = findHighestSkillFor(SKILL_PILOT);
    steward    = findHighestSkillFor(SKILL_STEWARD);
@@ -235,12 +236,14 @@ void splash()
       case 2: // scout
          playerAchievementLevel = 5;
          ship_init(SHIP_INDEX_MURPHY, &ship);
+         sprite_loadToVERA("ais-sc.bin",  0x4000);
          break;
 
       case 3: // trader
          playerAchievementLevel = 8;
          //astrogator = 10; debug
          ship_init(SHIP_INDEX_BEOWULF, &ship);
+         sprite_loadToVERA("aia-beo.bin",  0x4000);
          break;
    }
 

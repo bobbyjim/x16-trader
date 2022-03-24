@@ -54,15 +54,7 @@ typedef struct
     long price;
 } Cargo;
 
-
 unsigned getHoldFree();
-
-// byte getBasePrice(byte tradeIndex);
-// char* getTradeCodes(byte tradeIndex);
-// char* getTradeGoods(byte tradeIndex);
-// void printTradeCodes(byte tradeIndex);
-// void printTradeGoods(byte tradeIndex);
-
 void trade_calculateMarketPrices();
 void trade_speculate();
 

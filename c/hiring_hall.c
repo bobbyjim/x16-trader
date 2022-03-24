@@ -29,7 +29,7 @@
 #include "hiring_hall.h"
 #include "burtle_jsf32.h"
 
-#define     TOTAL_PERSON_NAMES      34
+#define     TOTAL_PERSON_NAMES      35
 
 Crew crew[TOTAL_CREW_SLOTS];
 
@@ -39,6 +39,7 @@ char* skillName[TOTAL_SKILLS] = {
     "astr",
     "engr",
     "gunr",
+    "lias",
     "medc",
     "pilt",
     "strw",
@@ -81,7 +82,8 @@ char* personName[TOTAL_PERSON_NAMES] = {
     "reynolds",
     "mccoy",
     "skinner",
-    "tyner"
+    "tyner",
+    "gibson"
 };
 
 byte findHighestSkillFor(byte skillIndex)

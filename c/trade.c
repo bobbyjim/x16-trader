@@ -32,13 +32,11 @@ extern Starship ship;
 extern World current, destination;
 extern Cargo cargo[], starport[], temp[];
 extern long hcr; // hundreds of credits
-extern unsigned hold;
 
-int holdFree;
-
-unsigned getHoldFree(unsigned hold)
+unsigned getHoldFree()
 {  
    int i;
+   unsigned hold = ship.component[ O_QSP_CARGOP ] * ship.size;
    for(i=0; i<20; ++i)
       hold -= cargo[i].tons;
 
@@ -143,11 +141,9 @@ void showInventory(byte sel)
       revers(0);
    }
 
-   holdFree = getHoldFree(ship.component[ O_QSP_CARGOP ] * ship.size);
-
    cclear(50);
    gotox(0);
-   cprintf("  %d tons free.    cr %ld00\n", holdFree, hcr);
+   cprintf("  %d tons free.    cr %ld00\n", getHoldFree(), hcr);
 }
 
 void buy(byte sel, byte amount)
@@ -157,7 +153,7 @@ void buy(byte sel, byte amount)
    if (cargo[19].cargoAddress > 0) return; // that's right, FIFO
    if (starport[sel].tons < amount) return;
    if (price > hcr) return;
-   if (holdFree < 1) return;
+   if (getHoldFree() < 1) return;
 
    cargo[sel].cargoAddress = starport[sel].cargoAddress;
    cargo[sel].tons    += amount;
