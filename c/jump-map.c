@@ -55,6 +55,8 @@ void jumpmapReticle()
    jamison.x     = SPRITE_X_SCALE(130 + col * 72);
    jamison.y     = SPRITE_Y_SCALE( 64 + row * 64 - (col % 2) * 32);
 
+   if ((col % 2 == 0) && (destination.col % 2)) jamison.y -= SPRITE_Y_SCALE(56);
+
    sprite_define(3, &jamison);
 
    if (playerAchievementLevel > 1)
@@ -166,6 +168,7 @@ void jumpmapShowWorldData(unsigned char col, unsigned char row)
 {
    int x,y;
    int r,c;
+
 //   unsigned char spriteNum;
    unsigned char bank;
    unsigned int  offset;
@@ -188,13 +191,18 @@ void jumpmapShowWorldData(unsigned char col, unsigned char row)
             x = 20 + c * 9;
             y =  4 + r * 8;
 
-            //
-            //  WARNING -- there is a bug in here that distorts
-            //  the display when the column number is odd.
-            //
-            
-            if (c%2==0) y += 4;
+            // if current world col is odd 
+            // and c is even
+            // add 4 to y
+            if ((current.col % 2) && (c % 2 == 0))
+               y += 4;
 
+            // if current world col is even
+            // and c is even
+            // subtract 4 from y
+            if ((current.col % 2 == 0) && (c % 2 == 0))
+               y -= 4;
+            
             textcolor(COLOR_WHITE);
             cputcxy(x,y,world->starport);
 
@@ -211,6 +219,14 @@ void jumpmapShowWorldData(unsigned char col, unsigned char row)
 
             textcolor(worldColor[world->general_world_type & 0x0f]);
             cputcxy(x,y+4,209);
+
+            // DEBUG
+            // gotoxy(x-1,y);
+            // cprintf("%u,%u", world->col, world->row);
+            // gotoxy(x-1,y);
+            // cprintf("%u,%u", c, r);
+            // gotoxy(x-1,y+1);
+            // cprintf("%u,%u", current.col, current.row);
          }
          // else
          // {

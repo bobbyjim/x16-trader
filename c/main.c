@@ -20,6 +20,7 @@
 
 */
 
+#include <stdlib.h>
 #include <conio.h>
 #include <cx16.h>
 
@@ -238,6 +239,7 @@ void splash()
 
       case 3: // trader
          playerAchievementLevel = 8;
+         astrogator = 10;
          ship_init(SHIP_INDEX_BEOWULF, &ship);
          break;
    }

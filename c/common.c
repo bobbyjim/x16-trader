@@ -54,16 +54,25 @@ int getBank()
    return currentBank;
 }
 
-byte parsecDistance(unsigned char col1,
-   unsigned char row1,
-	unsigned char col2,
-	unsigned char row2)
+byte parsecDistance(byte col1,
+   byte row1,
+	byte col2,
+	byte row2)
 {
-   int aa = row1 + (col1/2);
-   int ab = row2 + (col2/2);
-   int da = abs(aa-ab);
-   int db = abs(col1-col2);
-   int d = abs(aa - ab - col1 + col2);
+   byte aa;
+   byte ab;
+   byte da;
+   byte db;
+   byte d;
+
+   //
+   //  e.g. 1810 -> 1910
+   //
+   aa = row1 + (col1/2);            
+   ab = row2 + (col2/2);            
+   da = abs(aa-ab);                 
+   db = abs(col1-col2);             
+   d = abs(aa - ab - col1 + col2);  
 
    if ((da >= db) && (da >= d)) d = da;
    if ((db >= da) && (db >= d)) d = db;
