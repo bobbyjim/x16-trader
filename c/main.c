@@ -195,7 +195,7 @@ void splash()
    // 
    //  Print the version
    //
-   cputsxy(49,16,"0.6");
+   cputsxy(49,16,"0.61");
 
    textcolor(COLOR_LIGHTBLUE);
 

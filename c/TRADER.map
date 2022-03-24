@@ -2,12 +2,12 @@ Modules list:
 -------------
 main.o:
     CODE              Offs=000000  Size=0003F0  Align=00001  Fill=0000
-    RODATA            Offs=000000  Size=000184  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=000185  Align=00001  Fill=0000
     BSS               Offs=000000  Size=000690  Align=00001  Fill=0000
     DATA              Offs=000000  Size=000028  Align=00001  Fill=0000
 alarm.o:
     CODE              Offs=0003F0  Size=0001B5  Align=00001  Fill=0000
-    RODATA            Offs=000184  Size=000183  Align=00001  Fill=0000
+    RODATA            Offs=000185  Size=000183  Align=00001  Fill=0000
     BSS               Offs=000690  Size=000014  Align=00001  Fill=0000
     DATA              Offs=000028  Size=0000A5  Align=00001  Fill=0000
 burtle_jsf32.o:
@@ -18,76 +18,76 @@ combat.o:
     BSS               Offs=0006B5  Size=00004A  Align=00001  Fill=0000
 common.o:
     CODE              Offs=00074B  Size=000259  Align=00001  Fill=0000
-    RODATA            Offs=000307  Size=00001B  Align=00001  Fill=0000
+    RODATA            Offs=000308  Size=00001B  Align=00001  Fill=0000
     DATA              Offs=0000CD  Size=000002  Align=00001  Fill=0000
 console.o:
     CODE              Offs=0009A4  Size=000001  Align=00001  Fill=0000
 damage.o:
     CODE              Offs=0009A5  Size=000063  Align=00001  Fill=0000
-    RODATA            Offs=000322  Size=000274  Align=00001  Fill=0000
+    RODATA            Offs=000323  Size=000274  Align=00001  Fill=0000
     BSS               Offs=0006FF  Size=000001  Align=00001  Fill=0000
     DATA              Offs=0000CF  Size=00002C  Align=00001  Fill=0000
 emplacement.o:
     CODE              Offs=000A08  Size=00007D  Align=00001  Fill=0000
-    RODATA            Offs=000596  Size=0000B9  Align=00001  Fill=0000
+    RODATA            Offs=000597  Size=0000B9  Align=00001  Fill=0000
     DATA              Offs=0000FB  Size=000040  Align=00001  Fill=0000
 hiring_hall.o:
     CODE              Offs=000A85  Size=000532  Align=00001  Fill=0000
-    RODATA            Offs=00064F  Size=000221  Align=00001  Fill=0000
+    RODATA            Offs=000650  Size=000221  Align=00001  Fill=0000
     BSS               Offs=000700  Size=0000C8  Align=00001  Fill=0000
     DATA              Offs=00013B  Size=000068  Align=00001  Fill=0000
 jump.o:
     CODE              Offs=000FB7  Size=0001E4  Align=00001  Fill=0000
-    RODATA            Offs=000870  Size=000303  Align=00001  Fill=0000
+    RODATA            Offs=000871  Size=000303  Align=00001  Fill=0000
     DATA              Offs=0001A3  Size=000020  Align=00001  Fill=0000
 jump-map.o:
     CODE              Offs=00119B  Size=000736  Align=00001  Fill=0000
-    RODATA            Offs=000B73  Size=0000DB  Align=00001  Fill=0000
+    RODATA            Offs=000B74  Size=0000DB  Align=00001  Fill=0000
     DATA              Offs=0001C3  Size=000010  Align=00001  Fill=0000
 maneuver-map.o:
     CODE              Offs=0018D1  Size=000150  Align=00001  Fill=0000
-    RODATA            Offs=000C4E  Size=0000A1  Align=00001  Fill=0000
+    RODATA            Offs=000C4F  Size=0000A1  Align=00001  Fill=0000
 menu.o:
     CODE              Offs=001A21  Size=000112  Align=00001  Fill=0000
     BSS               Offs=0007C8  Size=000003  Align=00001  Fill=0000
 passengers.o:
     CODE              Offs=001B33  Size=000300  Align=00001  Fill=0000
-    RODATA            Offs=000CEF  Size=00017F  Align=00001  Fill=0000
+    RODATA            Offs=000CF0  Size=00017F  Align=00001  Fill=0000
 piracy.o:
     CODE              Offs=001E33  Size=000001  Align=00001  Fill=0000
 ship.o:
     CODE              Offs=001E34  Size=0005A9  Align=00001  Fill=0000
-    RODATA            Offs=000E6E  Size=0004D8  Align=00001  Fill=0000
+    RODATA            Offs=000E6F  Size=0004D8  Align=00001  Fill=0000
     DATA              Offs=0001D3  Size=00004C  Align=00001  Fill=0000
 shipyard.o:
     CODE              Offs=0023DD  Size=000233  Align=00001  Fill=0000
-    RODATA            Offs=001346  Size=0000BD  Align=00001  Fill=0000
+    RODATA            Offs=001347  Size=0000BD  Align=00001  Fill=0000
     BSS               Offs=0007CB  Size=000001  Align=00001  Fill=0000
 sprite.o:
     CODE              Offs=002610  Size=000330  Align=00001  Fill=0000
     BSS               Offs=0007CC  Size=000006  Align=00001  Fill=0000
 starport.o:
     CODE              Offs=002940  Size=000341  Align=00001  Fill=0000
-    RODATA            Offs=001403  Size=00015F  Align=00001  Fill=0000
+    RODATA            Offs=001404  Size=00015F  Align=00001  Fill=0000
 trade.o:
     CODE              Offs=002C81  Size=00072E  Align=00001  Fill=0000
-    RODATA            Offs=001562  Size=0000B3  Align=00001  Fill=0000
+    RODATA            Offs=001563  Size=0000B3  Align=00001  Fill=0000
     BSS               Offs=0007D2  Size=000002  Align=00001  Fill=0000
     DATA              Offs=00021F  Size=00000E  Align=00001  Fill=0000
 wilderness.o:
     CODE              Offs=0033AF  Size=0000FC  Align=00001  Fill=0000
-    RODATA            Offs=001615  Size=000136  Align=00001  Fill=0000
+    RODATA            Offs=001616  Size=000136  Align=00001  Fill=0000
 world.o:
     CODE              Offs=0034AB  Size=0008A5  Align=00001  Fill=0000
-    RODATA            Offs=00174B  Size=000209  Align=00001  Fill=0000
+    RODATA            Offs=00174C  Size=000209  Align=00001  Fill=0000
     BSS               Offs=0007D4  Size=000960  Align=00001  Fill=0000
     DATA              Offs=00022D  Size=000065  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(_cursor.o):
     BSS               Offs=001134  Size=000001  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(_hextab.o):
-    RODATA            Offs=001954  Size=000010  Align=00001  Fill=0000
+    RODATA            Offs=001955  Size=000010  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(_longminstr.o):
-    RODATA            Offs=001964  Size=00000C  Align=00001  Fill=0000
+    RODATA            Offs=001965  Size=00000C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(_oserror.o):
     BSS               Offs=001135  Size=000001  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(_printf.o):
@@ -152,7 +152,7 @@ world.o:
     BSS               Offs=001161  Size=000001  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(cputc.o):
     CODE              Offs=004328  Size=00005F  Align=00001  Fill=0000
-    RODATA            Offs=001970  Size=000008  Align=00001  Fill=0000
+    RODATA            Offs=001971  Size=000008  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(cputs.o):
     CODE              Offs=004387  Size=000023  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(crt0.o):
@@ -160,7 +160,7 @@ world.o:
     ONCE              Offs=00000C  Size=000023  Align=00001  Fill=0000
     INIT              Offs=000000  Size=000002  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ctype.o):
-    RODATA            Offs=001978  Size=00008B  Align=00001  Fill=0000
+    RODATA            Offs=001979  Size=00008B  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ctypemask.o):
     CODE              Offs=0043AA  Size=00001E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decax1.o):
@@ -383,11 +383,11 @@ LOADADDR              0007FF  000800  000002  00001
 EXEHDR                000801  00080C  00000C  00001
 STARTUP               00080D  000834  000028  00001
 CODE                  000835  00567B  004E47  00001
-RODATA                00567C  00707E  001A03  00001
-DATA                  00707F  007348  0002CA  00001
-INIT                  007349  00734A  000002  00001
-BSS                   00734B  0084AC  001162  00001
-ONCE                  00734B  00737B  000031  00001
+RODATA                00567C  00707F  001A04  00001
+DATA                  007080  007349  0002CA  00001
+INIT                  00734A  00734B  000002  00001
+BSS                   00734C  0084AD  001162  00001
+ONCE                  00734C  00737C  000031  00001
 
 
 Exports list by name:
@@ -397,59 +397,59 @@ ENTROPY_GET               00FECF RLA    GETIN                     00FFE4 RLA
 LOAD                      00FFD5 RLA    PLOT                      00FFF0 RLA    
 RDTIM                     00FFDE RLA    SETLFS                    00FFBA RLA    
 SETNAM                    00FFBD RLA    SETTIM                    00FFDB RLA    
-__BSS_RUN__               00734B RLA    __BSS_SIZE__              001162 REA    
-__CONSTRUCTOR_COUNT__     000001 REA    __CONSTRUCTOR_TABLE__     00737A RLA    
-__DESTRUCTOR_COUNT__      000000 REA    __DESTRUCTOR_TABLE__      00707F RLA    
+__BSS_RUN__               00734C RLA    __BSS_SIZE__              001162 REA    
+__CONSTRUCTOR_COUNT__     000001 REA    __CONSTRUCTOR_TABLE__     00737B RLA    
+__DESTRUCTOR_COUNT__      000000 REA    __DESTRUCTOR_TABLE__      007080 RLA    
 __EXEHDR__                000001 REA    __HEADER_LAST__           00080D RLA    
 __HIMEM__                 009F00 REA    __LOADADDR__              000001 REA    
 __MAIN_SIZE__             0096F3 REA    __MAIN_START__            00080D RLA    
-__ONCE_RUN__              00734B RLA    __STACKSIZE__             000800 REA    
-__STARTUP__               000001 REA    __ctype                   006FF4 RLA    
-__ctypeidx                006FFF RLA    __hextab                  006FD0 RLA    
-__longminstr              006FE0 RLA    __oserror                 008480 RLA    
+__ONCE_RUN__              00734C RLA    __STACKSIZE__             000800 REA    
+__STARTUP__               000001 REA    __ctype                   006FF5 RLA    
+__ctypeidx                007000 RLA    __hextab                  006FD1 RLA    
+__longminstr              006FE1 RLA    __oserror                 008481 RLA    
 __printf                  004678 RLA    __randomize               00532F RLA    
-_abs                      005260 RLA    _admin                    00708A RLA    
-_astrogator               00708B RLA    _bookPassengersAndPayCrew 002368 RLA    
-_burtle32                 000F6D RLA    _cargo                    0073A8 RLA    
+_abs                      005260 RLA    _admin                    00708B RLA    
+_astrogator               00708C RLA    _bookPassengersAndPayCrew 002368 RLA    
+_burtle32                 000F6D RLA    _cargo                    0073A9 RLA    
 _cbm_k_bsout              00FFD2 RLA    _cbm_k_load               0049FA RLA    
 _cbm_k_setlfs             004A17 RLA    _cbm_k_setnam             004A25 RLA    
 _cclear                   004A54 RLA    _cclearxy                 004A4F RLA    
 _cgetc                    004A64 RLA    _chline                   004ACD RLA    
 _chlinexy                 004AC8 RLA    _clearComponentState      000C33 RLA    
 _clock                    004AE4 RLA    _clrscr                   004AEC RLA    
-_componentLabel           007120 RLA    _cost                     0079DB RLA    
+_componentLabel           007121 RLA    _cost                     0079DC RLA    
 _cprintf                  004B33 RLA    _cputc                    004B62 RLA    
 _cputcxy                  004B5D RLA    _cputs                    004BC6 RLA    
-_cputsxy                  004BBC RLA    _current                  007434 RLA    
-_destination              00747A RLA    _diceRoll                 0011A7 RLA    
+_cputsxy                  004BBC RLA    _current                  007435 RLA    
+_destination              00747B RLA    _diceRoll                 0011A7 RLA    
 _diceRoll2d               001144 RLA    _diceRoll3d               00116C RLA    
-_drawWorld                003F20 RLA    _engineer                 00708C RLA    
+_drawWorld                003F20 RLA    _engineer                 00708D RLA    
 _findHighestSkillFor      0012C9 RLA    _getEmplacementName       00123D RLA    
 _getStatusLabel           000CBA RLA    _getWeaponName            0012A8 RLA    
 _getWorld                 004069 RLA    _gotox                    004C7A RLA    
-_gotoxy                   004C83 RLA    _gunner                   00708D RLA    
-_hcr                      007080 RLA    _hire                     0012BA RLA    
-_jamison                  0079CC RLA    _jump                     0017EC RLA    
+_gotoxy                   004C83 RLA    _gunner                   00708E RLA    
+_hcr                      007081 RLA    _hire                     0012BA RLA    
+_jamison                  0079CD RLA    _jump                     0017EC RLA    
 _jumpmapSetDestination    001A73 RLA    _jumpmapShow              0019D0 RLA    
 _kbhit                    004D18 RLA    _landAtShipyard           002C12 RLA    
 _landAtStarport           003175 RLA    _loadFileToBank           0010CE RLA    
 _ltoa                     004FDF RLA    _main                     000B6D RLA    
-_maneuver                 002172 RLA    _medic                    00708E RLA    
+_maneuver                 002172 RLA    _medic                    00708F RLA    
 _memcpy                   005135 RLA    _menu_run                 002256 RLA    
-_parsecDistance           000FC1 RLA    _pay_period               0073A7 RLA    
-_pilot                    00708F RLA    _piracy                   002668 RLA    
-_playerAchievementLevel   00707F RLA    _pressReturnAndClear      00111C RLA    
+_parsecDistance           000FC1 RLA    _pay_period               0073A8 RLA    
+_pilot                    007090 RLA    _piracy                   002668 RLA    
+_playerAchievementLevel   007080 RLA    _pressReturnAndClear      00111C RLA    
 _printAlarmBar            000C49 RLA    _rand                     005307 RLA    
 _readShip                 002A4A RLA    _redline                  00106D RLA    
 _revers                   005335 RLA    _setBank                  000F80 RLA    
-_ship                     00734B RLA    _shipDamage               007391 RLA    
-_shipState                00737B RLA    _ship_describe            002791 RLA    
+_ship                     00734C RLA    _shipDamage               007392 RLA    
+_shipState                00737C RLA    _ship_describe            002791 RLA    
 _ship_init                00277C RLA    _showCurrentLocation      002106 RLA    
 _showShipSummary          002669 RLA    _sleep                    0053C6 RLA    
 _sprite_define            002E6E RLA    _sprite_loadToVERA        002E45 RLA    
-_srand                    0052FB RLA    _starport                 0074C1 RLA    
-_statusLine               00108B RLA    _steward                  007090 RLA    
-_streetwise               007091 RLA    _strlen                   00549A RLA    
+_srand                    0052FB RLA    _starport                 0074C2 RLA    
+_statusLine               00108B RLA    _steward                  007091 RLA    
+_streetwise               007092 RLA    _strlen                   00549A RLA    
 _strlower                 0054B0 RLA    _strncpy                  0054D7 RLA    
 _textcolor                004AFD RLA    _titleLine                001077 RLA    
 _toDefaultColor           00109F RLA    _trade_calculateMarketPrices 0034FA RLA    
@@ -468,7 +468,7 @@ boolge                    005120 RLA    boolgt                    00511E RLA
 boollt                    005118 RLA    boolule                   005126 RLA    
 callmain                  004A38 RLA    chlinechar                000040 REZ    
 cputdirect                004B75 RLA    ctypemaskdirect           004BE3 RLA    
-cursor                    00847F RLA    decax1                    004BFD RLA    
+cursor                    008480 RLA    decax1                    004BFD RLA    
 decax2                    004C04 RLA    decax3                    004C0B RLA    
 decaxy                    004C12 RLA    decsp1                    004C1B RLA    
 decsp2                    004C24 RLA    decsp4                    004C31 RLA    
@@ -483,7 +483,7 @@ inceaxy                   004E54 RLA    incsp1                    004CE8 RLA
 incsp2                    004CF6 RLA    incsp3                    004D04 RLA    
 incsp4                    004D09 RLA    incsp5                    004D0E RLA    
 incsp6                    004D13 RLA    initclock                 004ADD  LAI   
-initlib                   00734B RLA    laddeq                    004D52 RLA    
+initlib                   00734C RLA    laddeq                    004D52 RLA    
 laddeq0sp                 004D76 RLA    ldaidx                    004DD4 RLA    
 ldax0sp                   004DED RLA    ldaxi                     004DE0 RLA    
 ldaxidx                   004DE2 RLA    ldaxysp                   004DEF RLA    
@@ -660,23 +660,23 @@ subeq0sp                  00552D RLA    subeqysp                  00552F RLA
 subysp                    005542 RLA    toslong                   00556A RLA    
 tosudiva0                 005581 RLA    udiv16                    005592 RLA    
 tosumoda0                 0055D0 RLA    _vcprintf                 005629 RLA    
-zerobss                   005659 RLA    __hextab                  006FD0 RLA    
-__longminstr              006FE0 RLA    __ctype                   006FF4 RLA    
-__ctypeidx                006FFF RLA    _playerAchievementLevel   00707F RLA    
-__DESTRUCTOR_TABLE__      00707F RLA    _hcr                      007080 RLA    
-_admin                    00708A RLA    _astrogator               00708B RLA    
-_engineer                 00708C RLA    _gunner                   00708D RLA    
-_medic                    00708E RLA    _pilot                    00708F RLA    
-_steward                  007090 RLA    _streetwise               007091 RLA    
-_componentLabel           007120 RLA    _ship                     00734B RLA    
-__ONCE_RUN__              00734B RLA    __BSS_RUN__               00734B RLA    
-initlib                   00734B RLA    __CONSTRUCTOR_TABLE__     00737A RLA    
-_shipState                00737B RLA    _shipDamage               007391 RLA    
-_pay_period               0073A7 RLA    _cargo                    0073A8 RLA    
-_current                  007434 RLA    _destination              00747A RLA    
-_starport                 0074C1 RLA    _jamison                  0079CC RLA    
-_cost                     0079DB RLA    cursor                    00847F RLA    
-__oserror                 008480 RLA    __MAIN_SIZE__             0096F3 REA    
+zerobss                   005659 RLA    __hextab                  006FD1 RLA    
+__longminstr              006FE1 RLA    __ctype                   006FF5 RLA    
+__ctypeidx                007000 RLA    _playerAchievementLevel   007080 RLA    
+__DESTRUCTOR_TABLE__      007080 RLA    _hcr                      007081 RLA    
+_admin                    00708B RLA    _astrogator               00708C RLA    
+_engineer                 00708D RLA    _gunner                   00708E RLA    
+_medic                    00708F RLA    _pilot                    007090 RLA    
+_steward                  007091 RLA    _streetwise               007092 RLA    
+_componentLabel           007121 RLA    _ship                     00734C RLA    
+__ONCE_RUN__              00734C RLA    __BSS_RUN__               00734C RLA    
+initlib                   00734C RLA    __CONSTRUCTOR_TABLE__     00737B RLA    
+_shipState                00737C RLA    _shipDamage               007392 RLA    
+_pay_period               0073A8 RLA    _cargo                    0073A9 RLA    
+_current                  007435 RLA    _destination              00747B RLA    
+_starport                 0074C2 RLA    _jamison                  0079CD RLA    
+_cost                     0079DC RLA    cursor                    008480 RLA    
+__oserror                 008481 RLA    __MAIN_SIZE__             0096F3 REA    
 __HIMEM__                 009F00 REA    ENTROPY_GET               00FECF RLA    
 SETLFS                    00FFBA RLA    SETNAM                    00FFBD RLA    
 CHROUT                    00FFD2 RLA    BSOUT                     00FFD2 RLA    
