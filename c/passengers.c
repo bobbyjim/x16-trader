@@ -64,7 +64,7 @@ void bookPassengersAndPayCrew()
 
    clrscr();
    gotoxy(5,2);
-   textcolor(COLOR_LIGHTRED);
+   textcolor(COLOR_GREEN);
    cprintf("booking passengers bound for %s", WORLD_LONG_LABEL(&destination));
    titleLine();
 
@@ -82,20 +82,24 @@ void bookPassengersAndPayCrew()
    low_00  = ship.demand + 10;
 
    textcolor(COLOR_LIGHTRED);
-   cprintf("     balance subtotal 1:              cr %7ld00\r\n\r\n", hcr );
+   cprintf("     initial balance:                 cr %7ld00\r\n\r\n", hcr );
 
    subtotal = high * high_00 + mid * mid_00 + low * low_00;
    hcr += subtotal;
 
    textcolor(COLOR_LIGHTBLUE);
-   cprintf("     %2u high passengers booked at cr %u00 each.\r\n\r\n", high, high_00);
-   cprintf("     %2u mid passengers booked at cr %u00 each.\r\n\r\n", mid, mid_00);
-   cprintf("     %2u low passengers booked at cr %u00 each.\r\n\r\n", low, low_00);
-   cprintf("\r\n\r\n");
-   cprintf("     revenue from passengers:       + cr %9lu\r\n\r\n", (long)subtotal * 100L );
+   if (high) cprintf("     %2u high passengers booked at cr %u00 each.\r\n\r\n", high, high_00);
+   if (mid ) cprintf("     %2u mid passengers booked at cr %u00 each.\r\n\r\n", mid, mid_00);
+   if (low ) cprintf("     %2u low passengers booked at cr %u00 each.\r\n\r\n", low, low_00);
 
-   textcolor(COLOR_LIGHTRED);
-   cprintf("     balance subtotal 2:              cr %7ld00\r\n\r\n", hcr );
+   cprintf("\r\n\r\n");
+
+   if (high + mid + low)
+   {
+      cprintf("     revenue from passengers:       + cr %9lu\r\n\r\n", (long)subtotal * 100L );
+      textcolor(COLOR_LIGHTRED);
+      cprintf("     balance subtotal:                cr %7ld00\r\n\r\n", hcr );
+   }
 
    //
    // freight (T5 Book 2 p220)
@@ -128,7 +132,7 @@ void bookPassengersAndPayCrew()
    hcr += totalFreight * 10;
 
    textcolor(COLOR_LIGHTRED);
-   cprintf("     balance subtotal 3:              cr %7ld00\r\n\r\n", hcr );
+   cprintf("     balance subtotal:                cr %7ld00\r\n\r\n", hcr );
    //
    //  hcr per week
    //

@@ -44,7 +44,7 @@ char* advicePerPlayerAchievementLevel[] = {
    "",
    "wilderness refueling is a cheap way to refuel, but takes time.",
    "    e-class starports are simply marked landing fields.",
-   "         beware of amber and red zone worlds!",
+   "           beware of amber and red zone worlds!",
    "     hire an astrogator... these jumps take forever!",
    "       buy and sell speculative cargo at the market.",
    "         upgrade defenses at a and b starports.",
