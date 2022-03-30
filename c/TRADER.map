@@ -3,19 +3,19 @@ Modules list:
 main.o:
     CODE              Offs=000000  Size=00041E  Align=00001  Fill=0000
     RODATA            Offs=000000  Size=00019C  Align=00001  Fill=0000
-    BSS               Offs=000000  Size=000690  Align=00001  Fill=0000
+    BSS               Offs=000000  Size=0006A0  Align=00001  Fill=0000
     DATA              Offs=000000  Size=000027  Align=00001  Fill=0000
 alarm.o:
     CODE              Offs=00041E  Size=0001B5  Align=00001  Fill=0000
     RODATA            Offs=00019C  Size=000183  Align=00001  Fill=0000
-    BSS               Offs=000690  Size=000014  Align=00001  Fill=0000
+    BSS               Offs=0006A0  Size=000014  Align=00001  Fill=0000
     DATA              Offs=000027  Size=0000A5  Align=00001  Fill=0000
 burtle_jsf32.o:
     CODE              Offs=0005D3  Size=0001A5  Align=00001  Fill=0000
-    BSS               Offs=0006A4  Size=000011  Align=00001  Fill=0000
+    BSS               Offs=0006B4  Size=000011  Align=00001  Fill=0000
 combat.o:
     CODE              Offs=000778  Size=000001  Align=00001  Fill=0000
-    BSS               Offs=0006B5  Size=00004A  Align=00001  Fill=0000
+    BSS               Offs=0006C5  Size=00004A  Align=00001  Fill=0000
 common.o:
     CODE              Offs=000779  Size=000259  Align=00001  Fill=0000
     RODATA            Offs=00031F  Size=00001B  Align=00001  Fill=0000
@@ -25,350 +25,359 @@ console.o:
 damage.o:
     CODE              Offs=0009D3  Size=000063  Align=00001  Fill=0000
     RODATA            Offs=00033A  Size=000274  Align=00001  Fill=0000
-    BSS               Offs=0006FF  Size=000001  Align=00001  Fill=0000
+    BSS               Offs=00070F  Size=000001  Align=00001  Fill=0000
     DATA              Offs=0000CE  Size=00002C  Align=00001  Fill=0000
 emplacement.o:
     CODE              Offs=000A36  Size=00007D  Align=00001  Fill=0000
     RODATA            Offs=0005AE  Size=0000B9  Align=00001  Fill=0000
     DATA              Offs=0000FA  Size=000040  Align=00001  Fill=0000
 hiring_hall.o:
-    CODE              Offs=000AB3  Size=000532  Align=00001  Fill=0000
-    RODATA            Offs=000667  Size=00022D  Align=00001  Fill=0000
-    BSS               Offs=000700  Size=0000C8  Align=00001  Fill=0000
-    DATA              Offs=00013A  Size=00006C  Align=00001  Fill=0000
+    CODE              Offs=000AB3  Size=000747  Align=00001  Fill=0000
+    RODATA            Offs=000667  Size=000139  Align=00001  Fill=0000
+    BSS               Offs=000710  Size=00015E  Align=00001  Fill=0000
+    DATA              Offs=00013A  Size=000026  Align=00001  Fill=0000
+insystem.o:
+    CODE              Offs=0011FA  Size=0001F3  Align=00001  Fill=0000
+    RODATA            Offs=0007A0  Size=0000E4  Align=00001  Fill=0000
+    BSS               Offs=00086E  Size=000040  Align=00001  Fill=0000
+    DATA              Offs=000160  Size=000011  Align=00001  Fill=0000
 jump.o:
-    CODE              Offs=000FE5  Size=0001E4  Align=00001  Fill=0000
-    RODATA            Offs=000894  Size=000303  Align=00001  Fill=0000
-    DATA              Offs=0001A6  Size=000020  Align=00001  Fill=0000
+    CODE              Offs=0013ED  Size=0001E0  Align=00001  Fill=0000
+    RODATA            Offs=000884  Size=000305  Align=00001  Fill=0000
+    DATA              Offs=000171  Size=000020  Align=00001  Fill=0000
 jump-map.o:
-    CODE              Offs=0011C9  Size=000736  Align=00001  Fill=0000
-    RODATA            Offs=000B97  Size=0000DB  Align=00001  Fill=0000
-    DATA              Offs=0001C6  Size=000010  Align=00001  Fill=0000
+    CODE              Offs=0015CD  Size=000736  Align=00001  Fill=0000
+    RODATA            Offs=000B89  Size=0000DB  Align=00001  Fill=0000
+    DATA              Offs=000191  Size=000010  Align=00001  Fill=0000
 maneuver-map.o:
-    CODE              Offs=0018FF  Size=000150  Align=00001  Fill=0000
-    RODATA            Offs=000C72  Size=0000A1  Align=00001  Fill=0000
+    CODE              Offs=001D03  Size=000150  Align=00001  Fill=0000
+    RODATA            Offs=000C64  Size=0000A1  Align=00001  Fill=0000
 menu.o:
-    CODE              Offs=001A4F  Size=000112  Align=00001  Fill=0000
-    BSS               Offs=0007C8  Size=000003  Align=00001  Fill=0000
+    CODE              Offs=001E53  Size=000112  Align=00001  Fill=0000
+    BSS               Offs=0008AE  Size=000003  Align=00001  Fill=0000
+name.o:
+    CODE              Offs=001F65  Size=000106  Align=00001  Fill=0000
+    RODATA            Offs=000D05  Size=00024C  Align=00001  Fill=0000
+    DATA              Offs=0001A1  Size=000018  Align=00001  Fill=0000
 passengers.o:
-    CODE              Offs=001B61  Size=000559  Align=00001  Fill=0000
-    RODATA            Offs=000D13  Size=0001F0  Align=00001  Fill=0000
-piracy.o:
-    CODE              Offs=0020BA  Size=000001  Align=00001  Fill=0000
+    CODE              Offs=00206B  Size=000559  Align=00001  Fill=0000
+    RODATA            Offs=000F51  Size=0001F0  Align=00001  Fill=0000
 ship.o:
-    CODE              Offs=0020BB  Size=000656  Align=00001  Fill=0000
-    RODATA            Offs=000F03  Size=000573  Align=00001  Fill=0000
-    DATA              Offs=0001D6  Size=00004C  Align=00001  Fill=0000
+    CODE              Offs=0025C4  Size=000709  Align=00001  Fill=0000
+    RODATA            Offs=001141  Size=00057F  Align=00001  Fill=0000
+    DATA              Offs=0001B9  Size=00004C  Align=00001  Fill=0000
 shipyard.o:
-    CODE              Offs=002711  Size=000221  Align=00001  Fill=0000
-    RODATA            Offs=001476  Size=0000BD  Align=00001  Fill=0000
-    BSS               Offs=0007CB  Size=000001  Align=00001  Fill=0000
+    CODE              Offs=002CCD  Size=000221  Align=00001  Fill=0000
+    RODATA            Offs=0016C0  Size=0000BD  Align=00001  Fill=0000
+    BSS               Offs=0008B1  Size=000001  Align=00001  Fill=0000
 sprite.o:
-    CODE              Offs=002932  Size=000330  Align=00001  Fill=0000
-    BSS               Offs=0007CC  Size=000006  Align=00001  Fill=0000
+    CODE              Offs=002EEE  Size=000330  Align=00001  Fill=0000
+    BSS               Offs=0008B2  Size=000006  Align=00001  Fill=0000
 starport.o:
-    CODE              Offs=002C62  Size=000341  Align=00001  Fill=0000
-    RODATA            Offs=001533  Size=00015F  Align=00001  Fill=0000
+    CODE              Offs=00321E  Size=000341  Align=00001  Fill=0000
+    RODATA            Offs=00177D  Size=00015F  Align=00001  Fill=0000
 trade.o:
-    CODE              Offs=002FA3  Size=000722  Align=00001  Fill=0000
-    RODATA            Offs=001692  Size=0000B3  Align=00001  Fill=0000
-    DATA              Offs=000222  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=00355F  Size=000722  Align=00001  Fill=0000
+    RODATA            Offs=0018DC  Size=0000B3  Align=00001  Fill=0000
+    DATA              Offs=000205  Size=00000E  Align=00001  Fill=0000
 wilderness.o:
-    CODE              Offs=0036C5  Size=0000FC  Align=00001  Fill=0000
-    RODATA            Offs=001745  Size=000136  Align=00001  Fill=0000
+    CODE              Offs=003C81  Size=0000FC  Align=00001  Fill=0000
+    RODATA            Offs=00198F  Size=000136  Align=00001  Fill=0000
 world.o:
-    CODE              Offs=0037C1  Size=0008A5  Align=00001  Fill=0000
-    RODATA            Offs=00187B  Size=000209  Align=00001  Fill=0000
-    BSS               Offs=0007D2  Size=000960  Align=00001  Fill=0000
-    DATA              Offs=000230  Size=000065  Align=00001  Fill=0000
+    CODE              Offs=003D7D  Size=0008A5  Align=00001  Fill=0000
+    RODATA            Offs=001AC5  Size=000209  Align=00001  Fill=0000
+    BSS               Offs=0008B8  Size=000960  Align=00001  Fill=0000
+    DATA              Offs=000213  Size=000065  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(_cursor.o):
-    BSS               Offs=001132  Size=000001  Align=00001  Fill=0000
+    BSS               Offs=001218  Size=000001  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(_hextab.o):
-    RODATA            Offs=001A84  Size=000010  Align=00001  Fill=0000
+    RODATA            Offs=001CCE  Size=000010  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(_longminstr.o):
-    RODATA            Offs=001A94  Size=00000C  Align=00001  Fill=0000
+    RODATA            Offs=001CDE  Size=00000C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(_oserror.o):
-    BSS               Offs=001133  Size=000001  Align=00001  Fill=0000
+    BSS               Offs=001219  Size=000001  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(_printf.o):
-    CODE              Offs=004066  Size=0003A5  Align=00001  Fill=0000
-    BSS               Offs=001134  Size=00002B  Align=00001  Fill=0000
-    DATA              Offs=000295  Size=000003  Align=00001  Fill=0000
+    CODE              Offs=004622  Size=0003A5  Align=00001  Fill=0000
+    BSS               Offs=00121A  Size=00002B  Align=00001  Fill=0000
+    DATA              Offs=000278  Size=000003  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(add.o):
-    CODE              Offs=00440B  Size=000018  Align=00001  Fill=0000
+    CODE              Offs=0049C7  Size=000018  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(addeqsp.o):
-    CODE              Offs=004423  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=0049DF  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(addysp.o):
-    CODE              Offs=004434  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=0049F0  Size=00000E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(aslax1.o):
-    CODE              Offs=004442  Size=000008  Align=00001  Fill=0000
+    CODE              Offs=0049FE  Size=000008  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(aslax2.o):
-    CODE              Offs=00444A  Size=00000B  Align=00001  Fill=0000
+    CODE              Offs=004A06  Size=00000B  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(aslax3.o):
-    CODE              Offs=004455  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=004A11  Size=00000E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(aslax4.o):
-    CODE              Offs=004463  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=004A1F  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(asleax1.o):
-    CODE              Offs=004474  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=004A30  Size=00000C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(asleax3.o):
-    CODE              Offs=004480  Size=00001A  Align=00001  Fill=0000
+    CODE              Offs=004A3C  Size=00001A  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(asleax4.o):
-    CODE              Offs=00449A  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=004A56  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(asrax1.o):
-    CODE              Offs=0044AB  Size=00000A  Align=00001  Fill=0000
+    CODE              Offs=004A67  Size=00000A  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(asrax4.o):
-    CODE              Offs=0044B5  Size=000019  Align=00001  Fill=0000
+    CODE              Offs=004A71  Size=000019  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(axlong.o):
-    CODE              Offs=0044CE  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=004A8A  Size=00000D  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(c_bsout.o):
 /Users/rje/git/cc65/lib/cx16.lib(c_load.o):
-    CODE              Offs=0044DB  Size=00001D  Align=00001  Fill=0000
+    CODE              Offs=004A97  Size=00001D  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(c_setlfs.o):
-    CODE              Offs=0044F8  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=004AB4  Size=00000E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(c_setnam.o):
-    CODE              Offs=004506  Size=000013  Align=00001  Fill=0000
+    CODE              Offs=004AC2  Size=000013  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(callmain.o):
-    CODE              Offs=004519  Size=000017  Align=00001  Fill=0000
-    DATA              Offs=000298  Size=000004  Align=00001  Fill=0000
+    CODE              Offs=004AD5  Size=000017  Align=00001  Fill=0000
+    DATA              Offs=00027B  Size=000004  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(cclear.o):
-    CODE              Offs=004530  Size=000015  Align=00001  Fill=0000
+    CODE              Offs=004AEC  Size=000015  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(cgetc.o):
-    CODE              Offs=004545  Size=000064  Align=00001  Fill=0000
+    CODE              Offs=004B01  Size=000064  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(chline.o):
-    CODE              Offs=0045A9  Size=000015  Align=00001  Fill=0000
+    CODE              Offs=004B65  Size=000015  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(clinechars.o):
 /Users/rje/git/cc65/lib/cx16.lib(clock.o):
-    CODE              Offs=0045BE  Size=00000F  Align=00001  Fill=0000
+    CODE              Offs=004B7A  Size=00000F  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(clrscr.o):
-    CODE              Offs=0045CD  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=004B89  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(color.o):
-    CODE              Offs=0045DE  Size=00002A  Align=00001  Fill=0000
+    CODE              Offs=004B9A  Size=00002A  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(condes.o):
-    CODE              Offs=004608  Size=00000C  Align=00001  Fill=0000
-    DATA              Offs=00029C  Size=000025  Align=00001  Fill=0000
+    CODE              Offs=004BC4  Size=00000C  Align=00001  Fill=0000
+    DATA              Offs=00027F  Size=000025  Align=00001  Fill=0000
     ONCE              Offs=000000  Size=00000C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(cprintf.o):
-    CODE              Offs=004614  Size=00002A  Align=00001  Fill=0000
-    BSS               Offs=00115F  Size=000001  Align=00001  Fill=0000
+    CODE              Offs=004BD0  Size=00002A  Align=00001  Fill=0000
+    BSS               Offs=001245  Size=000001  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(cputc.o):
-    CODE              Offs=00463E  Size=00005F  Align=00001  Fill=0000
-    RODATA            Offs=001AA0  Size=000008  Align=00001  Fill=0000
+    CODE              Offs=004BFA  Size=00005F  Align=00001  Fill=0000
+    RODATA            Offs=001CEA  Size=000008  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(cputs.o):
-    CODE              Offs=00469D  Size=000023  Align=00001  Fill=0000
+    CODE              Offs=004C59  Size=000023  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(crt0.o):
     STARTUP           Offs=000000  Size=000028  Align=00001  Fill=0000
     ONCE              Offs=00000C  Size=000023  Align=00001  Fill=0000
     INIT              Offs=000000  Size=000002  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ctype.o):
-    RODATA            Offs=001AA8  Size=00008B  Align=00001  Fill=0000
+    RODATA            Offs=001CF2  Size=00008B  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ctypemask.o):
-    CODE              Offs=0046C0  Size=00001E  Align=00001  Fill=0000
+    CODE              Offs=004C7C  Size=00001E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decax1.o):
-    CODE              Offs=0046DE  Size=000007  Align=00001  Fill=0000
+    CODE              Offs=004C9A  Size=000007  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decax2.o):
-    CODE              Offs=0046E5  Size=000007  Align=00001  Fill=0000
+    CODE              Offs=004CA1  Size=000007  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decax3.o):
-    CODE              Offs=0046EC  Size=000007  Align=00001  Fill=0000
+    CODE              Offs=004CA8  Size=000007  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decaxy.o):
-    CODE              Offs=0046F3  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=004CAF  Size=000009  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decsp1.o):
-    CODE              Offs=0046FC  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=004CB8  Size=000009  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decsp2.o):
-    CODE              Offs=004705  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=004CC1  Size=00000D  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decsp4.o):
-    CODE              Offs=004712  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=004CCE  Size=00000D  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decsp5.o):
-    CODE              Offs=00471F  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=004CDB  Size=00000D  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decsp6.o):
-    CODE              Offs=00472C  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=004CE8  Size=00000D  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(decsp8.o):
-    CODE              Offs=004739  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=004CF5  Size=00000D  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(div.o):
-    CODE              Offs=004746  Size=000015  Align=00001  Fill=0000
+    CODE              Offs=004D02  Size=000015  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(exehdr.o):
     EXEHDR            Offs=000000  Size=00000C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(gotox.o):
-    CODE              Offs=00475B  Size=000006  Align=00001  Fill=0000
+    CODE              Offs=004D17  Size=000006  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(gotoxy.o):
-    CODE              Offs=004761  Size=00000F  Align=00001  Fill=0000
+    CODE              Offs=004D1D  Size=00000F  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(icmp.o):
-    CODE              Offs=004770  Size=00002E  Align=00001  Fill=0000
+    CODE              Offs=004D2C  Size=00002E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incax2.o):
-    CODE              Offs=00479E  Size=000007  Align=00001  Fill=0000
+    CODE              Offs=004D5A  Size=000007  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incax3.o):
-    CODE              Offs=0047A5  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=004D61  Size=000005  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incax5.o):
-    CODE              Offs=0047AA  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=004D66  Size=000005  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incax6.o):
-    CODE              Offs=0047AF  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=004D6B  Size=000005  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incax7.o):
-    CODE              Offs=0047B4  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=004D70  Size=000005  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incax8.o):
-    CODE              Offs=0047B9  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=004D75  Size=000005  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incaxy.o):
-    CODE              Offs=0047BE  Size=00000B  Align=00001  Fill=0000
+    CODE              Offs=004D7A  Size=00000B  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incsp1.o):
-    CODE              Offs=0047C9  Size=000007  Align=00001  Fill=0000
+    CODE              Offs=004D85  Size=000007  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incsp2.o):
-    CODE              Offs=0047D0  Size=000015  Align=00001  Fill=0000
+    CODE              Offs=004D8C  Size=000015  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incsp3.o):
-    CODE              Offs=0047E5  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=004DA1  Size=000005  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incsp4.o):
-    CODE              Offs=0047EA  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=004DA6  Size=000005  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incsp5.o):
-    CODE              Offs=0047EF  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=004DAB  Size=000005  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(incsp6.o):
-    CODE              Offs=0047F4  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=004DB0  Size=000005  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(kbhit.o):
-    CODE              Offs=0047F9  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=004DB5  Size=00000E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(kernal.o):
 /Users/rje/git/cc65/lib/cx16.lib(ladd.o):
-    CODE              Offs=004807  Size=000024  Align=00001  Fill=0000
+    CODE              Offs=004DC3  Size=000024  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(laddeq.o):
-    CODE              Offs=00482B  Size=00002C  Align=00001  Fill=0000
+    CODE              Offs=004DE7  Size=00002C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(laddeqsp.o):
-    CODE              Offs=004857  Size=000023  Align=00001  Fill=0000
+    CODE              Offs=004E13  Size=000023  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lcmp.o):
-    CODE              Offs=00487A  Size=00003B  Align=00001  Fill=0000
+    CODE              Offs=004E36  Size=00003B  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ldai.o):
-    CODE              Offs=0048B5  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=004E71  Size=00000C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ldaxi.o):
-    CODE              Offs=0048C1  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=004E7D  Size=00000D  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ldaxsp.o):
-    CODE              Offs=0048CE  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=004E8A  Size=000009  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ldeaxi.o):
-    CODE              Offs=0048D7  Size=000017  Align=00001  Fill=0000
+    CODE              Offs=004E93  Size=000017  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ldeaxysp.o):
-    CODE              Offs=0048EE  Size=000013  Align=00001  Fill=0000
+    CODE              Offs=004EAA  Size=000013  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ldiv.o):
-    CODE              Offs=004901  Size=00001C  Align=00001  Fill=0000
+    CODE              Offs=004EBD  Size=00001C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(leaaxsp.o):
-    CODE              Offs=00491D  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=004ED9  Size=00000C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lge.o):
-    CODE              Offs=004929  Size=000006  Align=00001  Fill=0000
+    CODE              Offs=004EE5  Size=000006  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lgt.o):
-    CODE              Offs=00492F  Size=000006  Align=00001  Fill=0000
+    CODE              Offs=004EEB  Size=000006  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(linc.o):
-    CODE              Offs=004935  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=004EF1  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(llt.o):
-    CODE              Offs=004946  Size=000006  Align=00001  Fill=0000
+    CODE              Offs=004F02  Size=000006  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lmul.o):
-    CODE              Offs=00494C  Size=000059  Align=00001  Fill=0000
+    CODE              Offs=004F08  Size=000059  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lneg.o):
-    CODE              Offs=0049A5  Size=00001E  Align=00001  Fill=0000
+    CODE              Offs=004F61  Size=00001E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(loadaddr.o):
     LOADADDR          Offs=000000  Size=000002  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lor.o):
-    CODE              Offs=0049C3  Size=000021  Align=00001  Fill=0000
+    CODE              Offs=004F7F  Size=000021  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lpush.o):
-    CODE              Offs=0049E4  Size=00001E  Align=00001  Fill=0000
+    CODE              Offs=004FA0  Size=00001E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lshelp.o):
-    CODE              Offs=004A02  Size=000052  Align=00001  Fill=0000
+    CODE              Offs=004FBE  Size=000052  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lsub.o):
-    CODE              Offs=004A54  Size=000024  Align=00001  Fill=0000
+    CODE              Offs=005010  Size=000024  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lsubeq.o):
-    CODE              Offs=004A78  Size=000030  Align=00001  Fill=0000
+    CODE              Offs=005034  Size=000030  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ltoa.o):
-    CODE              Offs=004AA8  Size=000093  Align=00001  Fill=0000
+    CODE              Offs=005064  Size=000093  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(ludiv.o):
-    CODE              Offs=004B3B  Size=000077  Align=00001  Fill=0000
+    CODE              Offs=0050F7  Size=000077  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lumod.o):
-    CODE              Offs=004BB2  Size=000017  Align=00001  Fill=0000
+    CODE              Offs=00516E  Size=000017  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(lxor.o):
-    CODE              Offs=004BC9  Size=000021  Align=00001  Fill=0000
+    CODE              Offs=005185  Size=000021  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(makebool.o):
-    CODE              Offs=004BEA  Size=00002C  Align=00001  Fill=0000
+    CODE              Offs=0051A6  Size=00002C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(memcpy.o):
-    CODE              Offs=004C16  Size=00003C  Align=00001  Fill=0000
+    CODE              Offs=0051D2  Size=00003C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(mod.o):
-    CODE              Offs=004C52  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=00520E  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(mul.o):
-    CODE              Offs=004C63  Size=000045  Align=00001  Fill=0000
+    CODE              Offs=00521F  Size=000045  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(mul8.o):
-    CODE              Offs=004CA8  Size=00003A  Align=00001  Fill=0000
+    CODE              Offs=005264  Size=00003A  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(mulax10.o):
-    CODE              Offs=004CE2  Size=000019  Align=00001  Fill=0000
+    CODE              Offs=00529E  Size=000019  Align=00001  Fill=0000
+/Users/rje/git/cc65/lib/cx16.lib(mulax3.o):
+    CODE              Offs=0052B7  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(mulax6.o):
-    CODE              Offs=004CFB  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=0052C8  Size=000016  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(mulax7.o):
-    CODE              Offs=004D11  Size=000019  Align=00001  Fill=0000
+    CODE              Offs=0052DE  Size=000019  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(mulax9.o):
-    CODE              Offs=004D2A  Size=000017  Align=00001  Fill=0000
+    CODE              Offs=0052F7  Size=000017  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(negabs.o):
-    CODE              Offs=004D41  Size=000012  Align=00001  Fill=0000
+    CODE              Offs=00530E  Size=000012  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(or.o):
-    CODE              Offs=004D53  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=005320  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(popa.o):
-    CODE              Offs=004D64  Size=00000A  Align=00001  Fill=0000
+    CODE              Offs=005331  Size=00000A  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(popptr1.o):
-    CODE              Offs=004D6E  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=00533B  Size=00000E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(push1.o):
-    CODE              Offs=004D7C  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005349  Size=000005  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(pusha.o):
-    CODE              Offs=004D81  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=00534E  Size=000016  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(pushax.o):
-    CODE              Offs=004D97  Size=00001A  Align=00001  Fill=0000
+    CODE              Offs=005364  Size=00001A  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(pushw.o):
-    CODE              Offs=004DB1  Size=00000F  Align=00001  Fill=0000
+    CODE              Offs=00537E  Size=00000F  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(pushwsp.o):
-    CODE              Offs=004DC0  Size=00001C  Align=00001  Fill=0000
+    CODE              Offs=00538D  Size=00001C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(rand.o):
-    CODE              Offs=004DDC  Size=000034  Align=00001  Fill=0000
-    DATA              Offs=0002C1  Size=000004  Align=00001  Fill=0000
+    CODE              Offs=0053A9  Size=000034  Align=00001  Fill=0000
+    DATA              Offs=0002A4  Size=000004  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(randomize.o):
-    CODE              Offs=004E10  Size=000006  Align=00001  Fill=0000
+    CODE              Offs=0053DD  Size=000006  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(revers.o):
-    CODE              Offs=004E16  Size=000013  Align=00001  Fill=0000
+    CODE              Offs=0053E3  Size=000013  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(shelp.o):
-    CODE              Offs=004E29  Size=000020  Align=00001  Fill=0000
+    CODE              Offs=0053F6  Size=000020  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(shrax1.o):
-    CODE              Offs=004E49  Size=000008  Align=00001  Fill=0000
+    CODE              Offs=005416  Size=000008  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(shrax3.o):
-    CODE              Offs=004E51  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=00541E  Size=00000E  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(shrax4.o):
-    CODE              Offs=004E5F  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=00542C  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(shreax1.o):
-    CODE              Offs=004E70  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=00543D  Size=00000C  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(shreax3.o):
-    CODE              Offs=004E7C  Size=00001A  Align=00001  Fill=0000
+    CODE              Offs=005449  Size=00001A  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(shreax4.o):
-    CODE              Offs=004E96  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=005463  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(sleep.o):
-    CODE              Offs=004EA7  Size=000043  Align=00001  Fill=0000
+    CODE              Offs=005474  Size=000043  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(sprites_enable.o):
-    CODE              Offs=004EEA  Size=00001F  Align=00001  Fill=0000
+    CODE              Offs=0054B7  Size=00001F  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(staspidx.o):
-    CODE              Offs=004F09  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=0054D6  Size=000016  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(staxsp.o):
-    CODE              Offs=004F1F  Size=00000B  Align=00001  Fill=0000
-/Users/rje/git/cc65/lib/cx16.lib(staxspi.o):
-    CODE              Offs=004F2A  Size=00001A  Align=00001  Fill=0000
+    CODE              Offs=0054EC  Size=00000B  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(steaxsp.o):
-    CODE              Offs=004F44  Size=000015  Align=00001  Fill=0000
+    CODE              Offs=0054F7  Size=000015  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(steaxspi.o):
-    CODE              Offs=004F59  Size=000022  Align=00001  Fill=0000
+    CODE              Offs=00550C  Size=000022  Align=00001  Fill=0000
+/Users/rje/git/cc65/lib/cx16.lib(strcpy.o):
+    CODE              Offs=00552E  Size=00001F  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(strlen.o):
-    CODE              Offs=004F7B  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=00554D  Size=000016  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(strlower.o):
-    CODE              Offs=004F91  Size=000027  Align=00001  Fill=0000
+    CODE              Offs=005563  Size=000027  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(strncpy.o):
-    CODE              Offs=004FB8  Size=000042  Align=00001  Fill=0000
+    CODE              Offs=00558A  Size=000042  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(sub.o):
-    CODE              Offs=004FFA  Size=000014  Align=00001  Fill=0000
+    CODE              Offs=0055CC  Size=000014  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(subeqsp.o):
-    CODE              Offs=00500E  Size=000015  Align=00001  Fill=0000
+    CODE              Offs=0055E0  Size=000015  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(subysp.o):
-    CODE              Offs=005023  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=0055F5  Size=00000D  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(toslong.o):
-    CODE              Offs=005030  Size=000032  Align=00001  Fill=0000
+    CODE              Offs=005602  Size=000032  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(udiv.o):
-    CODE              Offs=005062  Size=00004F  Align=00001  Fill=0000
+    CODE              Offs=005634  Size=00004F  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(umod.o):
-    CODE              Offs=0050B1  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=005683  Size=000011  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(vcprintf.o):
-    CODE              Offs=0050C2  Size=000078  Align=00001  Fill=0000
-    DATA              Offs=0002C5  Size=000008  Align=00001  Fill=0000
+    CODE              Offs=005694  Size=000078  Align=00001  Fill=0000
+    DATA              Offs=0002A8  Size=000008  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(zerobss.o):
-    CODE              Offs=00513A  Size=000023  Align=00001  Fill=0000
+    CODE              Offs=00570C  Size=000023  Align=00001  Fill=0000
 /Users/rje/git/cc65/lib/cx16.lib(zeropage.o):
     ZEROPAGE          Offs=000000  Size=00001A  Align=00001  Fill=0000
 
@@ -381,12 +390,12 @@ ZEROPAGE              000022  00003B  00001A  00001
 LOADADDR              0007FF  000800  000002  00001
 EXEHDR                000801  00080C  00000C  00001
 STARTUP               00080D  000834  000028  00001
-CODE                  000835  005991  00515D  00001
-RODATA                005992  0074C4  001B33  00001
-DATA                  0074C5  007791  0002CD  00001
-INIT                  007792  007793  000002  00001
-BSS                   007794  0088F3  001160  00001
-ONCE                  007794  0077C4  000031  00001
+CODE                  000835  005F63  00572F  00001
+RODATA                005F64  007CE0  001D7D  00001
+DATA                  007CE1  007F90  0002B0  00001
+INIT                  007F91  007F92  000002  00001
+BSS                   007F93  0091D8  001246  00001
+ONCE                  007F93  007FC3  000031  00001
 
 
 Exports list by name:
@@ -396,153 +405,154 @@ ENTROPY_GET               00FECF RLA    GETIN                     00FFE4 RLA
 LOAD                      00FFD5 RLA    PLOT                      00FFF0 RLA    
 RDTIM                     00FFDE RLA    SETLFS                    00FFBA RLA    
 SETNAM                    00FFBD RLA    SETTIM                    00FFDB RLA    
-__BSS_RUN__               007794 RLA    __BSS_SIZE__              001160 REA    
-__CONSTRUCTOR_COUNT__     000001 REA    __CONSTRUCTOR_TABLE__     0077C3 RLA    
-__DESTRUCTOR_COUNT__      000000 REA    __DESTRUCTOR_TABLE__      0074C5 RLA    
+__BSS_RUN__               007F93 RLA    __BSS_SIZE__              001246 REA    
+__CONSTRUCTOR_COUNT__     000001 REA    __CONSTRUCTOR_TABLE__     007FC2 RLA    
+__DESTRUCTOR_COUNT__      000000 REA    __DESTRUCTOR_TABLE__      007CE1 RLA    
 __EXEHDR__                000001 REA    __HEADER_LAST__           00080D RLA    
 __HIMEM__                 009F00 REA    __LOADADDR__              000001 REA    
 __MAIN_SIZE__             0096F3 REA    __MAIN_START__            00080D RLA    
-__ONCE_RUN__              007794 RLA    __STACKSIZE__             000800 REA    
-__STARTUP__               000001 REA    __ctype                   00743A RLA    
-__ctypeidx                007445 RLA    __hextab                  007416 RLA    
-__longminstr              007426 RLA    __oserror                 0088C7 RLA    
-__printf                  00498E RLA    __randomize               005645 RLA    
-_abs                      005576 RLA    _admin                    0074CE RLA    
-_astrogator               0074CF RLA    _bookPassengersAndPayCrew 002396 RLA    
-_burtle32                 000F9B RLA    _cargo                    0077F1 RLA    
-_cbm_k_bsout              00FFD2 RLA    _cbm_k_load               004D10 RLA    
-_cbm_k_setlfs             004D2D RLA    _cbm_k_setnam             004D3B RLA    
-_cclear                   004D6A RLA    _cclearxy                 004D65 RLA    
-_cgetc                    004D7A RLA    _chline                   004DE3 RLA    
-_chlinexy                 004DDE RLA    _clearComponentState      000C61 RLA    
-_clock                    004DFA RLA    _clrscr                   004E02 RLA    
-_componentLabel           007565 RLA    _cost                     007E24 RLA    
-_cprintf                  004E49 RLA    _cputc                    004E78 RLA    
-_cputcxy                  004E73 RLA    _cputs                    004EDC RLA    
-_cputsxy                  004ED2 RLA    _current                  00787D RLA    
-_destination              0078C3 RLA    _diceRoll                 0011D5 RLA    
+__ONCE_RUN__              007F93 RLA    __STACKSIZE__             000800 REA    
+__STARTUP__               000001 REA    __ctype                   007C56 RLA    
+__ctypeidx                007C61 RLA    __hextab                  007C32 RLA    
+__longminstr              007C42 RLA    __oserror                 0091AC RLA    
+__printf                  004F4A RLA    __randomize               005C12 RLA    
+_abs                      005B43 RLA    _admin                    007CEA RLA    
+_astrogator               007CEB RLA    _bookPassengersAndPayCrew 0028A0 RLA    
+_burtle32                 000F9B RLA    _cargo                    007FF0 RLA    
+_cbm_k_bsout              00FFD2 RLA    _cbm_k_load               0052CC RLA    
+_cbm_k_setlfs             0052E9 RLA    _cbm_k_setnam             0052F7 RLA    
+_cclear                   005326 RLA    _cclearxy                 005321 RLA    
+_cgetc                    005336 RLA    _chline                   00539F RLA    
+_chlinexy                 00539A RLA    _clearComponentState      000C61 RLA    
+_clock                    0053B6 RLA    _clrscr                   0053BE RLA    
+_componentLabel           007D81 RLA    _cost                     008633 RLA    
+_cprintf                  005405 RLA    _cputc                    005434 RLA    
+_cputcxy                  00542F RLA    _cputs                    005498 RLA    
+_cputsxy                  00548E RLA    _current                  00807C RLA    
+_destination              0080C2 RLA    _diceRoll                 0011D5 RLA    
 _diceRoll2d               001172 RLA    _diceRoll3d               00119A RLA    
-_drawWorld                004236 RLA    _engineer                 0074D0 RLA    
+_drawWorld                0047F2 RLA    _engineer                 007CEC RLA    
 _findHighestSkillFor      0012F7 RLA    _getEmplacementName       00126B RLA    
-_getHoldFree              0037D8 RLA    _getStatusLabel           000CE8 RLA    
-_getWeaponName            0012D6 RLA    _getWorld                 00437F RLA    
-_gotox                    004F90 RLA    _gotoxy                   004F99 RLA    
-_gunner                   0074D1 RLA    _hcr                      0074C6 RLA    
-_hire                     0012E8 RLA    _jamison                  007E15 RLA    
-_jump                     00181A RLA    _jumpmapSetDestination    001AA1 RLA    
-_jumpmapShow              0019FE RLA    _kbhit                    00502E RLA    
-_landAtShipyard           002F46 RLA    _landAtStarport           003497 RLA    
-_liaison                  0074D2 RLA    _loadFileToBank           0010FC RLA    
-_ltoa                     0052F5 RLA    _main                     000B9B RLA    
-_maneuver                 0021A0 RLA    _medic                    0074D3 RLA    
-_memcpy                   00544B RLA    _menu_run                 002284 RLA    
-_parsecDistance           000FEF RLA    _pay_period               0077F0 RLA    
-_pilot                    0074D4 RLA    _piracy                   0028EF RLA    
-_playerAchievementLevel   0074C5 RLA    _pressReturnAndClear      00114A RLA    
-_printAlarmBar            000C77 RLA    _rand                     00561D RLA    
-_readShip                 002D7E RLA    _redline                  00109B RLA    
-_revers                   00564B RLA    _setBank                  000FAE RLA    
-_ship                     007794 RLA    _shipDamage               0077DA RLA    
-_shipState                0077C4 RLA    _ship_describe            002A18 RLA    
-_ship_init                002A03 RLA    _ship_loadImageFromIndex  002CD1 RLA    
-_showCurrentLocation      002134 RLA    _showShipSummary          0028F0 RLA    
-_sleep                    0056DC RLA    _sprite_define            003190 RLA    
-_sprite_loadToVERA        003167 RLA    _srand                    005611 RLA    
-_starport                 00790A RLA    _statusLine               0010B9 RLA    
-_steward                  0074D5 RLA    _streetwise               0074D6 RLA    
-_strlen                   0057B0 RLA    _strlower                 0057C6 RLA    
-_strncpy                  0057ED RLA    _textcolor                004E13 RLA    
+_getHoldFree              003D94 RLA    _getStatusLabel           000CE8 RLA    
+_getWeaponName            0012D6 RLA    _getWorld                 00493B RLA    
+_gotox                    00554C RLA    _gotoxy                   005555 RLA    
+_gunner                   007CED RLA    _hcr                      007CE2 RLA    
+_hire                     0012E8 RLA    _insystem_headForJumpPoint 001A7C RLA    
+_jamison                  008614 RLA    _jump                     001C22 RLA    
+_jumpmapSetDestination    001EA5 RLA    _jumpmapShow              001E02 RLA    
+_kbhit                    0055EA RLA    _landAtShipyard           003502 RLA    
+_landAtStarport           003A53 RLA    _liaison                  007CEE RLA    
+_loadFileToBank           0010FC RLA    _ltoa                     0058B1 RLA    
+_main                     000B9B RLA    _maneuver                 0025A4 RLA    
+_medic                    007CEF RLA    _memcpy                   005A07 RLA    
+_menu_run                 002688 RLA    _name_generate            00279A RLA    
+_parsecDistance           000FEF RLA    _pay_period               007FEF RLA    
+_pilot                    007CF0 RLA    _playerAchievementLevel   007CE1 RLA    
+_pressReturnAndClear      00114A RLA    _printAlarmBar            000C77 RLA    
+_rand                     005BEA RLA    _readShip                 00333A RLA    
+_redline                  00109B RLA    _revers                   005C18 RLA    
+_setBank                  000FAE RLA    _ship                     007F93 RLA    
+_shipDamage               007FD9 RLA    _shipState                007FC3 RLA    
+_ship_describe            002F21 RLA    _ship_init                002F0C RLA    
+_ship_loadImageFromIndex  0031DA RLA    _showCurrentLocation      002538 RLA    
+_showShipSummary          002DF9 RLA    _sleep                    005CA9 RLA    
+_sprite_define            00374C RLA    _sprite_loadToVERA        003723 RLA    
+_srand                    005BDE RLA    _starport                 008109 RLA    
+_statusLine               0010B9 RLA    _steward                  007CF1 RLA    
+_strcpy                   005D63 RLA    _streetwise               007CF2 RLA    
+_strlen                   005D82 RLA    _strlower                 005D98 RLA    
+_strncpy                  005DBF RLA    _textcolor                0053CF RLA    
 _titleLine                0010A5 RLA    _toDefaultColor           0010CD RLA    
-_trade_calculateMarketPrices 00382E RLA    _trade_speculate          0039E9 RLA    
-_ultoa                    005334 RLA    _vcprintf                 00593F RLA    
-_vera_sprites_enable      00571F RLA    _wilderness_refuel        003EFA RLA    
-_world_describe           00444E RLA    _world_drawPlanetoid      004574 RLA    
-_world_setGasGiantPalette 0041F6 RLA    _world_setRockballPalette 004201 RLA    
-addeq0sp                  004C58 RLA    addeqysp                  004C5A RLA    
-addysp                    004C6A RLA    addysp1                   004C69 RLA    
-aslax1                    004C77 RLA    aslax2                    004C7F RLA    
-aslax3                    004C8A RLA    aslax4                    004C98 RLA    
-asrax1                    004CE0 RLA    asrax4                    004CEA RLA    
-axlong                    004D03 RLA    axulong                   004D09 RLA    
-booleq                    005425 RLA    boolge                    005436 RLA    
-boolgt                    005434 RLA    boollt                    00542E RLA    
-boolule                   00543C RLA    callmain                  004D4E RLA    
-chlinechar                000040 REZ    cputdirect                004E8B RLA    
-ctypemaskdirect           004EF9 RLA    cursor                    0088C6 RLA    
-decax1                    004F13 RLA    decax2                    004F1A RLA    
-decax3                    004F21 RLA    decaxy                    004F28 RLA    
-decsp1                    004F31 RLA    decsp2                    004F3A RLA    
-decsp4                    004F47 RLA    decsp5                    004F54 RLA    
-decsp6                    004F61 RLA    decsp8                    004F6E RLA    
-donelib                   004E3D RLA    getlop                    00537F RLA    
-gotoxy                    004F96 RLA    incax2                    004FD3 RLA    
-incax3                    004FDA RLA    incax4                    004FF3 RLA    
-incax5                    004FDF RLA    incax6                    004FE4 RLA    
-incax7                    004FE9 RLA    incax8                    004FEE RLA    
-incaxy                    004FF5 RLA    inceaxy                   00516A RLA    
-incsp1                    004FFE RLA    incsp2                    00500C RLA    
-incsp3                    00501A RLA    incsp4                    00501F RLA    
-incsp5                    005024 RLA    incsp6                    005029 RLA    
-initclock                 004DF3  LAI   initlib                   007794 RLA    
-laddeq                    005068 RLA    laddeq0sp                 00508C RLA    
-ldaidx                    0050EA RLA    ldax0sp                   005103 RLA    
-ldaxi                     0050F6 RLA    ldaxidx                   0050F8 RLA    
-ldaxysp                   005105 RLA    ldeax0sp                  005123 RLA    
-ldeaxi                    00510C RLA    ldeaxidx                  00510E RLA    
-ldeaxysp                  005125 RLA    leaa0sp                   005152 RLA    
-leaaxsp                   005154 RLA    lsubeq                    0052B5 RLA    
-mul8x16                   0054DF RLA    mul8x16a                  0054E9 RLA    
-mulax10                   005517 RLA    mulax6                    005530 RLA    
-mulax7                    005546 RLA    mulax9                    00555F RLA    
-negax                     00557A RLA    negeax                    0051DA RLA    
-plot                      004EA4 RLA    popa                      005599 RLA    
-popax                     005005 RLA    poplsargs                 005237 RLA    
-popptr1                   0055A3 RLA    popsargsudiv16            00565E RLA    
-ptr1                      00002A RLZ    ptr2                      00002C RLZ    
-ptr3                      00002E RLZ    ptr4                      000030 RLZ    
-push0                     0055CC RLA    push1                     0055B1 RLA    
-pusha                     0055BA RLA    pusha0                    0055CE RLA    
-pushax                    0055D0 RLA    pusheax                   005220 RLA    
-pushw                     0055E6 RLA    pushw0sp                  0055F5 RLA    
-pushwysp                  0055F7 RLA    regbank                   000036 RLZ    
-shlax1                    004C77 RLA    shlax2                    004C7F RLA    
-shlax4                    004C98 RLA    shleax1                   004CA9 RLA    
-shleax3                   004CB5 RLA    shleax4                   004CCF RLA    
-shrax1                    00567E RLA    shrax3                    005686 RLA    
-shrax4                    005694 RLA    shreax1                   0056A5 RLA    
-shreax3                   0056B1 RLA    shreax4                   0056CB RLA    
-sp                        000022 RLZ    sreg                      000024 RLZ    
-staspidx                  00573E RLA    stax0sp                   005754 RLA    
-staxspidx                 00575F RLA    staxysp                   005756 RLA    
-steax0sp                  005779 RLA    steaxspidx                00578E RLA    
-subeq0sp                  005843 RLA    subeqysp                  005845 RLA    
-subysp                    005858 RLA    tmp1                      000032 RLZ    
+_trade_calculateMarketPrices 003DEA RLA    _trade_speculate          003FA5 RLA    
+_ultoa                    0058F0 RLA    _vcprintf                 005F11 RLA    
+_vera_sprites_enable      005CEC RLA    _wilderness_refuel        0044B6 RLA    
+_world_describe           004A0A RLA    _world_drawPlanetoid      004B30 RLA    
+_world_setGasGiantPalette 0047B2 RLA    _world_setRockballPalette 0047BD RLA    
+addeq0sp                  005214 RLA    addeqysp                  005216 RLA    
+addysp                    005226 RLA    addysp1                   005225 RLA    
+aslax1                    005233 RLA    aslax2                    00523B RLA    
+aslax3                    005246 RLA    aslax4                    005254 RLA    
+asrax1                    00529C RLA    asrax4                    0052A6 RLA    
+axlong                    0052BF RLA    axulong                   0052C5 RLA    
+booleq                    0059E1 RLA    boolge                    0059F2 RLA    
+boolgt                    0059F0 RLA    boollt                    0059EA RLA    
+boolule                   0059F8 RLA    callmain                  00530A RLA    
+chlinechar                000040 REZ    cputdirect                005447 RLA    
+ctypemaskdirect           0054B5 RLA    cursor                    0091AB RLA    
+decax1                    0054CF RLA    decax2                    0054D6 RLA    
+decax3                    0054DD RLA    decaxy                    0054E4 RLA    
+decsp1                    0054ED RLA    decsp2                    0054F6 RLA    
+decsp4                    005503 RLA    decsp5                    005510 RLA    
+decsp6                    00551D RLA    decsp8                    00552A RLA    
+donelib                   0053F9 RLA    getlop                    00593B RLA    
+gotoxy                    005552 RLA    incax2                    00558F RLA    
+incax3                    005596 RLA    incax4                    0055AF RLA    
+incax5                    00559B RLA    incax6                    0055A0 RLA    
+incax7                    0055A5 RLA    incax8                    0055AA RLA    
+incaxy                    0055B1 RLA    inceaxy                   005726 RLA    
+incsp1                    0055BA RLA    incsp2                    0055C8 RLA    
+incsp3                    0055D6 RLA    incsp4                    0055DB RLA    
+incsp5                    0055E0 RLA    incsp6                    0055E5 RLA    
+initclock                 0053AF  LAI   initlib                   007F93 RLA    
+laddeq                    005624 RLA    laddeq0sp                 005648 RLA    
+ldaidx                    0056A6 RLA    ldax0sp                   0056BF RLA    
+ldaxi                     0056B2 RLA    ldaxidx                   0056B4 RLA    
+ldaxysp                   0056C1 RLA    ldeax0sp                  0056DF RLA    
+ldeaxi                    0056C8 RLA    ldeaxidx                  0056CA RLA    
+ldeaxysp                  0056E1 RLA    leaa0sp                   00570E RLA    
+leaaxsp                   005710 RLA    lsubeq                    005871 RLA    
+mul8x16                   005A9B RLA    mul8x16a                  005AA5 RLA    
+mulax10                   005AD3 RLA    mulax3                    005AEC RLA    
+mulax6                    005AFD RLA    mulax7                    005B13 RLA    
+mulax9                    005B2C RLA    negax                     005B47 RLA    
+negeax                    005796 RLA    plot                      005460 RLA    
+popa                      005B66 RLA    popax                     0055C1 RLA    
+poplsargs                 0057F3 RLA    popptr1                   005B70 RLA    
+popsargsudiv16            005C2B RLA    ptr1                      00002A RLZ    
+ptr2                      00002C RLZ    ptr3                      00002E RLZ    
+ptr4                      000030 RLZ    push0                     005B99 RLA    
+push1                     005B7E RLA    pusha                     005B87 RLA    
+pusha0                    005B9B RLA    pushax                    005B9D RLA    
+pusheax                   0057DC RLA    pushw                     005BB3 RLA    
+pushw0sp                  005BC2 RLA    pushwysp                  005BC4 RLA    
+regbank                   000036 RLZ    shlax1                    005233 RLA    
+shlax2                    00523B RLA    shlax4                    005254 RLA    
+shleax1                   005265 RLA    shleax3                   005271 RLA    
+shleax4                   00528B RLA    shrax1                    005C4B RLA    
+shrax3                    005C53 RLA    shrax4                    005C61 RLA    
+shreax1                   005C72 RLA    shreax3                   005C7E RLA    
+shreax4                   005C98 RLA    sp                        000022 RLZ    
+sreg                      000024 RLZ    staspidx                  005D0B RLA    
+stax0sp                   005D21 RLA    staxysp                   005D23 RLA    
+steax0sp                  005D2C RLA    steaxspidx                005D41 RLA    
+subeq0sp                  005E15 RLA    subeqysp                  005E17 RLA    
+subysp                    005E2A RLA    tmp1                      000032 RLZ    
 tmp2                      000033 RLZ    tmp3                      000034 RLZ    
-tmp4                      000035 RLZ    tosadd0ax                 00503C RLA    
-tosaddax                  004C42 RLA    tosaddeax                 005042 RLA    
-tosdiv0ax                 005136 RLA    tosdiva0                  004F7B RLA    
-tosdivax                  004F7D RLA    tosgeeax                  00515E RLA    
-tosgteax                  005164 RLA    tosicmp                   004FA7 RLA    
-tosicmp0                  004FA5 RLA    toslcmp                   0050AF RLA    
-toslong                   005880 RLA    toslteax                  00517B RLA    
-tosmoda0                  005487 RLA    tosmodax                  005489 RLA    
-tosmul0ax                 005181 RLA    tosmula0                  0054DD RLA    
-tosmulax                  005498 RLA    tosmuleax                 005185 RLA    
-tosorax                   00558A RLA    tosoreax                  0051FC RLA    
-tossuba0                  00582F RLA    tossubax                  005831 RLA    
-tossubeax                 00528D RLA    tosudiva0                 005897 RLA    
-tosumod0ax                0053E7 RLA    tosumoda0                 0058E6 RLA    
-tosumul0ax                005181 RLA    tosumula0                 0054DD RLA    
-tosumulax                 005498 RLA    tosumuleax                005185 RLA    
-tosxoreax                 005402 RLA    udiv16                    0058A8 RLA    
-udiv32                    0053A2 RLA    zerobss                   00596F RLA    
+tmp4                      000035 RLZ    tosadd0ax                 0055F8 RLA    
+tosaddax                  0051FE RLA    tosaddeax                 0055FE RLA    
+tosdiv0ax                 0056F2 RLA    tosdiva0                  005537 RLA    
+tosdivax                  005539 RLA    tosgeeax                  00571A RLA    
+tosgteax                  005720 RLA    tosicmp                   005563 RLA    
+tosicmp0                  005561 RLA    toslcmp                   00566B RLA    
+toslong                   005E52 RLA    toslteax                  005737 RLA    
+tosmoda0                  005A43 RLA    tosmodax                  005A45 RLA    
+tosmul0ax                 00573D RLA    tosmula0                  005A99 RLA    
+tosmulax                  005A54 RLA    tosmuleax                 005741 RLA    
+tosorax                   005B57 RLA    tosoreax                  0057B8 RLA    
+tossuba0                  005E01 RLA    tossubax                  005E03 RLA    
+tossubeax                 005849 RLA    tosudiva0                 005E69 RLA    
+tosumod0ax                0059A3 RLA    tosumoda0                 005EB8 RLA    
+tosumul0ax                00573D RLA    tosumula0                 005A99 RLA    
+tosumulax                 005A54 RLA    tosumuleax                005741 RLA    
+tosxoreax                 0059BE RLA    udiv16                    005E7A RLA    
+udiv32                    00595E RLA    zerobss                   005F41 RLA    
 
 
 
 Exports list by value:
 ----------------------
-__DESTRUCTOR_COUNT__      000000 REA    __LOADADDR__              000001 REA    
-__EXEHDR__                000001 REA    __STARTUP__               000001 REA    
+__DESTRUCTOR_COUNT__      000000 REA    __STARTUP__               000001 REA    
+__EXEHDR__                000001 REA    __LOADADDR__              000001 REA    
 __CONSTRUCTOR_COUNT__     000001 REA    sp                        000022 RLZ    
 sreg                      000024 RLZ    ptr1                      00002A RLZ    
 ptr2                      00002C RLZ    ptr3                      00002E RLZ    
@@ -550,136 +560,137 @@ ptr4                      000030 RLZ    tmp1                      000032 RLZ
 tmp2                      000033 RLZ    tmp3                      000034 RLZ    
 tmp4                      000035 RLZ    regbank                   000036 RLZ    
 chlinechar                000040 REZ    __STACKSIZE__             000800 REA    
-__MAIN_START__            00080D RLA    __HEADER_LAST__           00080D RLA    
+__HEADER_LAST__           00080D RLA    __MAIN_START__            00080D RLA    
 _main                     000B9B RLA    _clearComponentState      000C61 RLA    
 _printAlarmBar            000C77 RLA    _getStatusLabel           000CE8 RLA    
 _burtle32                 000F9B RLA    _setBank                  000FAE RLA    
 _parsecDistance           000FEF RLA    _redline                  00109B RLA    
 _titleLine                0010A5 RLA    _statusLine               0010B9 RLA    
 _toDefaultColor           0010CD RLA    _loadFileToBank           0010FC RLA    
-_pressReturnAndClear      00114A RLA    __BSS_SIZE__              001160 REA    
-_diceRoll2d               001172 RLA    _diceRoll3d               00119A RLA    
-_diceRoll                 0011D5 RLA    _getEmplacementName       00126B RLA    
+_pressReturnAndClear      00114A RLA    _diceRoll2d               001172 RLA    
+_diceRoll3d               00119A RLA    _diceRoll                 0011D5 RLA    
+__BSS_SIZE__              001246 REA    _getEmplacementName       00126B RLA    
 _getWeaponName            0012D6 RLA    _hire                     0012E8 RLA    
-_findHighestSkillFor      0012F7 RLA    _jump                     00181A RLA    
-_jumpmapShow              0019FE RLA    _jumpmapSetDestination    001AA1 RLA    
-_showCurrentLocation      002134 RLA    _maneuver                 0021A0 RLA    
-_menu_run                 002284 RLA    _bookPassengersAndPayCrew 002396 RLA    
-_piracy                   0028EF RLA    _showShipSummary          0028F0 RLA    
-_ship_init                002A03 RLA    _ship_describe            002A18 RLA    
-_ship_loadImageFromIndex  002CD1 RLA    _readShip                 002D7E RLA    
-_landAtShipyard           002F46 RLA    _sprite_loadToVERA        003167 RLA    
-_sprite_define            003190 RLA    _landAtStarport           003497 RLA    
-_getHoldFree              0037D8 RLA    _trade_calculateMarketPrices 00382E RLA    
-_trade_speculate          0039E9 RLA    _wilderness_refuel        003EFA RLA    
-_world_setGasGiantPalette 0041F6 RLA    _world_setRockballPalette 004201 RLA    
-_drawWorld                004236 RLA    _getWorld                 00437F RLA    
-_world_describe           00444E RLA    _world_drawPlanetoid      004574 RLA    
-__printf                  00498E RLA    tosaddax                  004C42 RLA    
-addeq0sp                  004C58 RLA    addeqysp                  004C5A RLA    
-addysp1                   004C69 RLA    addysp                    004C6A RLA    
-shlax1                    004C77 RLA    aslax1                    004C77 RLA    
-shlax2                    004C7F RLA    aslax2                    004C7F RLA    
-aslax3                    004C8A RLA    shlax4                    004C98 RLA    
-aslax4                    004C98 RLA    shleax1                   004CA9 RLA    
-shleax3                   004CB5 RLA    shleax4                   004CCF RLA    
-asrax1                    004CE0 RLA    asrax4                    004CEA RLA    
-axlong                    004D03 RLA    axulong                   004D09 RLA    
-_cbm_k_load               004D10 RLA    _cbm_k_setlfs             004D2D RLA    
-_cbm_k_setnam             004D3B RLA    callmain                  004D4E RLA    
-_cclearxy                 004D65 RLA    _cclear                   004D6A RLA    
-_cgetc                    004D7A RLA    _chlinexy                 004DDE RLA    
-_chline                   004DE3 RLA    initclock                 004DF3  LAI   
-_clock                    004DFA RLA    _clrscr                   004E02 RLA    
-_textcolor                004E13 RLA    donelib                   004E3D RLA    
-_cprintf                  004E49 RLA    _cputcxy                  004E73 RLA    
-_cputc                    004E78 RLA    cputdirect                004E8B RLA    
-plot                      004EA4 RLA    _cputsxy                  004ED2 RLA    
-_cputs                    004EDC RLA    ctypemaskdirect           004EF9 RLA    
-decax1                    004F13 RLA    decax2                    004F1A RLA    
-decax3                    004F21 RLA    decaxy                    004F28 RLA    
-decsp1                    004F31 RLA    decsp2                    004F3A RLA    
-decsp4                    004F47 RLA    decsp5                    004F54 RLA    
-decsp6                    004F61 RLA    decsp8                    004F6E RLA    
-tosdiva0                  004F7B RLA    tosdivax                  004F7D RLA    
-_gotox                    004F90 RLA    gotoxy                    004F96 RLA    
-_gotoxy                   004F99 RLA    tosicmp0                  004FA5 RLA    
-tosicmp                   004FA7 RLA    incax2                    004FD3 RLA    
-incax3                    004FDA RLA    incax5                    004FDF RLA    
-incax6                    004FE4 RLA    incax7                    004FE9 RLA    
-incax8                    004FEE RLA    incax4                    004FF3 RLA    
-incaxy                    004FF5 RLA    incsp1                    004FFE RLA    
-popax                     005005 RLA    incsp2                    00500C RLA    
-incsp3                    00501A RLA    incsp4                    00501F RLA    
-incsp5                    005024 RLA    incsp6                    005029 RLA    
-_kbhit                    00502E RLA    tosadd0ax                 00503C RLA    
-tosaddeax                 005042 RLA    laddeq                    005068 RLA    
-laddeq0sp                 00508C RLA    toslcmp                   0050AF RLA    
-ldaidx                    0050EA RLA    ldaxi                     0050F6 RLA    
-ldaxidx                   0050F8 RLA    ldax0sp                   005103 RLA    
-ldaxysp                   005105 RLA    ldeaxi                    00510C RLA    
-ldeaxidx                  00510E RLA    ldeax0sp                  005123 RLA    
-ldeaxysp                  005125 RLA    tosdiv0ax                 005136 RLA    
-leaa0sp                   005152 RLA    leaaxsp                   005154 RLA    
-tosgeeax                  00515E RLA    tosgteax                  005164 RLA    
-inceaxy                   00516A RLA    toslteax                  00517B RLA    
-tosumul0ax                005181 RLA    tosmul0ax                 005181 RLA    
-tosmuleax                 005185 RLA    tosumuleax                005185 RLA    
-negeax                    0051DA RLA    tosoreax                  0051FC RLA    
-pusheax                   005220 RLA    poplsargs                 005237 RLA    
-tossubeax                 00528D RLA    lsubeq                    0052B5 RLA    
-_ltoa                     0052F5 RLA    _ultoa                    005334 RLA    
-getlop                    00537F RLA    udiv32                    0053A2 RLA    
-tosumod0ax                0053E7 RLA    tosxoreax                 005402 RLA    
-booleq                    005425 RLA    boollt                    00542E RLA    
-boolgt                    005434 RLA    boolge                    005436 RLA    
-boolule                   00543C RLA    _memcpy                   00544B RLA    
-tosmoda0                  005487 RLA    tosmodax                  005489 RLA    
-tosmulax                  005498 RLA    tosumulax                 005498 RLA    
-tosumula0                 0054DD RLA    tosmula0                  0054DD RLA    
-mul8x16                   0054DF RLA    mul8x16a                  0054E9 RLA    
-mulax10                   005517 RLA    mulax6                    005530 RLA    
-mulax7                    005546 RLA    mulax9                    00555F RLA    
-_abs                      005576 RLA    negax                     00557A RLA    
-tosorax                   00558A RLA    popa                      005599 RLA    
-popptr1                   0055A3 RLA    push1                     0055B1 RLA    
-pusha                     0055BA RLA    push0                     0055CC RLA    
-pusha0                    0055CE RLA    pushax                    0055D0 RLA    
-pushw                     0055E6 RLA    pushw0sp                  0055F5 RLA    
-pushwysp                  0055F7 RLA    _srand                    005611 RLA    
-_rand                     00561D RLA    __randomize               005645 RLA    
-_revers                   00564B RLA    popsargsudiv16            00565E RLA    
-shrax1                    00567E RLA    shrax3                    005686 RLA    
-shrax4                    005694 RLA    shreax1                   0056A5 RLA    
-shreax3                   0056B1 RLA    shreax4                   0056CB RLA    
-_sleep                    0056DC RLA    _vera_sprites_enable      00571F RLA    
-staspidx                  00573E RLA    stax0sp                   005754 RLA    
-staxysp                   005756 RLA    staxspidx                 00575F RLA    
-steax0sp                  005779 RLA    steaxspidx                00578E RLA    
-_strlen                   0057B0 RLA    _strlower                 0057C6 RLA    
-_strncpy                  0057ED RLA    tossuba0                  00582F RLA    
-tossubax                  005831 RLA    subeq0sp                  005843 RLA    
-subeqysp                  005845 RLA    subysp                    005858 RLA    
-toslong                   005880 RLA    tosudiva0                 005897 RLA    
-udiv16                    0058A8 RLA    tosumoda0                 0058E6 RLA    
-_vcprintf                 00593F RLA    zerobss                   00596F RLA    
-__hextab                  007416 RLA    __longminstr              007426 RLA    
-__ctype                   00743A RLA    __ctypeidx                007445 RLA    
-_playerAchievementLevel   0074C5 RLA    __DESTRUCTOR_TABLE__      0074C5 RLA    
-_hcr                      0074C6 RLA    _admin                    0074CE RLA    
-_astrogator               0074CF RLA    _engineer                 0074D0 RLA    
-_gunner                   0074D1 RLA    _liaison                  0074D2 RLA    
-_medic                    0074D3 RLA    _pilot                    0074D4 RLA    
-_steward                  0074D5 RLA    _streetwise               0074D6 RLA    
-_componentLabel           007565 RLA    __ONCE_RUN__              007794 RLA    
-initlib                   007794 RLA    _ship                     007794 RLA    
-__BSS_RUN__               007794 RLA    __CONSTRUCTOR_TABLE__     0077C3 RLA    
-_shipState                0077C4 RLA    _shipDamage               0077DA RLA    
-_pay_period               0077F0 RLA    _cargo                    0077F1 RLA    
-_current                  00787D RLA    _destination              0078C3 RLA    
-_starport                 00790A RLA    _jamison                  007E15 RLA    
-_cost                     007E24 RLA    cursor                    0088C6 RLA    
-__oserror                 0088C7 RLA    __MAIN_SIZE__             0096F3 REA    
+_findHighestSkillFor      0012F7 RLA    _insystem_headForJumpPoint 001A7C RLA    
+_jump                     001C22 RLA    _jumpmapShow              001E02 RLA    
+_jumpmapSetDestination    001EA5 RLA    _showCurrentLocation      002538 RLA    
+_maneuver                 0025A4 RLA    _menu_run                 002688 RLA    
+_name_generate            00279A RLA    _bookPassengersAndPayCrew 0028A0 RLA    
+_showShipSummary          002DF9 RLA    _ship_init                002F0C RLA    
+_ship_describe            002F21 RLA    _ship_loadImageFromIndex  0031DA RLA    
+_readShip                 00333A RLA    _landAtShipyard           003502 RLA    
+_sprite_loadToVERA        003723 RLA    _sprite_define            00374C RLA    
+_landAtStarport           003A53 RLA    _getHoldFree              003D94 RLA    
+_trade_calculateMarketPrices 003DEA RLA    _trade_speculate          003FA5 RLA    
+_wilderness_refuel        0044B6 RLA    _world_setGasGiantPalette 0047B2 RLA    
+_world_setRockballPalette 0047BD RLA    _drawWorld                0047F2 RLA    
+_getWorld                 00493B RLA    _world_describe           004A0A RLA    
+_world_drawPlanetoid      004B30 RLA    __printf                  004F4A RLA    
+tosaddax                  0051FE RLA    addeq0sp                  005214 RLA    
+addeqysp                  005216 RLA    addysp1                   005225 RLA    
+addysp                    005226 RLA    shlax1                    005233 RLA    
+aslax1                    005233 RLA    aslax2                    00523B RLA    
+shlax2                    00523B RLA    aslax3                    005246 RLA    
+shlax4                    005254 RLA    aslax4                    005254 RLA    
+shleax1                   005265 RLA    shleax3                   005271 RLA    
+shleax4                   00528B RLA    asrax1                    00529C RLA    
+asrax4                    0052A6 RLA    axlong                    0052BF RLA    
+axulong                   0052C5 RLA    _cbm_k_load               0052CC RLA    
+_cbm_k_setlfs             0052E9 RLA    _cbm_k_setnam             0052F7 RLA    
+callmain                  00530A RLA    _cclearxy                 005321 RLA    
+_cclear                   005326 RLA    _cgetc                    005336 RLA    
+_chlinexy                 00539A RLA    _chline                   00539F RLA    
+initclock                 0053AF  LAI   _clock                    0053B6 RLA    
+_clrscr                   0053BE RLA    _textcolor                0053CF RLA    
+donelib                   0053F9 RLA    _cprintf                  005405 RLA    
+_cputcxy                  00542F RLA    _cputc                    005434 RLA    
+cputdirect                005447 RLA    plot                      005460 RLA    
+_cputsxy                  00548E RLA    _cputs                    005498 RLA    
+ctypemaskdirect           0054B5 RLA    decax1                    0054CF RLA    
+decax2                    0054D6 RLA    decax3                    0054DD RLA    
+decaxy                    0054E4 RLA    decsp1                    0054ED RLA    
+decsp2                    0054F6 RLA    decsp4                    005503 RLA    
+decsp5                    005510 RLA    decsp6                    00551D RLA    
+decsp8                    00552A RLA    tosdiva0                  005537 RLA    
+tosdivax                  005539 RLA    _gotox                    00554C RLA    
+gotoxy                    005552 RLA    _gotoxy                   005555 RLA    
+tosicmp0                  005561 RLA    tosicmp                   005563 RLA    
+incax2                    00558F RLA    incax3                    005596 RLA    
+incax5                    00559B RLA    incax6                    0055A0 RLA    
+incax7                    0055A5 RLA    incax8                    0055AA RLA    
+incax4                    0055AF RLA    incaxy                    0055B1 RLA    
+incsp1                    0055BA RLA    popax                     0055C1 RLA    
+incsp2                    0055C8 RLA    incsp3                    0055D6 RLA    
+incsp4                    0055DB RLA    incsp5                    0055E0 RLA    
+incsp6                    0055E5 RLA    _kbhit                    0055EA RLA    
+tosadd0ax                 0055F8 RLA    tosaddeax                 0055FE RLA    
+laddeq                    005624 RLA    laddeq0sp                 005648 RLA    
+toslcmp                   00566B RLA    ldaidx                    0056A6 RLA    
+ldaxi                     0056B2 RLA    ldaxidx                   0056B4 RLA    
+ldax0sp                   0056BF RLA    ldaxysp                   0056C1 RLA    
+ldeaxi                    0056C8 RLA    ldeaxidx                  0056CA RLA    
+ldeax0sp                  0056DF RLA    ldeaxysp                  0056E1 RLA    
+tosdiv0ax                 0056F2 RLA    leaa0sp                   00570E RLA    
+leaaxsp                   005710 RLA    tosgeeax                  00571A RLA    
+tosgteax                  005720 RLA    inceaxy                   005726 RLA    
+toslteax                  005737 RLA    tosumul0ax                00573D RLA    
+tosmul0ax                 00573D RLA    tosumuleax                005741 RLA    
+tosmuleax                 005741 RLA    negeax                    005796 RLA    
+tosoreax                  0057B8 RLA    pusheax                   0057DC RLA    
+poplsargs                 0057F3 RLA    tossubeax                 005849 RLA    
+lsubeq                    005871 RLA    _ltoa                     0058B1 RLA    
+_ultoa                    0058F0 RLA    getlop                    00593B RLA    
+udiv32                    00595E RLA    tosumod0ax                0059A3 RLA    
+tosxoreax                 0059BE RLA    booleq                    0059E1 RLA    
+boollt                    0059EA RLA    boolgt                    0059F0 RLA    
+boolge                    0059F2 RLA    boolule                   0059F8 RLA    
+_memcpy                   005A07 RLA    tosmoda0                  005A43 RLA    
+tosmodax                  005A45 RLA    tosmulax                  005A54 RLA    
+tosumulax                 005A54 RLA    tosumula0                 005A99 RLA    
+tosmula0                  005A99 RLA    mul8x16                   005A9B RLA    
+mul8x16a                  005AA5 RLA    mulax10                   005AD3 RLA    
+mulax3                    005AEC RLA    mulax6                    005AFD RLA    
+mulax7                    005B13 RLA    mulax9                    005B2C RLA    
+_abs                      005B43 RLA    negax                     005B47 RLA    
+tosorax                   005B57 RLA    popa                      005B66 RLA    
+popptr1                   005B70 RLA    push1                     005B7E RLA    
+pusha                     005B87 RLA    push0                     005B99 RLA    
+pusha0                    005B9B RLA    pushax                    005B9D RLA    
+pushw                     005BB3 RLA    pushw0sp                  005BC2 RLA    
+pushwysp                  005BC4 RLA    _srand                    005BDE RLA    
+_rand                     005BEA RLA    __randomize               005C12 RLA    
+_revers                   005C18 RLA    popsargsudiv16            005C2B RLA    
+shrax1                    005C4B RLA    shrax3                    005C53 RLA    
+shrax4                    005C61 RLA    shreax1                   005C72 RLA    
+shreax3                   005C7E RLA    shreax4                   005C98 RLA    
+_sleep                    005CA9 RLA    _vera_sprites_enable      005CEC RLA    
+staspidx                  005D0B RLA    stax0sp                   005D21 RLA    
+staxysp                   005D23 RLA    steax0sp                  005D2C RLA    
+steaxspidx                005D41 RLA    _strcpy                   005D63 RLA    
+_strlen                   005D82 RLA    _strlower                 005D98 RLA    
+_strncpy                  005DBF RLA    tossuba0                  005E01 RLA    
+tossubax                  005E03 RLA    subeq0sp                  005E15 RLA    
+subeqysp                  005E17 RLA    subysp                    005E2A RLA    
+toslong                   005E52 RLA    tosudiva0                 005E69 RLA    
+udiv16                    005E7A RLA    tosumoda0                 005EB8 RLA    
+_vcprintf                 005F11 RLA    zerobss                   005F41 RLA    
+__hextab                  007C32 RLA    __longminstr              007C42 RLA    
+__ctype                   007C56 RLA    __ctypeidx                007C61 RLA    
+_playerAchievementLevel   007CE1 RLA    __DESTRUCTOR_TABLE__      007CE1 RLA    
+_hcr                      007CE2 RLA    _admin                    007CEA RLA    
+_astrogator               007CEB RLA    _engineer                 007CEC RLA    
+_gunner                   007CED RLA    _liaison                  007CEE RLA    
+_medic                    007CEF RLA    _pilot                    007CF0 RLA    
+_steward                  007CF1 RLA    _streetwise               007CF2 RLA    
+_componentLabel           007D81 RLA    __BSS_RUN__               007F93 RLA    
+initlib                   007F93 RLA    __ONCE_RUN__              007F93 RLA    
+_ship                     007F93 RLA    __CONSTRUCTOR_TABLE__     007FC2 RLA    
+_shipState                007FC3 RLA    _shipDamage               007FD9 RLA    
+_pay_period               007FEF RLA    _cargo                    007FF0 RLA    
+_current                  00807C RLA    _destination              0080C2 RLA    
+_starport                 008109 RLA    _jamison                  008614 RLA    
+_cost                     008633 RLA    cursor                    0091AB RLA    
+__oserror                 0091AC RLA    __MAIN_SIZE__             0096F3 REA    
 __HIMEM__                 009F00 REA    ENTROPY_GET               00FECF RLA    
 SETLFS                    00FFBA RLA    SETNAM                    00FFBD RLA    
 BSOUT                     00FFD2 RLA    CHROUT                    00FFD2 RLA    
@@ -759,7 +770,7 @@ __oserror (_oserror.o):
 __printf (_printf.o):
     vcprintf.o                conio/vcprintf.s:9
 __randomize (randomize.o):
-    hiring_hall.o             hiring_hall.s:20
+    hiring_hall.o             hiring_hall.s:22
 _abs (negabs.o):
     passengers.o              passengers.s:18
     common.o                  common.s:13
@@ -772,7 +783,6 @@ _bookPassengersAndPayCrew (passengers.o):
     jump.o                    jump.s:24
 _burtle32 (burtle_jsf32.o):
     trade.o                   trade.s:28
-    hiring_hall.o             hiring_hall.s:27
     common.o                  common.s:39
 _cargo (main.o):
     trade.o                   trade.s:31
@@ -805,6 +815,7 @@ _cgetc (cgetc.o):
     shipyard.o                shipyard.s:16
     menu.o                    menu.s:15
     jump-map.o                jump-map.s:18
+    insystem.o                insystem.s:17
     hiring_hall.o             hiring_hall.s:17
     common.o                  common.s:20
 _chline (chline.o):
@@ -827,6 +838,7 @@ _clrscr (clrscr.o):
     passengers.o              passengers.s:13
     maneuver-map.o            maneuver-map.s:13
     jump.o                    jump.s:14
+    insystem.o                insystem.s:14
     hiring_hall.o             hiring_hall.s:13
     common.o                  common.s:18
     main.o                    main.s:19
@@ -858,6 +870,7 @@ _cputs (cputs.o):
     shipyard.o                shipyard.s:14
     maneuver-map.o            maneuver-map.s:15
     jump-map.o                jump-map.s:15
+    insystem.o                insystem.s:15
     hiring_hall.o             hiring_hall.s:14
     main.o                    main.s:21
 _cputsxy (cputs.o):
@@ -869,6 +882,7 @@ _cputsxy (cputs.o):
     maneuver-map.o            maneuver-map.s:16
     jump-map.o                jump-map.s:16
     jump.o                    jump.s:16
+    insystem.o                insystem.s:16
     hiring_hall.o             hiring_hall.s:15
     common.o                  common.s:19
     alarm.o                   alarm.s:15
@@ -881,6 +895,7 @@ _current (main.o):
     maneuver-map.o            maneuver-map.s:23
     jump-map.o                jump-map.s:35
     jump.o                    jump.s:27
+    insystem.o                insystem.s:27
 _destination (main.o):
     passengers.o              passengers.s:25
     maneuver-map.o            maneuver-map.s:24
@@ -889,9 +904,9 @@ _destination (main.o):
 _diceRoll (common.o):
     trade.o                   trade.s:24
 _diceRoll2d (common.o):
-    hiring_hall.o             hiring_hall.s:23
+    hiring_hall.o             hiring_hall.s:25
 _diceRoll3d (common.o):
-    hiring_hall.o             hiring_hall.s:24
+    hiring_hall.o             hiring_hall.s:26
 _drawWorld (world.o):
     wilderness.o              wilderness.s:21
 _engineer (main.o):
@@ -929,6 +944,8 @@ _hcr (main.o):
     passengers.o              passengers.s:27
 _hire (hiring_hall.o):
     main.o                    main.s:34
+_insystem_headForJumpPoint (insystem.o):
+    jump.o                    jump.s:25
 _jamison (main.o):
     jump-map.o                jump-map.s:37
 _jump (jump.o):
@@ -958,11 +975,14 @@ _medic (main.o):
 _memcpy (memcpy.o):
     world.o                   world.s:1455
     trade.o                   trade.s:1077
-    ship.o                    ship.s:1157
-    hiring_hall.o             hiring_hall.s:963
+    ship.o                    ship.s:1276
+    hiring_hall.o             hiring_hall.s:21
 _menu_run (menu.o):
     maneuver-map.o            maneuver-map.s:22
     main.o                    main.s:43
+_name_generate (name.o):
+    insystem.o                insystem.s:26
+    hiring_hall.o             hiring_hall.s:29
 _parsecDistance (common.o):
     jump-map.o                jump-map.s:26
     jump.o                    jump.s:21
@@ -972,8 +992,6 @@ _pay_period (main.o):
     jump.o                    jump.s:31
 _pilot (main.o):
     passengers.o              passengers.s:34
-_piracy (piracy.o):
-    jump.o                    jump.s:25
 _playerAchievementLevel (main.o):
     world.o                   world.s:30
     maneuver-map.o            maneuver-map.s:25
@@ -990,13 +1008,16 @@ _printAlarmBar (alarm.o):
 _rand (rand.o):
     world.o                   world.s:20
     passengers.o              passengers.s:17
+    name.o                    name.s:13
     jump.o                    jump.s:18
+    insystem.o                insystem.s:13
     damage.o                  damage.s:13
 _readShip (ship.o):
     shipyard.o                shipyard.s:23
+    insystem.o                insystem.s:25
 _redline (common.o):
     trade.o                   trade.s:22
-    hiring_hall.o             hiring_hall.s:21
+    hiring_hall.o             hiring_hall.s:23
 _revers (revers.o):
     world.o                   world.s:18
     trade.o                   trade.s:18
@@ -1040,7 +1061,7 @@ _sprite_define (sprite.o):
     jump-map.o                jump-map.s:32
     main.o                    main.s:39
 _sprite_loadToVERA (sprite.o):
-    ship.o                    ship.s:23
+    ship.o                    ship.s:24
     jump-map.o                jump-map.s:31
     main.o                    main.s:38
 _srand (rand.o):
@@ -1051,6 +1072,8 @@ _statusLine (common.o):
     starport.o                starport.s:23
 _steward (main.o):
     passengers.o              passengers.s:35
+_strcpy (strcpy.o):
+    hiring_hall.o             hiring_hall.s:20
 _streetwise (main.o):
     passengers.o              passengers.s:36
 _strlen (strlen.o):
@@ -1079,7 +1102,8 @@ _titleLine (common.o):
     passengers.o              passengers.s:19
     jump-map.o                jump-map.s:27
     jump.o                    jump.s:22
-    hiring_hall.o             hiring_hall.s:22
+    insystem.o                insystem.s:18
+    hiring_hall.o             hiring_hall.s:24
     alarm.o                   alarm.s:18
     main.o                    main.s:25
 _toDefaultColor (common.o):
@@ -1114,9 +1138,9 @@ addeq0sp (addeqsp.o):
     passengers.o              passengers.s:781
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    main.o                    main.s:769
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    main.o                    main.s:772
 addeqysp (addeqsp.o):
     world.o                   world.s:1455
     world.o                   world.s:1455
@@ -1124,9 +1148,11 @@ addeqysp (addeqsp.o):
     trade.o                   trade.s:1077
     shipyard.o                shipyard.s:358
     passengers.o              passengers.s:781
+    name.o                    name.s:229
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    hiring_hall.o             hiring_hall.s:963
+    insystem.o                insystem.s:397
+    hiring_hall.o             hiring_hall.s:1118
 addysp (addysp.o):
     incsp6.o                  runtime/incsp6.s:8
     incsp5.o                  runtime/incsp5.s:8
@@ -1136,11 +1162,12 @@ addysp (addysp.o):
     world.o                   world.s:1455
     world.o                   world.s:1455
     passengers.o              passengers.s:781
+    name.o                    name.s:229
     maneuver-map.o            maneuver-map.s:241
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    hiring_hall.o             hiring_hall.s:1118
     common.o                  common.s:523
     burtle_jsf32.o            burtle_jsf32.s:248
     alarm.o                   alarm.s:559
@@ -1155,11 +1182,11 @@ addysp1 (addysp.o):
     ladd.o                    runtime/ladd.s:8
 aslax1 (aslax1.o):
     world.o                   world.s:1455
+    name.o                    name.s:229
     jump-map.o                jump-map.s:1019
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    main.o                    main.s:769
-    main.o                    main.s:769
+    hiring_hall.o             hiring_hall.s:1118
+    main.o                    main.s:772
+    main.o                    main.s:772
 aslax2 (aslax2.o):
     world.o                   world.s:1455
     jump-map.o                jump-map.s:1019
@@ -1175,7 +1202,7 @@ aslax4 (aslax4.o):
     world.o                   world.s:1455
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    main.o                    main.s:769
+    main.o                    main.s:772
 asrax1 (asrax1.o):
     sprite.o                  sprite.s:503
     sprite.o                  sprite.s:503
@@ -1218,11 +1245,11 @@ decax1 (decax1.o):
 decax2 (decax2.o):
     trade.o                   trade.s:1077
 decax3 (decax3.o):
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
 decaxy (decaxy.o):
     world.o                   world.s:1455
 decsp1 (decsp1.o):
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
     common.o                  common.s:523
     alarm.o                   alarm.s:559
 decsp2 (decsp2.o):
@@ -1233,24 +1260,25 @@ decsp2 (decsp2.o):
     starport.o                starport.s:506
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    main.o                    main.s:769
+    jump.o                    jump.s:392
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    main.o                    main.s:772
 decsp4 (decsp4.o):
     lpush.o                   runtime/lpush.s:12
     world.o                   world.s:1455
     world.o                   world.s:1455
     trade.o                   trade.s:1077
     burtle_jsf32.o            burtle_jsf32.s:248
-    main.o                    main.s:769
+    main.o                    main.s:772
 decsp5 (decsp5.o):
     common.o                  common.s:523
 decsp6 (decsp6.o):
     _printf.o                 common/_printf.s:11
 decsp8 (decsp8.o):
     world.o                   world.s:1455
+    name.o                    name.s:229
 donelib (condes.o):
     crt0.o                    cx16/crt0.s:8
 getlop (ludiv.o):
@@ -1263,31 +1291,32 @@ gotoxy (gotoxy.o):
     cclear.o                  cbm/cclear.s:9
 incax2 (incax2.o):
     sprite.o                  sprite.s:503
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
+    name.o                    name.s:229
     menu.o                    menu.s:175
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
 incax3 (incax3.o):
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
+    name.o                    name.s:229
     jump-map.o                jump-map.s:1019
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
 incax4 (incaxy.o):
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    hiring_hall.o             hiring_hall.s:1118
 incax5 (incax5.o):
     world.o                   world.s:1455
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
 incax6 (incax6.o):
     sprite.o                  sprite.s:503
     sprite.o                  sprite.s:503
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
 incax7 (incax7.o):
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
 incax8 (incax8.o):
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
 incaxy (incaxy.o):
     incax8.o                  runtime/incax8.s:8
     incax7.o                  runtime/incax7.s:8
@@ -1298,17 +1327,19 @@ incaxy (incaxy.o):
     world.o                   world.s:1455
     world.o                   world.s:1455
     world.o                   world.s:1455
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    insystem.o                insystem.s:397
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
     damage.o                  damage.s:178
-    main.o                    main.s:769
+    main.o                    main.s:772
 inceaxy (linc.o):
     common.o                  common.s:523
     common.o                  common.s:523
@@ -1321,11 +1352,13 @@ incsp1 (incsp1.o):
     starport.o                starport.s:506
     sprite.o                  sprite.s:503
     shipyard.o                shipyard.s:358
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
     jump-map.o                jump-map.s:1019
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
     emplacement.o             emplacement.s:188
     emplacement.o             emplacement.s:188
     common.o                  common.s:523
@@ -1336,7 +1369,6 @@ incsp1 (incsp1.o):
     alarm.o                   alarm.s:559
     alarm.o                   alarm.s:559
 incsp2 (incsp2.o):
-    staxspi.o                 runtime/staxspi.s:9
     staspidx.o                runtime/staspidx.s:8
     popptr1.o                 runtime/popptr1.s:8
     world.o                   world.s:1455
@@ -1352,17 +1384,17 @@ incsp2 (incsp2.o):
     sprite.o                  sprite.s:503
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    hiring_hall.o             hiring_hall.s:1118
     common.o                  common.s:523
     common.o                  common.s:523
-    main.o                    main.s:769
+    main.o                    main.s:772
 incsp3 (incsp3.o):
     trade.o                   trade.s:1077
     starport.o                starport.s:506
@@ -1371,8 +1403,9 @@ incsp3 (incsp3.o):
     sprite.o                  sprite.s:503
     sprite.o                  sprite.s:503
     sprite.o                  sprite.s:503
-    ship.o                    ship.s:1157
-    hiring_hall.o             hiring_hall.s:963
+    ship.o                    ship.s:1276
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
 incsp4 (incsp4.o):
     lcmp.o                    runtime/lcmp.s:9
     world.o                   world.s:1455
@@ -1382,15 +1415,15 @@ incsp4 (incsp4.o):
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
     jump-map.o                jump-map.s:1019
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
     damage.o                  damage.s:178
     common.o                  common.s:523
     burtle_jsf32.o            burtle_jsf32.s:248
-    main.o                    main.s:769
+    main.o                    main.s:772
 incsp5 (incsp5.o):
     starport.o                starport.s:506
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
     menu.o                    menu.s:175
     common.o                  common.s:523
 incsp6 (incsp6.o):
@@ -1399,6 +1432,7 @@ incsp6 (incsp6.o):
     trade.o                   trade.s:1077
     passengers.o              passengers.s:781
     jump-map.o                jump-map.s:1019
+    insystem.o                insystem.s:397
     burtle_jsf32.o            burtle_jsf32.s:248
 initlib (condes.o):
     crt0.o                    cx16/crt0.s:8
@@ -1437,15 +1471,16 @@ ldax0sp (ldaxsp.o):
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
     damage.o                  damage.s:178
     common.o                  common.s:523
     burtle_jsf32.o            burtle_jsf32.s:248
     alarm.o                   alarm.s:559
-    main.o                    main.s:769
-    main.o                    main.s:769
+    main.o                    main.s:772
+    main.o                    main.s:772
 ldaxi (ldaxi.o):
     trade.o                   trade.s:1077
     trade.o                   trade.s:1077
@@ -1454,11 +1489,10 @@ ldaxi (ldaxi.o):
     trade.o                   trade.s:1077
     sprite.o                  sprite.s:503
     sprite.o                  sprite.s:503
+    name.o                    name.s:229
     menu.o                    menu.s:175
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    main.o                    main.s:769
+    jump.o                    jump.s:392
+    main.o                    main.s:772
 ldaxidx (ldaxi.o):
     trade.o                   trade.s:1077
     sprite.o                  sprite.s:503
@@ -1477,27 +1511,30 @@ ldaxysp (ldaxsp.o):
     sprite.o                  sprite.s:503
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
     passengers.o              passengers.s:781
+    name.o                    name.s:229
     maneuver-map.o            maneuver-map.s:241
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    insystem.o                insystem.s:397
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
     damage.o                  damage.s:178
     common.o                  common.s:523
     common.o                  common.s:523
     burtle_jsf32.o            burtle_jsf32.s:248
     burtle_jsf32.o            burtle_jsf32.s:248
     alarm.o                   alarm.s:559
-    main.o                    main.s:769
-    main.o                    main.s:769
+    main.o                    main.s:772
+    main.o                    main.s:772
 ldeax0sp (ldeaxysp.o):
     sleep.o                   ../libwrk/cx16/sleep.s:54
     trade.o                   trade.s:1077
@@ -1518,9 +1555,9 @@ leaa0sp (leaaxsp.o):
     maneuver-map.o            maneuver-map.s:241
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
 leaaxsp (leaaxsp.o):
-    jump.o                    jump.s:393
+    jump.o                    jump.s:392
 lsubeq (lsubeq.o):
     trade.o                   trade.s:1077
     starport.o                starport.s:506
@@ -1532,6 +1569,8 @@ mul8x16a (mul8.o):
 mulax10 (mulax10.o):
     starport.o                starport.s:506
     passengers.o              passengers.s:781
+mulax3 (mulax3.o):
+    name.o                    name.s:229
 mulax6 (mulax6.o):
     alarm.o                   alarm.s:559
 mulax7 (mulax7.o):
@@ -1562,6 +1601,7 @@ popax (incsp2.o):
     _printf.o                 common/_printf.s:11
     vcprintf.o                conio/vcprintf.s:8
     strncpy.o                 common/strncpy.s:8
+    strcpy.o                  common/strcpy.s:8
     shelp.o                   runtime/shelp.s:11
     memcpy.o                  common/memcpy.s:14
 poplsargs (lshelp.o):
@@ -1588,8 +1628,8 @@ ptr1 (zeropage.o):
     vcprintf.o                conio/vcprintf.s:10
     udiv.o                    runtime/udiv.s:10
     strncpy.o                 common/strncpy.s:9
+    strcpy.o                  common/strcpy.s:9
     steaxspi.o                runtime/steaxspi.s:10
-    staxspi.o                 runtime/staxspi.s:10
     staspidx.o                runtime/staspidx.s:9
     shelp.o                   runtime/shelp.s:12
     pushw.o                   runtime/pushw.s:9
@@ -1597,6 +1637,7 @@ ptr1 (zeropage.o):
     mulax9.o                  runtime/mulax9.s:10
     mulax7.o                  runtime/mulax7.s:10
     mulax6.o                  runtime/mulax6.s:9
+    mulax3.o                  runtime/mulax3.s:9
     mulax10.o                 runtime/mulax10.s:9
     mul8.o                    runtime/mul8.s:10
     mul.o                     runtime/mul.s:10
@@ -1622,6 +1663,7 @@ ptr1 (zeropage.o):
     shipyard.o                shipyard.s:11
     ship.o                    ship.s:11
     passengers.o              passengers.s:11
+    name.o                    name.s:11
     menu.o                    menu.s:11
     jump-map.o                jump-map.s:11
     jump.o                    jump.s:11
@@ -1638,6 +1680,7 @@ ptr2 (zeropage.o):
     vcprintf.o                conio/vcprintf.s:10
     strncpy.o                 common/strncpy.s:9
     strlen.o                  common/strlen.s:12
+    strcpy.o                  common/strcpy.s:9
     memcpy.o                  common/memcpy.s:15
     lumod.o                   runtime/lumod.s:10
     ludiv.o                   runtime/ludiv.s:10
@@ -1663,7 +1706,9 @@ ptr4 (zeropage.o):
 push0 (pushax.o):
     starport.o                starport.s:506
     passengers.o              passengers.s:781
+    name.o                    name.s:229
     jump-map.o                jump-map.s:1019
+    insystem.o                insystem.s:397
 push1 (push1.o):
     _printf.o                 common/_printf.s:11
 pusha (pusha.o):
@@ -1689,10 +1734,11 @@ pusha (pusha.o):
     sprite.o                  sprite.s:503
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
     menu.o                    menu.s:175
     maneuver-map.o            maneuver-map.s:241
@@ -1704,11 +1750,16 @@ pusha (pusha.o):
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    jump.o                    jump.s:392
+    insystem.o                insystem.s:397
+    insystem.o                insystem.s:397
+    insystem.o                insystem.s:397
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
     emplacement.o             emplacement.s:188
     emplacement.o             emplacement.s:188
     common.o                  common.s:523
@@ -1724,12 +1775,12 @@ pusha (pusha.o):
     alarm.o                   alarm.s:559
     alarm.o                   alarm.s:559
     alarm.o                   alarm.s:559
-    main.o                    main.s:769
-    main.o                    main.s:769
-    main.o                    main.s:769
-    main.o                    main.s:769
-    main.o                    main.s:769
-    main.o                    main.s:769
+    main.o                    main.s:772
+    main.o                    main.s:772
+    main.o                    main.s:772
+    main.o                    main.s:772
+    main.o                    main.s:772
+    main.o                    main.s:772
 pusha0 (pushax.o):
     push1.o                   runtime/push1.s:8
     world.o                   world.s:1455
@@ -1739,16 +1790,19 @@ pusha0 (pushax.o):
     trade.o                   trade.s:1077
     starport.o                starport.s:506
     starport.o                starport.s:506
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
     maneuver-map.o            maneuver-map.s:241
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    insystem.o                insystem.s:397
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
     alarm.o                   alarm.s:559
     alarm.o                   alarm.s:559
 pushax (pushax.o):
@@ -1784,14 +1838,15 @@ pushax (pushax.o):
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
     passengers.o              passengers.s:781
     passengers.o              passengers.s:781
+    name.o                    name.s:229
     menu.o                    menu.s:175
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
@@ -1799,12 +1854,15 @@ pushax (pushax.o):
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    jump.o                    jump.s:392
+    insystem.o                insystem.s:397
+    insystem.o                insystem.s:397
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
     damage.o                  damage.s:178
     common.o                  common.s:523
     common.o                  common.s:523
@@ -1812,10 +1870,10 @@ pushax (pushax.o):
     burtle_jsf32.o            burtle_jsf32.s:248
     burtle_jsf32.o            burtle_jsf32.s:248
     alarm.o                   alarm.s:559
-    main.o                    main.s:769
-    main.o                    main.s:769
-    main.o                    main.s:769
-    main.o                    main.s:769
+    main.o                    main.s:772
+    main.o                    main.s:772
+    main.o                    main.s:772
+    main.o                    main.s:772
 pusheax (lpush.o):
     _printf.o                 common/_printf.s:11
     sleep.o                   ../libwrk/cx16/sleep.s:54
@@ -1824,7 +1882,6 @@ pusheax (lpush.o):
     trade.o                   trade.s:1077
     trade.o                   trade.s:1077
     passengers.o              passengers.s:781
-    hiring_hall.o             hiring_hall.s:963
     common.o                  common.s:523
     common.o                  common.s:523
     common.o                  common.s:523
@@ -1835,7 +1892,7 @@ pushw (pushw.o):
     trade.o                   trade.s:1077
     starport.o                starport.s:506
     starport.o                starport.s:506
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
     damage.o                  damage.s:178
     alarm.o                   alarm.s:559
 pushw0sp (pushwsp.o):
@@ -1844,9 +1901,10 @@ pushw0sp (pushwsp.o):
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
-    hiring_hall.o             hiring_hall.s:963
+    insystem.o                insystem.s:397
+    hiring_hall.o             hiring_hall.s:1118
 pushwysp (pushwsp.o):
     world.o                   world.s:1455
     world.o                   world.s:1455
@@ -1855,21 +1913,22 @@ pushwysp (pushwsp.o):
     starport.o                starport.s:506
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
+    name.o                    name.s:229
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
     common.o                  common.s:523
     burtle_jsf32.o            burtle_jsf32.s:248
     burtle_jsf32.o            burtle_jsf32.s:248
-    main.o                    main.s:769
+    main.o                    main.s:772
 regbank (zeropage.o):
     _printf.o                 /Users/rje/git/cc65/asminc/zeropage.inc:14
 shlax1 (aslax1.o):
-    jump.o                    jump.s:393
+    jump.o                    jump.s:392
 shlax2 (aslax2.o):
     world.o                   world.s:1455
     jump-map.o                jump-map.s:1019
@@ -1908,7 +1967,6 @@ sp (zeropage.o):
     subeqsp.o                 runtime/subeqsp.s:8
     sub.o                     runtime/sub.s:9
     steaxsp.o                 runtime/steaxsp.s:8
-    staxspi.o                 runtime/staxspi.s:10
     staxsp.o                  runtime/staxsp.s:8
     staspidx.o                runtime/staspidx.s:9
     pushwsp.o                 runtime/pushwsp.s:8
@@ -1949,10 +2007,12 @@ sp (zeropage.o):
     shipyard.o                shipyard.s:10
     ship.o                    ship.s:10
     passengers.o              passengers.s:10
+    name.o                    name.s:10
     menu.o                    menu.s:10
     maneuver-map.o            maneuver-map.s:10
     jump-map.o                jump-map.s:10
     jump.o                    jump.s:10
+    insystem.o                insystem.s:10
     hiring_hall.o             hiring_hall.s:10
     emplacement.o             emplacement.s:10
     common.o                  common.s:10
@@ -1999,11 +2059,13 @@ sreg (zeropage.o):
     starport.o                starport.s:10
     sprite.o                  sprite.s:10
     passengers.o              passengers.s:10
+    name.o                    name.s:10
     jump-map.o                jump-map.s:10
+    hiring_hall.o             hiring_hall.s:10
     damage.o                  damage.s:10
     burtle_jsf32.o            burtle_jsf32.s:10
 staspidx (staspidx.o):
-    hiring_hall.o             hiring_hall.s:963
+    hiring_hall.o             hiring_hall.s:1118
 stax0sp (staxsp.o):
     world.o                   world.s:1455
     world.o                   world.s:1455
@@ -2016,14 +2078,13 @@ stax0sp (staxsp.o):
     passengers.o              passengers.s:781
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    insystem.o                insystem.s:397
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
     common.o                  common.s:523
-    main.o                    main.s:769
-    main.o                    main.s:769
-staxspidx (staxspi.o):
-    hiring_hall.o             hiring_hall.s:963
+    main.o                    main.s:772
+    main.o                    main.s:772
 staxysp (staxsp.o):
     world.o                   world.s:1455
     world.o                   world.s:1455
@@ -2032,11 +2093,13 @@ staxysp (staxsp.o):
     trade.o                   trade.s:1077
     starport.o                starport.s:506
     passengers.o              passengers.s:781
+    name.o                    name.s:229
     maneuver-map.o            maneuver-map.s:241
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    hiring_hall.o             hiring_hall.s:963
-    main.o                    main.s:769
+    insystem.o                insystem.s:397
+    hiring_hall.o             hiring_hall.s:1118
+    main.o                    main.s:772
 steax0sp (steaxsp.o):
     burtle_jsf32.o            burtle_jsf32.s:248
 steaxspidx (steaxspi.o):
@@ -2048,25 +2111,25 @@ subeq0sp (subeqsp.o):
     trade.o                   trade.s:1077
     passengers.o              passengers.s:781
     passengers.o              passengers.s:781
-    jump.o                    jump.s:393
+    jump.o                    jump.s:392
 subeqysp (subeqsp.o):
     shipyard.o                shipyard.s:358
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
+    jump.o                    jump.s:392
+    insystem.o                insystem.s:397
 subysp (subysp.o):
     passengers.o              passengers.s:781
     maneuver-map.o            maneuver-map.s:241
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
-    hiring_hall.o             hiring_hall.s:963
+    jump.o                    jump.s:392
+    hiring_hall.o             hiring_hall.s:1118
 tmp1 (zeropage.o):
     ltoa.o                    common/ltoa.s:11
     _printf.o                 /Users/rje/git/cc65/asminc/zeropage.inc:13
     vcprintf.o                conio/vcprintf.s:10
     strncpy.o                 common/strncpy.s:9
     steaxspi.o                runtime/steaxspi.s:10
-    staxspi.o                 runtime/staxspi.s:10
     staspidx.o                runtime/staspidx.s:9
     shreax4.o                 runtime/shreax4.s:8
     shreax3.o                 runtime/shreax3.s:8
@@ -2128,7 +2191,7 @@ tosaddax (add.o):
     trade.o                   trade.s:1077
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
 tosaddeax (ladd.o):
     sleep.o                   ../libwrk/cx16/sleep.s:54
@@ -2142,7 +2205,7 @@ tosdiva0 (div.o):
     world.o                   world.s:1455
     world.o                   world.s:1455
 tosdivax (div.o):
-    jump.o                    jump.s:393
+    jump.o                    jump.s:392
 tosgeeax (lge.o):
     sleep.o                   ../libwrk/cx16/sleep.s:54
 tosgteax (lgt.o):
@@ -2150,6 +2213,8 @@ tosgteax (lgt.o):
     starport.o                starport.s:506
 tosicmp (icmp.o):
     world.o                   world.s:1455
+    name.o                    name.s:229
+    insystem.o                insystem.s:397
 tosicmp0 (icmp.o):
     passengers.o              passengers.s:781
 toslcmp (lcmp.o):
@@ -2167,9 +2232,12 @@ tosmoda0 (mod.o):
     world.o                   world.s:1455
     passengers.o              passengers.s:781
     passengers.o              passengers.s:781
+    name.o                    name.s:229
     jump-map.o                jump-map.s:1019
     jump-map.o                jump-map.s:1019
-    jump.o                    jump.s:393
+    jump.o                    jump.s:392
+    insystem.o                insystem.s:397
+    insystem.o                insystem.s:397
     damage.o                  damage.s:178
 tosmodax (mod.o):
     world.o                   world.s:1455
@@ -2183,11 +2251,13 @@ tosmula0 (mul8.o):
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
     shipyard.o                shipyard.s:358
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
     jump-map.o                jump-map.s:1019
-    hiring_hall.o             hiring_hall.s:963
-    hiring_hall.o             hiring_hall.s:963
-    main.o                    main.s:769
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    hiring_hall.o             hiring_hall.s:1118
+    main.o                    main.s:772
 tosmulax (mul.o):
     world.o                   world.s:1455
 tosmuleax (lmul.o):
@@ -2210,7 +2280,6 @@ tosudiva0 (udiv.o):
     jump-map.o                jump-map.s:1019
 tosumod0ax (lumod.o):
     trade.o                   trade.s:1077
-    hiring_hall.o             hiring_hall.s:963
     common.o                  common.s:523
     common.o                  common.s:523
     common.o                  common.s:523
@@ -2223,8 +2292,8 @@ tosumula0 (mul8.o):
     trade.o                   trade.s:1077
     trade.o                   trade.s:1077
     starport.o                starport.s:506
-    ship.o                    ship.s:1157
-    ship.o                    ship.s:1157
+    ship.o                    ship.s:1276
+    ship.o                    ship.s:1276
     passengers.o              passengers.s:781
     alarm.o                   alarm.s:559
 tosumulax (mul.o):

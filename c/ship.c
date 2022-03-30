@@ -76,7 +76,7 @@ void showShipSummary(Starship* ship)
 
 void ship_init(byte ship_index, Starship* ship)
 {
-   readShip(ship_index, ship); // Marava
+   readShip(ship_index, ship);
 }
 
 byte readShip(byte index, Starship* ship)
@@ -174,6 +174,35 @@ void ship_describe(Starship* ship)
 void ship_loadImage(char* filename)
 {
    sprite_loadToVERA(filename,  0x4000);
+}
+
+char* ship_filename(byte ship_index)
+{
+   switch(ship_index)
+   {
+      case SHIP_INDEX_BEOWULF:    return "aia-beo.bin";
+      case SHIP_INDEX_MAADA  :    return "aia-maa.bin";
+      case SHIP_INDEX_MARAVA :    return "aia-far.bin";
+      case SHIP_INDEX_SAFARI :    return "aik-saf.bin";
+      case SHIP_INDEX_LINER  :    return "aim-lin.bin";
+      case SHIP_INDEX_MARCH  :    return "air-sub.bin";
+      case SHIP_INDEX_PACKET :    return "aiu-pak.bin";
+      case SHIP_INDEX_SUNFLOWER:  return "aik-saf.bin";
+      case SHIP_INDEX_BROADSWORD: return "aic-cru.bin";
+      case SHIP_INDEX_KILAALUM:   return "aie-kil.bin";
+      case SHIP_INDEX_GAZELLE :   return "aie-gaz.bin";
+      case SHIP_INDEX_DONOSEV :   return "ain-don.bin";
+      case SHIP_INDEX_LAB    :    return "ail-lab.bin";
+      case SHIP_INDEX_MURPHY :    return "ais-sc.bin";
+      
+      case SHIP_INDEX_KFORGZUE:
+      case SHIP_INDEX_AZ_ALRRAK:
+      case SHIP_INDEX_FANG:
+      case SHIP_INDEX_AEDOKHAZ:   return "aip-var.bin";
+
+      default:
+         ship_loadImage("aia-beo.bin"); break;
+   }
 }
 
 void ship_loadImageFromIndex(byte ship_index)

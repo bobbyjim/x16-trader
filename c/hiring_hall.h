@@ -41,7 +41,8 @@
 
 typedef struct
 {
-    char* name;
+    byte hired;
+    char name[16];
     byte upp[6];
     char race;
     byte skill[TOTAL_SKILLS];

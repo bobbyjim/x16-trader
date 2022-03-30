@@ -28,6 +28,7 @@
 #include "common.h"
 #include "hiring_hall.h"
 #include "burtle_jsf32.h"
+#include "name.h"
 
 #define     TOTAL_PERSON_NAMES      35
 
@@ -48,7 +49,7 @@ char* skillName[TOTAL_SKILLS] = {
 
 char* noname = "";
 
-char* personName[TOTAL_PERSON_NAMES] = {
+/*char* personName[TOTAL_PERSON_NAMES] = {
     "santanocheev",
     "aledon",
     "da santos",
@@ -84,7 +85,7 @@ char* personName[TOTAL_PERSON_NAMES] = {
     "skinner",
     "tyner",
     "gibson"
-};
+};*/
 
 byte findHighestSkillFor(byte skillIndex)
 {
@@ -127,24 +128,25 @@ char* decodeRace(char r)
 void printCrewmember(Crew* crew)
 {
    int j;
-
-   if (crew->name == 0) crew->name = noname;
-
-   cprintf("%-12s %x%x%x%x%x%x %8s ", 
-       crew->name, 
-       crew->upp[0],
-       crew->upp[1],
-       crew->upp[2],
-       crew->upp[3],
-       crew->upp[4],
-       crew->upp[5],
-       decodeRace(crew->race)
-   );
-
-   for(j=1; j<TOTAL_SKILLS; ++j)
+ 
+   if (crew->hired)
    {
-       if (crew->skill[j] > 0)
-           cprintf("%s-%d ", skillName[j], crew->skill[j]);
+      cprintf("%-12s %x%x%x%x%x%x %8s ", 
+          crew->name, 
+          crew->upp[0],
+          crew->upp[1],
+          crew->upp[2],
+          crew->upp[3],
+          crew->upp[4],
+          crew->upp[5],
+          decodeRace(crew->race)
+      );
+   
+      for(j=1; j<TOTAL_SKILLS; ++j)
+      {
+          if (crew->skill[j] > 0)
+              cprintf("%s-%d ", skillName[j], crew->skill[j]);
+      }
    }
    cputs("\r\n");
 }
@@ -172,7 +174,9 @@ void createCandidate(Crew* candidate)
 {
     byte i;
 
-    candidate->name = personName[ burtle32() % TOTAL_PERSON_NAMES ];
+    candidate->hired = 1; // provisional!
+    name_generate( candidate->name );
+//    candidate->name = personName[ burtle32() % TOTAL_PERSON_NAMES ];
 //    strncpy(candidate->name, personName[ rand() % TOTAL_PERSON_NAMES ], 15);
 
     for(i=0; i<6; ++i)
@@ -194,7 +198,28 @@ void createCandidate(Crew* candidate)
     }
 }
 
-void hireSomeone()
+byte firePerson(byte index)
+{
+    if (crew[index].hired)
+    {
+        crew[index].hired = 0;
+        strcpy(crew[index].name, "");
+    }
+    return index;
+}
+
+byte hirePerson(byte index, Crew* candidate)
+{
+    strcpy(crew[index].name, candidate->name);
+    memcpy(crew[index].upp,  candidate->upp, 6);
+    crew[index].race = candidate->race;
+    memcpy(crew[index].skill, candidate->skill, TOTAL_SKILLS);
+    crew[index].room = candidate->room;
+    crew[index].hired = 1;
+    return index;
+}
+
+byte interview()
 {
     Crew candidate;
 
@@ -206,26 +231,38 @@ void hireSomeone()
     cputs("\r\ncandidate:\r\n\r\n");
     printCrewmember( &candidate );
     cputs("\r\n");
-    cputs("     [0-9]   to hire.\r\n");
-    cputs("    <return> to reject.\r\n");
+    cputs("      [0-9]    to hire.\r\n");
+    cputs("   shift+[0-9] to fire.\r\n");
+    cputs("    <return>   to reject.\r\n");
 
     for(;;)
     {
        switch(cgetc())
        {
-           case 13:  return;
-           case '0': crew[0] = candidate; return;
-           case '1': crew[1] = candidate; return;
-           case '2': crew[2] = candidate; return;
-           case '3': crew[3] = candidate; return;
-           case '4': crew[4] = candidate; return;
-           case '5': crew[5] = candidate; return;
-           case '6': crew[6] = candidate; return;
-           case '7': crew[7] = candidate; return;
-           case '8': crew[8] = candidate; return;
-           case '9': crew[9] = candidate; return;
+           case 13:  return 255;
+           case '0': return hirePerson(0, &candidate);
+           case ')': return firePerson(0);
+           case '1': return hirePerson(1, &candidate);
+           case '!': return firePerson(1);
+           case '2': return hirePerson(2, &candidate);
+           case '@': return firePerson(2);
+           case '3': return hirePerson(3, &candidate);
+           case '#': return firePerson(3);
+           case '4': return hirePerson(4, &candidate);
+           case '$': return firePerson(4);
+           case '5': return hirePerson(5, &candidate);
+           case '%': return firePerson(5);
+           case '6': return hirePerson(6, &candidate);
+           case '^': return firePerson(6);
+           case '7': return hirePerson(7, &candidate);
+           case '&': return firePerson(7);
+           case '8': return hirePerson(8, &candidate);
+           case '*': return firePerson(8);
+           case '9': return hirePerson(9, &candidate);
+           case '(': return firePerson(9);
        }
     }
+    return 255;
 }
 
 void hire()
@@ -235,6 +272,6 @@ void hire()
     clrscr();
     titleLine();
     showCrew();
-    hireSomeone();
+    interview();
 }
 

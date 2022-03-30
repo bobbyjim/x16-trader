@@ -54,6 +54,11 @@
 #define SHIP_INDEX_LAB			0x1d
 #define SHIP_INDEX_SERPENT		0x1e
 #define SHIP_INDEX_MURPHY		0x1f
+#define SHIP_INDEX_KFORGZUE		0x20
+
+#define SHIP_INDEX_AZ_ALRRAK	0x25
+#define SHIP_INDEX_FANG			0x26
+#define SHIP_INDEX_AEDOKHAZ		0x27
 
 #define O_QSP_M			0
 #define O_QSP_J			1
@@ -170,6 +175,7 @@ void ship_debug(Starship* ship);
 void ship_describe(Starship* ship);
 void ship_loadImageFromIndex(byte ship_index);
 void ship_loadImage(char* filename);
+char* ship_filename(byte ship_index);
 
 byte readShip(byte index, Starship* ship);
 char* shipMission(char code);

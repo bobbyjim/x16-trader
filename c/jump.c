@@ -30,7 +30,7 @@
 #include "ship.h"
 #include "common.h"
 #include "passengers.h"
-#include "piracy.h"
+#include "insystem.h"
 
 extern byte astrogator;
 extern World current, destination;
@@ -137,11 +137,11 @@ void jump()
    pay_period += 7;  // one week in jump
    bookPassengersAndPayCrew();   
 
-   burnJumpFuel();
+   insystem_headForJumpPoint();
 
+   burnJumpFuel();
    specialEffects();
    updateLocation();
    ++playerAchievementLevel;
-   piracy();
 }
 

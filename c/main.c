@@ -38,6 +38,8 @@
 #include "maneuver-map.h"
 #include "wilderness.h"
 #include "menu.h"
+#include "name.h"
+
 
 //
 //  Player data
@@ -262,10 +264,18 @@ void init()
 //   sprite_loadToVERA("bi-worlds.bin",  0x6000);
 }
 
+char tmp[16];
+
 void main() 
 {
    int range;
    int i;
+
+   /*_randomize();
+   for(i=0; i<20; ++i)
+      cprintf("%s\r\n", name_generate(tmp));
+      
+   exit(0);*/
 
    init();
    splash();

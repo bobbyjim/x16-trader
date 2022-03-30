@@ -164,6 +164,10 @@ foreach(@data)
    $bggz += 4 if  $b > 0;
    $bggz += 8 if $gg > 0;
 
+   # add in digital bases' Scout and Naval presence bits
+   $bggz += 16  if $ba =~  /S|A|W|B/;
+   $bggz += 32  if $ba =~  /N|A|D|B/;
+
    # ---------------------------------------------
    #
    #  Prepare Stellar Data
