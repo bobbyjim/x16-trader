@@ -101,90 +101,12 @@ my %weaponAbbrev =  # 5 bits
 
 my @out;
 
-
 sub build_component_structure
 {
     my $unit = shift;                #  5 bits
     my $emplacement = shift || 0;    #  3 bits
 
     return $unit + $emplacement * 32;
-}
-
-
-sub registerBitfield
-{
-    my $field = shift;
-    my $size  = shift;
-    my $isComponent = shift;
-    my $componentNum = shift;
-
-    return if $fields{ $field }; # registered
-    ++$fields{ $field };
-    if ($isComponent)
-    {
-        $componentIndex{ $field } = $componentNum; # for struct record
-    }
-    push @fields, sprintf "   unsigned %10s: $size;\n", $field;
-}
-
-sub registerString
-{
-    my $field = shift;
-    my $size  = shift;
-
-    return if $fields{ $field }; # registered
-    ++$fields{ $field };
-    push @fields, "   char $field\[$size];\n";
-}
-
-#
-#  If you want to use this for a Component, then pass in 'Component*' as the type.
-#  BUT.... I think the setter should never be a "Component".  I could be wrong...
-#
-sub buildSignaturesForField
-{
-    my ($objectType, $fieldName, $type) = @_;
-    $type = 'char*' if $type eq 'char';
-    my $getSignature = sprintf "%-10s %s_get%s($objectType* obj)",             $type, lcfirst $objectType, ucfirst $fieldName;
-
-    $type = 'unsigned' if $type =~ /Component/; # A sneaking suspicion.
-
-    my $setSignature = sprintf "%-10s %s_set%s($objectType* obj, $type value)", 'void', lcfirst $objectType, ucfirst $fieldName;
-    return ($getSignature, $setSignature);
-}
-
-#
-#  This is used for accessors for regular fields (strings, bitfields).
-#
-sub buildBodiesForField
-{
-    my ($fieldName, $type) = @_;
-
-    my $getter = qq/{ return obj->$fieldName; }/;
-    my $setter = qq/\n{\n   obj->$fieldName = value;\n}/;
-       $setter = qq/\n{\n   strcpy(obj->$fieldName, value);\n}/ if $type =~ /char/;
-
-    return ($getter, $setter);
-}
-
-#
-#  Use this method for $shipStructName accessors.  It will assign
-#  data to the component array when applicable.  Otherwise, it will
-#  default to the standard bitfields (usually for "metadata").
-#  
-#  The component index is stored in $componentIndex{ $fieldName };
-#
-sub buildBodiesForComponentField
-{
-    my ($fieldName, $type) = @_;
-
-    return buildBodiesForField($fieldName, $type) unless defined $componentIndex{ $fieldName };
-
-    my $index = $componentIndex{ $fieldName };
-    my $getter = qq/{ return &(obj->component[$index]); }\n/;
-    my $setter = qq/\n{\n   obj->component[$index].value = value;\n}/;
-
-    return ($getter, $setter);
 }
 
 open my $out, '>', '32B-ALL-SHIPS.BIN';
@@ -195,8 +117,36 @@ print STDERR "There are ", scalar @acs, " ships.\n";
 
 open my $outfoxed, '>', 'BD-SHIPS.BIN';
 print $outfoxed pack 'xx';
+
+################################################################################
+#
+#   Print Mission Codes and Owners
+#
+################################################################################
+my @missions = getMissionCodes();
+my @owners   = getOwners();
+my @cfgs     = getHullCfgs();
+my @emplacements = getEmplacementNames();
+my @weapons  = getWeaponNames();
+my @problems = getProblems();
+
+print $outfoxed pack 'Z12', uc $_ foreach @missions;
+print $outfoxed '----';
+print $outfoxed pack 'Z12', uc $_ foreach @owners;
+print $outfoxed '--------';
+print $outfoxed pack 'Z16', uc $_ foreach @cfgs;
+print $outfoxed pack 'Z8',  uc $_ foreach @emplacements;
+print $outfoxed pack 'Z12', uc $_ foreach @weapons;
+print $outfoxed pack 'Z32', uc $_ foreach @problems;
+
+################################################################################
+#
+#   Print Ship Designs
+#
+################################################################################
+print $outfoxed pack 'Z64', uc "26 byte header, 22 byte component array";
 print $outfoxed pack 'C', scalar @acs;
-print $outfoxed sprintf "%-63s", uc "26 byte header, 22 byte component array";
+print $outfoxed pack 'x15';
 
 my $index = 0;
 foreach my $acsfile (@acs)
@@ -367,8 +317,7 @@ foreach my $acsfile (@acs)
 
     ############################################################################
     #
-    #  Write as packed bitfields with generated accessor C code.
-    #  It's not as great as it sounds, but it is clever.
+    #  Write as packed bitfields.
     #
     ############################################################################
     $cpu = 7 if $cpu > 7;
@@ -377,69 +326,32 @@ foreach my $acsfile (@acs)
     $j = 7 if $j > 7;
 
     print $out pack 'C', $index;
-    registerBitfield("index", 8);
-
     print $out pack 'A15x', uc $name;
-    registerString("name", 16);
 
     # byte 17
     $mission = ord($mission) - 65; # 5 bits
     $cfg     = $cfg{$cfg} << 5;    # 3 bits
-    print $out pack 'C', $mission + $cfg;
-    registerBitfield("mission", 5);
-    registerBitfield("cfg", 3, 'component', 1);
+    print $out pack 'C', $mission + $cfg;                # byte 17
 
     # byte 18
     $hull    = ord($hull)    - 65; # 5 bits
     $m <<= 5;                      # 3 bits
-    print $out pack 'C', $hull + $m;
-    registerBitfield("hull", 5);
-    registerBitfield("mdrv", 3, 'component', 3);
+    print $out pack 'C', $hull + $m;                     # byte 18
 
     # byte 19
     # $tl is next                  # 5 bits
     $j <<= 5;                      # 3 bits
-    print $out pack 'C', $tl + $j;
-    registerBitfield("tl", 5);
-    registerBitfield("jdrv", 3, 'component', 4);
-
+    print $out pack 'C', $tl + $j;                       # byte 19
     print $out pack 'C', $cargop  + ($collectors << 7);  # byte 20
-    registerBitfield("cargop", 7);
-    registerBitfield("collectors", 1, 'component', 16 );
     print $out pack 'C', $mcrp    + ($landers << 7);     # byte 21
-    registerBitfield("mcrp", 7);
-    registerBitfield("landers", 1);
     print $out pack 'C', $fuelp   + ($scoops << 7);      # byte 22
-    registerBitfield("fuelp", 7, 'component', 5);
-    registerBitfield("scoops", 1, 'component', 6 );
     print $out pack 'C', $av      + ($intakes << 7);     # byte 23
-    registerBitfield("av", 7);
-    registerBitfield("intakes", 1 );
     print $out pack 'C', $sr      + ($bridge << 6);      # byte 24
-    registerBitfield("staterooms", 6);
-    registerBitfield("bridge", 2, 'component', 0);
     print $out pack 'C', $lb      + ($bins << 6);        # byte 25
-    registerBitfield("low", 6);
-    registerBitfield("bins", 1 );
-    registerBitfield("jammer", 1, 'component', 17);
     print $out pack 'C', $comfort + ($demand <<3);       # byte 26
-    registerBitfield("comfort", 3);
-    registerBitfield("demand", 3);
-    registerBitfield("globe",  2, 'component', 20);
     print $out pack 'C', $cpu;                           # byte 27
-    registerBitfield("cpu", 3, 'component', 2);
-    registerBitfield("damper", 1, 'component', 18);
-    registerBitfield("screen", 1, 'component', 19);
-    registerBitfield("scrambler", 1);
-    registerBitfield("spare1", 2);
     print $out pack 'C', $spaceSensors +  ($worldSensors << 4); # byte 28
-    registerBitfield("combatSensors", 4, 'component', 21);
-    registerBitfield("surveySensors", 4, 'component', 22);
-
     print $out pack 'C', ($owner + 64);                  # byte 29
-    registerBitfield('owner',  5);
-    registerBitfield('spare2', 3);
-
     print $out pack 'x';                                 # byte 30
     print $out pack 'x';                                 # byte 31
 
@@ -467,195 +379,132 @@ print "\n\n  ***** NOT GENERATING THE C FILES.  SUE ME.  ***** \n\n";
 exit(0);
 
 
-=pod
-
-#####################################################################
-#
-#    Build the Header File
-#
-#####################################################################
-open my $hout, '>', 'ship-struct.h';
-print $hout <<EO_H_TOP;
-#ifndef _SHIP_STRUCT_H_
-#define _SHIP_STRUCT_H_
-
-// auto-generated with perl
-
-#define     START_ADDRESS   0xa000
-
-#define     BRIDGE      0
-#define     CFG         1
-#define     CPU         2
-#define     MDRV        3
-#define     JDRV        4
-#define     FUELP       5
-#define     SCOOPS      6
-#define     HARDPOINT_1 7
-#define     HARDPOINT_2 8
-#define     HARDPOINT_3 9
-#define     HARDPOINT_4 10
-#define     HARDPOINT_5 11
-#define     HARDPOINT_6 12
-#define     HARDPOINT_7 13
-#define     HARDPOINT_8 14
-#define     HARDPOINT_9 15
-#define     COLLECTOR   16
-#define     JAMMER      17
-#define     DAMPER      18
-#define     SCREEN      19
-#define     GLOBE       20
-#define     TRACKING    21
-#define     SURVEY      22
-
-typedef struct {
-    unsigned value    : 8;
-    unsigned something: 5;
-    unsigned damage   : 3;
-} Component;
-
-//////////////////////////////////////////////////
-//
-//   $shipStructName
-//
-//////////////////////////////////////////////////
-EO_H_TOP
-
-my $components = "   Component component[28];\n";
-print $hout "typedef struct \{\n", @fields, $components, "\} $shipStructName;\n\n";
-
-print $hout <<EO_H_MIDDLE;
-
-$shipStructName* build$shipStructName(int num, $shipStructName* ship);
-void debugShip($shipStructName* ship);
-
-//////////////////////////////////////////////////
-//
-//   $shipStructName accessors
-//
-//////////////////////////////////////////////////
-EO_H_MIDDLE
-
-foreach my $field (@fields)
+sub getMissionCodes
 {
-    my ($type, $fieldName) = $field =~ /^\s+(\w+)\s+(\w+)/;
-    $type = 'Component*' if defined $componentIndex{ $fieldName };
-    my ($getsig, $setsig) = buildSignaturesForField( $shipStructName, $fieldName, $type);
-    print $hout "$getsig;\n";
-    print $hout "$setsig;\n";
+return (
+'free trader',
+'beagle',
+'cruiser',
+'defender',
+'escort',
+'freighter',
+'frigate',
+'special',
+'special',
+'seeker',
+'safari ship',
+'lab ship',
+'liner',
+'survey ship',
+'special',
+'corsair',
+'special',
+'merchant',
+'scout',
+'transport',
+'packet',
+'destroyer',
+'barge',
+'express',
+'yacht',
+);
 }
 
-print $hout "\n#endif\n";
-close $hout;
-
-#####################################################################
-#
-#    Build the C File
-#
-#####################################################################
-open my $cout, '>', 'ship-struct.c';
-print $cout <<EO_DAO_TOP;
-// auto-generated with perl
-#include <string.h>
-#include <stdio.h>
-#include "ship-struct.h"
-
-//////////////////////////////////////////////////
-//
-//  $shipDAOName
-//
-//  I moved this out of the header and into the C file
-//  in order to hide it from the rest of the system.
-//
-//////////////////////////////////////////////////
-EO_DAO_TOP
-print $cout "typedef struct \{\n", @fields, "\} $shipDAOName;\n\n";
-
-my $BEGIN = '{';
-my $END   = '}';
-
-foreach my $field (@fields)
+sub getOwners
 {
-    my ($type, $fieldName) = $field =~ /^\s+(\w+)\s+(\w+)/;
-    my ($getsig) = buildSignaturesForField( $shipDAOName, $fieldName, $type);
-    my ($getbod) = buildBodiesForField( $fieldName, $type);
-    print $cout "$getsig $getbod\n";
+   return (
+    'Aslan',
+    'BT',
+    'C/Unknown',
+    'Droyne',
+    'Scouts',
+    'F/Unknown',
+    'G/Unknown',
+    'Humbolt',
+    'Imperial',
+    'JG',
+    'K/Unknown',
+    'Delta',
+    'Al Morai',
+    'Navy',
+    'O/Unknown',
+    'Narapoia',
+    'Q/Unknown',
+    'Republic',
+    'Gram',
+    'Tukera',
+    'Universal',
+    'Vargr',
+    'W/Unknown',
+    'Exotic',
+    'DayStar',
+    'Zhodani',
+   );
 }
 
-print $cout <<EO_ACCESSORS;
-//////////////////////////////////////////////////
-//
-//   $shipStructName Accessors
-//
-//////////////////////////////////////////////////
-EO_ACCESSORS
-
-foreach my $field (@fields)
-{
-    my ($type, $fieldName) = $field =~ /^\s+(\w+)\s+(\w+)/;
-    $type = 'Component*' if defined $componentIndex{ $fieldName };
-
-    my ($getsig, $setsig) = buildSignaturesForField( $shipStructName, $fieldName, $type);
-    my ($getbod, $setbod) = buildBodiesForComponentField( $fieldName, $type);
-    print $cout "$getsig $getbod\n";
-    print $cout "$setsig $setbod\n";
+sub getHullCfgs {
+   return (
+       'cluster',
+       'braced',
+       'planetoid',
+       'unstreamlined',
+       'streamlined',
+       'airframe',
+       'lift body');
 }
 
-print $cout <<EO_ACCESSORS;
-//////////////////////////////////////////////////
-//
-//   $shipStructName Builder
-//
-//////////////////////////////////////////////////
-$shipStructName* build$shipStructName(int num, $shipStructName* ship)
-$BEGIN
-   $shipDAOName* data = ($shipDAOName*)(START_ADDRESS + (num<<5));
+sub getEmplacementNames {
+    return qw/t1 t2 t3 b1 b2 bay lbay main/;
+}
+sub getWeaponNames {
+    return (
+    "-",
+    "-",
+    "mining las",       
+    "pulse las"  ,       
+    "beam las"    ,      
+    "plasma gun"     ,     
+    "fusion gun"      ,    
+    "salvo rack"       ,   
+    "missile"           ,  
+    "k-missile"         , 
+    "a-missile"          ,
+    "damper"         ,
+    "tractor"     ,
+    "inducer"             ,
+    "disruptor"           ,
+    "stasis"              ,
+    "sandcaster"          ,
+    "hybrid lsm"        ,
+    "pa",
+    "meson gun"    
 
-EO_ACCESSORS
-
-foreach my $field (@fields)
-{
-   my ($type, $name) = $field =~ /^\s+(\w+)\s+(\w+)/;
-   my $signature = lcfirst $shipStructName . "_set" . ucfirst $name;
-   my $DAOsignature = lcfirst $shipDAOName . "_get" . ucfirst $name . "(data)";
-   print $cout "   $signature( ship, $DAOsignature );\n";  # data->$name );\n"
+    );
 }
 
-print $cout "   return ship;\n";
-print $cout "$END\n";
-
-print $cout <<EODEBUG;
-
-//////////////////////////////////////////////////
-//
-//   debuggers
-//
-//////////////////////////////////////////////////
-void ${shipDAOName}_debug( $shipDAOName* data )
-$BEGIN
-EODEBUG
-
-foreach my $field (@fields)
-{
-   my ($type, $name) = $field =~ /^\s+(\w+)\s+(\w+)/;
-   my $DAOsignature = lcfirst $shipDAOName . "_get" . ucfirst $name . "(data)";
-   print $cout qq/   printf("   %10s %u\\n", "$name", $DAOsignature );\n/ if $type ne 'char*';
-   print $cout qq/   printf("   %10s %s\\n", "$name", $DAOsignature );\n/ if $type eq 'char*';
+sub getProblems{
+    return (
+    "the helm is not responding",
+    "the jump drives are sparking",
+    "a control console is on fire",
+    "the computer has caught fire",
+    "the cargo bay is ruptured",
+    "we're leaking hydrogen fuel",
+    "an antenna dish just melted",
+    "a surface sensor just cracked",
+    "fuel scoops are down",
+    "the collector has a hole in it",
+    "the stealth coating melted",
+    "the damper is offline",
+    "the mescon screen is down",
+    "the globe generator went dark",
+    "battery one is not responding",
+    "battery two is not responding",
+    "battery three is not responding",
+    "battery four is not responding",
+    "battery five is not responding",
+    "battery six is not responding",
+    "battery seven is not responding",
+    "battery eight is not responding"    
+    );
 }
-
-print $cout "$END\n\n";
-print $cout "void ${shipStructName}_debug( $shipStructName* ship )\n";
-print $cout "$BEGIN\n";
-
-foreach my $field (@fields)
-{
-   my ($type, $name) = $field =~ /^\s+(\w+)\s+(\w+)/;
-   my $signature = lcfirst $shipStructName . "_get" . ucfirst $name . "(ship)";
-   print $cout qq/   printf("   %10s %d\\n", "$name", $signature );\n/ if $type ne 'char*';
-   print $cout qq/   printf("   %10s %s\\n", "$name", $signature );\n/ if $type eq 'char*';
-}
-
-print $cout "$END\n\n";
-
-close $cout;
-
-=cut
