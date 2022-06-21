@@ -30,6 +30,7 @@
 //#include "burtle_jsf32.h"
 #include "alarm.h"
 #include "menu.h"
+#include "panel.h"
 
 // #define     OBJ_NONE            0
 // #define     OBJ_INSTALLATION    1
@@ -187,7 +188,6 @@ void showCurrentLocation()
     textcolor(COLOR_LIGHTRED);
     cputsxy(5,7,"current world      ");
     cputs("\r\n");
-    //cprintf("         credits         : %ld00\r\n\r\n", hcr);
 
     if (DIFFERENT_WORLDS(destination, current))
     {
@@ -201,7 +201,7 @@ void showCurrentLocation()
 unsigned char maneuver()
 {
     int yPosition = 31;
-    int opts = SHIPYARD_OPTION+1;
+    int opts = SURVEY_OPTION+1;
     char* mainworldMenuOptions[] = {
         "astrogation",
         "jump",
@@ -210,13 +210,12 @@ unsigned char maneuver()
         "starport",
         "hiring hall",
         "shipyard",
-    };  
+        "prospecting"
+    };
 
-    textcolor(COLOR_YELLOW);
-    if (playerAchievementLevel > 1)
-        cputsxy(9, yPosition, "move to location:");
-    else   
-        cputsxy(9, yPosition, "press <return>");
+    char* title = " travel to location: ";
+    if (playerAchievementLevel == 1)
+       title = " press <return> ";
    
     if (playerAchievementLevel < opts)
         opts = playerAchievementLevel;
@@ -230,6 +229,8 @@ unsigned char maneuver()
     if (opts >= SHIPYARD_OPTION && STARPORT_NO_SHIPYARD(&current))
         opts = SHIPYARD_OPTION-1; // no shipyard
 
+    textcolor(COLOR_YELLOW);
+    drawPanel(7, yPosition - 1, 58, 4 + opts * 2, title );
     return menu_run(9, yPosition, opts, mainworldMenuOptions);
 }
 

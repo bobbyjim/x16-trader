@@ -1,3 +1,5 @@
+#ifndef _ship_h_
+#define _ship_h_
 /*
 
     Traveller-Trader: a space trader game
@@ -19,22 +21,26 @@
     along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
         
 */      
-
-#ifndef _ship_h_
-#define _ship_h_
-
 #include "common.h"
 
-#define STARSHIP_COUNT			(((byte*)(0xa000))[0])
-#define	STARSHIP_DATA			((Starship*)0xa040)
+#define STARSHIP_COUNT			(((byte*)(SHIP_DESIGN_COUNT))[0])
+#define	STARSHIP_DATA			((Starship*)SHIP_DESIGNS_BEGIN)
 
-#define SHIP_INDEX_EAKHAU		0x01
-#define SHIP_INDEX_STAYOW		0x02
-#define SHIP_INDEX_EKAWSYKUA	0x03
-#define SHIP_INDEX_KHOSAA		0x04
-#define SHIP_INDEX_KTEIROA		0x05
-#define SHIP_INDEX_KHTUKHAO		0x06
-#define SHIP_INDEX_AOSITAOH		0x07
+#define SHIP_INDEX_EAKHAU		0x00
+#define SHIP_INDEX_STAYOW		0x01
+#define SHIP_INDEX_EKAWSYKUA	0x02
+#define SHIP_INDEX_KHOSAA		0x03
+#define SHIP_INDEX_KTEIROA		0x04
+#define SHIP_INDEX_KHTUKHAO		0x05
+#define SHIP_INDEX_AOSITAOH		0x06
+#define SHIP_INDEX_HKIYRERAO	0x07
+#define SHIP_INDEX_KTIYHUI 		0x08
+
+#define SHIP_INDEX_MIYMOSA		0x09
+#define SHIP_INDEX_LOSKAY		0x0a
+#define SHIP_INDEX_DROYNE_ESCORT 0x0b
+#define SHIP_INDEX_SYUNUTSTRYAK	0x0c
+#define SHIP_INDEX_BRETREMOY	0x0d
 
 #define SHIP_INDEX_BEOWULF		0x0e
 #define SHIP_INDEX_MAADA		0x0f
@@ -45,20 +51,31 @@
 #define SHIP_INDEX_MARCH		0x14
 #define SHIP_INDEX_PACKET		0x15
 #define SHIP_INDEX_SUNFLOWER    0x16
-#define SHIP_INDEX_BROADSWORD   0x17
-#define SHIP_INDEX_KILAALUM		0x18
-#define SHIP_INDEX_GAZELLE	  	0x19
-#define SHIP_INDEX_ANNIC_NOVA	0x1a
-#define SHIP_INDEX_KURGULASH	0x1b
-#define SHIP_INDEX_DONOSEV		0x1c
-#define SHIP_INDEX_LAB			0x1d
-#define SHIP_INDEX_SERPENT		0x1e
-#define SHIP_INDEX_MURPHY		0x1f
-#define SHIP_INDEX_KFORGZUE		0x20
+#define SHIP_INDEX_GUILDER		0x17
+#define SHIP_INDEX_BROADSWORD   0x18
+#define SHIP_INDEX_KILAALUM		0x19
+#define SHIP_INDEX_GAZELLE	  	0x1a
+#define SHIP_INDEX_ANNIC_NOVA	0x1b
+#define SHIP_INDEX_KURGULASH	0x1c
+#define SHIP_INDEX_DONOSEV		0x1d
+#define SHIP_INDEX_LAB			0x1e
+#define SHIP_INDEX_SERPENT		0x1f
+#define SHIP_INDEX_MURPHY		0x20
 
-#define SHIP_INDEX_AZ_ALRRAK	0x25
-#define SHIP_INDEX_FANG			0x26
-#define SHIP_INDEX_AEDOKHAZ		0x27
+#define SHIP_INDEX_KFORGZUE		0x21
+#define SHIP_INDEX_SE_KOEZ		0x22
+#define SHIP_INDEX_ZUKSEG		0x23
+#define SHIP_INDEX_DHAZTUEN		0x24
+#define SHIP_INDEX_TATHOE		0x25
+#define SHIP_INDEX_AZ_ALRRAK	0x26
+#define SHIP_INDEX_FANG			0x27
+#define SHIP_INDEX_AEDOKHAZ		0x28
+
+#define SHIP_INDEX_VLEZHDATL	0x29
+#define SHIP_INDEX_SESAVETL		0x2a
+#define SHIP_INDEX_SHIVVA		0x2b
+#define SHIP_INDEX_CHTABL		0x2c
+#define SHIP_INDEX_QLIAF		0x2d
 
 #define O_QSP_M			0
 #define O_QSP_J			1
@@ -178,7 +195,7 @@ void ship_loadImage(char* filename);
 char* ship_filename(byte ship_index);
 
 byte readShip(byte index, Starship* ship);
-char* shipMission(char code);
-char* shipOwner(char owner);
+//char* shipMission(char code);
+//char* shipOwner(char owner);
 
 #endif

@@ -47,15 +47,13 @@ byte shipIsHere(Starship* thisShip)
 
       if (thisShip->allegiance == 'e' && WORLD_HAS_SCOUT_BASE(&current)) // e 'exploration'
          return 1;
-
-      return 0;
    }  
-   return thisShip->allegiance == current.data.allegiance;
+   return thisShip->allegiance == current.data.allegiance; 
 }
 
 int getNextShip(int curIndex)
 {
-   Starship* ships = (Starship*) 0xa040;
+   Starship* ships = STARSHIP_DATA; // (Starship*) 0xa040;
    setBank(SHIP_BANK);
 
    while(++curIndex < STARSHIP_COUNT)
@@ -67,7 +65,7 @@ int getNextShip(int curIndex)
 
 int getPrevShip(int curIndex)
 {
-   Starship* ships = (Starship*) 0xa040;
+   Starship* ships = STARSHIP_DATA; // (Starship*) 0xa040;
    setBank(SHIP_BANK);
 
    while(--curIndex > 0)
@@ -83,15 +81,21 @@ byte showStarships()
 
    while(1)
    {
+      setBank(SHIP_BANK);
       clrscr();
       titleLine();
-      setBank(SHIP_BANK);
+      statusLine();
       textcolor(COLOR_LIGHTBLUE);
 
       if (index == 255)
          return 255;
 
+      gotoxy(4, 2);
+      showShipSummary( &STARSHIP_DATA[index] );
       ship_describe( &STARSHIP_DATA[index] );
+
+//      gotoxy(15,38);
+//      cprintf("  %c / %c / %u ", STARSHIP_DATA[index].allegiance, current.data.allegiance, shipIsHere(&STARSHIP_DATA[index]));
 
       cputsxy(15,40, "<up>/<down> to scroll through ship list");
       cputsxy(15,42, "<space> to consider a ship");

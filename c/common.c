@@ -35,7 +35,27 @@
 #define SA_IGNORE_HEADER        0
 #define LOAD_FLAG               0
 
+//
+// #define X16_R39
+// #undef  X16_R38
+// and so on
+
+#define  CHARACTER_MAP_ADDRESS_R38    0x0f800
+#define  CHARACTER_MAP_ADDRESS_R39    0x0f000
+#define  LOAD_SECONDARY_ADDRESS_R38   2
+#define  LOAD_SECONDARY_ADDRESS_R39   3
+
+#define  CHARACTER_MAP_ADDRESS         CHARACTER_MAP_ADDRESS_R39
+#define  LOAD_SECONDARY_ADDRESS        LOAD_SECONDARY_ADDRESS_R39
+
 int currentBank = -1;
+
+void common_loadCharacterSet(char* filename)
+{
+   cbm_k_setnam(filename);
+   cbm_k_setlfs(0,8,0);
+   cbm_k_load(LOAD_SECONDARY_ADDRESS, CHARACTER_MAP_ADDRESS);
+}
 
 void setBank(int bank)
 {
@@ -95,6 +115,11 @@ void statusLine()
 {
    textcolor(COLOR_RED);
    chlinexy(0,56,80);
+   gotoxy(73,56);
+   cprintf(" %u.%uk ", _heapmemavail()/1000, (_heapmemavail() % 1000)/100);
+
+   //textcolor(COLOR_GRAY2);
+   cputsxy(22,56," t r a v e l l e r   t r a d e r ");
 }
 
 void toDefaultColor()

@@ -119,8 +119,7 @@ void showInventory(byte sel)
 
    sel %= 20;
 
-
-   cputsxy(8,0,"ship    cargo type        starport        cr/ton\r\n");
+   cputsxy(8,1,"ship    cargo type        starport        cr/ton\r\n");
    redline();
    textcolor(COLOR_LIGHTBLUE);
 

@@ -18,40 +18,10 @@
     You should have received a copy of the GNU General Public License
     along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
         
-*/      
-#include <conio.h>
-//#include <stdio.h>
-#include <string.h>
+*/
+#ifndef _SURVEY_H_
+#define _SURVEY_H_
 
-#include "console.h"
-#include "world.h"
+void survey();
 
-extern World current;
-
-void console()
-{
-    // char buffer[8];
-    // int  row, col;
-
-    // for(;;)
-    // {
-    //     cputs("% ");
-    //     scanf("%s", buffer);
-    //     if(!strcmp(buffer, "bye"))
-    //     {
-    //         return;
-    //     }
-    //     if(!strcmp(buffer, "set") || !strcmp(buffer, "s"))
-    //     {
-    //         scanf("%s", buffer);
-    //         if (!strcmp(buffer, "hex"))
-    //         {
-    //            scanf("%d %d", col, row);
-    //            current.row = row;
-    //            current.col = col;
-    //            getWorld(&current);
-    //            cprintf("done\r\n");
-    //         }
-    //     }
-    // }
-}
+#endif

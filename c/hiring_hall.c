@@ -1,4 +1,3 @@
-
 /*
 
     Traveller-Trader: a space trader game
@@ -35,57 +34,17 @@
 Crew crew[TOTAL_CREW_SLOTS];
 
 char* skillName[TOTAL_SKILLS] = {
-    "none",
-    "admn",
-    "astr",
-    "engr",
-    "gunr",
-    "lias",
-    "medc",
-    "pilt",
-    "strw",
-    "stwd"
+    "0", // "none",
+    "admn", // "admn",
+    "astr", // "astr",
+    "engr", // "engr",
+    "guns", // "gunr",
+    "lias", // "lias",
+    "medc", // "medc",
+    "pilt", // "pilt",
+    "strt", // "strw",
+    "stwd", // "stwd"
 };
-
-char* noname = "";
-
-/*char* personName[TOTAL_PERSON_NAMES] = {
-    "santanocheev",
-    "aledon",
-    "da santos",
-    "vren",
-    "jamison",
-    "illethin",
-    "bulolo",
-    "tukera",
-    "bannerji",
-    "arrlanroughl",
-    "fireau",
-    "thingvellir",
-    "oberlindes",
-    "laaglir",
-    "telemon",
-    "krenstein",
-    "owen",
-    "andor",
-    "sirkin",
-    "de seripando",
-    "moy",
-    "hotzel",
-    "kurlush",
-    "rivera",
-    "cobb",
-    "frey",
-    "serra",
-    "torres",
-    "washburne",
-    "tam",
-    "reynolds",
-    "mccoy",
-    "skinner",
-    "tyner",
-    "gibson"
-};*/
 
 byte findHighestSkillFor(byte skillIndex)
 {
@@ -145,7 +104,7 @@ void printCrewmember(Crew* crew)
       for(j=1; j<TOTAL_SKILLS; ++j)
       {
           if (crew->skill[j] > 0)
-              cprintf("%s-%d ", skillName[j], crew->skill[j]);
+              cprintf("%s%d ", skillName[j], crew->skill[j]);
       }
    }
    cputs("\r\n");
@@ -157,7 +116,7 @@ void showCrew()
 
     textcolor(COLOR_LIGHTBLUE);
 
-    cputsxy(2, 5, "crewmember      profile                 skills");
+    cputsxy(2, 5, "crewmember    profile         skills");
     chlinexy( 2, 6, 12);
     chlinexy(16, 6, 15);
     chlinexy(32, 6, 47);
@@ -176,8 +135,6 @@ void createCandidate(Crew* candidate)
 
     candidate->hired = 1; // provisional!
     name_generate( candidate->name );
-//    candidate->name = personName[ burtle32() % TOTAL_PERSON_NAMES ];
-//    strncpy(candidate->name, personName[ rand() % TOTAL_PERSON_NAMES ], 15);
 
     for(i=0; i<6; ++i)
        candidate->upp[i] = diceRoll2d();
@@ -271,6 +228,7 @@ void hire()
 
     clrscr();
     titleLine();
+    statusLine();
     showCrew();
     interview();
 }

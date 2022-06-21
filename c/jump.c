@@ -1,7 +1,7 @@
 /*
 
     Traveller-Trader: a space trader game
-    Copyright (C) 2021 Robert Eaglestone
+    Copyright (C) 2022 Robert Eaglestone
 
     This file is part of Traveller-Trader.
         
@@ -18,7 +18,7 @@
     You should have received a copy of the GNU General Public License
     along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
         
-*/      
+*/
 
 #include <cbm.h>
 #include <conio.h>
@@ -31,6 +31,7 @@
 #include "common.h"
 #include "passengers.h"
 #include "insystem.h"
+#include "bankedText.h"
 
 extern byte astrogator;
 extern World current, destination;
@@ -39,24 +40,6 @@ extern byte playerAchievementLevel;
 extern byte pay_period;
 
 #define     ADVICE_COUNT      16
-char* advicePerPlayerAchievementLevel[] = {
-   "",
-   "",
-   "wilderness refueling is a cheap way to refuel, but takes time.",
-   "    e-class starports are simply marked landing fields.",
-   "           beware of amber and red zone worlds!",
-   "     hire an astrogator... these jumps take forever!",
-   "       buy and sell speculative cargo at the market.",
-   "         upgrade defenses at a and b starports.",
-   "        a- and b-class starports have shipyards",
-   "            get weapons, then hire a gunner.",
-   "       buy a liner if you want longer trade legs.",
-   "       buy a cruiser if you want to hunt pirates.",
-   "          special systems have special ships.",
-   "         time spent in mining produces cargo.",
-   "       sometimes, mining asteroids produces fuel.",
-   "      sometimes, mining asteroids produces salvage."
-};
 
 void burnJumpFuel()
 {
@@ -72,7 +55,7 @@ void specialEffects()
   
    clrscr();
    titleLine();
-   //cputsxy(5,2,"jumpspace transition");
+   statusLine();
    textcolor(COLOR_LIGHTRED);
    cputsxy(22,20,"entering jumpspace.  please stand by.");
    textcolor(COLOR_YELLOW);
@@ -80,7 +63,9 @@ void specialEffects()
    if (playerAchievementLevel < ADVICE_COUNT)
    {
       cputsxy(30,26,"** game hints **");
-      cputsxy(10,30,advicePerPlayerAchievementLevel[playerAchievementLevel]);
+      gotoxy(10,30);
+      setBank(MISC_BANK);
+      printBankedText(PETSCII_ADVICE + playerAchievementLevel * 64, 64);
    }
 
    sleep(10/(astrogator+1));

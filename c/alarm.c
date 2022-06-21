@@ -73,33 +73,34 @@ char* alarmValue[7][] = {
    { "l", "lo", "low" }
 };
 
-char* componentLabel[] = {
-      "maneuver drive",
-      "jump drive",
-      "bridge",
-      "computer",
-      "cargo",
-      "fuel",
+// #define TEXT_SHIP_COMPONENT(x)  ((char*) 0xa000 + x * 16)
+// char* componentLabel[] = {
+//       "maneuver drive",
+//       "jump drive",
+//       "bridge",
+//       "computer",
+//       "cargo",
+//       "fuel",
 
-      "space sensors",
-      "world sensors",
-      "scoops",
-      "collectors",
+//       "space sensors",
+//       "world sensors",
+//       "scoops",
+//       "collectors",
 
-      "stealth",
-      "damper",
-      "screen",
-      "globe",
+//       "stealth",
+//       "damper",
+//       "screen",
+//       "globe",
 
-      "emplacement 1",
-      "emplacement 2",
-      "emplacement 3",
-      "emplacement 4",
-      "emplacement 5",
-      "emplacement 6",
-      "emplacement 7",
-      "emplacement 8"
-};
+//       "emplacement 1",
+//       "emplacement 2",
+//       "emplacement 3",
+//       "emplacement 4",
+//       "emplacement 5",
+//       "emplacement 6",
+//       "emplacement 7",
+//       "emplacement 8"
+// };
 
 byte getComponentState(byte component)
 {

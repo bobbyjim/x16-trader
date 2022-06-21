@@ -43,8 +43,9 @@ void testSeek()
     unsigned char lfn = 1;
     unsigned char sec_addr = 1;
     unsigned char buffer[255];
-    unsigned char c = cbm_open(lfn, 8, sec_addr, "mapfile" );
-    
+    //unsigned char c = cbm_open(lfn, 8, sec_addr, "bd-ships.bin" );
+    unsigned char c = cbm_open(lfn, 8, "bd-ships.bin" );
+
     cprintf("response: %u\r\n", c );
 
     cbm_read(lfn, buffer, 200); 

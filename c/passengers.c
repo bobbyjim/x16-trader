@@ -1,3 +1,24 @@
+/*
+
+    Traveller-Trader: a space trader game
+    Copyright (C) 2022 Robert Eaglestone
+
+    This file is part of Traveller-Trader.
+        
+    Traveller-Trader is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+        
+    Traveller-Trader is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
+        
+*/
 
 #include <conio.h>
 #include <stdlib.h>
@@ -9,6 +30,7 @@
 #include "trade.h"
 
 extern Starship ship;
+extern byte shipState[22];
 extern World current;
 extern World destination;
 extern byte pay_period;
@@ -59,15 +81,30 @@ void bookPassengersAndPayCrew()
    byte high_00;
    byte mid_00;
    byte low_00;
+   long fuelNeeded;
    unsigned subtotal;
    unsigned crewPay;
 
    clrscr();
+   statusLine();
    gotoxy(5,2);
    textcolor(COLOR_GREEN);
    cprintf("booking passengers bound for %s", WORLD_LONG_LABEL(&destination));
    titleLine();
+   textcolor(COLOR_LIGHTRED);
+   cprintf("     initial balance:                 cr %7ld00\r\n\r\n", hcr );
 
+   //
+   //  Fuel
+   //
+   fuelNeeded = shipState[ O_STATE_JUMP_FUEL_USED ] * ship.size * 10;
+   cprintf("     fuel cost:                       cr %9ld (%ld tons)\r\n\r\n", fuelNeeded * 500, fuelNeeded);
+   shipState[ O_STATE_JUMP_FUEL_USED ] = 0;
+   hcr -= fuelNeeded * 5;
+
+   //
+   //  Passengers
+   //
    high = goodFlux(current.data.pop + steward);
    if (high > ship.sr) high = ship.sr;
 
@@ -80,9 +117,6 @@ void bookPassengersAndPayCrew()
    high_00 = ship.demand + 100;
    mid_00  = ship.demand + 80;
    low_00  = ship.demand + 10;
-
-   textcolor(COLOR_LIGHTRED);
-   cprintf("     initial balance:                 cr %7ld00\r\n\r\n", hcr );
 
    subtotal = high * high_00 + mid * mid_00 + low * low_00;
    hcr += subtotal;

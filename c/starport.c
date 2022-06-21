@@ -19,7 +19,6 @@
     along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
         
 */      
-
 #include <conio.h>
 
 #include "starport.h"
@@ -27,25 +26,30 @@
 #include "common.h"
 #include "alarm.h"
 #include "emplacement.h"
+#include "panel.h"
+#include "bankedText.h"
 
 extern Starship   ship;
 extern long       hcr;
 extern byte       shipState[24];
 extern byte       shipDamage[24];
 
-extern char* componentLabel[];
-extern unsigned cost[];
+//extern char* componentLabel[];  <-- #define TEXT_SHIP_COMPONENT(x)  ((char*) 0xa000 + x * 16)
+extern unsigned char cost[];
+
+#define  MENU_PANEL_ROW      16
+#define  MESSAGE_ROW         56
 
 void checkComponentSelection(byte selected)
 {
    unsigned kcr = cost[selected];
 
-   cclearxy(0,40,70);
-   cclearxy(0,41,70);
-   cclearxy(0,42,70);
+   cclearxy(0,MESSAGE_ROW,70);
+   cclearxy(0,MESSAGE_ROW+1,70);
+   cclearxy(0,MESSAGE_ROW+2,70);
    if (kcr > 0)
    {
-      gotoxy(0,40);
+      gotoxy(0,MESSAGE_ROW);
       cprintf("    cr %u000 to repair this part.\r\n", kcr);
       if (kcr * 10 > hcr)
       {
@@ -63,25 +67,30 @@ void showComponentStatus(byte selected)
    byte i;
    byte mult;
 
-   textcolor(COLOR_CYAN);
-   cputsxy(2,5,"component        status   rating  current\r\n" );
-   cputsxy(2,6,"---------------  -------  ------  -------\r\n" );
+   setBank(TEXT_BANK_1);
+
    textcolor(COLOR_LIGHTBLUE);
+   cputsxy(7,MENU_PANEL_ROW+2,"component        status   rating  current\r\n" );
+   cputsxy(7,MENU_PANEL_ROW+3,"---------------  -------  ------  -------\r\n" );
+   textcolor(COLOR_CYAN); // LIGHTBLUE);
    for(i=0; i<COMPONENT_COUNT; ++i)
    {
-      gotoxy(2,7+i);
+      gotoxy(7,MENU_PANEL_ROW+4+i);
       if (selected == i) revers(1);
 
       mult = 1;
       if (i == O_QSP_CARGOP || i == O_QSP_FUELP) mult = ship.size;
 
       if (i < FIRST_EMPLACEMENT)
-         cprintf("%-15s  %-8s   %-4d    %-4d \r\n",
-            componentLabel[i],
+      {
+         printBankedText( (unsigned) TEXT_SHIP_COMPONENT(i), 15 );
+         cprintf(" %-8s   %-4d    %-4d \r\n",
+//            componentLabel[i],
             ship.component[i]>0? getStatusLabel(shipState[i]) : "-",
             ship.component[i] * mult,
             (ship.component[i] - shipState[i]) * mult
          );      
+      }
       else
       {
          cprintf("%4s %-10s  %-8s  %-4s    %-4s \r\n",
@@ -123,19 +132,24 @@ void landAtStarport()
    //    shipState[ O_STATE_JUMP_FUEL_USED ] = STATUS_LOW;
 
    clrscr();
+   titleLine();
+   //statusLine();
+   textcolor(COLOR_YELLOW);
+   drawPanel(5, MENU_PANEL_ROW, 58, 36, " ship maintenance " );
 
    for(;;) // menu
    {
-      titleLine();
-      statusLine();
-      textcolor(COLOR_YELLOW);
-      cputsxy(5,30,"press <r> over selection to refuel or repair");
-      cputsxy(5,32,"press <return> to exit");
-
-      // ship summary goes above the title line, so row 2.
-      gotoxy(0,2);
+      gotoxy(5,2);
       textcolor(COLOR_LIGHTRED);
       showShipSummary(&ship);
+      textcolor(COLOR_LIGHTBLUE);
+      ship_describe(&ship);
+      textcolor(COLOR_YELLOW);
+      cputsxy(7,MENU_PANEL_ROW+30,"press <r> over selection to refuel or repair");
+      cputsxy(7,MENU_PANEL_ROW+32,"press <u> over selection to upgrade");
+      cputsxy(7,MENU_PANEL_ROW+34,"press <return> to exit");
+
+      gotoxy(0,20);
       showComponentStatus(componentSelected);
       checkComponentSelection(componentSelected);
       switch(cgetc())

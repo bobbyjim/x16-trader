@@ -1,4 +1,4 @@
-.obj/name.o:	name.c name.h
+.obj/name.o:	name.c common.h name.h
 
-name.c name.h:
+name.c common.h name.h:
 

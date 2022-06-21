@@ -100,6 +100,7 @@ char* worldAllegiance(byte code)
    {
       case 'a': return "aslan";
       case 'd': return "droyne";
+      case 'n': return "non-aligned";
       case 'v': return "vargr";
       case 'z': return "zhodani";
       default : return "imperial";
@@ -139,7 +140,7 @@ void world_describe(World* world)
 {
    textcolor(COLOR_LIGHTBLUE);
 
-   cprintf("         world name      : %s (%s)\r\n\r\n", world->data.name, worldAllegiance(world->data.allegiance));
+   cprintf("         world name      : %s (%c %s)\r\n\r\n", world->data.name, world->data.allegiance, worldAllegiance(world->data.allegiance));
 
    if (playerAchievementLevel > 1)
       cprintf("         starport quality: %c - %-15s  bases: %s\r\n\r\n", world->data.starport, starportQuality(world->data.starport), displayBases(world->data.bases));
@@ -290,6 +291,22 @@ void getWorld(World* world)
 
    data = (WorldData*)(address);
    world->data     = *data;           // COPY THE DATA IN!
+}
+
+void setWorldSurveyed(World* world)
+{
+   int offset = world->col * 64 + world->row;
+   int bank = MAP_BANK_BEGIN + offset/128;
+
+   int address;
+   WorldData* data;
+
+   setBank(bank);
+   offset %= 128;
+   address = ADDRESS_START + offset * 64;
+   data = (WorldData*)(address);
+   data->surveyed = 1;
+   world->data.surveyed = 1; // update the local record please.
 }
 
 byte planetoidPetscii[4][7] = {

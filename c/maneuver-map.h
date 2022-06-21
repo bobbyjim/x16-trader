@@ -29,6 +29,7 @@
 #define STARPORT_OPTION             4
 #define HIRING_HALL_OPTION          5
 #define SHIPYARD_OPTION		        6
+#define SURVEY_OPTION               7
 
 //void maneuvermapInit();
 //void maneuvermapShow();

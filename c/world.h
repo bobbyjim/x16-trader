@@ -36,6 +36,7 @@
 #define  STARPORT_SLOW_FUEL(worldptr)        ((worldptr)->data.starport > 'b')    
 #define  STARPORT_NO_MAINTENANCE(worldptr)   ((worldptr)->data.starport > 'c')
 #define  STARPORT_NO_HIRING_HALL(worldptr)   ((worldptr)->data.starport > 'd')
+#define  WORLD_IS_SURVEYED(worldptr)         (worldptr)->data.surveyed
 
 //
 // for non-mainworlds, row,col = orbit, theta
@@ -56,7 +57,9 @@ typedef struct {
    char zone;
    char allegiance;
    char bases;
-   byte pad1;
+
+   int pad1     : 7;
+   int surveyed : 1;     // ADDED FOR SURVEY BIT
 
    int  zone_digital  : 2;
    int  belt : 1;
@@ -137,6 +140,7 @@ void printWorld(World* world);
 void drawWorld(byte streaky, byte variance);
 void getWorld(World* world);
 void world_describe(World* world);
+void setWorldSurveyed(World* world);
 
 void world_drawPlanetoid(byte x, byte y);
 

@@ -1,3 +1,24 @@
+/*
+
+    Traveller-Trader: a space trader game
+    Copyright (C) 2022 Robert Eaglestone
+
+    This file is part of Traveller-Trader.
+        
+    Traveller-Trader is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+        
+    Traveller-Trader is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
+        
+*/
 
 #include <conio.h>
 
@@ -13,12 +34,11 @@ extern byte pay_period;
 
 void wilderness_refuel()
 {
-    clrscr();
-
     shipState[ O_STATE_JUMP_FUEL_USED ] = 0;
 
+    clrscr();
     printAlarmBar();
-
+    statusLine();
     textcolor(COLOR_GREEN);
     gotoxy(0,40);
 
@@ -46,6 +66,9 @@ void wilderness_refuel()
         cputsxy(13,32,"you have refueled from ice in an asteroid belt (ten days)");
         world_drawPlanetoid(37,20);
         pay_period += 10;
+        //
+        //  This might also be the correct place to inject a little prospecting??
+        //
     }
     else 
     {
@@ -54,7 +77,5 @@ void wilderness_refuel()
     }
     textcolor(COLOR_YELLOW);
     cputsxy(28,50,"(press return to continue)");
-
     cgetc();
-
 }

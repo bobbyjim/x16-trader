@@ -1,3 +1,24 @@
+/*
+
+    Traveller-Trader: a space trader game
+    Copyright (C) 2022 Robert Eaglestone
+
+    This file is part of Traveller-Trader.
+        
+    Traveller-Trader is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+        
+    Traveller-Trader is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
+        
+*/
 
 #include <conio.h>
 #include <string.h>
@@ -8,8 +29,9 @@
 #include "sprite.h"
 #include "ship.h"
 #include "world.h"
+#include "bankedText.h"
 
-#define     HEXGRID_START       ((char*)(JUMP_GRID_ADDRESS))
+#define     HEXGRID_START       ((char*)(PETSCII_JUMP_GRID))
 
 extern Starship ship;     // used for setting a destination.
 extern World current;     // here's where we are now.
@@ -79,18 +101,10 @@ void jumpmapReticle()
    }
    else
    {
-      int i;
-
       textcolor(COLOR_YELLOW);
-      for(i=0;i<9;++i)
-         cclearxy(5,22+i,20);
-
       gotoxy(0,23);
-      cputs("    use <cursor> keys  \r\n\r\n");
-      cputs("    to find destination\r\n\r\n");
-      cputs("                       \r\n");
-      cputs("    press <return>     \r\n\r\n");
-      cputs("    to set destination \r\n\r\n");
+      setBank(MISC_BANK);
+      printBankedText(PETSCII_ASTROGATION_HELP, 79);
    }
 }
 

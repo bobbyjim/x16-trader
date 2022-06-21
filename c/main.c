@@ -39,7 +39,11 @@
 #include "wilderness.h"
 #include "menu.h"
 #include "name.h"
+#include "panel.h"
+#include "survey.h"
+#include "bankedText.h"
 
+#define  VERSION     "0.75"
 
 //
 //  Player data
@@ -51,7 +55,6 @@ byte              shipDamage[SHIP_COMPONENT_COUNT];
 long hcr 	      = 5000; // in hundreds of cr (because of how trade works)
 long mortgage_cr  = 0;    
 byte pay_period;   // in days between jump.  7 = normal schedule.  insystem jaunts increase this.
-
 Cargo cargo[20];
 
 //
@@ -148,21 +151,30 @@ void jamisonHide()
    sprite_define(3, &jamison);
 }
 
-char *expository_text[] = {
-   "congratulations, captain!  you have full ownership of your",
-   "very own type a2 marava-class far trader.",
-   "",
-   "earn your fortune by jumping from system to system."
-   "",
-   "good luck!",
-   "0"
-};
-
-#define  START_OPTION_COUNT   4
+#define  START_OPTION_COUNT   3
 byte experienceLevel = 0;
 char* startingExperienceLevel[] = {
-   "i'm new to traveller", "call me intermediate", "veteran scout", "veteran trader"
+   "new recruit", "trader", "scout"
 };
+
+void init()
+{
+   loadFileToBank("bt-component.bin", TEXT_BANK_1,       TEXT_SHIP_BASE_ADDRESS);
+   loadFileToBank("bt-hexgrid.bin",   MISC_BANK,         PETSCII_JUMP_GRID);
+   loadFileToBank("bd-name.bin",      MISC_BANK,         PETSCII_NAME_MORAS);
+   loadFileToBank("bt-exposit.bin",   MISC_BANK,         PETSCII_INTRO);
+   loadFileToBank("bt-advice.bin",    MISC_BANK,         PETSCII_ADVICE); // 2k
+//   loadFileToBank("bd-market.bin",   TRADE_MATRIX_BANK, 0xa000);
+   loadFileToBank("b3-trade.bin",     TRADE_MATRIX_BANK, 0xa000); // replaces the T5 trade matrix
+   loadFileToBank("bd-ships.bin",     SHIP_BANK,         0xa000);
+   loadFileToBank("bd-map64.bin",     MAP_BANK_BEGIN,    0xa000);
+
+   sprite_loadToVERA("aia-far.bin",  0x4000);
+//   sprite_loadToVERA("aig-enforc.bin",  0x4000);
+//   sprite_loadToVERA("bi-worlds.bin",  0x6000);
+}
+
+
 
 //
 //   print splash screen
@@ -177,105 +189,71 @@ void splash()
 
    // load PET font
    cbm_k_bsout(0x8E); // revert to primary case
-   cbm_k_setnam("petfont.bin");
-   cbm_k_setlfs(0,8,0);
-   cbm_k_load(2, 0x0f800);
+   common_loadCharacterSet("petfont.bin");
 
    // load Jamison
    sprite_loadToVERA("bi-jamison.bin", 0x5000);
 
    //
-   //  Print the banner
+   //  Print the Title Banner
    //
-   loadFileToBank("bt-misc.bin",  MISC_BANK, 0xa000);
-   loadFileToBank("bt-title.bin", MISC_BANK, 0xa100);
+   loadFileToBank("bt-title.bin",    MISC_BANK, 0xa100); // title splash
    titleLine();
-   setBank(MISC_BANK); 
    textcolor(COLOR_CYAN);
-
+   gotoxy(15,4);
+   setBank(MISC_BANK); 
    for(i=0; i<14; ++i)
       cputsxy(15, i+4, ((char*) 0xa100 + i*52));
-   // 
-   //  Print the version
-   //
-   cputsxy(49,16,"0.63");
+   cputsxy(49,16,VERSION);
 
    textcolor(COLOR_LIGHTBLUE);
 
-   for(i=0;; ++i)
-   {
-      if (expository_text[i][0] == '0') // end of text
-         break;
-
-      gotoxy(10,22+i*2);
-      cputs(expository_text[i]);
-   }
-
-   textcolor(COLOR_YELLOW);
-//   cputsxy(5,26 + i*2,"                       press <space> to begin");
+   gotoxy(0,22);
+   printBankedText(PETSCII_INTRO, 181);
 
    vera_sprites_enable(1); // cx16.h
-
    jamisonShow();
 
-   cputsxy(15, 26 + i*2, "select your experience level");
-   experienceLevel = menu_run(15, 26 + i*2, START_OPTION_COUNT, startingExperienceLevel);
+   textcolor(COLOR_YELLOW);
+   drawPanel(10, 37, 58, 12, " select your experience level " );
+   experienceLevel = menu_run(12, 38, START_OPTION_COUNT, startingExperienceLevel);
 
+   playerAchievementLevel = 1 + experienceLevel * 4;
    switch (experienceLevel)
    {
       case 0: // beginner
-         playerAchievementLevel = 1;
          ship_init(SHIP_INDEX_MARAVA, &ship);
          ship.component[ O_QDP_BATTERY(0) ] = SHIP_BATTERY_T1 + SHIP_WEAPON_PULSE_LASER;
          ship.component[ O_QDP_BATTERY(1) ] = SHIP_BATTERY_T1 + SHIP_WEAPON_PULSE_LASER;
          break;
 
       case 1: // merchant
-         playerAchievementLevel = 3;
          ship_init(SHIP_INDEX_MARAVA, &ship);
          break;
 
       case 2: // scout
-         playerAchievementLevel = 5;
          ship_init(SHIP_INDEX_MURPHY, &ship);
          sprite_loadToVERA("ais-sc.bin",  0x4000);
          break;
 
-      case 3: // trader
-         playerAchievementLevel = 8;
-         //astrogator = 10; debug
-         ship_init(SHIP_INDEX_BEOWULF, &ship);
-         sprite_loadToVERA("aia-beo.bin",  0x4000);
-         break;
+      // case 3: // trader 7 or 8
+      //    ship_init(SHIP_INDEX_BEOWULF, &ship);
+      //    sprite_loadToVERA("aia-beo.bin",  0x4000);
+      //    break;
+
+      // case 4: // hunter
+      //    ship_init(SHIP_INDEX_KILAALUM, &ship);
+      //    sprite_loadToVERA("aie-kil.bin", 0x4000);
+      //    break;
    }
 
    jamisonHide();
 }
 
-void init()
-{
-   loadFileToBank("bt-hexgrid.bin",  MISC_BANK,         JUMP_GRID_ADDRESS);
-//   loadFileToBank("bd-market.bin",   TRADE_MATRIX_BANK, 0xa000);
-   loadFileToBank("b3-trade.bin",    TRADE_MATRIX_BANK, 0xa000); // replaces the T5 trade matrix
-   loadFileToBank("bd-ships.bin",    SHIP_BANK,         0xa000);
-   loadFileToBank("bd-map64.bin",    MAP_BANK_BEGIN,    0xa000);
-
-   sprite_loadToVERA("aia-far.bin",  0x4000);
-//   sprite_loadToVERA("bi-worlds.bin",  0x6000);
-}
-
-char tmp[16];
-
 void main() 
 {
    int range;
    int i;
-
-   /*_randomize();
-   for(i=0; i<20; ++i)
-      cprintf("%s\r\n", name_generate(tmp));
-      
-   exit(0);*/
 
    init();
    splash();
@@ -290,6 +268,7 @@ void main()
       // bookkeeping required to handle fuel consumption.
       range = ship.component[ O_QSP_J ] - shipState[ O_STATE_JUMP_FUEL_USED ];
       showCurrentLocation();
+      statusLine();
       switch(maneuver())
       {
          case ASTROGATION_OPTION:
@@ -303,9 +282,8 @@ void main()
             if (playerAchievementLevel < 2)
                playerAchievementLevel = 2;
 
-            if (i != 'j') break;
-            // release player mode and fall through for immediate jump
-            playerAchievementLevel = 10; // at least
+            if (i != 'j') break;  // capital J
+            // else, fall through for immediate jump
 
 	      case JUMP_OPTION:
   	         jump();
@@ -332,6 +310,10 @@ void main()
             hire();
             updateShipSkills();
 		      break;
+
+         case SURVEY_OPTION:
+            survey();
+            break;
       }
    }
 }
