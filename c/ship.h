@@ -143,6 +143,7 @@
 #define	SHIP_JUMP_RATING(shptr)			((shptr)->component[O_QSP_J])
 #define SHIP_BRIDGE_RATING(ship)		((ship)->component[O_QSP_BRIDGE])
 #define SHIP_CPU_RATING(ship)			((ship)->component[O_QSP_CPU])
+#define SHIP_HARDPOINT(ship,hp)			((ship)->component[14+hp])
 #define SHIP_CARGO(s)					((s)->component[O_QSP_CARGOP] * (s)->size)
 #define SHIP_HAS_SCOOPS(s)				((s)->component[O_QSP_SCOOPS])
 #define SHIP_HAS_COLLECTORS(s)			((s)->component[O_QSP_COLLECT])
@@ -193,7 +194,7 @@ void ship_describe(Starship* ship);
 void ship_loadImageFromIndex(byte ship_index);
 void ship_loadImage(char* filename);
 char* ship_filename(byte ship_index);
-
+byte ship_combatStrength(Starship* ship);
 byte readShip(byte index, Starship* ship);
 //char* shipMission(char code);
 //char* shipOwner(char owner);

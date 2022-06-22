@@ -150,3 +150,21 @@ void ship_loadImageFromIndex(byte ship_index)
    }
 }
 
+byte ship_combatStrength(Starship* ship)
+{
+   int hp = 8;
+   byte strength = 0;
+   while(--hp)
+   {
+      byte comp        = ship->component[ O_QDP_BATTERY(hp) ];
+      byte emplacement = comp >> 5;
+      byte unit        = comp & 31;
+      //cprintf("e:%u u:%u, ", emplacement, unit);
+      if (comp > 1) // 0 or 1 = empty 
+      {
+         strength += emplacement;
+      }
+   }
+   //cprintf(" str=%u\r\n", strength);
+   return strength;
+}

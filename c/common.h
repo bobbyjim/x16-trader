@@ -66,7 +66,7 @@ byte diceRoll(byte dice, char dm);
 #define TEXT_BANK_1             6
 #define TEXT_SHIP_BASE_ADDRESS  0xa000
 #define TEXT_SHIP_COMPONENT(x)  ((char*) 0xa000 + x * 16)
-#define TEXT_SHIP_DAMAGE(x)     ((char*) 0xa160 + x * 34)
+#define TEXT_SHIP_DAMAGE(x)     ((char*) 0xa168 + x * 34)
 
 // MISC BANK CONTENTS
 //
