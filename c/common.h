@@ -118,6 +118,4 @@ byte diceRoll(byte dice, char dm);
 
 #define ADDRESS_START	0xA000
 
-#define TO_BACKGROUND	0x01
-
 #endif

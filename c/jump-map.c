@@ -62,6 +62,9 @@ void setZoneColor(char zone)
       case 'r': 
          textcolor(COLOR_LIGHTRED);
          break;
+      default:
+         textcolor(COLOR_WHITE);
+         break;
    }
 }
 
@@ -249,7 +252,7 @@ void jumpmapShowWorldData(unsigned char col, unsigned char row)
             if ((current.col % 2 == 0) && (c % 2 == 0))
                y -= 4;
             
-            textcolor(COLOR_WHITE);
+            setZoneColor(world->zone);
             cputcxy(x,y,world->starport);
 
             textcolor(COLOR_LIGHTBLUE);
@@ -260,7 +263,7 @@ void jumpmapShowWorldData(unsigned char col, unsigned char row)
             
             memset(shortname, 0, 6);
             strncpy(shortname, world->name, 5);
-            textcolor(COLOR_WHITE);
+            setZoneColor(world->zone);
             cputsxy(x-strlen(shortname)/3-1,y+1,shortname);
 
             textcolor(worldColor[world->general_world_type & 0x0f]);

@@ -184,7 +184,8 @@ void splash()
    int i;
 
    cbm_k_bsout(CH_BLACK);
-   cbm_k_bsout(TO_BACKGROUND);
+   cbm_k_bsout(0x01);  // #define TO_BACKGROUND	0x01
+
    clrscr();
 
    // load PET font
