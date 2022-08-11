@@ -70,8 +70,8 @@ void showComponentStatus(byte selected)
    setBank(TEXT_BANK_1);
 
    textcolor(COLOR_LIGHTBLUE);
-   cputsxy(7,MENU_PANEL_ROW+2,"component        status   rating  current\r\n" );
-   cputsxy(7,MENU_PANEL_ROW+3,"---------------  -------  ------  -------\r\n" );
+   cputsxy(7,MENU_PANEL_ROW+2,"component        status   rating  current  value (mcr)\r\n" );
+   cputsxy(7,MENU_PANEL_ROW+3,"---------------  -------  ------  -------  -----------\r\n" );
    textcolor(COLOR_CYAN); // LIGHTBLUE);
    for(i=0; i<COMPONENT_COUNT; ++i)
    {
@@ -84,22 +84,27 @@ void showComponentStatus(byte selected)
       if (i < FIRST_EMPLACEMENT)
       {
          printBankedText( (unsigned) TEXT_SHIP_COMPONENT(i), 15 );
-         cprintf(" %-8s   %-4d    %-4d \r\n",
-//            componentLabel[i],
-            ship.component[i]>0? getStatusLabel(shipState[i]) : "-",
-            ship.component[i] * mult,
-            (ship.component[i] - shipState[i]) * mult
-         );      
+         if (ship.component[i] == 0)
+            cprintf("     -\r\n");
+         else
+            cprintf("   %-6s   %-4d    %-4d   \r\n",
+               getStatusLabel(shipState[i]),
+               ship.component[i] * mult,
+               (ship.component[i] - shipState[i]) * mult
+            );
       }
       else
       {
-         cprintf("%4s %-10s  %-8s  %-4s    %-4s \r\n",
-            getEmplacementName(ship.component[i]),
-            getWeaponName(ship.component[i]),
-            ship.component[i]>0? getStatusLabel(shipState[i]) : "-",
-            "-",
-            getStatusLabel(shipDamage[i])
-         );
+         if (ship.component[i] == 0)
+            cprintf("    -\r\n");
+         else
+            cprintf("%4s %-10s  %-8s  %-4s    %-4s  \r\n",
+               getEmplacementName(ship.component[i]),
+               getWeaponName(ship.component[i]),
+               ship.component[i]>0? getStatusLabel(shipState[i]) : "-",
+               "-",
+               getStatusLabel(shipDamage[i])
+            );
       }
       if (selected == i) revers(0);
    }

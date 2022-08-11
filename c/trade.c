@@ -37,7 +37,7 @@ unsigned getHoldFree()
 {  
    int i;
    unsigned hold = ship.component[ O_QSP_CARGOP ] * ship.size;
-   for(i=0; i<20; ++i)
+   for(i=0; i<MAX_CARGO_ITEMS; ++i)
       hold -= cargo[i].tons;
 
    return hold;
@@ -102,7 +102,7 @@ void trade_calculateMarketPrices()
    starport[0].cargoAddress = tmp;
    starport[0].tons = diceRoll(tmp->dice,0) * tmp->mult;
 
-   for(i=0; i<20; ++i)
+   for(i=0; i<MAX_CARGO_ITEMS; ++i)
    {
       int purchaseMod = getModifierForCurrentWorld( starport[i].cargoAddress->p00, starport[i].cargoAddress->p01 )
                       + getModifierForCurrentWorld( starport[i].cargoAddress->p10, starport[i].cargoAddress->p11 )
@@ -117,25 +117,26 @@ void showInventory(byte sel)
 {
    int i;
 
-   sel %= 20;
+   sel %= MAX_CARGO_ITEMS;
 
    cputsxy(8,1,"ship    cargo type        starport        cr/ton\r\n");
    redline();
+   cputs("\r\n");
    textcolor(COLOR_LIGHTBLUE);
 
-   for(i=0; i<20; ++i)
+   for(i=0; i<MAX_CARGO_ITEMS; ++i)
    {
       if (sel == i)
          revers(1);
 
       if (starport[i].cargoAddress > 0)
-         cprintf("        %-3u     %-15s   %-3u          %8ld0  \r\n", 
+         cprintf("        %-3u     %-15s   %-3u          %8ld0  \r\n\r\n", 
             cargo[i].tons, 
             starport[i].cargoAddress->label, 
             starport[i].tons, 
             starport[i].price);
       else
-         cprintf("        %-3s     %-15s   %-3s           %8s  \r\n", "-", "-", "-", "-" );
+         cprintf("        %-3s     %-15s   %-3s           %8s  \r\n\r\n", "-", "-", "-", "-" );
 
       revers(0);
    }
@@ -149,10 +150,9 @@ void buy(byte sel, byte amount)
 {
    long price = (long)amount * starport[sel].price / 10;
 
-   if (cargo[19].cargoAddress > 0) return; // that's right, FIFO
+   if (cargo[MAX_CARGO_ITEMS-1].cargoAddress > 0) return; // that's right, FIFO
    if (starport[sel].tons < amount) return;
    if (price > hcr) return;
-   if (getHoldFree() < 1) return;
 
    cargo[sel].cargoAddress = starport[sel].cargoAddress;
    cargo[sel].tons    += amount;
@@ -176,7 +176,7 @@ void sell(byte sel, byte amount)
 void cleanup()
 {
    int i;
-   for(i=18; i>-1; --i)
+   for(i=MAX_CARGO_ITEMS-2; i>-1; --i)
    {
       cargo[i+1] = cargo[i];
       starport[i+1].cargoAddress = cargo[i+1].cargoAddress;
@@ -201,15 +201,17 @@ void trade_speculate() // from 'current' to 'destination'
 
    while(1)
    {
-      if (selected == 255) selected = 20;
-      if (selected >  20 ) selected = 0;
+      if (selected == 255) selected = MAX_CARGO_ITEMS;
+      if (selected >  MAX_CARGO_ITEMS ) selected = 0;
 
       showInventory(selected);
       switch( cgetc() )
       {
          case 0x91: --selected; break;
          case 0x11: ++selected; break;
-         case 0x9d: buy( selected, 1 ); break;
+         case 0x9d: if (getHoldFree() > 0) 
+                       buy( selected, 1 ); 
+                    break;
          case 0x1d: sell( selected, 1 ); break;
          case 13:   cleanup(); return; // done
       }

@@ -55,7 +55,7 @@ byte              shipDamage[SHIP_COMPONENT_COUNT];
 long hcr 	      = 5000; // in hundreds of cr (because of how trade works)
 long mortgage_cr  = 0;    
 byte pay_period;   // in days between jump.  7 = normal schedule.  insystem jaunts increase this.
-Cargo cargo[20];
+Cargo cargo[MAX_CARGO_ITEMS];
 
 //
 //  These are the only skills that matter.
@@ -76,8 +76,8 @@ byte streetwise   = 0;
 World current;
 World destination;
 byte  distance;
-Cargo starport[20];
-Cargo temp[20];
+Cargo starport[MAX_CARGO_ITEMS];
+Cargo temp[MAX_CARGO_ITEMS];
 
 //
 //   system data

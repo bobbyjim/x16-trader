@@ -139,20 +139,20 @@
 #define SHIP_WEAPON_PARTICLE_ACCEL	18
 #define SHIP_WEAPON_MESON_GUN		19
 
-#define	SHIP_MANEUVER_RATING(shptr)		((shptr)->component[O_QSP_M])
-#define	SHIP_JUMP_RATING(shptr)			((shptr)->component[O_QSP_J])
-#define SHIP_BRIDGE_RATING(ship)		((ship)->component[O_QSP_BRIDGE])
-#define SHIP_CPU_RATING(ship)			((ship)->component[O_QSP_CPU])
-#define SHIP_HARDPOINT(ship,hp)			((ship)->component[14+hp])
-#define SHIP_CARGO(s)					((s)->component[O_QSP_CARGOP] * (s)->size)
-#define SHIP_HAS_SCOOPS(s)				((s)->component[O_QSP_SCOOPS])
-#define SHIP_HAS_COLLECTORS(s)			((s)->component[O_QSP_COLLECT])
-#define SHIP_SPACE_SENSORS(s)			((s)->component[O_QSP_SPACE]   & 0x1f)
-#define SHIP_WORLD_SENSORS(s)			((s)->component[O_QSP_WORLD]   & 0x1f)
-#define SHIP_STEALTH_RATING(s)			((s)->component[O_QSP_STEALTH] & 0x1f)
-#define SHIP_DAMPER_RATING(s)			((s)->component[O_QSP_DAMPER]  & 0x1f)
-#define SHIP_SCREEN_RATING(s)			((s)->component[O_QSP_SCREEN]  & 0x1f)
-#define SHIP_GLOBE_RATING(s)			((s)->component[O_QSP_GLOBE]   & 0x1f)
+#define	SHIP_MANEUVER_RATING(ship_ptr)	((ship_ptr)->component[O_QSP_M])
+#define	SHIP_JUMP_RATING(ship_ptr)		((ship_ptr)->component[O_QSP_J])
+#define SHIP_BRIDGE_RATING(ship_ptr)	((ship_ptr)->component[O_QSP_BRIDGE])
+#define SHIP_CPU_RATING(ship_ptr)		((ship_ptr)->component[O_QSP_CPU])
+#define SHIP_CARGO(ship_ptr)			((ship_ptr)->component[O_QSP_CARGOP] * (ship_ptr)->size)
+#define SHIP_HAS_SCOOPS(ship_ptr)		((ship_ptr)->component[O_QSP_SCOOPS])
+#define SHIP_HAS_COLLECTORS(ship_ptr)	((ship_ptr)->component[O_QSP_COLLECT])
+#define SHIP_SPACE_SENSORS(ship_ptr)	((ship_ptr)->component[O_QSP_SPACE]   & 0x1f)
+#define SHIP_WORLD_SENSORS(ship_ptr)	((ship_ptr)->component[O_QSP_WORLD]   & 0x1f)
+#define SHIP_STEALTH_RATING(ship_ptr)	((ship_ptr)->component[O_QSP_STEALTH] & 0x1f)
+#define SHIP_DAMPER_RATING(ship_ptr)	((ship_ptr)->component[O_QSP_DAMPER]  & 0x1f)
+#define SHIP_SCREEN_RATING(ship_ptr)	((ship_ptr)->component[O_QSP_SCREEN]  & 0x1f)
+#define SHIP_GLOBE_RATING(ship_ptr)		((ship_ptr)->component[O_QSP_GLOBE]   & 0x1f)
+#define SHIP_HARDPOINT(ship_ptr,hp)		((ship_ptr)->component[14+hp])
 
 typedef struct
 {

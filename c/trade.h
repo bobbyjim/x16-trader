@@ -25,6 +25,8 @@
 
 #include "common.h"
 
+#define  MAX_CARGO_ITEMS    10
+
 typedef struct
 {
     char      label[16];
