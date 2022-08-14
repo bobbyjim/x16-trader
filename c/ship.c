@@ -79,13 +79,13 @@ void ship_describe(Starship* ship)
 {
    setBank(SHIP_BANK);
 
-   cprintf("        cargo hold : %-15d   armor   : %u\r\n\r\n", SHIP_CARGO(ship), ship->armor);
-   cprintf("        staterooms : %-14dlow berths  : %d\r\n\r\n", ship->sr, ship->lb);
-   cprintf("         s-sensors : %-15d w-sensors : %d\r\n\r\n", SHIP_SPACE_SENSORS(ship), SHIP_WORLD_SENSORS(ship));
+   cprintf("        cargo hold : %-14d     armor : %u\r\n\r\n", SHIP_CARGO(ship), ship->armor);
+   cprintf("        staterooms : %-14dlow berths : %d\r\n\r\n", ship->sr, ship->lb);
+   cprintf("         s-sensors : %-14dw-sensors  : %d\r\n\r\n", SHIP_SPACE_SENSORS(ship), SHIP_WORLD_SENSORS(ship));
    // cprintf("        config     : %-15s   armor   : %u\r\n\r\n", SHIP_CFG_LABEL( ship->cfg ), ship->armor);
    // cprintf("        collectors : %-15s   scoops  : %s\r\n\r\n", SHIP_HAS_COLLECTORS(ship)? "yes" : "no", SHIP_HAS_SCOOPS(ship)? "yes" : "no" );
-   cprintf("        stealth    : %-15d   damper  : %d\r\n\r\n", SHIP_STEALTH_RATING(ship), SHIP_DAMPER_RATING(ship));
-   cprintf("        screen     : %-15d   globe   : %d\r\n\r\n", SHIP_SCREEN_RATING(ship), SHIP_GLOBE_RATING(ship));   
+   cprintf("           stealth : %-14d   damper  : %d\r\n\r\n", SHIP_STEALTH_RATING(ship), SHIP_DAMPER_RATING(ship));
+   cprintf("            screen : %-14d   globe   : %d\r\n\r\n", SHIP_SCREEN_RATING(ship), SHIP_GLOBE_RATING(ship));   
    cputs("\r\n");
 }
 

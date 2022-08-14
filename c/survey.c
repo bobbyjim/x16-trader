@@ -52,6 +52,7 @@ void survey()
        {
            byte days = diceRoll2d();
            byte tons = diceRoll3d();
+           gotox(17);
            cprintf("you sold cr %u of ore by prospecting for %u days", tons * 100, days);
            hcr += (long) tons;
            pay_period += days;

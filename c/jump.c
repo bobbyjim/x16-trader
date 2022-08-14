@@ -62,7 +62,8 @@ void specialEffects()
 
    if (playerAchievementLevel < ADVICE_COUNT)
    {
-      cputsxy(30,26,"** game hints **");
+      gotoxy(31,26);
+      cprintf("%c%c game hint %c%c", STAR_TRADER_ASTERISK_CHARACTER, STAR_TRADER_ASTERISK_CHARACTER, STAR_TRADER_ASTERISK_CHARACTER, STAR_TRADER_ASTERISK_CHARACTER);
       gotoxy(10,30);
       setBank(MISC_BANK);
       printBankedText(PETSCII_ADVICE + playerAchievementLevel * 64, 64);

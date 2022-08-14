@@ -154,7 +154,7 @@ void jamisonHide()
 #define  START_OPTION_COUNT   3
 byte experienceLevel = 0;
 char* startingExperienceLevel[] = {
-   "new recruit", "trader", "scout"
+   "new recruit", "trader", "veteran explorer"
 };
 
 void init()

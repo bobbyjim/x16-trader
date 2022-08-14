@@ -22,13 +22,13 @@
 #include <conio.h>
 
 #include "menu.h"
+#include "common.h"
 
 unsigned char mi, oldmi, i;
 
 unsigned char menu_run(unsigned char  x, unsigned char y, unsigned char optcount, char* opts[])
 {
     char letter = 65;
-    //chlinexy(x, y+1, 50);
     for(i=0; i<optcount; ++i)
     {
         gotoxy(x + 2, 2 + y + i * 2);
@@ -40,15 +40,13 @@ unsigned char menu_run(unsigned char  x, unsigned char y, unsigned char optcount
         cputs("] ");
         textcolor(COLOR_YELLOW);
         cputs(opts[i]);
-//        cputcxy(x + 2, 2 + y + i * 2, 65 + i);
-//        cputsxy(x + 4, 2 + y + i * 2, opts[i]);
     }
 
     mi = 0;
     for(;;)
     {
         cputcxy( x, 2 + y + oldmi * 2, ' ');
-        cputcxy( x, 2 + y + mi    * 2, '*');
+        cputcxy( x, 2 + y + mi    * 2, STAR_TRADER_ASTERISK_CHARACTER);
         oldmi = mi;
         letter = cgetc();
         if (letter > 64 && letter < 65 + optcount)

@@ -85,7 +85,7 @@ void showComponentStatus(byte selected)
       {
          printBankedText( (unsigned) TEXT_SHIP_COMPONENT(i), 15 );
          if (ship.component[i] == 0)
-            cprintf("     -\r\n");
+            cprintf("    -\r\n");
          else
             cprintf("   %-6s   %-4d    %-4d   \r\n",
                getStatusLabel(shipState[i]),
@@ -98,7 +98,7 @@ void showComponentStatus(byte selected)
          if (ship.component[i] == 0)
             cprintf("    -\r\n");
          else
-            cprintf("%4s %-10s  %-8s  %-4s    %-4s  \r\n",
+            cprintf("%4s %-10s  %-8s %-4s     %-4s  \r\n",
                getEmplacementName(ship.component[i]),
                getWeaponName(ship.component[i]),
                ship.component[i]>0? getStatusLabel(shipState[i]) : "-",

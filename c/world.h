@@ -49,10 +49,10 @@
 typedef struct {
    unsigned char col;
    unsigned char row;
-   char sector[10];      // sector, hex, and null byte
-   char name[16];        // name and null byte
-   char starport;
-   char uwp[9];          // sahpgl-t and null byte
+   char sector[10];      // sector, hex, and null byte  e.g. "SPIN 1910\0"
+   char name[16];        // name and null byte          e.g. "REGINA\0"
+   char starport;        // A B C D E X                 e.g. 'A'
+   char uwp[9];          // sahpgl-t and null byte      e.g. "788999-C\0"
 
    char zone;
    char allegiance;

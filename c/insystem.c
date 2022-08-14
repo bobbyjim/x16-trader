@@ -45,14 +45,14 @@ extern byte shipDamage[]; //SHIP_COMPONENT_COUNT];
 #define INDENT                                  5
 #define I_S_LINE_1                              8
 #define I_S_LINE_2                              10
-#define I_S_LINE_3                              12
-#define I_S_LINE_4                              14
-#define I_S_LINE_5                              16
-#define I_S_LINE_6                              18
-#define I_S_LINE_7                              21
-#define I_S_LINE_8                              23
-#define I_S_LINE_9                              25
-#define I_S_LINE_10                             27
+#define I_S_LINE_3                              13
+#define I_S_LINE_4                              15
+#define I_S_LINE_5                              18
+#define I_S_LINE_6                              20
+#define I_S_LINE_7                              23
+#define I_S_LINE_8                              26
+#define I_S_LINE_9                              28
+#define I_S_LINE_10                             30
 
 byte shipType[] = { 
         SHIP_INDEX_BEOWULF,

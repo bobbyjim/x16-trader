@@ -50,6 +50,8 @@
 
 int currentBank = -1;
 
+extern byte playerAchievementLevel; // from main.c
+
 void common_loadCharacterSet(char* filename)
 {
    cbm_k_setnam(filename);
@@ -79,20 +81,25 @@ byte parsecDistance(byte col1,
 	byte col2,
 	byte row2)
 {
-   byte aa;
-   byte ab;
-   byte da;
-   byte db;
-   byte d;
+   byte aa = row1 + (col1/2);
+   byte ab = row2 + (col2/2);
+   byte da = abs(aa-ab);
+   byte db = abs(col1-col2);
+   byte d  = abs(aa - ab - col1 + col2);
 
    //
    //  e.g. 1810 -> 1910
    //
-   aa = row1 + (col1/2);            
-   ab = row2 + (col2/2);            
-   da = abs(aa-ab);                 
-   db = abs(col1-col2);             
-   d = abs(aa - ab - col1 + col2);  
+
+   //
+   //  At some point I had separated the variable decl from the assignments,
+   //  probably to debug, but now that it's working I can put them back.
+   //
+   //aa = row1 + (col1/2);            
+   //ab = row2 + (col2/2);            
+   //da = abs(aa-ab);                 
+   //db = abs(col1-col2);             
+   //d = abs(aa - ab - col1 + col2);  
 
    if ((da >= db) && (da >= d)) d = da;
    if ((db >= da) && (db >= d)) d = db;
@@ -105,21 +112,31 @@ void redline()
    chline(80);
 }
 
+void greenline()
+{
+   textcolor(COLOR_GREEN);
+   chline(80);
+}
+
 void titleLine()
 {
     textcolor(COLOR_RED);
     chlinexy(0,3,80);
 }
 
+#define     STATUS_LINE_Y     0
+
 void statusLine()
 {
-   textcolor(COLOR_RED);
-   chlinexy(0,56,80);
-   gotoxy(73,56);
+   textcolor(COLOR_CYAN); // same as title art color?
+   chlinexy(0,STATUS_LINE_Y,80);
+   gotoy(STATUS_LINE_Y);
+   gotox(1);
+   cprintf(" rank %u ", playerAchievementLevel);
+   gotox(73);
    cprintf(" %u.%uk ", _heapmemavail()/1000, (_heapmemavail() % 1000)/100);
 
-   //textcolor(COLOR_GRAY2);
-   cputsxy(22,56," t r a v e l l e r   t r a d e r ");
+   cputsxy(22,STATUS_LINE_Y," t r a v e l l e r   t r a d e r ");
 }
 
 void toDefaultColor()

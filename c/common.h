@@ -23,6 +23,14 @@
 */      
 typedef unsigned char byte;
 
+#define  PETSCII_BALL      209
+#define  PETSCII_DIAMOND   218
+#define  PETSCII_SAIL1     223
+#define  PETSCII_SAIL2     169
+#define  PETSCII_SQUARE    172
+
+#define  STAR_TRADER_ASTERISK_CHARACTER     PETSCII_DIAMOND
+
 void common_loadCharacterSet(char* name);
 
 void setBank(int bank);
@@ -35,6 +43,7 @@ byte parsecDistance(
 		unsigned char row2 );
         
 void redline();
+void greenline();
 void titleLine();
 void statusLine();
 

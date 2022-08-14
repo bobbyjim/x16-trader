@@ -66,6 +66,12 @@ int posFlux( int num )
    return (num > 0)? num : 0;
 }
 
+void printBalance()
+{
+   textcolor(COLOR_GREEN);
+   cprintf("\r\n     balance:                         cr %7ld00\r\n\r\n", hcr );
+}
+
 void bookPassengersAndPayCrew()
 {
    byte demand  = 0;
@@ -91,14 +97,14 @@ void bookPassengersAndPayCrew()
    textcolor(COLOR_GREEN);
    cprintf("booking passengers bound for %s", WORLD_LONG_LABEL(&destination));
    titleLine();
-   textcolor(COLOR_LIGHTRED);
-   cprintf("     initial balance:                 cr %7ld00\r\n\r\n", hcr );
+   printBalance();
 
    //
    //  Fuel
    //
    fuelNeeded = shipState[ O_STATE_JUMP_FUEL_USED ] * ship.size * 10;
-   cprintf("     fuel cost:                       cr %9ld (%ld tons)\r\n\r\n", fuelNeeded * 500, fuelNeeded);
+   textcolor(COLOR_LIGHTRED);
+   cprintf("     fuel cost:                     - cr %9ld (%ld tons)\r\n\r\n", fuelNeeded * 500, fuelNeeded);
    shipState[ O_STATE_JUMP_FUEL_USED ] = 0;
    hcr -= fuelNeeded * 5;
 
@@ -126,13 +132,12 @@ void bookPassengersAndPayCrew()
    if (mid ) cprintf("     %2u mid passengers booked at cr %u00 each.\r\n\r\n", mid, mid_00);
    if (low ) cprintf("     %2u low passengers booked at cr %u00 each.\r\n\r\n", low, low_00);
 
-   cprintf("\r\n\r\n");
+   cprintf("\r\n");
 
    if (high + mid + low)
    {
       cprintf("     revenue from passengers:       + cr %9lu\r\n\r\n", (long)subtotal * 100L );
-      textcolor(COLOR_LIGHTRED);
-      cprintf("     balance subtotal:                cr %7ld00\r\n\r\n", hcr );
+      printBalance();
    }
 
    //
@@ -162,11 +167,10 @@ void bookPassengersAndPayCrew()
    }
 
    textcolor(COLOR_LIGHTBLUE);
-   cprintf("     freight:                       + cr %6u000\r\n\r\n", totalFreight);
+   cprintf("     freight:                       + cr %6u000 (%u tons)\r\n\r\n", totalFreight, totalFreight);
    hcr += totalFreight * 10;
 
-   textcolor(COLOR_LIGHTRED);
-   cprintf("     balance subtotal:                cr %7ld00\r\n\r\n", hcr );
+   printBalance();
    //
    //  hcr per week
    //
@@ -193,12 +197,12 @@ void bookPassengersAndPayCrew()
    //
    pay_period = 0;
 
-   textcolor(COLOR_LIGHTBLUE);
+   textcolor(COLOR_LIGHTRED);
    cprintf("     crew and maintenance:          - cr %9u\r\n\r\n", crewPay * 100);
    hcr -= crewPay;
 
-   textcolor(COLOR_LIGHTRED);
-   cprintf("     balance:                         cr %7ld00\r\n\r\n", hcr );
+   greenline();
+   printBalance();
 
    pressReturnAndClear();
 }

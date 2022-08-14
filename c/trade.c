@@ -116,10 +116,11 @@ void trade_calculateMarketPrices()
 void showInventory(byte sel)
 {
    int i;
+   long baseValue = 0;
 
    sel %= MAX_CARGO_ITEMS;
 
-   cputsxy(8,1,"ship    cargo type        starport        cr/ton\r\n");
+   cputsxy(8,1,"ship    cargo type        starport    cr/ton    base price\r\n");
    redline();
    cputs("\r\n");
    textcolor(COLOR_LIGHTBLUE);
@@ -129,20 +130,22 @@ void showInventory(byte sel)
       if (sel == i)
          revers(1);
 
+      gotox(8);
       if (starport[i].cargoAddress > 0)
-         cprintf("        %-3u     %-15s   %-3u          %8ld0  \r\n\r\n", 
+         cprintf("%-3u     %-15s   %-3u      %8ld0     %8u0\r\n\r\n", 
             cargo[i].tons, 
             starport[i].cargoAddress->label, 
             starport[i].tons, 
-            starport[i].price);
+            starport[i].price,
+            10 * starport[i].cargoAddress->base);
       else
-         cprintf("        %-3s     %-15s   %-3s           %8s  \r\n\r\n", "-", "-", "-", "-" );
+         cprintf("%-3s     %-15s   %-3s     %8s             -\r\n\r\n", "-", "-", "-", "-" );
 
       revers(0);
    }
 
    cclear(50);
-   gotox(0);
+   gotox(8);
    cprintf("  %d tons free.    cr %ld00\n", getHoldFree(), hcr);
 }
 
@@ -201,8 +204,9 @@ void trade_speculate() // from 'current' to 'destination'
 
    while(1)
    {
-      if (selected == 255) selected = MAX_CARGO_ITEMS;
-      if (selected >  MAX_CARGO_ITEMS ) selected = 0;
+      if (selected == 255) selected = MAX_CARGO_ITEMS-1;
+      selected %= MAX_CARGO_ITEMS;
+      //if (selected >  MAX_CARGO_ITEMS ) selected = 0;
 
       showInventory(selected);
       switch( cgetc() )

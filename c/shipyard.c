@@ -139,8 +139,8 @@ void landAtShipyard()
    {
       case 'y': // congrats!
          readShip( index, &ship );
-         cputs("congratulations!\r\n\r\n");
-         cputs("press <return> to continue.\r\n\r\n");
+         cputs("      congratulations!\r\n\r\n");
+         cputs("      press <return> to continue.\r\n\r\n");
          cgetc();
          ship_loadImageFromIndex(index);
          break;

@@ -81,12 +81,6 @@ char reticleRight[6] = {192,192,192,219,219,0};
 
 #define  VERTICAL_BAR      221
 
-#define  PETSCII_BALL      209
-#define  PETSCII_DIAMOND   218
-#define  PETSCII_SAIL1     223
-#define  PETSCII_SAIL2     169
-#define  PETSCII_SQUARE    172
-
 
 void initStarfield()
 {
