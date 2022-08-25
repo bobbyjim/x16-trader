@@ -27,6 +27,9 @@
 #include "common.h"
 #include "burtle_jsf32.h"
 
+#define  TITLE_LINE_Y         56
+#define  STATUS_LINE_Y        0
+
 #define LOGICAL_FILE_NUM        1
 #define IGNORE_LFN              0
 #define SD_CARD                 8
@@ -51,30 +54,6 @@
 int currentBank = -1;
 
 extern byte playerAchievementLevel; // from main.c
-
-void common_loadCharacterSet(char* filename)
-{
-   cbm_k_setnam(filename);
-   cbm_k_setlfs(0,8,0);
-   cbm_k_load(LOAD_SECONDARY_ADDRESS, CHARACTER_MAP_ADDRESS);
-}
-
-void setBank(int bank)
-{
-   if (bank < 1) bank = 1;
-
-   if (currentBank != bank)
-   {
-      POKE(0x9f61, bank); // r38
-      POKE(0,bank);       // r39+
-      currentBank = bank;
-   }
-}
-
-int getBank()
-{
-   return currentBank;
-}
 
 byte parsecDistance(byte col1,
    byte row1,
@@ -121,22 +100,21 @@ void greenline()
 void titleLine()
 {
     textcolor(COLOR_RED);
-    chlinexy(0,3,80);
+    chlinexy(0,TITLE_LINE_Y,80);
 }
 
-#define     STATUS_LINE_Y     0
 
 void statusLine()
 {
-   textcolor(COLOR_CYAN); // same as title art color?
+   textcolor(COLOR_GRAY2);
    chlinexy(0,STATUS_LINE_Y,80);
    gotoy(STATUS_LINE_Y);
    gotox(1);
-   cprintf(" rank %u ", playerAchievementLevel);
-   gotox(73);
-   cprintf(" %u.%uk ", _heapmemavail()/1000, (_heapmemavail() % 1000)/100);
-
+   cprintf(" %s ", GAME_VERSION);
    cputsxy(22,STATUS_LINE_Y," t r a v e l l e r   t r a d e r ");
+   gotox(69);
+   cprintf(" r%2u :%u ", playerAchievementLevel, _heapmemavail());
+
 }
 
 void toDefaultColor()
@@ -165,16 +143,6 @@ void loadFileToBank(char* name, byte bankNum, unsigned address)
    // cbm_k_setnam(name);
    // cbm_k_setlfs(IGNORE_LFN,EMULATOR_FILE_SYSTEM,SA_IGNORE_HEADER);
    // cbm_k_load(LOAD_FLAG, address);
-}
-
-void down(byte count)
-{
-   for(;count>0;--count) cbm_k_bsout(17);
-}
-
-void left(byte count)
-{
-   for(;count>0;--count) cbm_k_bsout(157);
 }
 
 char pressReturnAndClear()
@@ -210,4 +178,28 @@ byte diceRoll(byte dice, char dm)
       dm += 1 + (burtle32() % 6);
    }
    return dm;
+}
+
+void common_loadCharacterSet(char* filename)
+{
+   cbm_k_setnam(filename);
+   cbm_k_setlfs(0,8,0);
+   cbm_k_load(LOAD_SECONDARY_ADDRESS, CHARACTER_MAP_ADDRESS);
+}
+
+void setBank(int bank)
+{
+   if (bank < 1) bank = 1;
+
+   if (currentBank != bank)
+   {
+      POKE(0x9f61, bank); // r38
+      POKE(0,bank);       // r39+
+      currentBank = bank;
+   }
+}
+
+int getBank()
+{
+   return currentBank;
 }

@@ -23,6 +23,8 @@
 */      
 typedef unsigned char byte;
 
+#define  GAME_VERSION     "0.8"
+
 #define  PETSCII_BALL      209
 #define  PETSCII_DIAMOND   218
 #define  PETSCII_SAIL1     223
@@ -50,8 +52,8 @@ void statusLine();
 void toDefaultColor();
 void loadFile(char* name, unsigned address);
 void loadFileToBank(char* name, byte bankNum, unsigned address);
-void down(byte count);
-void left(byte count);
+//void down(byte count);
+//void left(byte count);
 char pressReturnAndClear();
 byte diceRoll2d();
 byte diceRoll3d();

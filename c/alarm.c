@@ -28,6 +28,9 @@
 #include "common.h"
 #include "ship.h"
 
+
+#define     ALARMBAR_Y     57
+
 //
 //  Player data
 //
@@ -87,7 +90,7 @@ void clearComponentState(byte component)
 void showStatus(byte component)
 {
    int x = xposition[component];
-   int y = 2; 
+   int y = ALARMBAR_Y+1; 
    char *name   = alarmLabel[ component ];
    byte  len    = strlen( name ) - 1;
    byte  state  = shipState[ component ] > shipDamage[component] ?
@@ -136,8 +139,8 @@ void printAlarmBar()
          showStatus(x);
    }
 
-   cputsxy(76,1,"ar");
-   gotoxy(75,2);
+   cputsxy(76,ALARMBAR_Y,"ar");
+   gotoxy(75,ALARMBAR_Y+1);
    cprintf("%3u", ship.armor * ship.tl);
 
    cprintf("\r\n");

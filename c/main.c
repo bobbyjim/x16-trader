@@ -43,8 +43,6 @@
 #include "survey.h"
 #include "bankedText.h"
 
-#define  VERSION     "0.75"
-
 //
 //  Player data
 //
@@ -205,7 +203,7 @@ void splash()
    setBank(MISC_BANK); 
    for(i=0; i<14; ++i)
       cputsxy(15, i+4, ((char*) 0xa100 + i*52));
-   cputsxy(49,16,VERSION);
+   cputsxy(49,16,GAME_VERSION);
 
    textcolor(COLOR_LIGHTBLUE);
 
@@ -237,12 +235,7 @@ void splash()
          sprite_loadToVERA("ais-sc.bin",  0x4000);
          break;
 
-      // case 3: // trader 7 or 8
-      //    ship_init(SHIP_INDEX_BEOWULF, &ship);
-      //    sprite_loadToVERA("aia-beo.bin",  0x4000);
-      //    break;
-
-      // case 4: // hunter
+      // case 3: // hunter
       //    ship_init(SHIP_INDEX_KILAALUM, &ship);
       //    sprite_loadToVERA("aie-kil.bin", 0x4000);
       //    break;
