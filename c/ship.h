@@ -147,7 +147,7 @@
 #define SHIP_HAS_SCOOPS(ship_ptr)		((ship_ptr)->component[O_QSP_SCOOPS])
 #define SHIP_HAS_COLLECTORS(ship_ptr)	((ship_ptr)->component[O_QSP_COLLECT])
 #define SHIP_SPACE_SENSORS(ship_ptr)	((ship_ptr)->component[O_QSP_SPACE]   & 0x1f)
-#define SHIP_WORLD_SENSORS(ship_ptr)	((ship_ptr)->component[O_QSP_WORLD]   & 0x1f)
+#define SHIP_SURVEY_SENSORS(ship_ptr)	((ship_ptr)->component[O_QSP_WORLD]   & 0x1f)
 #define SHIP_STEALTH_RATING(ship_ptr)	((ship_ptr)->component[O_QSP_STEALTH] & 0x1f)
 #define SHIP_DAMPER_RATING(ship_ptr)	((ship_ptr)->component[O_QSP_DAMPER]  & 0x1f)
 #define SHIP_SCREEN_RATING(ship_ptr)	((ship_ptr)->component[O_QSP_SCREEN]  & 0x1f)

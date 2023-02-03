@@ -25,10 +25,12 @@
 #include "survey.h"
 #include "world.h"
 #include "common.h"
+#include "ship.h"
 
 extern World current;
 extern byte pay_period;
 extern long hcr;
+extern Starship ship;
 
 void survey()
 {
@@ -41,6 +43,7 @@ void survey()
     if (WORLD_IS_SURVEYED(&current) == 0)
     {
        byte days = diceRoll2d();
+       cprintf("space sensor rating: %u\r\n", SHIP_SPACE_SENSORS(&ship));
        cprintf("system survey (%u days): kcr 100", days );
        hcr += 1000L;
        pay_period += days;
@@ -52,6 +55,7 @@ void survey()
        {
            byte days = diceRoll2d();
            byte tons = diceRoll3d();
+           cprintf("survey sensor rating: %u\r\n", SHIP_SURVEY_SENSORS(&ship));
            gotox(17);
            cprintf("you sold cr %u of ore by prospecting for %u days", tons * 100, days);
            hcr += (long) tons;

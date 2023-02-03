@@ -31,6 +31,8 @@
 
 #define     TOTAL_PERSON_NAMES      35
 
+extern byte pay_period;
+
 Crew crew[TOTAL_CREW_SLOTS];
 
 char* skillName[TOTAL_SKILLS] = {
@@ -180,6 +182,8 @@ byte interview()
 {
     Crew candidate;
 
+    ++pay_period;
+    
     createCandidate( &candidate );
     redline();
 

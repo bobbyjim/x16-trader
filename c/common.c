@@ -108,13 +108,11 @@ void statusLine()
 {
    textcolor(COLOR_GRAY2);
    chlinexy(0,STATUS_LINE_Y,80);
-   gotoy(STATUS_LINE_Y);
-   gotox(1);
+   gotoxy(1,STATUS_LINE_Y);
    cprintf(" %s ", GAME_VERSION);
    cputsxy(22,STATUS_LINE_Y," t r a v e l l e r   t r a d e r ");
    gotox(69);
-   cprintf(" r%2u :%u ", playerAchievementLevel, _heapmemavail());
-
+   cprintf(" r%-2u :%u ", playerAchievementLevel, _heapmemavail());
 }
 
 void toDefaultColor()
@@ -125,12 +123,12 @@ void toDefaultColor()
 //
 //  Loads a file into RAM.
 //
-void loadFile(char* name, unsigned address)
-{
-   cbm_k_setnam(name);
-   cbm_k_setlfs(IGNORE_LFN,EMULATOR_FILE_SYSTEM,SA_IGNORE_HEADER);
-   cbm_k_load(LOAD_FLAG, address);
-}
+//void loadFile(char* name, unsigned address)
+//{
+//   cbm_k_setnam(name);
+//   cbm_k_setlfs(IGNORE_LFN,EMULATOR_FILE_SYSTEM,SA_IGNORE_HEADER);
+//   cbm_k_load(LOAD_FLAG, address);
+//}
 
 //
 //  Loads a file into banked RAM at (0xa000 - 0xbfff).
@@ -139,10 +137,9 @@ void loadFileToBank(char* name, byte bankNum, unsigned address)
 {  
    POKE(0x9f61, bankNum); // r38
    POKE(0,bankNum);       // r39+
-   loadFile(name, address);
-   // cbm_k_setnam(name);
-   // cbm_k_setlfs(IGNORE_LFN,EMULATOR_FILE_SYSTEM,SA_IGNORE_HEADER);
-   // cbm_k_load(LOAD_FLAG, address);
+    cbm_k_setnam(name);
+    cbm_k_setlfs(IGNORE_LFN,EMULATOR_FILE_SYSTEM,SA_IGNORE_HEADER);
+    cbm_k_load(LOAD_FLAG, address);
 }
 
 char pressReturnAndClear()

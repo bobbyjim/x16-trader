@@ -37,6 +37,7 @@ extern byte astrogator;
 extern World current, destination;
 extern byte shipState[22];
 extern byte playerAchievementLevel;
+extern byte playerDifficultyLevel;
 extern byte pay_period;
 
 #define     ADVICE_COUNT      16
@@ -73,7 +74,7 @@ void specialEffects()
    
    while(--days)
    {
-      x = 6000 / (astrogator+1);
+      x = playerDifficultyLevel * 3000 / (astrogator+1);
       if (days == 1) x *= 2;
 
       while(--x)

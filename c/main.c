@@ -47,6 +47,7 @@
 //  Player data
 //
 byte              playerAchievementLevel = 1; 
+byte              playerDifficultyLevel  = 1; // 1 = easy
 Starship          ship;
 byte              shipState[SHIP_COMPONENT_COUNT];
 byte              shipDamage[SHIP_COMPONENT_COUNT];
@@ -149,12 +150,21 @@ void jamisonHide()
    sprite_define(3, &jamison);
 }
 
-#define  START_OPTION_COUNT   3
-byte experienceLevel = 0;
+#define  START_OPTION_COUNT   4
 char* startingExperienceLevel[] = {
-   "new recruit", "trader", "veteran explorer"
+   "recruit", "explorer", "trader", "hunter"
 };
 
+/*
+
+   SUGGESTION: use a small BASIC program to load these up,
+   then load the PRG file.
+
+   "you can write a BASIC program that uses BLOAD to pre-load the data files into high ram banks;
+   then the final line of the BASIC program loads your C .PRG file, which then automatically runs"
+
+*/
+/*
 void init()
 {
    loadFileToBank("bt-component.bin", TEXT_BANK_1,       TEXT_SHIP_BASE_ADDRESS);
@@ -162,7 +172,6 @@ void init()
    loadFileToBank("bd-name.bin",      MISC_BANK,         PETSCII_NAME_MORAS);
    loadFileToBank("bt-exposit.bin",   MISC_BANK,         PETSCII_INTRO);
    loadFileToBank("bt-advice.bin",    MISC_BANK,         PETSCII_ADVICE); // 2k
-//   loadFileToBank("bd-market.bin",   TRADE_MATRIX_BANK, 0xa000);
    loadFileToBank("b3-trade.bin",     TRADE_MATRIX_BANK, 0xa000); // replaces the T5 trade matrix
    loadFileToBank("bd-ships.bin",     SHIP_BANK,         0xa000);
    loadFileToBank("bd-map64.bin",     MAP_BANK_BEGIN,    0xa000);
@@ -171,6 +180,7 @@ void init()
 //   sprite_loadToVERA("aig-enforc.bin",  0x4000);
 //   sprite_loadToVERA("bi-worlds.bin",  0x6000);
 }
+*/
 
 
 
@@ -191,12 +201,12 @@ void splash()
    common_loadCharacterSet("petfont.bin");
 
    // load Jamison
-   sprite_loadToVERA("bi-jamison.bin", 0x5000);
+//   sprite_loadToVERA("bi-jamison.bin", 0x5000);
 
    //
    //  Print the Title Banner
    //
-   loadFileToBank("bt-title.bin",    MISC_BANK, 0xa100); // title splash
+   //loadFileToBank("bt-title.bin",    MISC_BANK, 0xa100); // title splash
    titleLine();
    textcolor(COLOR_CYAN);
    gotoxy(15,4);
@@ -213,21 +223,23 @@ void splash()
    vera_sprites_enable(1); // cx16.h
    jamisonShow();
 
-   textcolor(COLOR_YELLOW);
-   drawPanel(10, 37, 58, 12, " select your experience level " );
-   experienceLevel = menu_run(12, 38, START_OPTION_COUNT, startingExperienceLevel);
+   textcolor(COLOR_GRAY2);
+   cputsxy(5, 57, "the traveller game in all forms is owned by far future enterprises.");
+   cputsxy(5, 58, "copyright 1977 - 2022 far future enterprises.");
 
-   playerAchievementLevel = 1 + experienceLevel * 4;
-   switch (experienceLevel)
+
+   textcolor(COLOR_YELLOW);
+   drawPanel(10, 37, 58, 12, " select difficulty level " );
+   playerDifficultyLevel = menu_run(12, 38, START_OPTION_COUNT, startingExperienceLevel);
+
+   playerAchievementLevel = 1 + playerDifficultyLevel * 4;
+   ++playerDifficultyLevel;
+   switch (playerDifficultyLevel)
    {
-      case 0: // beginner
+      case 1: // beginner
          ship_init(SHIP_INDEX_MARAVA, &ship);
          ship.component[ O_QDP_BATTERY(0) ] = SHIP_BATTERY_T1 + SHIP_WEAPON_PULSE_LASER;
          ship.component[ O_QDP_BATTERY(1) ] = SHIP_BATTERY_T1 + SHIP_WEAPON_PULSE_LASER;
-         break;
-
-      case 1: // merchant
-         ship_init(SHIP_INDEX_MARAVA, &ship);
          break;
 
       case 2: // scout
@@ -235,10 +247,15 @@ void splash()
          sprite_loadToVERA("ais-sc.bin",  0x4000);
          break;
 
-      // case 3: // hunter
-      //    ship_init(SHIP_INDEX_KILAALUM, &ship);
-      //    sprite_loadToVERA("aie-kil.bin", 0x4000);
-      //    break;
+      case 3: // merchant
+         ship_init(SHIP_INDEX_BEOWULF, &ship);
+         sprite_loadToVERA("aia-beo.bin", 0x4000);
+         break;
+
+      case 4: // hunter
+         ship_init(SHIP_INDEX_KILAALUM, &ship);
+         sprite_loadToVERA("aie-kil.bin", 0x4000);
+         break;
    }
 
    jamisonHide();
@@ -249,7 +266,7 @@ void main()
    int range;
    int i;
 
-   init();
+//   init();
    splash();
 
    current.col = destination.col = 19;
@@ -278,6 +295,7 @@ void main()
 
             if (i != 'j') break;  // capital J
             // else, fall through for immediate jump
+            ++playerAchievementLevel; // and a bump for using 'j'
 
 	      case JUMP_OPTION:
   	         jump();

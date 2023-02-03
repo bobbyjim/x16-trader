@@ -59,5 +59,6 @@ typedef struct
 unsigned getHoldFree();
 void trade_calculateMarketPrices();
 void trade_speculate();
+void trade_stealAllCargo();
 
 #endif

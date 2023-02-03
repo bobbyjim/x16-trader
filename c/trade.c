@@ -222,3 +222,13 @@ void trade_speculate() // from 'current' to 'destination'
    }
 }
 
+void trade_stealAllCargo()
+{
+   int i;
+   for(i=0; i<MAX_CARGO_ITEMS; ++i)
+   {
+      cargo[i].tons = 0;
+      cargo[i].cargoAddress = 0;
+   }
+      
+}

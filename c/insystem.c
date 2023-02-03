@@ -30,6 +30,7 @@
 #include "world.h"
 #include "name.h"
 #include "damage.h"
+#include "trade.h"
 
 extern World current;
 extern World destination;
@@ -53,6 +54,7 @@ extern byte shipDamage[]; //SHIP_COMPONENT_COUNT];
 #define I_S_LINE_8                              26
 #define I_S_LINE_9                              28
 #define I_S_LINE_10                             30
+#define I_S_LINE_12                             35
 
 byte shipType[] = { 
         SHIP_INDEX_BEOWULF,
@@ -200,11 +202,13 @@ void insystem_shipCombat()
         return;
     }
     cputsxy(INDENT,I_S_LINE_7,"they overtake us and board.");
-    cputsxy(INDENT,I_S_LINE_8,"they take our cargo as booty and our passengers as slaves.");
-    cputsxy(INDENT,I_S_LINE_9,"they damage a random part of our ship, as well.");
+    cputsxy(INDENT,I_S_LINE_8,"they take our cargo as booty.");
+    trade_stealAllCargo();
 
+    cputsxy(INDENT,I_S_LINE_9,"they damage a random part of our ship, as well.");
     gotoxy(INDENT,I_S_LINE_10);
     damage_ship(&ship, shipDamage);
+
     if (playerAchievementLevel > 0)
         --playerAchievementLevel;
 }

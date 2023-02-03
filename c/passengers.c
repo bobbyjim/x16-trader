@@ -69,7 +69,9 @@ int posFlux( int num )
 void printBalance()
 {
    textcolor(COLOR_GREEN);
-   cprintf("\r\n     balance:                         cr %7ld00\r\n\r\n", hcr );
+   cputs("\r\n");
+   gotox(36);
+   cprintf("= cr %7ld00\r\n\r\n", hcr );
 }
 
 void bookPassengersAndPayCrew()
@@ -92,11 +94,13 @@ void bookPassengersAndPayCrew()
    unsigned crewPay;
 
    clrscr();
+   titleLine();
    statusLine();
    gotoxy(5,2);
    textcolor(COLOR_GREEN);
-   cprintf("booking passengers bound for %s", WORLD_LONG_LABEL(&destination));
-   titleLine();
+   cprintf("booking passengers bound for %s\r\n\r\n", WORLD_LONG_LABEL(&destination));
+   greenline();
+
    printBalance();
 
    //

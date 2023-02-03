@@ -50,7 +50,7 @@ void titleLine();
 void statusLine();
 
 void toDefaultColor();
-void loadFile(char* name, unsigned address);
+//void loadFile(char* name, unsigned address);
 void loadFileToBank(char* name, byte bankNum, unsigned address);
 //void down(byte count);
 //void left(byte count);

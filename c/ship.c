@@ -81,7 +81,7 @@ void ship_describe(Starship* ship)
 
    cprintf("        cargo hold : %-14d     armor : %u\r\n\r\n", SHIP_CARGO(ship), ship->armor);
    cprintf("        staterooms : %-14dlow berths : %d\r\n\r\n", ship->sr, ship->lb);
-   cprintf("         s-sensors : %-14dw-sensors  : %d\r\n\r\n", SHIP_SPACE_SENSORS(ship), SHIP_WORLD_SENSORS(ship));
+   cprintf("         s-sensors : %-14dw-sensors  : %d\r\n\r\n", SHIP_SPACE_SENSORS(ship), SHIP_SURVEY_SENSORS(ship));
    // cprintf("        config     : %-15s   armor   : %u\r\n\r\n", SHIP_CFG_LABEL( ship->cfg ), ship->armor);
    // cprintf("        collectors : %-15s   scoops  : %s\r\n\r\n", SHIP_HAS_COLLECTORS(ship)? "yes" : "no", SHIP_HAS_SCOOPS(ship)? "yes" : "no" );
    cprintf("           stealth : %-14d   damper  : %d\r\n\r\n", SHIP_STEALTH_RATING(ship), SHIP_DAMPER_RATING(ship));
