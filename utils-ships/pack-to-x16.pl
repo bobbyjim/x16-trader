@@ -2,7 +2,7 @@ use strict;
 use YAML;
 use Data::Dumper;
 $Data::Dumper::Indent = 1;
-$Data::Dumper::Terse = 1;
+$Data::Dumper::Terse  = 1;
 
 =pod
 ********************************************************************************
@@ -141,7 +141,7 @@ foreach my $file (sort <$pattern*.yml>)
       my $thing = $component->{ 'category' }; 
       my $mount = '';
 
-      if ( $thing =~ /AV=(\d+)/ )
+      if ( $thing =~ /AV=(\d+)\./ )
       {
          $x16header{ 'av' } += $1;
          #print "$name: found AV=$1\n";
@@ -410,7 +410,7 @@ sub printShipRecord # ( %x16header, %x16data )
    my $passengers = $hdr{passengers};
    my $low	  = $hdr{low};
 
-   printf "%18s pax: $passengers  low: $low\n", $class, $passengers, $low;
+   printf "%18s av: %s\n", $class, $layers * $tl;
 
    # -----------------------------------------------------
    #

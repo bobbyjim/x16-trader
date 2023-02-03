@@ -18,7 +18,7 @@ Components:
  - HH0   L  1 00000 1000  134  Lift body Hull, lifters
  - HL1   K  1 00000  10   10  Landing legs with pads
  - HF1   D  1 00000  10   10  Flotation hull
- - AA1  84  1 00000  80    0  AV=84. 3 Kinetic Charged
+ - AA1  84  1 00000  80    0  AV=42. 3 Kinetic Charged
  - DF0   -  1 00000 270    0  Jump Fuel (3  parsecs)
  - DF0   -  1 00000  27    0  Plant Fuel (one month)
  - DF1   S  1 00000   1  0.1  Fuel Scoops

@@ -17,7 +17,7 @@ FuelPercentage: 13
 Components:
  - HH0   A  1 00000 300   23  Airframe Hull, lifters, 3 a/l free
  - HL1   K  1 00000   3    3  Landing legs with pads
- - AA1  64  1 00000  12    0  AV=64. 2 Rad Charged
+ - AA1  64  1 00000  12    0  AV=32. 2 Rad Charged
  - DF0   -  1 00000  49    0  Jump Fuel (2  parsecs)
  - DF0   -  1 00000  30    0  Plant Fuel (2 months)
  - DF1   S  1 00000   1  0.1  Fuel Scoops

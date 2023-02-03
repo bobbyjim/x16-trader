@@ -17,7 +17,7 @@ FuelPercentage: 12
 Components:
  - HH0   L  1 00000 400   56  Lift body Hull, lifters
  - HL1   K  1 00000   4    4  Landing legs with pads
- - AA1  28  1 00000   0    0  AV=28. 1 Rad Charged
+ - AA1  28  1 00000   0    0  AV=14. 1 Rad Charged
  - DF0   -  1 00000 144    0  Jump Fuel (4  parsecs)
  - DF0   -  1 00000 7.2    0  Plant Fuel (0.5 months)
  - DF1   S  1 00000   1  0.1  Fuel Scoops

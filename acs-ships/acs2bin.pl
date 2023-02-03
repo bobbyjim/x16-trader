@@ -238,12 +238,9 @@ foreach my $acsfile (@acs)
     @weapons = @weapons[0..7]; # take the first 8
 #    print STDERR "weapons: @weapons\n";
 
-    unless($av)
-    {
-        $av = $tl;
-        $av *= 2 if $tl >= 13; # charged
-    }
-    $av = 127 if $av > 127;
+    $av = $tl if $av < $tl;
+    $av *= 2 if $tl >= 13;   # charged
+    $av = 127 if $av > 127;  # max
 
     $comfort += 3;
     $demand  += 3;
@@ -267,12 +264,12 @@ foreach my $acsfile (@acs)
     #  - small craft
     #
 
-    push @out, sprintf "%-18s %s-%s%s%s%s %-15s      +%s    %2s  %2s:%-2s   %3s   %3s   %2s:%-2s   %3s \n", # %s\n",
+    push @out, sprintf "%-18s %s-%s%s%s%s %-15s   %-6s  %2s   %2s:%-2s   %3s   %3s   %2s:%-2s   %3s \n", # %s\n",
         #chr($owner+64), 
         $ownerName,
         $mission, $hull, $cfg, $m, $j, 
         $name,
-        $bridge,
+        $av,
         $cpu,
         $spaceSensors,
         $worldSensors,
@@ -366,7 +363,7 @@ for (sort @out)
     unless ($index % 10)
     {
        print "\n";
-       print "Origination        QSP    Name              Bridge  cpu  SS:WS  Cargo  Fuel  SR:LB   MCr \n"; # Weapons\n";
+       print "Origination        QSP    Name              AV      cpu  SS:WS  Cargo  Fuel  SR:LB   MCr \n"; # Weapons\n";
        print "------------------ ------ ----------------- ------  ---  -----  -----  ----  -- --  ---- \n"; # ------------\n";
     }
 

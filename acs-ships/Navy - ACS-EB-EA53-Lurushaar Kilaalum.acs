@@ -21,9 +21,7 @@ Components:
  - HW1   W  1 00000  10   10  Wings and fins
  - HF1   D  1 00000   5    5  Flotation hull
  - HL1   K  1 00000   5    5  Landing legs with pads
- - AA1   6  1 00000   0    0  AV=6. 1 Blast Organic
- - AA1  13  1 00000  20    0  AV=13. 1 Rad Plate
- - AC1   -  1 00000   0    0  AV=0. c Ablat
+ - AA1  13  1 00000  20    0  AV=18. 1 Rad Plate
  - DF0   -  1 00000 135    0  Jump Fuel (3  parsecs)
  - DF0   -  1 00000 67.5    0  Plant Fuel (3 months)
  - DF1  S1  1 00000   1  0.1  Fuel Scoops 100t/hr

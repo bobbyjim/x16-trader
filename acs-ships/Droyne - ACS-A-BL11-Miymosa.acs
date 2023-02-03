@@ -2,7 +2,7 @@
 ACS1.0: Thu Dec  2 19:29:37 2021
 Mission: Trader
 QSP: A-BL11
-TL: 13 
+TL: 15 
 Name: Miymosa
 Tons: 200
 Actual Tons: 197.5
@@ -17,7 +17,7 @@ FuelPercentage: 11
 Components:
  - HH0   L  1 00000 200   30  Lift body Hull, lifters
  - HL1   K  1 00000   2    2  Landing legs with pads
- - AA1   6  1 00000   0    0  AV=6. 1 Kinetic Shell
+ - AA1   6  1 00000   0    0  AV=15. 1 Kinetic Shell
  - DF0   -  1 00000  20    0  Jump Fuel (1  parsec)
  - DF0   -  1 00000   2    0  Plant Fuel (one month)
  - DP1   A  1 00000   4    4  PowerPlant-1 (A)

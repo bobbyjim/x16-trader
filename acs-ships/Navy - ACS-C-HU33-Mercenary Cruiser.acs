@@ -19,7 +19,7 @@ FuelPercentage: 13
 Components:
  - HH1   U  1 00000 800   42  Unstreamlined Hull
  - HL1   K  1 00000   8    8  Legs with pads
- - AA1  12  1 00000   0    0  AV=12. 1 Rad Plate
+ - AA1  12  1 00000   0    0  AV=48. 1 Rad Plate
  - DF0   -  1 00000 240    0  Jump Fuel (3  parsecs)
  - DF0   -  1 00000  36    0  Plant Fuel (1.5 months)
  - DF1   -  1 00000   1  0.1  Fuel Scoops 100t/hr

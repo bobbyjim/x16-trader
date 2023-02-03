@@ -2,7 +2,7 @@
 ACS1.0: Mon Dec 27 18:09:18 2021
 Mission: Merchant
 QSP: R-DA11
-TL: 12 
+TL: 10 
 Name: MC&S Rho
 Tons: 400
 Actual Tons: 400.5
@@ -20,7 +20,7 @@ Components:
  - HH0   A  1 00000 400   30  Airframe Hull, lifters, 4 a/l free
  - HF1   D  1 00000   4    4  Flotation hull
  - HL1   K  1 00000   4    4  Landing legs with pads
- - AA1  12  1 00000   0    0  AV=12. 1 Kinetic Plate
+ - AA1  12  1 00000   0    0  AV=10. 1 Kinetic Plate
  - DF0   -  1 00000  40    0  Jump Fuel (1  parsec)
  - DF0   -  1 00000   4    0  Plant Fuel (one month)
  - DF1   S  1 00000   1  0.1  Fuel Scoops

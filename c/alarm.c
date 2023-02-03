@@ -141,7 +141,7 @@ void printAlarmBar()
 
    cputsxy(76,ALARMBAR_Y,"ar");
    gotoxy(75,ALARMBAR_Y+1);
-   cprintf("%3u", ship.armor * ship.tl);
+   cprintf("%3u", ship.armor);
 
    cprintf("\r\n");
 }

@@ -2,7 +2,7 @@
 ACS1.0: Thu Dec  2 19:29:38 2021
 Mission: 
 QSP: A-BS22
-TL: 13 
+TL: 12 
 Name: Maada
 Tons: 200
 Actual Tons: 201
@@ -18,7 +18,7 @@ Components:
  - HH0   S  1 00000 200   14  Streamlined Hull
  - HF1   E  1 00000   4    8  Submergence hull
  - HW1   F  1 00000   1  0.5  Fins
- - AA1  10  1 00000   0    0  AV=10. 1 Kinetic Plate
+ - AA1  10  1 00000   0    0  AV=12. 1 Kinetic Plate
  - DF0   -  1 00000  36    0  Jump Fuel (2  parsecs)
  - DF0   -  1 00000   4    0  Plant Fuel (1 months)
  - DF1   S  1 00000   1  0.1  Fuel Scoops

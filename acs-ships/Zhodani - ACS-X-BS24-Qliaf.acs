@@ -2,7 +2,7 @@
 ACS1.0: Thu Dec  2 19:29:41 2021
 Mission: Express Courier
 QSP: X-BS24
-TL: 14 
+TL: 13 
 Name: Qliaf
 Tons: 200
 Actual Tons: 200
@@ -17,7 +17,7 @@ FuelPercentage: 12
 Components:
  - HH0   S  1 00000 200   16  Streamlined Hull, lifters
  - HL1   K  1 00000   2    2  Landing legs with pads
- - AA1  28  1 00000   0    0  AV=28. 1 Kinetic Charged
+ - AA1  28  1 00000   0    0  AV=13. 1 Kinetic Charged
  - DF0   -  1 00000  72    0  Jump Fuel (4  parsecs)
  - DF0   -  1 00000 3.3    0  Plant Fuel (0.5 months)
  - DM1   B  1 00000   3    6  Maneuver Drive-2 (B)

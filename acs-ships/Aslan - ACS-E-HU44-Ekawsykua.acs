@@ -19,7 +19,7 @@ Components:
  - HL1   K  1 00000   8    8  Landing legs with pads
  - HF1   D  1 00000   8    8  Flotation hull
  - HJ1   P  1 00000   0  0.8  Jump Plates
- - AA1  26  1 00000  32    0  AV=26. 2 Blast Plate
+ - AA1  26  1 00000  32    0  AV=42. 2 Blast Plate
  - DF0   -  1 00000 320    0  Jump Fuel (4  parsecs)
  - DF0   -  1 00000  32    0  Plant Fuel (one month)
  - DJ3   R  1 00000  85   85  Jump Drive-4 (R)

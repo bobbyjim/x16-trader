@@ -2,7 +2,7 @@
 ACS1.0: Thu Dec  2 19:29:40 2021
 Mission: Enhanced Scout/Courier
 QSP: S-BA33
-TL: 13 
+TL: 12
 Name: Tathoe
 Tons: 200
 Actual Tons: 198.5
@@ -19,7 +19,7 @@ Components:
  - HJ1   G  1 00000   0    2  Jump Grid
  - HW1   V  1 00000   2    4  Collapsing wings
  - AC1   -  1 00000   0    0  AV=0. c Reflec
- - AA1  13  1 00000   0    0  AV=13. 1 Kinetic Plate
+ - AA1  13  1 00000   0    0  AV=12. 1 Kinetic Plate
  - DF0   -  1 00000  60    0  Jump Fuel (3  parsecs)
  - DF0   -  1 00000 3.3    0  Plant Fuel (0.5 months)
  - DF1  S1  1 00000   1  0.1  Fuel Scoops 100t/hr

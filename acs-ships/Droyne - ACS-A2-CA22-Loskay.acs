@@ -2,7 +2,7 @@
 ACS1.0: Thu Dec  2 19:29:37 2021
 Mission: Far Trader
 QSP: A2-CA22
-TL: 12 
+TL: 15 
 Name: Loskay
 Tons: 300
 Actual Tons: 290.5
@@ -17,7 +17,7 @@ FuelPercentage: 12
 Components:
  - HH0   A  1 00000 300   23  Airframe Hull, lifters, 3 a/l free
  - HL1   K  1 00000   3    3  Landing legs with pads
- - AA1  12  1 00000   0    0  AV=12. 1 Kinetic Plate
+ - AA1  12  1 00000   0    0  AV=15. 1 Kinetic Plate
  - DF0   -  1 00000  60    0  Jump Fuel (2  parsecs)
  - DF0   -  1 00000   6    0  Plant Fuel (one month)
  - DM1   C  1 00000   5   10  Maneuver Drive-2 (C)

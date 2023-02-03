@@ -19,7 +19,7 @@ Components:
  - HJ1   P  1 00000   0  0.8  Jump Plates
  - HL1   K  1 00000   8    8  Landing legs with pads
  - HW1   F  1 00000   4    2  Fins
- - AA1  26  1 00000  32    0  AV=26. 2 Kinetic Plate
+ - AA1  26  1 00000  32    0  AV=34. 2 Kinetic Plate
  - DF0   -  1 00000 320    0  Jump Fuel (4  parsecs)
  - DF0   -  1 00000 35.1    0  Plant Fuel (one month)
  - DJ3   R  1 00000  85   85  Jump Drive-4 (R)

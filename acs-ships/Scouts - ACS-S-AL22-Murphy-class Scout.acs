@@ -2,7 +2,7 @@
 ACS1.0: Thu Dec  2 19:29:38 2021
 Mission: Scout/Courier
 QSP: S-AL22
-TL: 10 
+TL: 11 
 Name: Murphy
 Tons: 100
 Actual Tons: 99
@@ -20,7 +20,7 @@ Components:
  - HH0   L  1 00000 100   17  Lift body Hull, lifters
  - HJ1   G  1 00000   0    1  Jump Grid
  - HL1   K  1 00000   1    1  Landing legs with pads
- - AA1   5  1 00000   0    0  AV=5. 1 Kinetic Shell
+ - AA1   5  1 00000   0    0  AV=11. 1 Kinetic Shell
  - DF0   -  1 00000  20    0  Jump Fuel (2  parsecs)
  - DF0   -  1 00000   2    0  Plant Fuel (one month)
  - DF1   -  1 00000   1  0.1  Fuel Scoops 100t/hr

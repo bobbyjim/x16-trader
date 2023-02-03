@@ -19,7 +19,7 @@ Components:
  - HJ1   P  1 00000   0  0.4  Jump Plates
  - HL1   K  1 00000   4    4  Landing legs with pads
  - HF1   E  1 00000   8   16  Submergence hull
- - AA1  42  1 00000  32    0  AV=42. 3 Blast Plate
+ - AA1  42  1 00000  32    0  AV=34. 3 Blast Plate
  - DF0   -  1 00000  40    0  Jump Fuel (1  parsec)
  - DF0   -  1 00000  14    0  Plant Fuel (0.5 months)
  - DP2   P  1 00000  43   43  PowerPlant-7 (P)

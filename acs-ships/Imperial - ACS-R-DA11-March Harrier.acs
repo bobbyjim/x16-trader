@@ -2,7 +2,7 @@
 ACS1.0: Thu Dec  2 19:29:38 2021
 Mission: Merchant
 QSP: R-DA11
-TL: 13 
+TL: 11 
 Name: March Harrier
 Tons: 400
 Actual Tons: 400
@@ -17,7 +17,7 @@ Components:
  - HH0   A  1 00000 400   30  Airframe Hull
  - HJ1   G  1 00000   0    4  Jump Grid
  - HL1   K  1 00000   4    4  Landing legs with pads
- - AA1  13  1 00000   0    0  AV=13. 1 Kinetic Plate
+ - AA1  13  1 00000   0    0  AV=11. 1 Kinetic Plate
  - DF0   -  1 00000  40    0  Jump Fuel (1  parsec)
  - DF0   -  1 00000   4    0  Plant Fuel (one month)
  - DP1   B  1 00000   7    7  PowerPlant-1 (B)

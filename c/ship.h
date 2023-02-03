@@ -165,21 +165,21 @@ typedef struct
 typedef struct
 {
 	// header
-	byte index;		// ship definition record
-	char name[16];
-	char allegiance;
-	char mission;
-	byte size;
+	byte index;		     // 0     ship definition record
+	char name[16];       // 1-17
+	char allegiance;     // 18
+	char mission;        // 19
+	byte size;           // 20
 
-	int  cfg         :3;
+	int  cfg         :3; // 21
 	int  tl          :5;
 
-	byte armor;
-	byte mcrp;
-	byte sr;
-	byte lb;
+	byte armor;          // 22
+	byte mcrp;           // 23
+	byte sr;             // 24
+	byte lb;             // 25
 
-	int comfort      :3;
+	int comfort      :3; // 26
 	int demand       :5;
 
 	// component array

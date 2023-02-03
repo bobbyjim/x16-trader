@@ -17,7 +17,7 @@ FuelPercentage: 11
 Components:
  - HH0   A  1 00000 400   34  Airframe Hull, lifters
  - HL1   K  1 00000   4    4  Landing legs with pads
- - AA1  32  1 00000  16    0  AV=32. 2 Kinetic Plate
+ - AA1  32  1 00000  16    0  AV=18. 2 Kinetic Plate
  - AC1   -  1 00000   0    0  AV=0. c Slick
  - DF0   -  1 00000  66    0  Jump Fuel (2  parsecs)
  - DF0   -  1 00000 13.2    0  Plant Fuel (one month)

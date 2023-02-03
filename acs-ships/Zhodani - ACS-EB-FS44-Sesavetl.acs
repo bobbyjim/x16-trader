@@ -16,9 +16,9 @@ Cargo: 24
 FuelPercentage: 12
 Components:
  - HH0   S  1 00000 600   38  Streamlined Hull
- - AA1  28  1 00000   0    0  AV=28. 1 Kinetic Charged
+ - AA1  28  1 00000   0    0  AV=18. 1 Kinetic Charged
  - DF0   -  1 00000 216    0  Jump Fuel (4  parsecs)
- - DF0   -  1 00000 21.5    0  Plant Fuel (one month)
+ - DF0   -  1 00000 21.5   0  Plant Fuel (one month)
  - DJ1   1  1 00000  65   65  Imp Jump Drive-4 (L)
  - DP2   1  1 50131  37   37  Imp PowerPlant-4 (M)
  - DM1   3  1 1025A2 7.59   46  Adv Maneuver Drive-4 (M)

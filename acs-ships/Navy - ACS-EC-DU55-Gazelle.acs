@@ -20,7 +20,7 @@ FuelPercentage: 15
 Components:
  - HH0   U  1 00000 400   14  Unstreamlined Hull
  - HL1   K  1 00000   4    4  Landing legs with pads
- - AA1  56  1 00000  16    0  AV=56. 2 Kinetic Charged
+ - AA1  56  1 00000  16    0  AV=48. 2 Kinetic Charged
  - DF0   -  1 00000  80    0  Jump Fuel (2  parsecs)
  - DF0   -  1 00000  60    0  Plant Fuel (3 months)
  - DJ2   K  1 00000  55   55  Jump Drive-5 (K)
