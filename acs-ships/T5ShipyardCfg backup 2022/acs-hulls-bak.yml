@@ -1,0 +1,141 @@
+hulls:
+   type: 'Hull'
+   missions:
+      - { code: 'A',  label: 'Trader' }
+      - { code: 'AF', label: 'Far Trader' }
+      - { code: 'A2', label: 'Far Trader' }
+      - { code: 'AL', label: 'Exploratory Trader' }
+      - { code: 'B',  label: 'Monitor' }
+      - { code: 'B2', label: 'Battle Monitor' }
+      - { code: 'C',  label: 'Cruiser' }
+      - { code: 'CB', label: 'Battle Cruiser' }
+      - { code: 'CF', label: 'Frontier Cruiser' }
+      - { code: 'CM', label: 'Mercenary Cruiser' }
+      - { code: 'CP', label: 'Patrol Cruiser' }
+      - { code: 'D',  label: 'Defender' }
+      - { code: 'DA', label: 'Armored Defender' }
+      - { code: 'E',  label: 'Escort' }
+      - { code: 'EB', label: 'Corvette' }
+      - { code: 'EC', label: 'Close Escort' }
+      - { code: 'EF', label: 'Fast Escort'  }
+      - { code: 'EG', label: 'Gunned Escort' }
+      - { code: 'EL', label: 'Long Range Escort' }
+      - { code: 'EM', label: 'Mercenary Escort' }
+      - { code: 'EN', label: 'Naval Escort' }
+      - { code: 'EP', label: 'Patrol/Escort' }
+      - { code: 'EX', label: 'Express Escort' }
+      - { code: 'EY', label: 'Rider Escort' }
+      - { code: 'F',  label: 'Freighter' }
+      - { code: 'FB', label: 'Bulk Freighter' }
+      - { code: 'FF', label: 'Frontier Freighter' }
+      - { code: 'FK', label: 'Subsidized Freighter' }
+      - { code: 'FL', label: 'Long Range Freighter' }
+      - { code: 'FQ', label: 'Q-Ship Freighter' }
+      - { code: 'FS', label: 'System Freighter' }
+      - { code: 'G',  label: 'Frigate' }
+      - { code: 'GB', label: 'Battle Frigate' }
+      - { code: 'GC', label: 'Carrier Frigate' }
+      - { code: 'GF', label: 'Fast Frigate' }
+      - { code: 'GG', label: 'Gunned Frigate' }
+      - { code: 'GL', label: 'Long Range Frigate' }
+      - { code: 'GM', label: 'Mercenary Frigate' }
+      - { code: 'GP', label: 'Patrol Frigate' }
+      - { code: 'GR', label: 'Rescue Frigate' }
+      - { code: 'H',  label: 'Ortillery' }
+      - { code: 'HB', label: 'Battle Ortillery' }
+      - { code: 'J',  label: 'Prospector' }
+      - { code: 'JF', label: 'Far Prospector' }
+      - { code: 'JJ', label: 'Survey Prospector' }
+      - { code: 'K',  label: 'Safari Ship' }
+      - { code: 'KA', label: 'Expedition Ship' }
+      - { code: 'L',  label: 'Lab Ship' }
+      - { code: 'LC', label: 'Communications Lab' }
+      - { code: 'LF', label: 'Frontier Lab' }
+      - { code: 'LL', label: 'Wilderness Lab' }
+      - { code: 'LN', label: 'Naval Lab Ship' }
+      - { code: 'LS', label: 'System Lab Ship' }
+      - { code: 'LX', label: 'Experimental Lab Ship' } 
+      - { code: 'M',  label: 'Liner' }
+      - { code: 'MF', label: 'Fast Liner' }
+      - { code: 'MK', label: 'Subsidized Liner' }
+      - { code: 'ML', label: 'Long Liner' }
+      - { code: 'MS', label: 'System Liner' }
+      - { code: 'N',  label: 'Survey' }
+      - { code: 'NJ', label: 'Beagle' }
+      - { code: 'NP', label: 'Med Ship' }
+      - { code: 'NR', label: 'Search/Rescue Ship' }
+      - { code: 'P',  label: 'Corsair' }
+      - { code: 'PN', label: 'Marauder' }
+      - { code: 'PL', label: 'Picket' }
+      - { code: 'P2', label: 'Patrol' }
+      - { code: 'P',  label: 'Privateer' }
+      - { code: 'R',  label: 'Merchant' }
+      - { code: 'RQ', label: 'Raider' }
+      - { code: 'RF', label: 'Frontier Merchant' }
+      - { code: 'RK', label: 'Subsidized Merchant' }
+      - { code: 'S',  label: 'Scout/Courier' }
+      - { code: 'SC', label: 'Sentinel' }
+      - { code: 'T',  label: 'Transport' }
+      - { code: 'TB', label: 'Assault' }
+      - { code: 'TN', label: 'Naval Tender/Tug' }
+      - { code: 'U',  label: 'Packet' }
+      - { code: 'UG', label: 'Gunned Packet' }
+      - { code: 'W',  label: 'Barge' }
+      - { code: 'X',  label: 'Express Courier' }
+      - { code: 'Y',  label: 'Yacht' }
+      - { code: 'Z',  label: 'Unclassified' }
+
+   cost:
+      C: 2%
+      B: 3%
+      P: 1%
+      U: 3% + 2
+      S: 6% + 2
+      A: 7% + 2
+      L: 12% + 4
+
+   fittings:
+      - { code: n/a, label: No Fittings,      type: Hull, category: fittings, tonsPercent: 0, mcrPerTon: 0, default: true }
+      - { code: D,   label: Flotation hull,   type: Hull, category: fittings, tonsPercent: 1, mcrPerTon: 1  }
+      - { code: E,   label: Submergence hull, type: Hull, category: fittings, tonsPercent: 2, mcrPerTon: 2  }
+
+   wings:
+      - { code: n/a,  label: No Wings,         type: Hull, category: wings, tonsPercent: 0, mcrPerTon: 0, default: true }
+      - { code: F,    label: Fins,             type: Hull, category: wings, tonsPercent: 0.5, mcrPerTon: 0.5, not: CBP  }
+      - { code: G,    label: Folding wings,    type: Hull, category: wings, tonsPercent: 0, mcrPerTon: 0.5, not: CBP   }
+      - { code: W,    label: Wings and fins,   type: Hull, category: wings, tonsPercent: 2, mcrPerTon: 1, not: CBP   }
+      - { code: V,    label: Collapsing wings, type: Hull, category: wings, tonsPercent: 1, mcrPerTon: 2, not: CBP   }
+
+   landers:
+      - { code: n/a,  label: No Landers,       type: Hull, category: landers, tonsPercent: -0.5, mcrPerTon: 0 }
+      - { code: J,    label: Landing skids,    type: Hull, category: landers, tonsPercent: 0, mcrPerTon: 0, default: true  }
+      - { code: K,    label: Landing legs with pads, type: Hull, category: landers, tonsPercent: 1, mcrPerTon: 1  }
+      - { code: M,    label: Landing wheels,   type: Hull, category: landers, tonsPercent: 3, mcrPerTon: 1.5 }
+
+   jumpGrid:
+      - { code: B,    label: Jump Bubble,      type: Hull, category: jump field, tonsPercent: 0, mcrPerTon: 0, default: true }
+      - { code: P,    label: Jump Plates,      type: Hull, category: jump field, tonsPercent: 0, mcrPerTon: 0, mcrPerHullTon: 0.001 }
+      - { code: G,    label: Jump Grid,        type: Hull, category: jump field, tonsPercent: 0, mcrPerTon: 0, mcrPerHullTon: 0.01 }
+
+   lifters: { code: Z, label: Lifters,         type: Hull, category: lifters, tonsPercent: 0, mcrPerTon: 1 }
+
+computer:
+   models:
+    0: { label: Model/0,    type: Bridge, tons: 0, mcr: 0.1, notes:     }
+    1: { label: Model/1,    type: Bridge, tons: 0, mcr: 0.2, notes:    }
+    1bis: { label: Model/1bis, type: Bridge, tons: 0, mcr: 0.3, notes:   }
+    2: { label: Model/2,    type: Bridge, tons: 0, mcr: 0.4, notes:    }
+    2bis: { label: Model/2bis, type: Bridge, tons: 0, mcr: 0.5, notes:    }
+    3: { label: Model/3,    type: Bridge, tons: 0, mcr: 0.8, notes:    }
+    3bis: { label: Model/3bis, type: Bridge, tons: 0, mcr: 0.9, notes:    }
+    4: { label: Model/4,    type: Bridge, tons: 0, mcr: 1.6, notes:    }
+    5: { label: Model/5,    type: Bridge, tons: 0, mcr: 3.2, notes:    }
+    6: { label: Model/6,    type: Bridge, tons: 1, mcr: 6.4, notes:    }
+    7: { label: Model/7,    type: Bridge, tons: 2, mcr: 12.8, notes:   }
+    8: { label: Model/8,    type: Bridge, tons: 3, mcr: 25.6, notes:  }
+    9: { label: Model/9,    type: Bridge, tons: 5, mcr: 51.2, notes:  }
+   options:
+    fib: { label: fib,  tl: 1, mcr_mult: 1.5, tons_mult: 2, notes: Fiber Optic }
+    phot: { label: phot, tl: 3, mcr_mult: 0.5, tons_mult: 1, notes: Photonic    }
+    flu: { label: flu,  tl: 4, mcr_mult: 2.0, tons_mult: 2, notes: Fluidic     }
+

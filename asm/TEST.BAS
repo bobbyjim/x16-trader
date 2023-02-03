@@ -1,0 +1,33 @@
+10 LOAD "DISTANCE.PRG",8,1,$0400
+
+100 REM DISTANCE FORMULA TESTS
+110 READ C1, R1, C2, R2, AA1, AA2
+120 IF C1 = -1 THEN END
+130 ? "(";C1;R1;") -> (";C2;R2;") = (";AA1;AA2") / ";
+
+200 POKE 2, C1
+201 POKE 3, R1
+202 POKE 4, C2
+203 POKE 5, R2
+
+300 SYS $0400
+310 ? "("; PEEK(6); PEEK(7); ")  | ";
+
+400 IF PEEK(6) =  AA1 THEN ? ".";
+410 IF PEEK(6) <> AA1 THEN ? "X";
+420 IF PEEK(7) =  AA2 THEN ? ".";
+430 IF PEEK(7) <> AA2 THEN ? "X";
+499 ?
+
+900 GOTO 110
+
+999 END
+
+1000 DATA 1, 1, 1, 1,   1, 1
+1010 DATA 2, 1, 1, 1,   2, 1
+1020 DATA 1, 1, 2, 1,   1, 2
+1030 DATA 3, 1, 1, 1,   2, 1
+1040 DATA 2, 1, 2, 1,   2, 2
+1050 DATA 4, 1, 1, 1,   3, 1
+1999 DATA -1, -1, -1, -1,-1,-1
+

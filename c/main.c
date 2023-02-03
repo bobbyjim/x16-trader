@@ -227,7 +227,6 @@ void splash()
    cputsxy(5, 57, "the traveller game in all forms is owned by far future enterprises.");
    cputsxy(5, 58, "copyright 1977 - 2022 far future enterprises.");
 
-
    textcolor(COLOR_YELLOW);
    drawPanel(10, 37, 58, 12, " select difficulty level " );
    playerDifficultyLevel = menu_run(12, 38, START_OPTION_COUNT, startingExperienceLevel);

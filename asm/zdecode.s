@@ -1,5 +1,5 @@
 ;
-; cl65 -o BANNER-FONT.PRG -t cx16 -C cx16-asm.cfg banner.s
+; cl65 -o ZDECODE.PRG -t cx16 -C cx16-asm.cfg zdecode.s
 ;
 chrout		= $ffd2
 

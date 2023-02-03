@@ -7,41 +7,60 @@
 ;	.segment "ONCE"
 ;	.segment "CODE"
 
-	.org 	$0200
-	.export	LOADADDR = *
+r0              =       $02				; general purpose ABI registers
+ r0l            =       $02
+ r0h            =       $03
+r1              =       $04
+ r1l            =       $04
+ r1h            =       $05
+r2              =       $06
+ r2l            =       $06
+ r2h            =       $07
+r3              =       $08
+ r3l            =       $08
+ r3h            =       $09
 
-Row1:		.byte 0	; $0200
-Col1:		.byte 0 ; $0201
-Row2:		.byte 0 ; $0202
-Col2: 		.byte 0 ; $0203
-Dist:		.byte 0 ; $0204
-A1:		.byte 0	; $0205
-A2:		.byte 0	; $0206
-D1:		.byte 0	; $0207
-D2:		.byte 0	; $0208
-		.byte 0,0,0,0,0,0,0 	; pad
+Col1			= 		r0l		; 2
+Row1			= 		r0h		; 3
+Col2			= 		r1l		; 4
+Row2			=		r1h		; 5
 
-Main:			; $0210
-	; figure out A1 and A2
-	lda Col1
-	lsr A
-	add Row1
-	sta A1
-	lda Col2
-	lsr A
-	add Row2
-	sta A2
-	
-	; now figure out D1, D2, D3
-	sbc A1
-	bcs gotd1
-	lda A1
-	sbc A2
-gotd1:	sta D1		; abs(a1-a2)
-	lda Col2
-	sub Col1
-	bcs gotd2
-	lda Col1
-	sbc Col2
-gotd2:	sta D2		; abs(c1-c2)
-	
+AA1				=		r2l		; 6
+AA2				= 		r2h		; 7
+
+TMP 			= 		r3l		; 8
+
+;                .org    $0801
+;                .byte   $0b,$08,$e3,$07 ; cx16 basic sys call.
+;                .byte   $9e,"2061"
+;                .byte   $00,$00,$00
+
+Main:			
+    ; first, figure out the two "diagonal" values AA1 and AA2
+    lda Col1	
+	lsr			;  Col1/2
+	adc Row1	; (Col1/2) + Row1
+	sta AA1
+
+	lda Col2	
+	lsr			;  Col2/2
+	adc Row2	; (Col2/2) + Row2
+	sta AA2
+
+  	; now figure out our three candidate distances D1, D2, D3
+  	sbc AA1		; AA2 - AA1
+	sta TMP
+
+    rts 
+
+; 	bcs gotd1
+; 	lda AA1
+; 	sbc AA2
+; gotd1:	sta D1		; abs(a1-a2)
+; 	lda Col2
+; 	sub Col1
+; 	bcs gotd2
+; 	lda Col1
+; 	sbc Col2
+; gotd2:	sta D2		; abs(c1-c2)
+; 	

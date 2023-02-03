@@ -1,0 +1,5 @@
+echo compiling
+cl65 -o DISTANCE.PRG -t cx16 -C cx16-asm.cfg distance.s
+echo running
+../../x16 -bas TEST.BAS
+

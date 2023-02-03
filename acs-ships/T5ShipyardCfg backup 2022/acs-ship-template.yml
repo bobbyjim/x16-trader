@@ -1,0 +1,46 @@
+---
+header:
+   format: 'T5-ACS-1'
+   tons: 200
+   tl: 10
+   mission: 'A'
+   config: 'S'
+   spaciousness: 2
+   shifts: 1
+
+components:
+   - {type: 'Hull', category: 'Hull', label: 'Streamlined hull', eff: 1, name: 'Hull', config: 'Streamlined', code: 'S', mcr: 14, tons: 200, mult: 1}
+   - 
+      type: 'Payload'
+      category: 'Cargo'
+      label: 'Cargo Hold Basic'
+      mcr: 0
+      eff: 1
+      tons: '20'
+      notes: ''
+   - 
+      mount: 'Surf'
+      type: 'Sensor'
+      range: 'AR'
+      totalTons: 0
+      howMany: 1
+      totalMCr: 6
+      tl: 10
+      label: 'AR Surf Basic C-R-T'
+      mod: 0
+      q: 0
+      target: 10
+      r: 0
+      eff: 1
+      s: 0
+      tons: 0
+      b: 0
+      notes: ''
+      category: 'AR Surf Basic C-R-T'
+      basetl: 10
+      e: 0
+      mcr: 6
+      name: 'Basic C-R-T'
+      CP: 1
+      config: 'Sensor'
+
