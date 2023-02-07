@@ -156,8 +156,8 @@
 
 typedef struct
 {
-	int unit        : 5;
 	int emplacement : 3;
+	int unit        : 5;
 
 } ShipComponent;
 
@@ -187,6 +187,7 @@ typedef struct
 } Starship;
 
 void showShipSummary(Starship* ship);
+void showShipStatus(Starship* ship);
 
 void ship_init(byte ship_index, Starship* ship);
 void ship_debug(Starship* ship);
@@ -194,7 +195,7 @@ void ship_describe(Starship* ship);
 void ship_loadImageFromIndex(byte ship_index);
 void ship_loadImage(char* filename);
 char* ship_filename(byte ship_index);
-byte ship_combatStrength(Starship* ship);
+//byte ship_combatStrength(Starship* ship);
 byte readShip(byte index, Starship* ship);
 //char* shipMission(char code);
 //char* shipOwner(char owner);

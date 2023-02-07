@@ -20,6 +20,7 @@
         
 */      
 
+#include <stdlib.h>
 #include "emplacement.h"
 
 char* weaponName[32] = {
@@ -66,4 +67,37 @@ char* getEmplacementName(byte encoded)
 char* getWeaponName(byte encoded)
 {
     return weaponName[encoded & 31];
+}
+
+//                           T1 T2 T3 B1  B2   B  LB   M 
+unsigned char minHits[8] = {  1, 1, 1, 0,  0,  0,  0,  0 };
+unsigned char maxHits[8] = {  1, 2, 3, 5,  8, 15, 20, 30 };
+
+unsigned char getMinHits(byte encoded)
+{
+    if ((encoded & 31) == 0) return 0;
+    return minHits[ encoded >> 5 ];
+}
+
+unsigned char getMaxHits(byte encoded)
+{
+    if ((encoded & 31) == 0) return 0;
+    if ((encoded & 31) >= 7 && (encoded & 31) <= 10) return maxHits[ encoded >> 5] * 3;
+    return maxHits[ encoded >> 5 ];
+}
+
+unsigned char getHits(byte encoded)
+{
+   unsigned char hits = rand() % getMaxHits(encoded);
+   unsigned char minHits = getMinHits(encoded);
+   if (hits < minHits)
+      return minHits;
+   return hits;
+}
+
+unsigned char hitsInNextTurn(byte encoded)
+{
+    int value = encoded & 31;
+    if (value >= 7 && value <= 10 ) return 1;
+    return 0;
 }

@@ -27,5 +27,9 @@
 
 char* getEmplacementName(byte encoded);
 char* getWeaponName(byte encoded);
+unsigned char getMinHits(byte encoded);
+unsigned char getMaxHits(byte encoded);
+unsigned char getHits(byte encoded);
+unsigned char hitsInNextTurn(byte encoded);
 
 #endif

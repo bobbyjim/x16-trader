@@ -31,11 +31,13 @@
 #include "name.h"
 #include "damage.h"
 #include "trade.h"
+#include "emplacement.h"
 
 extern World current;
 extern World destination;
 extern byte  distance;
 extern Starship ship;
+extern long hcr;
 extern byte playerAchievementLevel;
 extern byte shipDamage[]; //SHIP_COMPONENT_COUNT];
 
@@ -97,7 +99,7 @@ byte checkShipEncounter()
     if (current.data.zone     == 'a')   /* amber zone */    { s -= 10; p += 10; } 
     if (current.data.zone     == 'r')   /* red zone!  */    { s -= 20; p += 20; } 
     
-    p = 100;
+    p = 100;   //   for testing
 
     if (value >= 100-p) // p = the percentage chance of running into a pirate (ranges from 0 to 33%)
     {
@@ -121,50 +123,50 @@ void insystem_headForJumpPoint()
     if (checkShipEncounter() == 0) return; // ok no encounter.
 
     clrscr();
-    // sleep(2);
     titleLine();
 
     textcolor(COLOR_ORANGE);
-    cputsxy(INDENT,I_S_LINE_1,"sir, we have a signal detection at long range.");
-    cputsxy(INDENT,I_S_LINE_2,"do we (c)lose distance, or (r)un?");
+    cputsxy(INDENT,I_S_LINE_1,"sir, we have a signal detection.");
+//    cputsxy(INDENT,I_S_LINE_2,"do we (c)lose distance, or (r)un?");
 
-    switch(cgetc())
-    {
-        case 'c':
+//    switch(cgetc())
+//    {
+//        case 'c':
             if (guestIsPirate)
                 insystem_shipCombat();
             else
                 insystem_shipEncounter();
-            break;
+//            break;
 
-        case 'r':
-        default:
-            insystem_run();
-    }
+//        case 'r':
+//        default:
+//            insystem_run();
+//    }
 
-    textcolor(COLOR_YELLOW);
-    cputsxy(30,40,"press <return>");
-    cgetc();
+//    textcolor(COLOR_YELLOW);
+//    cputsxy(30,40,"press <return>");
+//    bgcolor(COLOR_BLACK);
+//    cgetc();
 }
 
-void insystem_run()
-{
-    if (rand() % 100 > 50) // (2D + maneuver - pirate's maneuver >= 10) for this
-    {
-        cputsxy(INDENT,I_S_LINE_3,"we have left the target behind.");
-        cputsxy(INDENT,I_S_LINE_4,"press <return> to continue.");
-        cgetc();
-        return;
-    }
-
-    cputsxy(INDENT,I_S_LINE_3,"the ship has overtaken us!");
-    cputsxy(INDENT,I_S_LINE_4,"press <return> to continue.");
-    cgetc();
-    if (guestIsPirate)
-        insystem_shipCombat();
-    else
-        insystem_shipEncounter();
-}
+// void insystem_run()
+// {
+    // if (rand() % 100 > 50) // (2D + maneuver - pirate's maneuver >= 10) for this
+    // {
+        // cputsxy(INDENT,I_S_LINE_3,"we have left the target behind.");
+        // cputsxy(INDENT,I_S_LINE_4,"press <return> to continue.");
+        // cgetc();
+        // return;
+    // }
+// 
+    // cputsxy(INDENT,I_S_LINE_3,"the ship has overtaken us!");
+    // cputsxy(INDENT,I_S_LINE_4,"press <return> to continue.");
+    // cgetc();
+    // if (guestIsPirate)
+        // insystem_shipCombat();
+    // else
+        // insystem_shipEncounter();
+// }
 
 void insystem_shipEncounter()
 {
@@ -178,37 +180,118 @@ void insystem_shipEncounter()
 
 void insystem_shipCombat()
 {
-    unsigned char s1, s2;
+    byte comp, hits, rint, totalHits;
+    char c;
 
-    gotoxy(INDENT,15);
-    s1 = ship_combatStrength( &ship );
-    s2 = ship_combatStrength( &guestStarship );
+    byte done = 0;
+    byte flee = 0;
 
-    textcolor(COLOR_LIGHTRED);
-    cputsxy(INDENT,I_S_LINE_5,"it's a pirate!");
-    gotoxy(INDENT,I_S_LINE_6);
-    showShipSummary( &guestStarship );
+    while(!done)
+    {    
+       textcolor(COLOR_WHITE);
+       clrscr();
+       cputsxy(1,1,"ship combat\r\n");
+       redline();
 
-    textcolor(COLOR_LIGHTBLUE);
-    if (s1 >= s2 ) // if you're well-enough armed, it will run
-    {
-       cputsxy(INDENT,I_S_LINE_7,"they're not interested in us.");
-       return;
+       gotoxy(INDENT,I_S_LINE_1);
+       textcolor(COLOR_LIGHTBLUE);
+       cputs("your ship : ");
+       showShipStatus( &ship );
+       cputs("\r\n\r\n");
+
+       gotox(INDENT);
+       textcolor(COLOR_LIGHTBLUE);
+       cputs("their ship: ");
+       showShipStatus( &guestStarship );
+       cputs("\r\n\r\n");
+
+       textcolor(COLOR_YELLOW);
+       gotox(INDENT);
+       cputs("menu:\r\n\r\n");
+       gotox(INDENT + 6);
+       cputs("f: flee!\r\n");
+       gotox(INDENT + 6);
+       cputs("#: attack with weapon\r\n");
+
+       c = cgetc();
+
+       totalHits = 0;
+       if (rint > 0) // hey we've got a missile attack!
+       {
+          hits = getHits(comp);
+          cprintf("last turn's missile volley does %u hits\r\n", hits);    
+          totalHits += hits;
+          rint = 0;      
+       }
+
+       flee = 0;
+       if (c == 'f') flee = 1;
+       else if (c >= '0' && c <= '7') 
+       {
+          comp = SHIP_HARDPOINT(&ship,c - '0');
+          if (comp > 0) // attack with hardpoint
+          {
+             if (hitsInNextTurn(comp)) rint = comp;
+             else 
+             {
+                hits = getHits(comp);
+                cprintf("emplacement %u does %u hits\r\n", c - '0', hits);
+                totalHits += hits;
+             }
+          }
+       }
+
+       cprintf( "total hits = %u\r\n", totalHits);
+       if (totalHits < guestStarship.armor)
+          guestStarship.armor -= totalHits;
+       else
+       {
+          guestStarship.armor = 0;
+          cprintf("pirate blows up!\r\n");
+          cprintf("reward: cr %u0000\r\n", guestStarship.mcrp);
+          hcr += guestStarship.mcrp * 100;
+          done = 1;
+       }
+
+       textcolor(COLOR_LIGHTBLUE);
+       if (flee == 1) 
+       {
+          if ((rand() % 10) + SHIP_MANEUVER_RATING(&ship) > SHIP_MANEUVER_RATING(&guestStarship))
+          {
+             cputsxy(INDENT,I_S_LINE_12,"we have escaped them.");
+             done = 1;
+          }
+          else
+          {
+             cputsxy(INDENT,I_S_LINE_12,"we didn't shake them!");
+          }
+       }
+
+       textcolor(COLOR_YELLOW);
+       cputsxy(30, 50, "press <return>");
+       cgetc();
     }
-    else if ( SHIP_MANEUVER_RATING(&ship) > SHIP_MANEUVER_RATING(&guestStarship))
-    {
-        // we're faster.
-        cputsxy(INDENT,I_S_LINE_7,"we're faster and have outrun them.");
-        return;
-    }
-    cputsxy(INDENT,I_S_LINE_7,"they overtake us and board.");
-    cputsxy(INDENT,I_S_LINE_8,"they take our cargo as booty.");
-    trade_stealAllCargo();
 
-    cputsxy(INDENT,I_S_LINE_9,"they damage a random part of our ship, as well.");
-    gotoxy(INDENT,I_S_LINE_10);
-    damage_ship(&ship, shipDamage);
+    // textcolor(COLOR_LIGHTBLUE);
+    // if (s1 >= s2 ) // if you're well-enough armed, it will run
+    // {
+    //    cputsxy(INDENT,I_S_LINE_7,"they're not interested in us.");
+    //    return;
+    // }
+    // else if ( SHIP_MANEUVER_RATING(&ship) > SHIP_MANEUVER_RATING(&guestStarship))
+    // {
+    //     // we're faster.
+    //     cputsxy(INDENT,I_S_LINE_7,"we're faster and have outrun them.");
+    //     return;
+    // }
+    // cputsxy(INDENT,I_S_LINE_7,"they overtake us and board.");
+    // cputsxy(INDENT,I_S_LINE_8,"they take our cargo as booty.");
+    // trade_stealAllCargo();
 
-    if (playerAchievementLevel > 0)
-        --playerAchievementLevel;
+    // cputsxy(INDENT,I_S_LINE_9,"they damage a random part of our ship, as well.");
+    // gotoxy(INDENT,I_S_LINE_10);
+    // damage_ship(&ship, shipDamage);
+
+    // if (playerAchievementLevel > 0)
+    //     --playerAchievementLevel;
 }

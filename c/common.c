@@ -111,8 +111,8 @@ void statusLine()
    gotoxy(1,STATUS_LINE_Y);
    cprintf(" %s ", GAME_VERSION);
    cputsxy(22,STATUS_LINE_Y," t r a v e l l e r   t r a d e r ");
-   gotox(69);
-   cprintf(" r%-2u :%u ", playerAchievementLevel, _heapmemavail());
+   gotox(68);
+   cprintf(" r%-3u :%u ", playerAchievementLevel, _heapmemavail());
 }
 
 void toDefaultColor()

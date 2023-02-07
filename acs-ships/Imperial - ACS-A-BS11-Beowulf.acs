@@ -27,6 +27,8 @@ Components:
  - OO0   -  1 00000   1    1  Life Support Standard
  - OO0   -  1 00000   1    1  Life Support Luxury
  - OB0   2  1 00000  14  0.8  Spacious Bridge
+ - WW1  -1  1 00000   1  0.7  AR T1 Missile
+ - WW1  -1  1 00000   1  0.8  Vd T3 Pulse Laser
  - CO0   -  4 00000   2  0.1  Crew Stateroom
  - CO0   -  3 00000   4    0  Crew Lounge
  - CO0   -  2 00000 0.5  0.5  Crew Shared Fresher

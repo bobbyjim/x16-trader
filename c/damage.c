@@ -49,16 +49,18 @@ byte damage_location;
 void damage_ship(Starship* thisShip, byte shipDamage[])
 {
     setBank(TEXT_BANK_1);
-    for(;;)
-    {
-       damage_location = rand() % SHIP_COMPONENT_COUNT;
-       if(thisShip->component[damage_location] > 0)
-       {
-          shipDamage[ damage_location ]++;
+    thisShip->armor--;
 
-          cputs("captain, ");
-          printBankedText(TEXT_SHIP_DAMAGE(damage_location), 34);
-          return;
-       }
-    }
+    // for(;;)
+    // {
+    //    damage_location = rand() % SHIP_COMPONENT_COUNT;
+    //    if(thisShip->component[damage_location] > 0)
+    //    {
+    //       shipDamage[ damage_location ]++;
+
+    //       cputs("captain, ");
+    //       printBankedText(TEXT_SHIP_DAMAGE(damage_location), 34);
+    //       return;
+    //    }
+    // }
 }

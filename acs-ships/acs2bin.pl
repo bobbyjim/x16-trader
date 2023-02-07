@@ -264,22 +264,22 @@ foreach my $acsfile (@acs)
     #  - small craft
     #
 
-    push @out, sprintf "%-18s %s-%s%s%s%s %-15s   %-6s  %2s   %2s:%-2s   %3s   %3s   %2s:%-2s   %3s \n", # %s\n",
+    push @out, sprintf "%-11s %s-%s%s%s%s %-15s   %-3s    %3s   %3s   %s\n",
         #chr($owner+64), 
         $ownerName,
         $mission, $hull, $cfg, $m, $j, 
         $name,
         $av,
-        $cpu,
-        $spaceSensors,
-        $worldSensors,
+#        $cpu,
+#        $spaceSensors,
+#        $worldSensors,
 #        $scoops,
         int($cargop * $tons / 100),
         int($fuelp  * $tons / 100),
 #        $av,
-        $sr, $lb,
-        int($mcrp * $tons / 100);
-       #  join ' ', @weaponSummary;
+#        $sr, $lb,
+#        int($mcrp * $tons / 100);
+         join ' ', @weaponSummary;
 
     my $cfgtl = $cfg{$cfg} + ($tl << 3);
     my $dmco  = $comfort   + ($demand << 3);
@@ -363,8 +363,8 @@ for (sort @out)
     unless ($index % 10)
     {
        print "\n";
-       print "Origination        QSP    Name              AV      cpu  SS:WS  Cargo  Fuel  SR:LB   MCr \n"; # Weapons\n";
-       print "------------------ ------ ----------------- ------  ---  -----  -----  ----  -- --  ---- \n"; # ------------\n";
+       print "Origination QSP    Name              AV   Cargo  Fuel Weapons\n";
+       print "----------- ------ ----------------- ---  -----  ---- --------------------------------\n";
     }
 
     print $_;

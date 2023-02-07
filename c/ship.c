@@ -28,6 +28,7 @@
 #include "alarm.h"
 #include "sprite.h"
 #include "panel.h"
+#include "emplacement.h"
 
 char* cfgCode  = "cbpusal";
 char* hullCode = "0abcdefghjklmnpqrstuvwxyz?????????";
@@ -46,7 +47,7 @@ void showShipSummary(Starship* ship)
    //    ship->size, 
    //    ship->mcrp * ship->size);
 
-   cprintf("(%c) %c-%c%c%u%u %s-class %s  (%d00 tons) mcr %d\r\n\r\n", 
+   cprintf("(%c) %c-%c%c%u%u %s-class %s  (%d00 tons) av %u  mcr %u\r\n\r\n", 
          ship->allegiance,
          ship->mission,
          hullCode[ship->size],
@@ -59,7 +60,41 @@ void showShipSummary(Starship* ship)
          // ship->sr,
          // ship->demand,
          // ship->lb,
+         ship->armor,
          ship->mcrp * ship->size );
+}
+
+void showShipStatus(Starship* ship)
+{
+   unsigned char i, comp;
+
+   setBank(SHIP_BANK);
+
+   cprintf("%-15s mnv: %ug  vol: %d00  av: %u\r\n\r\n", 
+         SHIP_MISSION_LABEL(ship->mission),
+         ship->component[O_QSP_M],
+         ship->size,
+         ship->armor);
+
+   //textcolor(COLOR_LIGHTGREEN);
+   cputs("           # empl   weapon     damage\r\n");
+   textcolor(COLOR_LIGHTGREEN);
+
+   for(i=0; i<8; ++i)
+   {
+       comp = SHIP_HARDPOINT(ship,i);
+       if (comp > 0)
+       {
+          cprintf("          %2u %-4s %1s %-10s %2u-%-3u\r\n",
+              i,
+              getEmplacementName(comp),
+              hitsInNextTurn(comp)? "*" : "",
+              getWeaponName(comp),
+              getMinHits(comp),
+              getMaxHits(comp)
+          );
+       }
+   }         
 }
 
 void ship_init(byte ship_index, Starship* ship)
@@ -150,6 +185,7 @@ void ship_loadImageFromIndex(byte ship_index)
    }
 }
 
+/*
 byte ship_combatStrength(Starship* ship)
 {
    int hp = 8;
@@ -168,3 +204,4 @@ byte ship_combatStrength(Starship* ship)
    //cprintf(" str=%u\r\n", strength);
    return strength;
 }
+*/
