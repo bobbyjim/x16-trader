@@ -264,10 +264,11 @@ foreach my $acsfile (@acs)
     #  - small craft
     #
 
-    push @out, sprintf "%-11s %s-%s%s%s%s %-15s   %-3s    %3s   %3s   %s\n",
-        #chr($owner+64), 
-        $ownerName,
-        $mission, $hull, $cfg, $m, $j, 
+    push @out, sprintf "%s %s-%s%s%s%s %-15s %-3s  %3s   %3s  %2d:%-2d  %4d  %s\n",
+        chr($owner+64),                # one letter
+#        $ownerName,                    # full string
+        #$owner,
+        $mission, $hull, $cfg, $m, $j,  # QSP
         $name,
         $av,
 #        $cpu,
@@ -277,9 +278,9 @@ foreach my $acsfile (@acs)
         int($cargop * $tons / 100),
         int($fuelp  * $tons / 100),
 #        $av,
-#        $sr, $lb,
-#        int($mcrp * $tons / 100);
-         join ' ', @weaponSummary;
+        $sr, $lb,
+        int($mcrp * $tons / 100),
+        join ' ', @weaponSummary;
 
     my $cfgtl = $cfg{$cfg} + ($tl << 3);
     my $dmco  = $comfort   + ($demand << 3);
@@ -363,8 +364,8 @@ for (sort @out)
     unless ($index % 10)
     {
        print "\n";
-       print "Origination QSP    Name              AV   Cargo  Fuel Weapons\n";
-       print "----------- ------ ----------------- ---  -----  ---- --------------------------------\n";
+       print "A QSP    Name            AV  Cargo Fuel  SR:LB   MCr  Weapons\n";
+       print "- ------ --------------- --- ----- ----  -----  ----  ------------------------------------\n";
     }
 
     print $_;

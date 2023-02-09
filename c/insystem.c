@@ -290,9 +290,9 @@ void insystem_shipCombat()
        else
        {
           gotox(INDENT);
-          cputs("your ship explodes in a blast of fusion flame!\r\n");
+          cputs("your ship is disabled and captured!\r\n");
           gotox(INDENT);
-          cputs("you have died.\r\n");
+          cputs("you have been marooned on a hostile world.\r\n");
           exit(0);
        }
 

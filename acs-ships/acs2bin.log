@@ -1,114 +1,65 @@
 
-QSP    Name               Bridge  Comp  SS:WS Scoops  Cargo  Fuel   AV  SR:LB   MCr
------- ------------------ ------  ----  ----- ------  -----  ----  ---  -- --  ----
-A-BA22 Avian                +2       2    0:0    0       68    24   11   6:2     70
-A-BL11 Miymosa              +1       1    0:0    1       88    22    6   8:0     60
-A-BS11 Beowulf              +2       1    0:0    1       82    22   11   6:20    40
-A-BS11 Maada                +2       1    0:0    1       60    24   10   8:4     40
-A-BS12 Empress Marava       +1       1    0:0    1       64    24   11   7:4     52
-A-CA22 Loskay               +1       2    3:1    1       60    36   12  12:0    102
-A-CL22 Fat Cat              +2       1    0:0    1       99    36   24   8:0     93
-A-CS11 Lishda               +1       1    0:0    1       90    36   12  17:12    63
-A-DA11 Grendel              +2       1    0:0    1       88    44   17   0:8    108
-A-DS12 Eakhau               +2       2    0:0    1      160    48   11   9:16    92
+A QSP    Name            AV  Cargo Fuel  SR:LB   MCr  Weapons
+- ------ --------------- --- ----- ----  -----  ----  ------------------------------------
+A A-DS12 Eakhau          11   160    48   9:16    92  
+A E-BS44 Stayow          26    24    28   0:0    104  
+A E-HU44 Ekawsykua       84    24   112   0:0    416  T3S T3L T3M
+A G-DL71 Khosaa          68     4    68   0:0    276  BaPA BaSR
+A J-BS22 Kteiroa         12    78    22   0:4     74  T1ML
+A L-DL14 Hkiyrerao       28    48    48  10:10   224  T1ML
+A R-FB22 Khtukhao        12   138    72  24:1    162  
+A S-BL43 Ktiyhui         26    16    26   0:0    114  T3M T3HY
+A T-KL33 Aositaoh        84    80   110   0:0    470  T3S BaPA BaSR T3L
+D A-BL11 Miymosa         30    88    22   8:0     60  T1M
 
-QSP    Name               Bridge  Comp  SS:WS Scoops  Cargo  Fuel   AV  SR:LB   MCr
------- ------------------ ------  ----  ----- ------  -----  ----  ---  -- --  ----
-A-HS23 Flat Trader          +1       3    6:0    1      144   104   56   4:0    312
-C-FS22 Tulgan               +0       2    6:0    1        6    72   55   0:0    168
-C-HU33 Broadsword           +2       5    3:0    1       80   104   12   0:0    264
-C-VB22 Jarl                 +2       2    5:0    0       80   240   80   0:0    460
-C-VS42 Vlezhdatl            +2       5    6:0    1       80   280  127   0:0    1060
-C-VS44 Council Cruiser      +2       5    6:0    1       40   240   84   0:0    940
-E-BU72 Stayow               +2       5    6:0    1        2    34   36   0:0    122
-E-CA62 Escort               +2       4    6:0    1       18    39   64   2:0    183
-E-DS64 Zhdits               +2       5    6:0    1        0    64   26   0:0    256
-E-DU44 Route Protector      +2       4    0:0    1        8    56   90   0:0    168
+A QSP    Name            AV  Cargo Fuel  SR:LB   MCr  Weapons
+- ------ --------------- --- ----- ----  -----  ----  ------------------------------------
+D A-CA22 Loskay          30    60    36  12:0    102  T2M T2PL T2S
+D E-CA62 Escort          64    18    39   2:0    183  B1PA T3M T4L
+D S-AS22 Syunutstryak    26    14    12   0:0     82  
+D T-KU33 Bretremoy       30   270   130   4:0    330  B1PA
+E L-DC12 Laknir          60    48    36   0:0    136  
+E N-DU23 Donosev         28    20    40   0:0    188  
+E S-AA22 Serpent         26     5    12   0:0     60  T3HY
+E S-AL22 Murphy          11     3    12   0:0     52  T2L
+I A-BS11 Beowulf         11    82    22   6:20    40  T1M T3PL
+I A-BS12 Empress Marava  11    64    24   7:4     52  
 
-QSP    Name               Bridge  Comp  SS:WS Scoops  Cargo  Fuel   AV  SR:LB   MCr
------- ------------------ ------  ----  ----- ------  -----  ----  ---  -- --  ----
-E-DU55 Gazelle              +2       6    6:0    1        0    60   56   0:0    272
-E-EA53 Kilaalum             +2       3    6:6    1        5    65    6   0:0    305
-E-FS41 Sesavetl             +2       5    6:0    0       24    72   28   0:0    318
-E-HA76 Warlock              +2       6    0:0    1       24   152   99   0:0    1016
-E-HU44 Ekawsykua            +1       5    5:2    1       24   112   26   0:0    416
-F-BU41 YT Packet            +2       4    5:0    1       50    20   60   0:0    210
-F-KS13 Susa                 +1       3    0:0    1      410   130   12  12:10   220
-F-TS13 Dakaar               +1       3    1:0    1      918   234   13   0:0    324
-F-ZC14 Risek                +2       4    0:0    0      888   288   28  16:16   528
-G-AL52 Hoshisame            +0       3    5:0    1        1    13   65   0:0     83
+A QSP    Name            AV  Cargo Fuel  SR:LB   MCr  Weapons
+- ------ --------------- --- ----- ----  -----  ----  ------------------------------------
+I A-BS22 Maada           12    40    40  16:8     50  T3HY
+I F-KS13 Susa            12   410   130  12:10   220  
+I K-BA12 Tarkine Centaur 30     6    22   0:0     86  T2L
+I M-FU13 Liner           12   120    78  21:20   132  
+I R-DA11 MC&S Rho        10   200    44   8:9     84  
+I R-DA11 March Harrier   11   200    44   8:9     92  
+I U-CA33 Ishillek        26    39    90  16:8     93  T1M
+I Y-EU42 Sunflower       30    20    55   0:0    195  
+N C-HU33 Broadsword      48    80   104   0:0    264  T3L T3M T3M
+N E-DU55 Gazelle         96     4    60   0:0    272  T3L B2PA
 
-QSP    Name               Bridge  Comp  SS:WS Scoops  Cargo  Fuel   AV  SR:LB   MCr
------- ------------------ ------  ----  ----- ------  -----  ----  ---  -- --  ----
-G-DL71 Khosaa               +2       5    6:0    1        0    68   42   0:0    276
-G-EB32 Surtr                +2       2    5:0    0       15    65  112   0:0    155
-G-FU21 Shivva               +2       4    6:0    0        0    78   26   0:0    318
-G-HB53 Avenger              +2       3    6:0    0       56   112   26   0:0    296
-G-HS44 Se Koez              +1       5    6:1    1       24   112   26   0:0    320
-J-BC11 Zukseg               +2       1    0:3    0       64    22    9   0:0     58
-J-BS22 Kteiroa              +2       3    4:5    1       78    22   12   0:4     74
-K-BA12 Tarkine Centaur      +2       1    0:2    1        6    22    7   0:0     86
-K-FC03 ANNIC NOVA           +2       3    3:2    0        0    66    9   0:0    210
-L-DC12 Laknir               +1       2    5:4    0       48    36   30   0:0    136
+A QSP    Name            AV  Cargo Fuel  SR:LB   MCr  Weapons
+- ------ --------------- --- ----- ----  -----  ----  ------------------------------------
+N E-EA53 Kilaalum        36     5    65   0:0    305  B1M B1L
+R K-FC03 ANNIC NOVA      36   150    66   0:0    210  T1L
+R N-DS23 Kurgulash       64    20    40   0:20   172  T2S T2L
+V G-HS44 Se Koez         68    24   112   0:0    320  T3L BaPA B2M
+V J-BC11 Zukseg          9     64    22   0:0     58  
+V M-FU13 Dhaztuen        12    30    78  24:10   150  T1L T1M T1S
+V P-CU42 Fang            18    45    42   0:0    126  T2M T3L
+V P-DA41 Aedokhaz        40    72    52   0:12   184  T3M T3JD T3L
+V P-DA42 Kforgzue        36   128    44   0:12   156  T3L T3M
+V P-DA62 Az Alrrak       22    12    68   0:12   384  T3L T3M T3S
 
-QSP    Name               Bridge  Comp  SS:WS Scoops  Cargo  Fuel   AV  SR:LB   MCr
------- ------------------ ------  ----  ----- ------  -----  ----  ---  -- --  ----
-L-DC22 Lab Ship-TL16        +2       4    6:6    0       48    36   32  20:0    148
-L-DL14 Hkiyrerao            +0       5    5:8    1        0    48   28  10:10   224
-M-BS11 Tramp Liner          +1       1    0:0    1       50    24   10  20:8     36
-M-FB13 Enkidu               +2       3    0:0    0      120    78   12  21:20   132
-M-FU13 Dhaztuen             +2       2    0:0    0       30    78   12  24:10   150
-M-FU13 Liner                +2       2    0:0    0      120    78   12  21:20   132
-M-HB14 Chtabl               +1       4    0:0    0       56   104   28  36:34   224
-M-HS14 Brilliance           +1       3    0:0    0        0   104    6  28:0    248
-M-KU14 Tukera RT            +1       4    0:0    0      130   130   13  36:14   250
-N-DS23 Kurgulash            +1       3    4:3    1       20    40   32   0:20   172
+A QSP    Name            AV  Cargo Fuel  SR:LB   MCr  Weapons
+- ------ --------------- --- ----- ----  -----  ----  ------------------------------------
+V S-BA33 Tathoe          12     8    26   0:0    124  T1L T1L
+Z C-VS42 Vlezhdatl       127   80   280   0:0   1060  BaKK B1L
+Z E-FS44 Sesavetl        36    24    72   0:0    318  BaM B1S B1L B2PA
+Z G-FU24 Shivva          52     0    78   0:0    318  B1PA B1M T4L T4S
+Z M-HB14 Chtabl          28    56   104  36:34   224  
+Z X-BS24 Qliaf           26    16    24   5:0     94  
 
-QSP    Name               Bridge  Comp  SS:WS Scoops  Cargo  Fuel   AV  SR:LB   MCr
------- ------------------ ------  ----  ----- ------  -----  ----  ---  -- --  ----
-N-DU23 Donosev              +2       5    5:9    0       20    40   30   0:0    188
-P-AS42 Derjus               +1       2    4:0    1        0    14   11   0:0     54
-P-CU42 Fang                 +2       2    7:0    1       45    42   18   0:0    126
-P-DA41 Aedokhaz             +1       2    6:2    1       72    52   34   0:12   184
-P-DA42 Kforgzue             +1       2    5:0    1      128    44   32   0:12   156
-P-DA62 Az Alrrak            +2       2    5:1    1       12    68   22   0:12   384
-R-DA11 March                +2       1    0:0    1      200    44   13   8:9     92
-R-DA11 Merchant             +1       1    0:0    1      212    44   13   8:9     96
-R-DA11 Sheshar              +2       1    0:0    1      148    44   34  20:10   108
-R-EU12 Maru                 +1       2    0:0    0      195    60   11  14:14   110
 
-QSP    Name               Bridge  Comp  SS:WS Scoops  Cargo  Fuel   AV  SR:LB   MCr
------- ------------------ ------  ----  ----- ------  -----  ----  ---  -- --  ----
-R-FB22 Khtukhao             +2       3    0:0    0      138    72   12  24:1    162
-R-TB43 Leviathan            +2       4    6:3    1       54   252   36   4:4    630
-S-AA22 Serpent              +2       3    5:7    1        5    12   12   0:0     60
-S-AL22 Murphy               +2       1    3:0    1        3    12    5   0:0     52
-S-AL23 Grendel              +2       1    0:0    1        4    14   11   0:0     80
-S-AS13 Advance Scout        +1       3    6:5    1        3    13   12   0:0     58
-S-AS22 Gashiiri             +0       1    0:0    1        7    12   30   0:0     36
-S-AS22 Syunutstryak         +1       1    4:6    1        6    12   13   0:0     82
-S-AS42 Kanllaz              +2       4    2:0    1        0    14   12   0:0     66
-S-AS62 Chiron               +2       5    4:0    1        0    16    9   0:2     85
+  ***** NOT GENERATING THE C FILES.  SUE ME.  ***** 
 
-QSP    Name               Bridge  Comp  SS:WS Scoops  Cargo  Fuel   AV  SR:LB   MCr
------- ------------------ ------  ----  ----- ------  -----  ----  ---  -- --  ----
-S-BA22 Wind                 +2       2    0:0    0        2    24   24   0:0     68
-S-BA33 Tathoe               +2       5    3:0    1        8    26   13   0:0    124
-S-BL43 Ktiyhui              +2       4    5:0    1       16    26   13   0:0    114
-S-DS42 Aegis                +2       4    5:3    1        0    56   48   0:0    364
-T-KL33 Aositaoh             +2       5    6:1    1       80   110   84   0:0    470
-T-KU33 Bretremoy            +2       3    0:0    1        0   130   12   4:0    330
-T-MA50 Orca                 +2       6    4:5    1      492   156   34   9:0    516
-U-CA33 Armed Packet         +2       3    0:0    1        3    36   12  10:4    114
-U-GL64 Leaper               +2       5    3:0    1        7   112   30   6:2    413
-V-BS44 Hkauiya              +2       4    5:0    1       16    28   12   0:0    104
-
-QSP    Name               Bridge  Comp  SS:WS Scoops  Cargo  Fuel   AV  SR:LB   MCr
------- ------------------ ------  ----  ----- ------  -----  ----  ---  -- --  ----
-W-AS21 Shumshuga            +0       1    0:0    1       20    12    9   0:0     32
-X-AB04 Dryad                +0       4    1:0    0        0    14   13   0:0     56
-X-AB04 Xboat prototype      +0       7    1:0    0        0    14   26   0:0    127
-X-AU04 Express Boat         +2       4    1:0    0        1    14   15   0:0     54
-X-BS24 Qliaf                +1       3    5:0    1       16    24   28   5:0     94
-Y-BB11 Yacht                +1       1    1:0    0       12    22    9   9:0     72
-Y-EU42 Sunflower            +2       3    5:1    1       20    55    7   0:0    195
