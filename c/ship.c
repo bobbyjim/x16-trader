@@ -185,7 +185,13 @@ void ship_loadImageFromIndex(byte ship_index)
    }
 }
 
-/*
+byte ship_countEmplacements(Starship* ship)
+{
+   byte i;
+   for(i=0; ship->component[ O_QDP_BATTERY(i) ] > 1; ++i);
+   return i;
+}
+
 byte ship_combatStrength(Starship* ship)
 {
    int hp = 8;
@@ -204,4 +210,3 @@ byte ship_combatStrength(Starship* ship)
    //cprintf(" str=%u\r\n", strength);
    return strength;
 }
-*/

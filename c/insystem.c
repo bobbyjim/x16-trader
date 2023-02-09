@@ -99,7 +99,7 @@ byte checkShipEncounter()
     if (current.data.zone     == 'a')   /* amber zone */    { s -= 10; p += 10; } 
     if (current.data.zone     == 'r')   /* red zone!  */    { s -= 20; p += 20; } 
     
-    p = 100;   //   for testing
+    // p = 100;   //   for testing
 
     if (value >= 100-p) // p = the percentage chance of running into a pirate (ranges from 0 to 33%)
     {
@@ -176,50 +176,60 @@ void insystem_shipEncounter()
 
     // do nothing, for now.
     cputsxy(INDENT,I_S_LINE_7, "pleasantries are exchanged.");
+    textcolor(COLOR_YELLOW);
+    cputsxy(30, 50, "press <return>");
+    cgetc();
 }
 
 void insystem_shipCombat()
 {
-    byte comp, hits, rint, totalHits;
+    byte hits, guestFires;
+    byte comp,      totalHits;
+    byte guestComp, totalGuestHits;
     char c;
+    byte num_emplacements = ship_countEmplacements(&guestStarship);
+
+    byte rint = 0, guestRint = 0;
 
     byte done = 0;
     byte flee = 0;
 
+    bgcolor(COLOR_RED);
     while(!done)
     {    
-       textcolor(COLOR_WHITE);
        clrscr();
-       cputsxy(1,1,"ship combat\r\n");
-       redline();
 
        gotoxy(INDENT,I_S_LINE_1);
-       textcolor(COLOR_LIGHTBLUE);
+       textcolor(COLOR_CYAN);
        cputs("your ship : ");
        showShipStatus( &ship );
        cputs("\r\n\r\n");
 
        gotox(INDENT);
-       textcolor(COLOR_LIGHTBLUE);
+       textcolor(COLOR_CYAN);
        cputs("their ship: ");
        showShipStatus( &guestStarship );
        cputs("\r\n\r\n");
 
        textcolor(COLOR_YELLOW);
        gotox(INDENT);
-       cputs("menu:\r\n\r\n");
+       cputs("your choices:\r\n\r\n");
        gotox(INDENT + 6);
-       cputs("f: flee!\r\n");
+       cputs("f: flee!\r\n\r\n");
        gotox(INDENT + 6);
-       cputs("#: attack with weapon\r\n");
+       cputs("#: attack with weapon #\r\n\r\n\r\n");
 
        c = cgetc();
 
+       //
+       // Player Attack
+       //
        totalHits = 0;
        if (rint > 0) // hey we've got a missile attack!
        {
-          hits = getHits(comp);
-          cprintf("last turn's missile volley does %u hits\r\n", hits);    
+          hits = getHits(rint);
+          gotox(INDENT);
+          cprintf("last turn's missile volley does %u hits\r\n\r\n", hits);    
           totalHits += hits;
           rint = 0;      
        }
@@ -235,25 +245,58 @@ void insystem_shipCombat()
              else 
              {
                 hits = getHits(comp);
-                cprintf("emplacement %u does %u hits\r\n", c - '0', hits);
+                gotox(INDENT);
+                cprintf("emplacement %u does %u hits\r\n\r\n", c - '0', hits);
                 totalHits += hits;
              }
           }
        }
 
-       cprintf( "total hits = %u\r\n", totalHits);
+       //
+       // Guest Attack
+       //
+       totalGuestHits = 0;
+       guestFires = rand() % num_emplacements;
+       guestComp  = SHIP_HARDPOINT(&guestStarship,guestFires);
+       if (hitsInNextTurn(guestComp)) guestRint = guestComp;
+       else
+       {
+          hits = getHits(guestComp);
+          gotox(INDENT);
+          cprintf("enemy emplacement %u does %u hits\r\n\r\n", guestFires, hits);
+          totalGuestHits += hits;
+       }
+
+       //cprintf( "total hits = %u\r\n", totalHits);
        if (totalHits < guestStarship.armor)
           guestStarship.armor -= totalHits;
        else
        {
           guestStarship.armor = 0;
+          gotox(INDENT);
           cprintf("pirate blows up!\r\n");
+          gotox(INDENT);
           cprintf("reward: cr %u0000\r\n", guestStarship.mcrp);
           hcr += guestStarship.mcrp * 100;
           done = 1;
+
+          //
+          //  current.zone: if red, could turn amber.  if amber, could turn green.
+          //
        }
 
-       textcolor(COLOR_LIGHTBLUE);
+       if (totalGuestHits < ship.armor)
+          ship.armor -= totalGuestHits;
+       else
+       {
+          gotox(INDENT);
+          cputs("your ship explodes in a blast of fusion flame!\r\n");
+          gotox(INDENT);
+          cputs("you have died.\r\n");
+          exit(0);
+       }
+
+       textcolor(COLOR_CYAN);
        if (flee == 1) 
        {
           if ((rand() % 10) + SHIP_MANEUVER_RATING(&ship) > SHIP_MANEUVER_RATING(&guestStarship))
@@ -271,6 +314,7 @@ void insystem_shipCombat()
        cputsxy(30, 50, "press <return>");
        cgetc();
     }
+    bgcolor(COLOR_BLACK);
 
     // textcolor(COLOR_LIGHTBLUE);
     // if (s1 >= s2 ) // if you're well-enough armed, it will run

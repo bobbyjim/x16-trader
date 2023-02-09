@@ -140,7 +140,7 @@ void printWorld(World* world);
 void drawWorld(byte streaky, byte variance);
 void getWorld(World* world);
 void world_describe(World* world);
-void setWorldSurveyed(World* world);
+void setWorldStatus(World* world, char mode);
 
 void world_drawPlanetoid(byte x, byte y);
 

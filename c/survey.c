@@ -38,16 +38,17 @@ void survey()
     statusLine();
     printAlarmBar();
 
-    gotoxy(24,24);
     textcolor(COLOR_CYAN);
     if (WORLD_IS_SURVEYED(&current) == 0)
     {
        byte days = diceRoll2d();
+       gotoxy(24,24);
        cprintf("space sensor rating: %u\r\n", SHIP_SPACE_SENSORS(&ship));
+       gotoxy(24,26);
        cprintf("system survey (%u days): kcr 100", days );
        hcr += 1000L;
        pay_period += days;
-       setWorldSurveyed(&current);
+       setWorldStatus(&current, 's');
     }
     else
     {
@@ -55,6 +56,7 @@ void survey()
        {
            byte days = diceRoll2d();
            byte tons = diceRoll3d();
+           gotoxy(24,24);
            cprintf("survey sensor rating: %u\r\n", SHIP_SURVEY_SENSORS(&ship));
            gotox(17);
            cprintf("you sold cr %u of ore by prospecting for %u days", tons * 100, days);
@@ -63,7 +65,7 @@ void survey()
        }
        else
        {
-           cprintf("sorry, this system has no planetoid belts");
+           cputsxy(17, 30, "sorry, this system has no planetoid belts");
        }    
     }
     textcolor(COLOR_YELLOW);

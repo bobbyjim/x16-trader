@@ -195,8 +195,9 @@ void ship_describe(Starship* ship);
 void ship_loadImageFromIndex(byte ship_index);
 void ship_loadImage(char* filename);
 char* ship_filename(byte ship_index);
-//byte ship_combatStrength(Starship* ship);
+byte ship_combatStrength(Starship* ship);
 byte readShip(byte index, Starship* ship);
+byte ship_countEmplacements(Starship* ship);
 //char* shipMission(char code);
 //char* shipOwner(char owner);
 

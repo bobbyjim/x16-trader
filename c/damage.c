@@ -46,21 +46,21 @@ byte damage_location;
 //      O_QSP_GLOBE		13
 //      O_QDP_BATTERY(x)		(14+x)
 
-void damage_ship(Starship* thisShip, byte shipDamage[])
-{
-    setBank(TEXT_BANK_1);
-    thisShip->armor--;
+// void damage_ship(Starship* thisShip, byte shipDamage[])
+// {
+//     setBank(TEXT_BANK_1);
+//     thisShip->armor--;
 
-    // for(;;)
-    // {
-    //    damage_location = rand() % SHIP_COMPONENT_COUNT;
-    //    if(thisShip->component[damage_location] > 0)
-    //    {
-    //       shipDamage[ damage_location ]++;
+//     // for(;;)
+//     // {
+//     //    damage_location = rand() % SHIP_COMPONENT_COUNT;
+//     //    if(thisShip->component[damage_location] > 0)
+//     //    {
+//     //       shipDamage[ damage_location ]++;
 
-    //       cputs("captain, ");
-    //       printBankedText(TEXT_SHIP_DAMAGE(damage_location), 34);
-    //       return;
-    //    }
-    // }
-}
+//     //       cputs("captain, ");
+//     //       printBankedText(TEXT_SHIP_DAMAGE(damage_location), 34);
+//     //       return;
+//     //    }
+//     // }
+// }

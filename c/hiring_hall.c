@@ -152,7 +152,7 @@ void createCandidate(Crew* candidate)
             case 3: candidate->skill[ i ]++;
             case 4: candidate->skill[ i ]++;
             case 5: candidate->skill[ i ]++;
-            case 6: candidate->skill[ i ]++;
+            case 6: candidate->skill[ i ]++;  // so 5 is the max skill level
         }
     }
 }

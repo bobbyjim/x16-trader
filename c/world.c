@@ -26,10 +26,12 @@
 #include "common.h"
 #include "world.h"
 #include "trade.h"
+#include <unistd.h>
 
 extern World localSystem[];
 extern byte  localSystemCount;
 extern byte  playerAchievementLevel;
+extern byte  pilot; // pilot skill
 
 char *stellarSizeMap[] = { "h", "i", "ii", "iii", "iv", "v", "d", "d" };
 
@@ -140,7 +142,8 @@ void world_describe(World* world)
 {
    textcolor(COLOR_LIGHTBLUE);
 
-   cprintf("         world name      : %s (%c %s)\r\n\r\n", world->data.name, world->data.allegiance, worldAllegiance(world->data.allegiance));
+// cprintf("         world name      : %s (%c = %s)\r\n\r\n", world->data.name, world->data.allegiance, worldAllegiance(world->data.allegiance));
+   cprintf("         world name      : %s (%s world)\r\n\r\n", world->data.name, worldAllegiance(world->data.allegiance));
 
    if (playerAchievementLevel > 1)
       cprintf("         starport quality: %c - %-15s  bases: %s\r\n\r\n", world->data.starport, starportQuality(world->data.starport), displayBases(world->data.bases));
@@ -271,6 +274,7 @@ void drawWorld(byte streaky, byte variance)
           //}
       }
    }
+   sleep( 5 - pilot );
 }
 
 void getWorld(World* world)
@@ -293,7 +297,14 @@ void getWorld(World* world)
    world->data     = *data;           // COPY THE DATA IN!
 }
 
-void setWorldSurveyed(World* world)
+//
+//  mode:
+//     s = set surveyed to true
+//     g = set zone to Green
+//     a = set zone to Amber
+//     r = set zone to Red
+//
+void setWorldStatus(World* world, char mode)
 {
    int offset = world->col * 64 + world->row;
    int bank = MAP_BANK_BEGIN + offset/128;
@@ -305,8 +316,27 @@ void setWorldSurveyed(World* world)
    offset %= 128;
    address = ADDRESS_START + offset * 64;
    data = (WorldData*)(address);
-   data->surveyed = 1;
-   world->data.surveyed = 1; // update the local record please.
+
+   // switch(mode)
+   // {
+   //    case 'a':
+   //        data->zone = 'a';
+   //        data->zone_digital = 1;
+   //        break;
+   //    case 'g':
+   //        data->zone = 'g';
+   //        data->zone_digital = 0;
+   //        break;
+   //    case 'r':
+   //        data->zone = 'r';
+   //        data->zone_digital = 2;
+   //        break;
+   //    case 's':
+   //    default:
+         data->surveyed = 1;
+         world->data.surveyed = 1; // update the local record please.
+   //      break;
+   //}
 }
 
 byte planetoidPetscii[4][7] = {

@@ -71,7 +71,7 @@ void printBalance()
    textcolor(COLOR_GREEN);
    cputs("\r\n");
    gotox(36);
-   cprintf("= cr %7ld00\r\n\r\n", hcr );
+   cprintf("  cr %7ld00\r\n\r\n", hcr );
 }
 
 void bookPassengersAndPayCrew()
@@ -99,16 +99,16 @@ void bookPassengersAndPayCrew()
    gotoxy(5,2);
    textcolor(COLOR_GREEN);
    cprintf("booking passengers bound for %s\r\n\r\n", WORLD_LONG_LABEL(&destination));
-   greenline();
 
    printBalance();
+   greenline();
 
    //
    //  Fuel
    //
    fuelNeeded = shipState[ O_STATE_JUMP_FUEL_USED ] * ship.size * 10;
    textcolor(COLOR_LIGHTRED);
-   cprintf("     fuel cost:                     - cr %9ld (%ld tons)\r\n\r\n", fuelNeeded * 500, fuelNeeded);
+   cprintf("\r\n     fuel cost:                     - cr %9ld (%ld tons)\r\n\r\n", fuelNeeded * 500, fuelNeeded);
    shipState[ O_STATE_JUMP_FUEL_USED ] = 0;
    hcr -= fuelNeeded * 5;
 

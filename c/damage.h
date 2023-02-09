@@ -3,6 +3,6 @@
 
 #include "ship.h"
 
-void damage_ship(Starship* thisShip, byte shipDamage[]);
+//void damage_ship(Starship* thisShip, byte shipDamage[]);
 
 #endif

@@ -70,8 +70,8 @@ void showComponentStatus(byte selected)
    setBank(TEXT_BANK_1);
 
    textcolor(COLOR_LIGHTBLUE);
-   cputsxy(7,MENU_PANEL_ROW+2,"component        status   rating  current  value (mcr)\r\n" );
-   cputsxy(7,MENU_PANEL_ROW+3,"---------------  -------  ------  -------  -----------\r\n" );
+   cputsxy(7,MENU_PANEL_ROW+2,"component        status   rating  current\r\n");//  value (mcr)\r\n" );
+   cputsxy(7,MENU_PANEL_ROW+3,"---------------  -------  ------  -------\r\n");//  -----------\r\n" );
    textcolor(COLOR_CYAN); // LIGHTBLUE);
    for(i=0; i<COMPONENT_COUNT; ++i)
    {
@@ -110,24 +110,24 @@ void showComponentStatus(byte selected)
    }
 }
 
-void repair(byte componentSelected)
-{
-   unsigned cost_00 = 0;
-   int range = ship.component[ O_QSP_J ] - shipState[ O_STATE_JUMP_FUEL_USED ];
+// void repair(byte componentSelected)
+// {
+//    unsigned cost_00 = 0;
+//    int range = ship.component[ O_QSP_J ] - shipState[ O_STATE_JUMP_FUEL_USED ];
 
-   if (shipState[componentSelected] == STATUS_LOW)
-   {   
-      cost_00 = 10 * 5 * (ship.component[ O_QSP_J ] - range) * ship.size;
-      if (cost_00 < hcr)
-      { 
-         hcr -= cost_00;
-	      clearComponentState(componentSelected);
-      } 
-      gotoxy(2,50);
-      cprintf("fuel cost cr %u00", cost_00);
-      pressReturnAndClear();
-   }
-}
+//    if (shipState[componentSelected] == STATUS_LOW)
+//    {   
+//       cost_00 = 10 * 5 * (ship.component[ O_QSP_J ] - range) * ship.size;
+//       if (cost_00 < hcr)
+//       { 
+//          hcr -= cost_00;
+// 	      clearComponentState(componentSelected);
+//       } 
+//       gotoxy(2,50);
+//       cprintf("fuel cost cr %u00", cost_00);
+//       pressReturnAndClear();
+//    }
+// }
 
 void landAtStarport()
 {
@@ -140,7 +140,7 @@ void landAtStarport()
    titleLine();
    //statusLine();
    textcolor(COLOR_YELLOW);
-   drawPanel(5, MENU_PANEL_ROW, 58, 36, " ship maintenance " );
+   drawPanel(5, MENU_PANEL_ROW, 58, 36, " ship status " );
 
    for(;;) // menu
    {
@@ -150,8 +150,8 @@ void landAtStarport()
       textcolor(COLOR_LIGHTBLUE);
       ship_describe(&ship);
       textcolor(COLOR_YELLOW);
-      cputsxy(7,MENU_PANEL_ROW+30,"press <r> over selection to refuel or repair");
-      cputsxy(7,MENU_PANEL_ROW+32,"press <u> over selection to upgrade");
+      //cputsxy(7,MENU_PANEL_ROW+30,"press <r> to refuel");
+      //cputsxy(7,MENU_PANEL_ROW+32,"press <u> over selection to buy upgrade");
       cputsxy(7,MENU_PANEL_ROW+34,"press <return> to exit");
 
       gotoxy(0,20);
@@ -160,22 +160,37 @@ void landAtStarport()
       switch(cgetc())
       {
         case 0x11: // down
-                componentSelected = ++componentSelected % COMPONENT_COUNT;
-                break;
+           componentSelected = ++componentSelected % COMPONENT_COUNT;
+           break;
         case 0x91: // up
-                if (componentSelected == 0)
-                   componentSelected = COMPONENT_COUNT;
-                --componentSelected;
-                break;
-        case 'r' : // repair (or refuel)
-		         repair(componentSelected);
- 		         break;
-        case 0x1d: // right
-               break;
-        case 0x9d: // left
-               break;
+           if (componentSelected == 0)
+              componentSelected = COMPONENT_COUNT;
+           --componentSelected;
+           break;
+
+           // we do this for you when you leave!
+      //   case 'r' : // refuel
+      //      // cost = 500 x # of jumps used x ship size digit.
+      //      hcr -= 5 * shipState[ O_STATE_JUMP_FUEL_USED ];
+      //      gotoxy(7,56);
+      //      cprintf("you bought %u tons of fuel", shipState[ O_STATE_JUMP_FUEL_USED ]);
+      //      shipState[ O_STATE_JUMP_FUEL_USED ] = 0;
+      //      textcolor(COLOR_YELLOW);
+      //      cputsxy(7,58,"press <return>");
+      //      cgetc();
+		//      //repair(componentSelected);
+ 		//      break;
+        //case 'u': // upgrade
+           // 
+           //  show a list of things you could buy for this slot?
+           //
+         //  break;
+        //case 0x1d: // right
+        //       break;
+        //case 0x9d: // left
+        //       break;
         case 0x0d: // return
-               return;
+           return;
       }
    }
 }
