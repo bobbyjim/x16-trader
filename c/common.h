@@ -21,6 +21,8 @@
     along with Traveller-Trader.  If not, see <https://www.gnu.org/licenses/>.
 
 */      
+#include <cx16.h>
+
 typedef unsigned char byte;
 
 #define  GAME_VERSION     "0.9"
@@ -33,10 +35,9 @@ typedef unsigned char byte;
 
 #define  STAR_TRADER_ASTERISK_CHARACTER     PETSCII_DIAMOND
 
-void common_loadCharacterSet(char* name);
-
-void setBank(int bank);
-int  getBank();
+//void setBank(unsigned char bank);
+//int  getBank();
+#define setBank(b)          RAM_BANK = b
 
 byte parsecDistance(
         unsigned char col1, 
@@ -51,7 +52,7 @@ void statusLine();
 
 void toDefaultColor();
 //void loadFile(char* name, unsigned address);
-void loadFileToBank(char* name, byte bankNum, unsigned address);
+//void loadFileToBank(char* name, byte bankNum, unsigned address);
 //void down(byte count);
 //void left(byte count);
 char pressReturnAndClear();

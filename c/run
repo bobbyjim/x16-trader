@@ -1,1 +1,1 @@
-~/commanderx16/x16emu_mac-r41/x16emu -bas boot.bas -run -scale 2
+../../x16 -bas boot.bas -run

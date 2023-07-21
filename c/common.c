@@ -133,14 +133,14 @@ void toDefaultColor()
 //
 //  Loads a file into banked RAM at (0xa000 - 0xbfff).
 //
-void loadFileToBank(char* name, byte bankNum, unsigned address)
-{  
-   POKE(0x9f61, bankNum); // r38
-   POKE(0,bankNum);       // r39+
-    cbm_k_setnam(name);
-    cbm_k_setlfs(IGNORE_LFN,EMULATOR_FILE_SYSTEM,SA_IGNORE_HEADER);
-    cbm_k_load(LOAD_FLAG, address);
-}
+// void loadFileToBank(char* name, byte bankNum, unsigned address)
+// {  
+//    POKE(0x9f61, bankNum); // r38
+//    POKE(0,bankNum);       // r39+
+//     cbm_k_setnam(name);
+//     cbm_k_setlfs(IGNORE_LFN,EMULATOR_FILE_SYSTEM,SA_IGNORE_HEADER);
+//     cbm_k_load(LOAD_FLAG, address);
+// }
 
 char pressReturnAndClear()
 {
@@ -177,26 +177,17 @@ byte diceRoll(byte dice, char dm)
    return dm;
 }
 
-void common_loadCharacterSet(char* filename)
-{
-   cbm_k_setnam(filename);
-   cbm_k_setlfs(0,8,0);
-   cbm_k_load(LOAD_SECONDARY_ADDRESS, CHARACTER_MAP_ADDRESS);
-}
+// void setBank(unsigned char bank)
+// {
+//    if (currentBank != bank)
+//    {
+//       POKE(0x9f61, bank); // r38
+//       POKE(0,bank);       // r39+
+//       currentBank = bank;
+//    }
+// }
 
-void setBank(int bank)
-{
-   if (bank < 1) bank = 1;
-
-   if (currentBank != bank)
-   {
-      POKE(0x9f61, bank); // r38
-      POKE(0,bank);       // r39+
-      currentBank = bank;
-   }
-}
-
-int getBank()
-{
-   return currentBank;
-}
+//int getBank()
+//{
+//   return currentBank;
+//}

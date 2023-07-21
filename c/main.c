@@ -22,6 +22,7 @@
 
 #include <stdlib.h>
 #include <conio.h>
+#include <6502.h>
 #include <cx16.h>
 
 #include "common.h"
@@ -182,7 +183,13 @@ void init()
 }
 */
 
-
+void set_PET_font()
+{
+   struct regs fontregs;
+   fontregs.a = 4; // PET-like
+   fontregs.pc = 0xff62;
+   _sys(&fontregs);
+}
 
 //
 //   print splash screen
@@ -195,10 +202,7 @@ void splash()
    cbm_k_bsout(0x01);  // #define TO_BACKGROUND	0x01
 
    clrscr();
-
-   // load PET font
-   cbm_k_bsout(0x8E); // revert to primary case
-   common_loadCharacterSet("petfont.bin");
+   set_PET_font();
 
    // load Jamison
 //   sprite_loadToVERA("bi-jamison.bin", 0x5000);
@@ -225,7 +229,7 @@ void splash()
 
    textcolor(COLOR_GRAY2);
    cputsxy(5, 57, "the traveller game in all forms is owned by far future enterprises.");
-   cputsxy(5, 58, "copyright 1977 - 2022 far future enterprises.");
+   cputsxy(5, 58, "copyright 1977 - 2023 far future enterprises.");
 
    textcolor(COLOR_YELLOW);
    drawPanel(10, 37, 58, 12, " select difficulty level " );
