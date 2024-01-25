@@ -1,1 +1,1 @@
-../../x16 -bas boot.bas -run
+../../x16 -bas boot.bas -run -scale 2

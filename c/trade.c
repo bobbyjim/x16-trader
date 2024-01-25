@@ -33,6 +33,8 @@ extern World current, destination;
 extern Cargo cargo[], starport[], temp[];
 extern long hcr; // hundreds of credits
 
+CargoEntry* cargos = (CargoEntry*)(0xa000);
+
 unsigned getHoldFree()
 {  
    int i;

@@ -101,6 +101,7 @@ byte diceRoll(byte dice, char dm);
 
 // trade and trig share a bank
 #define TRADE_MATRIX_BANK       8
+#define CARGO_ENTRY_LABEL(x)    ((char*)(0xa000 + x * 32))
 
 // SHIP BANK CONTENTS
 // 
