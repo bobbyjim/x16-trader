@@ -25,7 +25,7 @@
 
 typedef unsigned char byte;
 
-#define  GAME_VERSION     "0.9"
+#define  GAME_VERSION     "1.0"
 
 #define  PETSCII_BALL      209
 #define  PETSCII_DIAMOND   218

@@ -156,33 +156,6 @@ char* startingExperienceLevel[] = {
    "recruit", "explorer", "trader", "hunter"
 };
 
-/*
-
-   SUGGESTION: use a small BASIC program to load these up,
-   then load the PRG file.
-
-   "you can write a BASIC program that uses BLOAD to pre-load the data files into high ram banks;
-   then the final line of the BASIC program loads your C .PRG file, which then automatically runs"
-
-*/
-/*
-void init()
-{
-   loadFileToBank("bt-component.bin", TEXT_BANK_1,       TEXT_SHIP_BASE_ADDRESS);
-   loadFileToBank("bt-hexgrid.bin",   MISC_BANK,         PETSCII_JUMP_GRID);
-   loadFileToBank("bd-name.bin",      MISC_BANK,         PETSCII_NAME_MORAS);
-   loadFileToBank("bt-exposit.bin",   MISC_BANK,         PETSCII_INTRO);
-   loadFileToBank("bt-advice.bin",    MISC_BANK,         PETSCII_ADVICE); // 2k
-   loadFileToBank("b3-trade.bin",     TRADE_MATRIX_BANK, 0xa000); // replaces the T5 trade matrix
-   loadFileToBank("bd-ships.bin",     SHIP_BANK,         0xa000);
-   loadFileToBank("bd-map64.bin",     MAP_BANK_BEGIN,    0xa000);
-
-   sprite_loadToVERA("aia-far.bin",  0x4000);
-//   sprite_loadToVERA("aig-enforc.bin",  0x4000);
-//   sprite_loadToVERA("bi-worlds.bin",  0x6000);
-}
-*/
-
 void set_PET_font()
 {
    struct regs fontregs;
