@@ -139,8 +139,8 @@ void jamisonShow()
    jamison.mode  =  SPRITE_MODE_8BPP;
    jamison.layer =  SPRITE_LAYER_1;
    jamison.dimensions = SPRITE_64_BY_64;
-   jamison.x     = SPRITE_X_SCALE(440);
-   jamison.y     = SPRITE_Y_SCALE(70);
+   jamison.x     = SPRITE_X_SCALE(460);
+   jamison.y     = SPRITE_Y_SCALE(80);
 
    sprite_define(3, &jamison);
 }
