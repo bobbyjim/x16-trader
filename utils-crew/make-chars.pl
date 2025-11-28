@@ -6,10 +6,10 @@ my %race = (
 	'Aslan'		=> 'A',
 	'Bwap'		=> 'B',
 	'Droyne'	=> 'D',
+	'Shrieker'	=> 'E',
 	'Hiver'		=> 'H',
-	'Shrieker'	=> 'I',
 	'Kkree'		=> 'K',
-	'Llellewyloly'	=> 'L',
+	'Llellewyloly' => 'L',
 	'Amindii'	=> 'M',
 	'Darrian'	=> 'R',
 	'Solomani'	=> 'S',
@@ -20,37 +20,35 @@ my %race = (
 );
 
 my %service = (
-	'Merchant' 	=> 'M',
 	'Army'	 	=> 'A',
+	'Agent'     => 'G',
 	'Soldier'	=> 'A',  # = Army
-	'Marines'	=> 'R',
+	'Scholar'   => 'L',
+	'Merchant' 	=> 'M',
 	'Navy'		=> 'N',
+	'Rogue'		=> 'O',
+	'Marines'	=> 'R',
 	'Scouts'	=> 'S',
-	'Noble'		=> 'O',
-	'Rogue'		=> 'G',
-		
 );
 
 # skills list
 #
-# astrogation
-# pilot
-# engineer
-# medic
-# gunner
-# fighter
-
-# recon
-# sensop
-# survey
-# vacc
-# hostile env
-
-# admin 
-# streetwise
-# diplomat
-# survival 
-# trader
+# a astrogator
+# b bureaucrat 
+# d diplomat
+# e engineer
+# f fighter
+# g gunner
+# h hostile env
+# m medic
+# n (naval) strategy
+# p pilot
+# r survey
+# s steward
+# t trader
+# u survival 
+# v vacc
+# w streetwise
 
 my @characterlist = 
 (

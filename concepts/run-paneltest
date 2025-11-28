@@ -1,1 +1,1 @@
-~/commanderx16/x16emu_mac-r41/x16emu -prg PANELTEST -run
+../../x16 -prg PANELTEST -run

@@ -1,0 +1,10 @@
+100 A9 = 20
+1000 REM -----------------------> TEST WRITE ROUTINE
+1010 OPEN2,8,2,"@:TEST,S,W"
+1020 FOR X = 1 TO A9
+1030    PRINT#2, X;"FRED";"A";"H";
+1040    PRINT#2, "5";"6";"7";"8";"9";"A";
+1050    PRINT#2, "M";"4";"O1";
+1060    PRINT#2, "P3G2A1"
+1070 NEXT
+1090 CLOSE 2

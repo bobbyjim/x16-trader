@@ -83,7 +83,7 @@ print<<EOSYNOPSIS;
 	I: Hiver
 	J: Jonkeereen Human
 	K: clone (Human)
-	L: Llellewylolly
+	L: Llellewyloly
 	M: Amindii
 	N: Vilani Human
 	O: Solomani Human
@@ -91,7 +91,7 @@ print<<EOSYNOPSIS;
 	Q: Cetian
 	R: Darrian Human
 	S: Suerrat Human
-	T: Tesslam
+	T: Threep
 	U: Virushi
 	V: Vargr
 	W: Kursae
@@ -104,10 +104,10 @@ print<<EOSYNOPSIS;
 	A: Army
 	G: Agent
 	L: Scholar
-	M: Merchants
+	M: Merchant
 	N: Navy
 	O: Rogue/Other
-	R: Marines
+	R: Marine
 	S: Scout
 
 EOSYNOPSIS
